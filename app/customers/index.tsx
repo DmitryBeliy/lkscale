@@ -13,7 +13,8 @@ import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 import Animated, { FadeInDown } from 'react-native-reanimated';
-import { Card, SkeletonCard } from '@/components/ui';
+import { Card } from '@/components/ui';
+import { SkeletonListLoader } from '@/components/ui/Skeleton';
 import {
   getDataState,
   subscribeData,
@@ -300,9 +301,7 @@ export default function CustomersScreen() {
 
       {isLoading ? (
         <View style={styles.loadingContainer}>
-          {Array.from({ length: 4 }).map((_, i) => (
-            <SkeletonCard key={i} lines={3} />
-          ))}
+          <SkeletonListLoader count={4} type="customer" />
         </View>
       ) : (
         <FlatList

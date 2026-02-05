@@ -1,28 +1,10 @@
-import { useEffect, useState } from 'react';
 import { Redirect } from 'expo-router';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
-import { getAuthState, subscribeAuth } from '@/store/authStore';
+import { useAuth } from '@fastshot/auth';
 import { colors } from '@/constants/theme';
 
 export default function Index() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    // Subscribe to auth changes
-    const unsubscribe = subscribeAuth(() => {
-      const state = getAuthState();
-      setIsAuthenticated(state.isAuthenticated);
-      setIsLoading(state.isLoading);
-    });
-
-    // Check initial state
-    const state = getAuthState();
-    setIsAuthenticated(state.isAuthenticated);
-    setIsLoading(state.isLoading);
-
-    return () => unsubscribe();
-  }, []);
+  const { isLoading, isAuthenticated } = useAuth();
 
   if (isLoading) {
     return (

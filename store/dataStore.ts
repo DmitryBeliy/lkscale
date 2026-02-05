@@ -1,5 +1,27 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Haptics from 'expo-haptics';
 import { Order, Product, KPIData, Activity, Customer, SalesDataPoint, ProductCategory, CartItem, NewOrderData, ProductVariant, ProductWithVariants } from '@/types';
+import {
+  fetchProducts as fetchProductsFromDb,
+  fetchCustomers as fetchCustomersFromDb,
+  fetchOrders as fetchOrdersFromDb,
+  createProduct as createProductInSupabase,
+  updateProductInDb,
+  deleteProductFromDb,
+  createCustomer as createCustomerInSupabase,
+  updateCustomerInDb,
+  deleteCustomerFromDb,
+  createOrderInDb,
+  updateOrderInDb,
+  subscribeToProducts,
+  subscribeToCustomers,
+  subscribeToOrders,
+  unsubscribeAll,
+  generateOrderNumber,
+  calculateRevenueForPeriod,
+  calculateProfitForPeriod,
+} from '@/lib/supabaseDataService';
+import { getCurrentUserId } from '@/store/authStore';
 
 const ORDERS_CACHE_KEY = '@lkscale_orders';
 const PRODUCTS_CACHE_KEY = '@lkscale_products';
@@ -8,6 +30,11 @@ const KPI_CACHE_KEY = '@lkscale_kpi';
 const ACTIVITIES_CACHE_KEY = '@lkscale_activities';
 const LAST_SYNC_KEY = '@lkscale_last_sync';
 const VARIANTS_CACHE_KEY = '@lkscale_variants';
+
+// Realtime subscription cleanup functions
+let unsubProducts: (() => void) | null = null;
+let unsubCustomers: (() => void) | null = null;
+let unsubOrders: (() => void) | null = null;
 
 // Generate price/stock history data
 const generatePriceHistory = (basePrice: number) => {
@@ -949,40 +976,224 @@ export const loadCachedData = async () => {
   }
 };
 
-// Fetch functions (simulating API calls)
+// Initialize realtime subscriptions
+const initRealtimeSubscriptions = () => {
+  // Cleanup existing subscriptions
+  if (unsubProducts) unsubProducts();
+  if (unsubCustomers) unsubCustomers();
+  if (unsubOrders) unsubOrders();
+
+  // Subscribe to products changes
+  unsubProducts = subscribeToProducts((event, product, _oldProduct) => {
+    const currentProducts = [...dataState.products];
+
+    if (event === 'INSERT') {
+      // Check if product already exists
+      if (!currentProducts.find(p => p.id === product.id)) {
+        setDataState({ products: [product, ...currentProducts] });
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      }
+    } else if (event === 'UPDATE') {
+      const index = currentProducts.findIndex(p => p.id === product.id);
+      if (index !== -1) {
+        currentProducts[index] = product;
+        setDataState({ products: currentProducts });
+      }
+    } else if (event === 'DELETE') {
+      setDataState({ products: currentProducts.filter(p => p.id !== product.id) });
+    }
+  });
+
+  // Subscribe to customers changes
+  unsubCustomers = subscribeToCustomers((event, customer, _oldCustomer) => {
+    const currentCustomers = [...dataState.customers];
+
+    if (event === 'INSERT') {
+      if (!currentCustomers.find(c => c.id === customer.id)) {
+        setDataState({ customers: [customer, ...currentCustomers] });
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      }
+    } else if (event === 'UPDATE') {
+      const index = currentCustomers.findIndex(c => c.id === customer.id);
+      if (index !== -1) {
+        currentCustomers[index] = customer;
+        setDataState({ customers: currentCustomers });
+      }
+    } else if (event === 'DELETE') {
+      setDataState({ customers: currentCustomers.filter(c => c.id !== customer.id) });
+    }
+  });
+
+  // Subscribe to orders changes
+  unsubOrders = subscribeToOrders((event, order, _oldOrder) => {
+    const currentOrders = [...dataState.orders];
+
+    if (event === 'INSERT') {
+      if (!currentOrders.find(o => o.id === order.id)) {
+        setDataState({ orders: [order, ...currentOrders] });
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      }
+    } else if (event === 'UPDATE') {
+      const index = currentOrders.findIndex(o => o.id === order.id);
+      if (index !== -1) {
+        currentOrders[index] = order;
+        setDataState({ orders: currentOrders });
+      }
+    } else if (event === 'DELETE') {
+      setDataState({ orders: currentOrders.filter(o => o.id !== order.id) });
+    }
+  });
+};
+
+// Cleanup realtime subscriptions
+export const cleanupRealtimeSubscriptions = () => {
+  if (unsubProducts) unsubProducts();
+  if (unsubCustomers) unsubCustomers();
+  if (unsubOrders) unsubOrders();
+  unsubProducts = null;
+  unsubCustomers = null;
+  unsubOrders = null;
+  unsubscribeAll();
+};
+
+// Fetch functions - now using Supabase
 export const fetchData = async () => {
   setDataState({ isLoading: true });
 
+  const userId = getCurrentUserId();
+
   try {
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 800));
+    if (userId) {
+      // Fetch from Supabase
+      const [products, customers, orders] = await Promise.all([
+        fetchProductsFromDb(),
+        fetchCustomersFromDb(),
+        fetchOrdersFromDb(),
+      ]);
 
-    setDataState({
-      orders: mockOrders,
-      products: mockProducts,
-      customers: mockCustomers,
-      categories: mockCategories,
-      variants: mockVariants,
-      kpi: mockKPI,
-      activities: mockActivities,
-      salesData: {
-        week: generateSalesData('week'),
-        month: generateSalesData('month'),
-      },
-      isLoading: false,
-      lastSync: new Date().toISOString(),
-      isOffline: false,
-    });
+      // Calculate KPI from real data
+      const completedOrders = orders.filter(o => o.status === 'completed');
+      const pendingOrders = orders.filter(o => o.status === 'pending' || o.status === 'processing');
+      const lowStockProducts = products.filter(p => p.stock <= p.minStock);
+      const totalSales = completedOrders.reduce((sum, o) => sum + o.totalAmount, 0);
 
-    await cacheData();
+      const kpi: KPIData = {
+        totalSales,
+        salesChange: 0, // Would need historical data to calculate
+        activeOrders: pendingOrders.length,
+        ordersChange: 0,
+        balance: totalSales * 0.3, // Simplified profit estimate
+        balanceChange: 0,
+        lowStockItems: lowStockProducts.length,
+      };
+
+      setDataState({
+        orders,
+        products,
+        customers,
+        categories: mockCategories,
+        variants: mockVariants,
+        kpi,
+        activities: generateActivitiesFromOrders(orders, products),
+        salesData: {
+          week: generateSalesData('week'),
+          month: generateSalesData('month'),
+        },
+        isLoading: false,
+        lastSync: new Date().toISOString(),
+        isOffline: false,
+      });
+
+      // Initialize realtime subscriptions
+      initRealtimeSubscriptions();
+
+      await cacheData();
+    } else {
+      // Fallback to mock data if not authenticated
+      setDataState({
+        orders: mockOrders,
+        products: mockProducts,
+        customers: mockCustomers,
+        categories: mockCategories,
+        variants: mockVariants,
+        kpi: mockKPI,
+        activities: mockActivities,
+        salesData: {
+          week: generateSalesData('week'),
+          month: generateSalesData('month'),
+        },
+        isLoading: false,
+        lastSync: new Date().toISOString(),
+        isOffline: false,
+      });
+
+      await cacheData();
+    }
   } catch (error) {
     console.error('Error fetching data:', error);
     // Try to load cached data
     const hasCached = await loadCachedData();
     if (!hasCached) {
-      setDataState({ isLoading: false });
+      // Fallback to mock data
+      setDataState({
+        orders: mockOrders,
+        products: mockProducts,
+        customers: mockCustomers,
+        categories: mockCategories,
+        variants: mockVariants,
+        kpi: mockKPI,
+        activities: mockActivities,
+        salesData: {
+          week: generateSalesData('week'),
+          month: generateSalesData('month'),
+        },
+        isLoading: false,
+        lastSync: null,
+        isOffline: true,
+      });
     }
   }
+};
+
+// Generate activities from orders
+const generateActivitiesFromOrders = (orders: Order[], products: Product[]): Activity[] => {
+  const activities: Activity[] = [];
+  const lowStockProducts = products.filter(p => p.stock <= p.minStock);
+
+  // Add recent orders as activities
+  orders.slice(0, 5).forEach((order, index) => {
+    if (order.status === 'completed') {
+      activities.push({
+        id: `act-${order.id}-completed`,
+        type: 'order_completed',
+        title: 'Заказ выполнен',
+        description: `Заказ ${order.orderNumber} ${order.customer?.name ? `(${order.customer.name})` : ''} успешно доставлен`,
+        timestamp: order.updatedAt,
+      });
+    } else if (order.status === 'pending' || order.status === 'processing') {
+      activities.push({
+        id: `act-${order.id}-created`,
+        type: 'order_created',
+        title: 'Новый заказ',
+        description: `Получен заказ ${order.orderNumber} на сумму ${order.totalAmount.toLocaleString('ru-RU')} ₽`,
+        timestamp: order.createdAt,
+      });
+    }
+  });
+
+  // Add low stock alerts
+  lowStockProducts.slice(0, 3).forEach((product) => {
+    activities.push({
+      id: `act-lowstock-${product.id}`,
+      type: 'stock_low',
+      title: 'Низкий остаток',
+      description: `${product.name} - осталось ${product.stock} шт. (мин. ${product.minStock})`,
+      timestamp: new Date().toISOString(),
+    });
+  });
+
+  // Sort by timestamp
+  return activities.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
 };
 
 export const refreshOrders = async () => {
@@ -1083,8 +1294,27 @@ export const getLowStockProducts = (): Product[] => {
   return dataState.products.filter((p) => p.stock <= p.minStock);
 };
 
-// Product editing functions
+// Product editing functions - now using Supabase
 export const updateProduct = async (productId: string, updates: Partial<Product>): Promise<Product | null> => {
+  const userId = getCurrentUserId();
+
+  // Try Supabase first
+  if (userId) {
+    const result = await updateProductInDb(productId, updates);
+    if (result) {
+      // Update local state
+      const index = dataState.products.findIndex((p) => p.id === productId);
+      if (index !== -1) {
+        const newProducts = [...dataState.products];
+        newProducts[index] = result;
+        setDataState({ products: newProducts });
+        await cacheData();
+      }
+      return result;
+    }
+  }
+
+  // Fallback to local update
   const index = dataState.products.findIndex((p) => p.id === productId);
   if (index === -1) return null;
 
@@ -1123,16 +1353,154 @@ export const updateProduct = async (productId: string, updates: Partial<Product>
   setDataState({ products: newProducts });
   await cacheData();
 
+  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
   return updatedProduct;
 };
 
-// Order creation
+// Create new product - now using Supabase
+export const createProduct = async (productData: Omit<Product, 'id' | 'createdAt' | 'updatedAt'>): Promise<Product | null> => {
+  const userId = getCurrentUserId();
+
+  if (userId) {
+    const result = await createProductInSupabase(productData);
+    if (result) {
+      setDataState({ products: [result, ...dataState.products] });
+      await cacheData();
+      return result;
+    }
+  }
+
+  // Fallback to local creation
+  const newProduct: Product = {
+    id: `product-${Date.now()}`,
+    ...productData,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  };
+
+  setDataState({ products: [newProduct, ...dataState.products] });
+  await cacheData();
+  Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+  return newProduct;
+};
+
+// Delete product - now using Supabase
+export const deleteProduct = async (productId: string): Promise<boolean> => {
+  const userId = getCurrentUserId();
+
+  if (userId) {
+    const success = await deleteProductFromDb(productId);
+    if (success) {
+      setDataState({ products: dataState.products.filter(p => p.id !== productId) });
+      await cacheData();
+      return true;
+    }
+  }
+
+  // Fallback to local delete
+  setDataState({ products: dataState.products.filter(p => p.id !== productId) });
+  await cacheData();
+  Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+  return true;
+};
+
+// Customer CRUD operations - now using Supabase
+export const createCustomer = async (customerData: Omit<Customer, 'id' | 'createdAt' | 'updatedAt'>): Promise<Customer | null> => {
+  const userId = getCurrentUserId();
+
+  if (userId) {
+    const result = await createCustomerInSupabase(customerData);
+    if (result) {
+      setDataState({ customers: [result, ...dataState.customers] });
+      await cacheData();
+      return result;
+    }
+  }
+
+  // Fallback to local creation
+  const newCustomer: Customer = {
+    id: `customer-${Date.now()}`,
+    ...customerData,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  };
+
+  setDataState({ customers: [newCustomer, ...dataState.customers] });
+  await cacheData();
+  Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+  return newCustomer;
+};
+
+export const updateCustomer = async (customerId: string, updates: Partial<Customer>): Promise<Customer | null> => {
+  const userId = getCurrentUserId();
+
+  if (userId) {
+    const result = await updateCustomerInDb(customerId, updates);
+    if (result) {
+      const index = dataState.customers.findIndex((c) => c.id === customerId);
+      if (index !== -1) {
+        const newCustomers = [...dataState.customers];
+        newCustomers[index] = result;
+        setDataState({ customers: newCustomers });
+        await cacheData();
+      }
+      return result;
+    }
+  }
+
+  // Fallback to local update
+  const index = dataState.customers.findIndex((c) => c.id === customerId);
+  if (index === -1) return null;
+
+  const updatedCustomer: Customer = {
+    ...dataState.customers[index],
+    ...updates,
+    updatedAt: new Date().toISOString(),
+  };
+
+  const newCustomers = [...dataState.customers];
+  newCustomers[index] = updatedCustomer;
+
+  setDataState({ customers: newCustomers });
+  await cacheData();
+  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+  return updatedCustomer;
+};
+
+export const deleteCustomer = async (customerId: string): Promise<boolean> => {
+  const userId = getCurrentUserId();
+
+  if (userId) {
+    const success = await deleteCustomerFromDb(customerId);
+    if (success) {
+      setDataState({ customers: dataState.customers.filter(c => c.id !== customerId) });
+      await cacheData();
+      return true;
+    }
+  }
+
+  setDataState({ customers: dataState.customers.filter(c => c.id !== customerId) });
+  await cacheData();
+  Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+  return true;
+};
+
+// Order creation - now using Supabase
 export const createOrder = async (orderData: NewOrderData): Promise<Order> => {
-  const newOrderNumber = `ORD-2025-${String(dataState.orders.length + 1).padStart(3, '0')}`;
+  const userId = getCurrentUserId();
   const totalAmount = orderData.items.reduce(
     (sum, item) => sum + item.product.price * item.quantity,
     0
   );
+
+  let newOrderNumber: string;
+
+  if (userId) {
+    // Generate order number from Supabase
+    newOrderNumber = await generateOrderNumber();
+  } else {
+    newOrderNumber = `ORD-2025-${String(dataState.orders.length + 1).padStart(3, '0')}`;
+  }
 
   const newOrder: Order = {
     id: `order-${Date.now()}`,
@@ -1156,6 +1524,34 @@ export const createOrder = async (orderData: NewOrderData): Promise<Order> => {
     paymentMethod: orderData.paymentMethod,
   };
 
+  // Create in Supabase
+  if (userId) {
+    const dbOrder = await createOrderInDb(newOrder);
+    if (dbOrder) {
+      // Update stock for each product in Supabase
+      for (const item of orderData.items) {
+        await updateProduct(item.product.id, {
+          stock: Math.max(0, item.product.stock - item.quantity),
+        });
+      }
+
+      setDataState({
+        orders: [dbOrder, ...dataState.orders],
+        kpi: dataState.kpi
+          ? {
+              ...dataState.kpi,
+              activeOrders: dataState.kpi.activeOrders + 1,
+            }
+          : null,
+      });
+
+      await cacheData();
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      return dbOrder;
+    }
+  }
+
+  // Fallback to local creation
   // Update stock for each product
   for (const item of orderData.items) {
     await updateProduct(item.product.id, {

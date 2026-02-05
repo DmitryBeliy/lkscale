@@ -13,6 +13,7 @@ import Animated, {
   useAnimatedStyle,
   withRepeat,
   withTiming,
+  withSequence,
   cancelAnimation,
 } from 'react-native-reanimated';
 import { Card, Button } from '@/components/ui';
@@ -22,6 +23,9 @@ import {
   performSync,
   resolveConflict,
 } from '@/store/syncStore';
+import { subscribeToConnectionStatus, getConnectionStatus } from '@/lib/supabase';
+import { getCurrentUserId } from '@/store/authStore';
+import { fetchData } from '@/store/dataStore';
 import { useLocalization } from '@/localization';
 import { SyncStatus, SyncConflict } from '@/types';
 import { colors, spacing, typography, borderRadius, shadows } from '@/constants/theme';
@@ -44,13 +48,32 @@ export const SyncStatusIndicator: React.FC<SyncStatusIndicatorProps> = ({
   const [conflicts, setConflicts] = useState<SyncConflict[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [syncing, setSyncing] = useState(false);
+  const [isCloudConnected, setIsCloudConnected] = useState(true);
 
   const rotation = useSharedValue(0);
+  const pulseOpacity = useSharedValue(1);
 
   useEffect(() => {
+    // Subscribe to Supabase connection status
+    const unsubConnection = subscribeToConnectionStatus((connected) => {
+      setIsCloudConnected(connected);
+      if (!connected && getCurrentUserId()) {
+        setStatus('offline');
+      } else if (connected && getCurrentUserId()) {
+        setStatus('synced');
+      }
+    });
+
+    // Check initial connection status
+    const { isConnected } = getConnectionStatus();
+    setIsCloudConnected(isConnected);
+
     const unsub = subscribeSync(() => {
       const state = getSyncState();
-      setStatus(state.status);
+      // Only use syncStore status if connected, otherwise keep offline status
+      if (isCloudConnected || !getCurrentUserId()) {
+        setStatus(state.status);
+      }
       setLastSyncTime(state.lastSyncTime);
       setPendingChanges(state.pendingChanges);
       setConflicts(state.conflicts);
@@ -63,8 +86,11 @@ export const SyncStatusIndicator: React.FC<SyncStatusIndicatorProps> = ({
     setPendingChanges(state.pendingChanges);
     setConflicts(state.conflicts);
 
-    return () => unsub();
-  }, []);
+    return () => {
+      unsub();
+      unsubConnection();
+    };
+  }, [isCloudConnected]);
 
   useEffect(() => {
     if (status === 'syncing') {
@@ -73,10 +99,29 @@ export const SyncStatusIndicator: React.FC<SyncStatusIndicatorProps> = ({
       cancelAnimation(rotation);
       rotation.value = 0;
     }
-  }, [status, rotation]);
+
+    // Add pulse effect when offline
+    if (status === 'offline') {
+      pulseOpacity.value = withRepeat(
+        withSequence(
+          withTiming(0.4, { duration: 800 }),
+          withTiming(1, { duration: 800 })
+        ),
+        -1,
+        true
+      );
+    } else {
+      cancelAnimation(pulseOpacity);
+      pulseOpacity.value = 1;
+    }
+  }, [status, rotation, pulseOpacity]);
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ rotate: `${rotation.value}deg` }],
+  }));
+
+  const pulseStyle = useAnimatedStyle(() => ({
+    opacity: pulseOpacity.value,
   }));
 
   const getStatusIcon = (): keyof typeof Ionicons.glyphMap => {
@@ -137,7 +182,14 @@ export const SyncStatusIndicator: React.FC<SyncStatusIndicatorProps> = ({
   const handleSync = async () => {
     setSyncing(true);
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    await performSync();
+
+    // If user is authenticated, refresh from Supabase
+    if (getCurrentUserId()) {
+      await fetchData();
+    } else {
+      await performSync();
+    }
+
     setSyncing(false);
   };
 
@@ -160,6 +212,13 @@ export const SyncStatusIndicator: React.FC<SyncStatusIndicatorProps> = ({
             size={iconSize}
             color={getStatusColor()}
             style={animatedStyle}
+          />
+        ) : status === 'offline' ? (
+          <AnimatedIonicons
+            name={getStatusIcon()}
+            size={iconSize}
+            color={getStatusColor()}
+            style={pulseStyle}
           />
         ) : (
           <Ionicons

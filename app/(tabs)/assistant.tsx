@@ -19,26 +19,51 @@ import * as Haptics from 'expo-haptics';
 import * as Clipboard from 'expo-clipboard';
 import Animated, { FadeInDown, FadeInUp, FadeIn } from 'react-native-reanimated';
 import { useTextGeneration } from '@fastshot/ai';
-import { getBusinessSummary, subscribeData } from '@/store/dataStore';
+import { getBusinessSummary, subscribeData, getDataState } from '@/store/dataStore';
+import { getLiveAnalytics, LiveAnalyticsData } from '@/lib/supabaseDataService';
+import { getCurrentUserId } from '@/store/authStore';
+import { getConnectionStatus } from '@/lib/supabase';
 import { useLocalization } from '@/localization';
 import { ChatMessage } from '@/types';
 import { colors, spacing, typography, borderRadius, shadows } from '@/constants/theme';
+import { CloudStatusIndicator } from '@/components/CloudStatusIndicator';
 
 interface ActionCommand {
   id: string;
   icon: keyof typeof Ionicons.glyphMap;
   label: string;
   description: string;
-  action: 'monthly_report' | 'promotional' | 'inventory_report' | 'customer_analysis';
+  action: 'today_report' | 'week_report' | 'monthly_report' | 'promotional' | 'inventory_report' | 'customer_analysis' | 'low_stock_alert';
 }
 
 const ACTION_COMMANDS: ActionCommand[] = [
   {
+    id: 'today',
+    icon: 'today',
+    label: 'Отчёт за сегодня',
+    description: 'Выручка и продажи за день',
+    action: 'today_report',
+  },
+  {
+    id: 'week',
+    icon: 'calendar',
+    label: 'Недельный отчёт',
+    description: 'Анализ продаж за неделю',
+    action: 'week_report',
+  },
+  {
     id: 'monthly',
     icon: 'document-text',
     label: 'Месячный отчёт',
-    description: 'Сгенерировать отчёт по продажам',
+    description: 'Полный отчёт за месяц',
     action: 'monthly_report',
+  },
+  {
+    id: 'lowstock',
+    icon: 'alert-circle',
+    label: 'Низкий остаток',
+    description: 'Товары требующие пополнения',
+    action: 'low_stock_alert',
   },
   {
     id: 'promo',
@@ -51,7 +76,7 @@ const ACTION_COMMANDS: ActionCommand[] = [
     id: 'inventory',
     icon: 'cube',
     label: 'Анализ склада',
-    description: 'Отчёт по состоянию запасов',
+    description: 'Полный отчёт по запасам',
     action: 'inventory_report',
   },
   {
@@ -64,11 +89,11 @@ const ACTION_COMMANDS: ActionCommand[] = [
 ];
 
 const SUGGESTED_QUESTIONS = [
-  { id: '1', text: 'Какой товар самый прибыльный?', icon: 'trending-up' },
-  { id: '2', text: 'Сделай прогноз продаж на неделю', icon: 'analytics' },
-  { id: '3', text: 'Какие товары нужно пополнить?', icon: 'alert-circle' },
-  { id: '4', text: 'Проанализируй продажи за месяц', icon: 'bar-chart' },
-  { id: '5', text: 'Кто мой лучший клиент?', icon: 'person' },
+  { id: '1', text: 'Какая выручка и прибыль за сегодня?', icon: 'cash' },
+  { id: '2', text: 'Какой товар самый прибыльный?', icon: 'trending-up' },
+  { id: '3', text: 'Какие товары нужно срочно пополнить?', icon: 'alert-circle' },
+  { id: '4', text: 'Сравни продажи этой и прошлой недели', icon: 'stats-chart' },
+  { id: '5', text: 'Кто мои VIP клиенты?', icon: 'person' },
 ];
 
 export default function AssistantScreen() {
@@ -133,14 +158,20 @@ export default function AssistantScreen() {
   const buildContextPrompt = useCallback((question: string) => {
     const data = businessData;
     const lang = language === 'ru' ? 'Russian' : 'English';
+    const userId = getCurrentUserId();
+    const { isConnected } = getConnectionStatus();
+    const dataSource = userId && isConnected ? '📡 Cloud (Supabase)' : '💾 Local';
 
     return `You are a business assistant for "Lkscale" - an inventory, order management and CRM app. Respond in ${lang}, concisely and with specific numbers.
+
+## Data Source: ${dataSource}
+## Current Date: ${new Date().toLocaleDateString('ru-RU')}
 
 ## Current Business Metrics:
 - Total Sales: ${data.kpi?.totalSales?.toLocaleString() || 0} RUB
 - Sales Change: ${(data.kpi?.salesChange ?? 0) > 0 ? '+' : ''}${data.kpi?.salesChange ?? 0}%
 - Active Orders: ${data.kpi?.activeOrders || 0}
-- Balance: ${data.kpi?.balance?.toLocaleString() || 0} RUB
+- Balance (Est. Profit): ${data.kpi?.balance?.toLocaleString() || 0} RUB
 - Average Order Value: ${Math.round(data.avgOrderValue || 0).toLocaleString()} RUB
 - Average Margin: ${data.avgMargin || 0}%
 
@@ -155,8 +186,8 @@ export default function AssistantScreen() {
 - Total Products: ${data.totalProducts}
 - Low Stock Items: ${data.lowStockProducts?.length || 0}
 
-Low stock products:
-${data.lowStockProducts?.map((p: any) => `- ${p.name}: ${p.stock} pcs (min: ${p.minStock}), margin: ${p.margin}%`).join('\n') || 'None'}
+Low stock products (URGENT):
+${data.lowStockProducts?.map((p: any) => `⚠️ ${p.name}: ${p.stock} pcs (min: ${p.minStock}), margin: ${p.margin}%`).join('\n') || '✅ All stock levels healthy'}
 
 ## Top 5 Products by Revenue:
 ${data.topProducts?.map((p: any, i: number) => `${i + 1}. ${p.name}: ${p.revenue?.toLocaleString()} RUB (sold: ${p.sold}, margin: ${p.margin}%, profit: ${p.profit?.toLocaleString()} RUB)`).join('\n') || 'No data'}
@@ -174,16 +205,74 @@ ${data.inactiveCustomers?.map((c: any) => `- ${c.name}: last order ${c.lastOrder
 
 User question: ${question}
 
-Answer briefly (2-4 sentences) with specific numbers, names and actionable insights. If asked about customers, products or profits, use the real data provided above.`;
+Answer briefly (2-4 sentences) with specific numbers, names and actionable insights. If asked about customers, products or profits, use the real data provided above. If there are low stock alerts, proactively mention them when relevant.`;
   }, [businessData, language]);
 
-  const buildActionPrompt = useCallback((action: ActionCommand['action']) => {
+  const buildActionPrompt = useCallback((action: ActionCommand['action'], liveData?: LiveAnalyticsData | null) => {
     const data = businessData;
     const lang = language === 'ru' ? 'Russian' : 'English';
+    const isLiveData = liveData && getCurrentUserId();
+    const dataSource = isLiveData ? '📡 LIVE CLOUD DATA' : '💾 Local Data';
 
     switch (action) {
+      case 'today_report':
+        if (liveData) {
+          return `Generate a concise daily sales report in ${lang}. Data source: ${dataSource}
+
+## Today's Performance (LIVE DATA):
+- Revenue: ${liveData.revenue.toLocaleString()} RUB
+- Profit: ${liveData.profit.toLocaleString()} RUB
+- Orders: ${liveData.ordersCount} total, ${liveData.completedOrders} completed
+- Average Order: ${Math.round(liveData.averageOrderValue).toLocaleString()} RUB
+
+## Today's Best Sellers:
+${liveData.topSellingProducts.map((p, i) => `${i + 1}. ${p.name}: ${p.quantitySold} sold, ${p.revenue.toLocaleString()} RUB, profit ${p.profit.toLocaleString()} RUB`).join('\n') || 'No sales yet today'}
+
+## Low Stock Alerts:
+${liveData.lowStockAlerts.slice(0, 5).map(p => `⚠️ ${p.name}: ${p.currentStock} шт. (min ${p.minStock})${p.daysUntilStockout !== null ? ` - ~${p.daysUntilStockout} дней до окончания` : ''}`).join('\n') || '✅ All stock levels are healthy'}
+
+Create a brief daily summary with:
+1. Today's Results (revenue, profit, margin %)
+2. Top 3 Products of the Day
+3. Urgent Actions (if any low stock or issues)
+4. Quick recommendation for tomorrow`;
+        }
+        // Fallback to basic data
+        return `Generate a daily summary in ${lang} based on available data. Note: Live data not available.`;
+
+      case 'week_report':
+        if (liveData) {
+          return `Generate a weekly business report in ${lang}. Data source: ${dataSource}
+
+## This Week's Performance (LIVE DATA):
+- Revenue: ${liveData.revenue.toLocaleString()} RUB
+- Profit: ${liveData.profit.toLocaleString()} RUB
+- Total Orders: ${liveData.ordersCount}
+- Completed Orders: ${liveData.completedOrders}
+- Average Order Value: ${Math.round(liveData.averageOrderValue).toLocaleString()} RUB
+
+## Top Selling Products This Week:
+${liveData.topSellingProducts.map((p, i) => `${i + 1}. ${p.name}: ${p.quantitySold} sold, ${p.revenue.toLocaleString()} RUB revenue, ${p.profit.toLocaleString()} RUB profit`).join('\n') || 'No data'}
+
+## Inventory Alerts:
+${liveData.lowStockAlerts.slice(0, 5).map(p => `⚠️ ${p.name}: ${p.currentStock} шт.${p.daysUntilStockout !== null ? ` (~${p.daysUntilStockout} дней запаса)` : ''}`).join('\n') || '✅ Stock levels OK'}
+
+## Top Customers (from overall data):
+${data.topCustomers?.slice(0, 3).map((c: any, i: number) => `${i + 1}. ${c.name}: ${c.totalSpent?.toLocaleString()} RUB total`).join('\n') || 'No data'}
+
+Create a report with:
+1. Week Summary (revenue, profit, key metrics)
+2. Sales Trends (what's selling well)
+3. Product Performance Analysis
+4. Inventory Status & Recommendations
+5. Goals for Next Week`;
+        }
+        return `Generate a weekly report in ${lang}. Use available local data:
+- Week Sales: ${data.weekSales?.toLocaleString()} RUB
+- Total Orders: ${data.totalOrders}`;
+
       case 'monthly_report':
-        return `Generate a professional monthly sales report in ${lang}. Format it clearly with sections and use REAL product and customer names from the data.
+        return `Generate a professional monthly sales report in ${lang}. Data source: ${dataSource}
 
 ## Business Data:
 - Total Sales: ${data.kpi?.totalSales?.toLocaleString() || 0} RUB
@@ -209,6 +298,33 @@ Create a structured report with:
 5. Key Insights (2-3 actionable points)
 6. Recommendations for next month`;
 
+      case 'low_stock_alert':
+        if (liveData && liveData.lowStockAlerts.length > 0) {
+          return `Generate an urgent low stock alert report in ${lang}. Data source: ${dataSource}
+
+## 🚨 КРИТИЧЕСКИЕ ОСТАТКИ (${liveData.lowStockAlerts.length} позиций):
+${liveData.lowStockAlerts.map((p, i) => `${i + 1}. ${p.name}
+   - Текущий остаток: ${p.currentStock} шт.
+   - Минимум: ${p.minStock} шт.
+   - Прогноз: ${p.daysUntilStockout !== null ? `~${p.daysUntilStockout} дней до окончания` : 'нет данных о продажах'}`).join('\n\n')}
+
+## Дополнительно из общих данных:
+${data.lowStockProducts?.filter((p: any) => !liveData.lowStockAlerts.find(l => l.name === p.name)).map((p: any) => `- ${p.name}: ${p.stock}/${p.minStock} шт., маржа ${p.margin}%`).join('\n') || 'Все позиции учтены выше'}
+
+Create an urgent report:
+1. 🔴 Critical Items (need immediate restock)
+2. 🟡 Warning Items (need attention soon)
+3. Prioritized Reorder List (by margin & sales velocity)
+4. Estimated Cost to Restock
+5. Recommended Actions`;
+        }
+        return `Generate a low stock report in ${lang}.
+
+## Low Stock Items:
+${data.lowStockProducts?.map((p: any) => `- ${p.name}: ${p.stock}/${p.minStock} шт., маржа ${p.margin}%`).join('\n') || '✅ All stock levels are healthy'}
+
+Create a prioritized restock list with recommendations.`;
+
       case 'promotional':
         return `Create engaging promotional messages in ${lang} for VIP customers. Use REAL customer and product names.
 
@@ -227,7 +343,7 @@ Create 3 personalized versions:
 3. Email subject + body - professional, exclusive offer feel`;
 
       case 'inventory_report':
-        return `Generate an inventory status report with profit analysis in ${lang}.
+        return `Generate an inventory status report with profit analysis in ${lang}. Data source: ${dataSource}
 
 ## Current Inventory:
 - Total Products: ${data.totalProducts}
@@ -326,7 +442,25 @@ Create a report with:
 
     setMessages((prev) => [...prev, userMessage, loadingMessage]);
 
-    const prompt = buildActionPrompt(action.action);
+    // Fetch live analytics data for period-based reports
+    let liveData: LiveAnalyticsData | null = null;
+    const userId = getCurrentUserId();
+    const { isConnected } = getConnectionStatus();
+
+    if (userId && isConnected) {
+      try {
+        const { products } = getDataState();
+        if (['today_report', 'week_report', 'low_stock_alert'].includes(action.action)) {
+          const period = action.action === 'today_report' ? 'today' :
+                        action.action === 'week_report' ? 'week' : 'month';
+          liveData = await getLiveAnalytics(period, products);
+        }
+      } catch (error) {
+        console.error('Error fetching live analytics:', error);
+      }
+    }
+
+    const prompt = buildActionPrompt(action.action, liveData);
     await generateText(prompt);
   };
 
@@ -475,7 +609,10 @@ Create a report with:
           <Ionicons name="sparkles" size={24} color={colors.primary} />
         </View>
         <View style={styles.headerContent}>
-          <Text style={styles.headerTitle}>{t.assistant.title}</Text>
+          <View style={styles.headerTitleRow}>
+            <Text style={styles.headerTitle}>{t.assistant.title}</Text>
+            <CloudStatusIndicator size="small" />
+          </View>
           <Text style={styles.headerSubtitle}>{t.assistant.subtitle}</Text>
         </View>
         {messages.length > 1 && (
@@ -570,6 +707,11 @@ const styles = StyleSheet.create({
   },
   headerContent: {
     flex: 1,
+  },
+  headerTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
   },
   headerTitle: {
     fontSize: typography.sizes.lg,

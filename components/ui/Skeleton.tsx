@@ -86,6 +86,80 @@ export const SkeletonKPICard: React.FC = () => {
   );
 };
 
+export const SkeletonProductCard: React.FC = () => {
+  return (
+    <View style={styles.productCard}>
+      <Skeleton width={70} height={70} borderRadius={borderRadius.md} />
+      <View style={styles.productContent}>
+        <Skeleton width="70%" height={16} />
+        <Skeleton width="40%" height={14} style={{ marginTop: 6 }} />
+        <View style={styles.productRow}>
+          <Skeleton width="30%" height={18} style={{ marginTop: 8 }} />
+          <Skeleton width="25%" height={16} style={{ marginTop: 8 }} />
+        </View>
+      </View>
+    </View>
+  );
+};
+
+export const SkeletonOrderCard: React.FC = () => {
+  return (
+    <View style={styles.orderCard}>
+      <View style={styles.orderHeader}>
+        <Skeleton width={80} height={16} />
+        <Skeleton width={70} height={24} borderRadius={borderRadius.full} />
+      </View>
+      <View style={styles.orderBody}>
+        <Skeleton width="60%" height={14} />
+        <Skeleton width="40%" height={14} style={{ marginTop: 6 }} />
+      </View>
+      <View style={styles.orderFooter}>
+        <Skeleton width={100} height={20} />
+        <Skeleton width={80} height={14} />
+      </View>
+    </View>
+  );
+};
+
+export const SkeletonCustomerCard: React.FC = () => {
+  return (
+    <View style={styles.customerCard}>
+      <Skeleton width={50} height={50} borderRadius={25} />
+      <View style={styles.customerContent}>
+        <Skeleton width="60%" height={16} />
+        <Skeleton width="80%" height={14} style={{ marginTop: 6 }} />
+      </View>
+      <Skeleton width={24} height={24} borderRadius={12} />
+    </View>
+  );
+};
+
+export const SkeletonListLoader: React.FC<{ count?: number; type?: 'product' | 'order' | 'customer' | 'card' }> = ({
+  count = 4,
+  type = 'card',
+}) => {
+  const renderItem = () => {
+    switch (type) {
+      case 'product':
+        return <SkeletonProductCard />;
+      case 'order':
+        return <SkeletonOrderCard />;
+      case 'customer':
+        return <SkeletonCustomerCard />;
+      default:
+        return <SkeletonCard lines={3} />;
+    }
+  };
+
+  return (
+    <>
+      {Array.from({ length: count }).map((_, index) => (
+        <View key={index}>{renderItem()}</View>
+      ))}
+    </>
+  );
+};
+
 const styles = StyleSheet.create({
   skeleton: {
     backgroundColor: colors.skeleton,
@@ -112,5 +186,60 @@ const styles = StyleSheet.create({
   kpiContent: {
     flex: 1,
     marginLeft: 12,
+  },
+  productCard: {
+    backgroundColor: colors.surface,
+    borderRadius: borderRadius.lg,
+    padding: 12,
+    marginBottom: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  productContent: {
+    flex: 1,
+    marginLeft: 12,
+  },
+  productRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  orderCard: {
+    backgroundColor: colors.surface,
+    borderRadius: borderRadius.lg,
+    padding: 16,
+    marginBottom: 12,
+  },
+  orderHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  orderBody: {
+    marginBottom: 12,
+  },
+  orderFooter: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingTop: 12,
+    borderTopWidth: 1,
+    borderTopColor: colors.borderLight,
+  },
+  customerCard: {
+    backgroundColor: colors.surface,
+    borderRadius: borderRadius.lg,
+    padding: 16,
+    marginBottom: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  customerContent: {
+    flex: 1,
+    marginLeft: 12,
+  },
+  listContainer: {
+    padding: 16,
   },
 });

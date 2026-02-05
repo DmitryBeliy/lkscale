@@ -16,8 +16,11 @@ import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import { Card } from '@/components/ui';
+import { ImagePicker } from '@/components/ImagePicker';
 import { LineChart } from '@/components/charts/SalesChart';
 import { getProductById, updateProduct, getCategories } from '@/store/dataStore';
+import { uploadProductImage } from '@/lib/supabaseDataService';
+import { getCurrentUserId } from '@/store/authStore';
 import { Product } from '@/types';
 import { colors, spacing, typography, borderRadius, shadows } from '@/constants/theme';
 
@@ -47,6 +50,8 @@ export default function ProductEditScreen() {
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [isActive, setIsActive] = useState(true);
+  const [imageUrl, setImageUrl] = useState<string | undefined>();
+  const [isUploadingImage, setIsUploadingImage] = useState(false);
 
   const categories = getCategories().filter((c) => c !== 'all');
 
@@ -64,9 +69,29 @@ export default function ProductEditScreen() {
         setDescription(foundProduct.description || '');
         setCategory(foundProduct.category);
         setIsActive(foundProduct.isActive);
+        setImageUrl(foundProduct.image);
       }
     }
   }, [id]);
+
+  const handleImageSelected = async (uri: string, base64: string) => {
+    if (!product || !getCurrentUserId()) return;
+
+    setIsUploadingImage(true);
+    try {
+      const url = await uploadProductImage(product.id, base64);
+      if (url) {
+        setImageUrl(url);
+        // Update product with new image
+        await updateProduct(product.id, { image: url });
+      }
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      throw error;
+    } finally {
+      setIsUploadingImage(false);
+    }
+  };
 
   const handleBack = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
@@ -228,13 +253,21 @@ export default function ProductEditScreen() {
             <Animated.View entering={FadeInDown.duration(300)}>
               {/* Product Image */}
               <Card style={styles.imageCard}>
-                <View style={styles.imagePlaceholder}>
-                  <Ionicons name="cube" size={60} color={colors.primary} />
+                <View style={styles.imagePickerContainer}>
+                  <ImagePicker
+                    currentImage={imageUrl}
+                    onImageSelected={handleImageSelected}
+                    size="large"
+                    shape="square"
+                    placeholder="Добавить фото товара"
+                    disabled={isUploadingImage || !getCurrentUserId()}
+                  />
+                  {!getCurrentUserId() && (
+                    <Text style={styles.imageHint}>
+                      Войдите в аккаунт для загрузки изображений
+                    </Text>
+                  )}
                 </View>
-                <Pressable style={styles.imageButton}>
-                  <Ionicons name="camera-outline" size={20} color={colors.primary} />
-                  <Text style={styles.imageButtonText}>Изменить фото</Text>
-                </Pressable>
               </Card>
 
               {/* Basic Info */}
@@ -584,6 +617,16 @@ const styles = StyleSheet.create({
   imageCard: {
     alignItems: 'center',
     marginBottom: spacing.md,
+  },
+  imagePickerContainer: {
+    alignItems: 'center',
+    paddingVertical: spacing.md,
+  },
+  imageHint: {
+    fontSize: typography.sizes.xs,
+    color: colors.textLight,
+    marginTop: spacing.sm,
+    textAlign: 'center',
   },
   imagePlaceholder: {
     width: 120,

@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { supabase } from '@/lib/supabase';
 import { User, AuthState } from '@/types';
 
 const AUTH_STORAGE_KEY = '@lkscale_auth';
@@ -33,25 +34,66 @@ export const setAuthState = (updates: Partial<AuthState>) => {
   notifyListeners();
 };
 
-// Mock user data based on Maggaz12
-const mockUser: User = {
-  id: '1',
-  email: 'dmitry.plotnikov@example.com',
-  name: 'Дмитрий Плотников',
-  phone: '+7 (999) 123-45-67',
-  balance: 125840.50,
-  createdAt: '2024-01-15T10:00:00Z',
+// Convert Supabase user to app User format
+const convertSupabaseUser = async (supabaseUser: { id: string; email?: string | null }): Promise<User | null> => {
+  if (!supabaseUser) return null;
+
+  try {
+    // Fetch user profile from database
+    const { data: profile, error } = await supabase
+      .from('users')
+      .select('*')
+      .eq('id', supabaseUser.id)
+      .single();
+
+    if (error || !profile) {
+      // Return basic user if profile not found
+      return {
+        id: supabaseUser.id,
+        email: supabaseUser.email || '',
+        name: supabaseUser.email?.split('@')[0] || 'Пользователь',
+        balance: 0,
+        createdAt: new Date().toISOString(),
+      };
+    }
+
+    return {
+      id: profile.id,
+      email: profile.email || '',
+      name: profile.name || 'Пользователь',
+      phone: profile.phone || undefined,
+      avatar: profile.avatar_url || undefined,
+      balance: profile.balance || 0,
+      createdAt: profile.created_at || new Date().toISOString(),
+    };
+  } catch (error) {
+    console.error('Error fetching user profile:', error);
+    return {
+      id: supabaseUser.id,
+      email: supabaseUser.email || '',
+      name: supabaseUser.email?.split('@')[0] || 'Пользователь',
+      balance: 0,
+      createdAt: new Date().toISOString(),
+    };
+  }
 };
 
+// Initialize auth state from Supabase session
 export const initializeAuth = async () => {
   try {
-    const [savedAuth, rememberMe] = await Promise.all([
-      AsyncStorage.getItem(AUTH_STORAGE_KEY),
-      AsyncStorage.getItem(REMEMBER_ME_KEY),
-    ]);
+    setAuthState({ isLoading: true });
 
-    if (savedAuth && rememberMe === 'true') {
-      const user = JSON.parse(savedAuth) as User;
+    // Get current session from Supabase
+    const { data: { session }, error } = await supabase.auth.getSession();
+
+    if (error) {
+      console.error('Error getting session:', error);
+      setAuthState({ isLoading: false, isAuthenticated: false, user: null });
+      return;
+    }
+
+    if (session?.user) {
+      const user = await convertSupabaseUser(session.user);
       setAuthState({
         isAuthenticated: true,
         isLoading: false,
@@ -59,14 +101,42 @@ export const initializeAuth = async () => {
         rememberMe: true,
       });
     } else {
-      setAuthState({ isLoading: false });
+      setAuthState({ isLoading: false, isAuthenticated: false, user: null });
     }
+
+    // Listen for auth changes
+    supabase.auth.onAuthStateChange(async (event, session) => {
+      if (event === 'SIGNED_IN' && session?.user) {
+        const user = await convertSupabaseUser(session.user);
+        setAuthState({
+          isAuthenticated: true,
+          isLoading: false,
+          user,
+          rememberMe: true,
+        });
+      } else if (event === 'SIGNED_OUT') {
+        setAuthState({
+          isAuthenticated: false,
+          isLoading: false,
+          user: null,
+          rememberMe: false,
+        });
+      } else if (event === 'TOKEN_REFRESHED' && session?.user) {
+        // Keep existing user data on token refresh
+        const currentUser = getAuthState().user;
+        if (!currentUser) {
+          const user = await convertSupabaseUser(session.user);
+          setAuthState({ user });
+        }
+      }
+    });
   } catch (error) {
     console.error('Error initializing auth:', error);
-    setAuthState({ isLoading: false });
+    setAuthState({ isLoading: false, isAuthenticated: false });
   }
 };
 
+// Legacy login function (now uses Supabase)
 export const login = async (
   email: string,
   password: string,
@@ -75,33 +145,29 @@ export const login = async (
   try {
     setAuthState({ isLoading: true });
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    // Mock validation
-    if (!email || !password) {
-      setAuthState({ isLoading: false });
-      return { success: false, error: 'Введите email и пароль' };
-    }
-
-    // Accept any credentials for demo
-    const user = { ...mockUser, email };
-
-    if (rememberMe) {
-      await Promise.all([
-        AsyncStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(user)),
-        AsyncStorage.setItem(REMEMBER_ME_KEY, 'true'),
-      ]);
-    }
-
-    setAuthState({
-      isAuthenticated: true,
-      isLoading: false,
-      user,
-      rememberMe,
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
     });
 
-    return { success: true };
+    if (error) {
+      setAuthState({ isLoading: false });
+      return { success: false, error: error.message };
+    }
+
+    if (data.user) {
+      const user = await convertSupabaseUser(data.user);
+      setAuthState({
+        isAuthenticated: true,
+        isLoading: false,
+        user,
+        rememberMe,
+      });
+      return { success: true };
+    }
+
+    setAuthState({ isLoading: false });
+    return { success: false, error: 'Не удалось войти' };
   } catch (error) {
     console.error('Login error:', error);
     setAuthState({ isLoading: false });
@@ -111,6 +177,7 @@ export const login = async (
 
 export const logout = async () => {
   try {
+    await supabase.auth.signOut();
     await Promise.all([
       AsyncStorage.removeItem(AUTH_STORAGE_KEY),
       AsyncStorage.removeItem(REMEMBER_ME_KEY),
@@ -131,11 +198,40 @@ export const updateUser = async (updates: Partial<User>) => {
   const currentState = getAuthState();
   if (!currentState.user) return;
 
-  const updatedUser = { ...currentState.user, ...updates };
+  try {
+    // Update in Supabase
+    const { error } = await supabase
+      .from('users')
+      .update({
+        name: updates.name,
+        phone: updates.phone,
+        avatar_url: updates.avatar,
+      })
+      .eq('id', currentState.user.id);
 
-  if (currentState.rememberMe) {
-    await AsyncStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(updatedUser));
+    if (error) {
+      console.error('Error updating user:', error);
+      return;
+    }
+
+    // Update local state
+    const updatedUser = { ...currentState.user, ...updates };
+    setAuthState({ user: updatedUser });
+  } catch (error) {
+    console.error('Error updating user:', error);
   }
+};
 
-  setAuthState({ user: updatedUser });
+// Get current user ID (helper for data operations)
+export const getCurrentUserId = (): string | null => {
+  return authState.user?.id || null;
+};
+
+// Refresh user profile from database
+export const refreshUserProfile = async () => {
+  const { data: { session } } = await supabase.auth.getSession();
+  if (session?.user) {
+    const user = await convertSupabaseUser(session.user);
+    setAuthState({ user });
+  }
 };

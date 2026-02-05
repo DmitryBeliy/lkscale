@@ -16,7 +16,7 @@ import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import { ProductCard } from '@/components/ProductCard';
-import { SkeletonCard } from '@/components/ui/Skeleton';
+import { SkeletonListLoader } from '@/components/ui/Skeleton';
 import { Card, Button } from '@/components/ui';
 import { BarcodeScanner, ScannerButton } from '@/components/BarcodeScanner';
 import {
@@ -437,9 +437,7 @@ export default function InventoryScreen() {
               <View key={i} style={styles.skeletonStat} />
             ))}
           </View>
-          {Array.from({ length: 4 }).map((_, i) => (
-            <SkeletonCard key={i} lines={2} />
-          ))}
+          <SkeletonListLoader count={4} type="product" />
         </View>
       ) : (
         <FlatList

@@ -15,7 +15,7 @@ import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import { OrderCard } from '@/components/OrderCard';
-import { SkeletonCard } from '@/components/ui/Skeleton';
+import { SkeletonListLoader } from '@/components/ui/Skeleton';
 import { BarcodeScanner, ScannerButton } from '@/components/BarcodeScanner';
 import {
   getDataState,
@@ -202,9 +202,7 @@ export default function OrdersScreen() {
       {/* Orders List */}
       {isLoading ? (
         <View style={styles.loadingContainer}>
-          {Array.from({ length: 4 }).map((_, i) => (
-            <SkeletonCard key={i} lines={3} />
-          ))}
+          <SkeletonListLoader count={4} type="order" />
         </View>
       ) : (
         <FlatList

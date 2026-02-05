@@ -8,6 +8,7 @@ import {
   Pressable,
   TextInput,
   Alert,
+  Modal,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
@@ -16,7 +17,7 @@ import * as Haptics from 'expo-haptics';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import { ProductCard } from '@/components/ProductCard';
 import { SkeletonCard } from '@/components/ui/Skeleton';
-import { Card } from '@/components/ui/Card';
+import { Card, Button } from '@/components/ui';
 import { BarcodeScanner, ScannerButton } from '@/components/BarcodeScanner';
 import {
   getDataState,
@@ -27,12 +28,16 @@ import {
   getLowStockProducts,
   getProductByBarcode,
   getProductBySku,
+  productHasVariants,
+  batchUpdateProducts,
 } from '@/store/dataStore';
 import { Product } from '@/types';
+import { useLocalization } from '@/localization';
 import { colors, spacing, typography, borderRadius, shadows } from '@/constants/theme';
 
 export default function InventoryScreen() {
   const insets = useSafeAreaInsets();
+  const { t, formatCurrency } = useLocalization();
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
@@ -43,6 +48,14 @@ export default function InventoryScreen() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [showLowStockOnly, setShowLowStockOnly] = useState(false);
   const [scannerVisible, setScannerVisible] = useState(false);
+
+  // Batch update mode state
+  const [batchMode, setBatchMode] = useState(false);
+  const [selectedProducts, setSelectedProducts] = useState<Set<string>>(new Set());
+  const [showBatchModal, setShowBatchModal] = useState(false);
+  const [batchAction, setBatchAction] = useState<'stock' | 'category' | 'status'>('stock');
+  const [batchStockAdjustment, setBatchStockAdjustment] = useState('');
+  const [batchCategory, setBatchCategory] = useState('');
 
   useEffect(() => {
     const unsub = subscribeData(() => {
@@ -88,8 +101,12 @@ export default function InventoryScreen() {
   };
 
   const handleProductPress = (productId: string) => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    router.push(`/product/${productId}`);
+    if (batchMode) {
+      toggleProductSelection(productId);
+    } else {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+      router.push(`/product/${productId}`);
+    }
   };
 
   const handleScan = (data: string, type: string) => {
@@ -104,18 +121,100 @@ export default function InventoryScreen() {
     } else {
       // If not found, set it as search query
       Alert.alert(
-        'Товар не найден',
-        `Товар со штрих-кодом или SKU "${data}" не найден. Хотите использовать это значение для поиска?`,
+        t.inventory.productNotFound,
+        `${t.inventory.productNotFound} "${data}". ${t.inventory.useForSearch}`,
         [
-          { text: 'Отмена', style: 'cancel' },
-          { text: 'Искать', onPress: () => setSearchQuery(data) },
+          { text: t.common.cancel, style: 'cancel' },
+          { text: t.common.search, onPress: () => setSearchQuery(data) },
         ]
       );
     }
   };
 
+  // Batch mode functions
+  const toggleBatchMode = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    if (batchMode) {
+      setBatchMode(false);
+      setSelectedProducts(new Set());
+    } else {
+      setBatchMode(true);
+    }
+  };
+
+  const toggleProductSelection = (productId: string) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    const newSelection = new Set(selectedProducts);
+    if (newSelection.has(productId)) {
+      newSelection.delete(productId);
+    } else {
+      newSelection.add(productId);
+    }
+    setSelectedProducts(newSelection);
+  };
+
+  const selectAll = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    const allIds = new Set(filteredProducts.map((p) => p.id));
+    setSelectedProducts(allIds);
+  };
+
+  const deselectAll = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setSelectedProducts(new Set());
+  };
+
+  const openBatchModal = (action: 'stock' | 'category' | 'status') => {
+    if (selectedProducts.size === 0) {
+      Alert.alert(t.common.error, t.inventory.selectProducts);
+      return;
+    }
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    setBatchAction(action);
+    setBatchStockAdjustment('');
+    setBatchCategory('');
+    setShowBatchModal(true);
+  };
+
+  const handleBatchUpdate = async () => {
+    if (selectedProducts.size === 0) return;
+
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+
+    const productIds = Array.from(selectedProducts);
+
+    try {
+      if (batchAction === 'stock') {
+        const adjustment = parseInt(batchStockAdjustment, 10);
+        if (isNaN(adjustment)) {
+          Alert.alert(t.common.error, 'Invalid stock value');
+          return;
+        }
+        await batchUpdateProducts(productIds, { stockAdjustment: adjustment });
+      } else if (batchAction === 'category') {
+        if (!batchCategory) {
+          Alert.alert(t.common.error, 'Select a category');
+          return;
+        }
+        await batchUpdateProducts(productIds, { category: batchCategory });
+      } else if (batchAction === 'status') {
+        // Toggle active status
+        const firstProduct = products.find((p) => p.id === productIds[0]);
+        const newStatus = firstProduct ? !firstProduct.isActive : false;
+        await batchUpdateProducts(productIds, { isActive: newStatus });
+      }
+
+      setShowBatchModal(false);
+      setBatchMode(false);
+      setSelectedProducts(new Set());
+      Alert.alert(t.common.success, `${productIds.length} ${t.inventory.productsSelected}`);
+    } catch (error) {
+      Alert.alert(t.common.error, 'Failed to update products');
+    }
+  };
+
   const getCategoryLabel = (category: string) => {
-    if (category === 'all') return 'Все';
+    if (category === 'all') return t.common.all;
     return category;
   };
 
@@ -123,16 +222,52 @@ export default function InventoryScreen() {
     return products.reduce((sum, p) => sum + p.stock, 0);
   };
 
-  const renderProductItem = ({ item, index }: { item: Product; index: number }) => (
-    <Animated.View entering={FadeInDown.delay(index * 50).duration(400)}>
-      <ProductCard product={item} onPress={() => handleProductPress(item.id)} />
-    </Animated.View>
-  );
+  const renderProductItem = ({ item, index }: { item: Product; index: number }) => {
+    const isSelected = selectedProducts.has(item.id);
+    const hasVariants = productHasVariants(item.id);
+
+    return (
+      <Animated.View entering={FadeInDown.delay(index * 50).duration(400)}>
+        <Pressable
+          onPress={() => handleProductPress(item.id)}
+          onLongPress={() => {
+            if (!batchMode) {
+              setBatchMode(true);
+              toggleProductSelection(item.id);
+            }
+          }}
+        >
+          <View style={[
+            styles.productWrapper,
+            batchMode && isSelected && styles.productWrapperSelected,
+          ]}>
+            {batchMode && (
+              <View style={[
+                styles.selectionCheckbox,
+                isSelected && styles.selectionCheckboxSelected,
+              ]}>
+                {isSelected && (
+                  <Ionicons name="checkmark" size={16} color={colors.textInverse} />
+                )}
+              </View>
+            )}
+            <View style={{ flex: 1 }}>
+              <ProductCard
+                product={item}
+                onPress={() => handleProductPress(item.id)}
+                showVariantBadge={hasVariants}
+              />
+            </View>
+          </View>
+        </Pressable>
+      </Animated.View>
+    );
+  };
 
   const renderEmptyState = () => (
     <View style={styles.emptyState}>
       <Ionicons name="cube-outline" size={64} color={colors.textLight} />
-      <Text style={styles.emptyTitle}>Товаров не найдено</Text>
+      <Text style={styles.emptyTitle}>{t.inventory.noProducts}</Text>
       <Text style={styles.emptyDescription}>
         {searchQuery || activeCategory !== 'all' || showLowStockOnly
           ? 'Попробуйте изменить параметры поиска'
@@ -148,12 +283,12 @@ export default function InventoryScreen() {
         <Card style={styles.statCard}>
           <Ionicons name="cube" size={24} color={colors.primary} />
           <Text style={styles.statValue}>{products.length}</Text>
-          <Text style={styles.statLabel}>Товаров</Text>
+          <Text style={styles.statLabel}>{t.inventory.products}</Text>
         </Card>
         <Card style={styles.statCard}>
           <Ionicons name="layers" size={24} color={colors.success} />
           <Text style={styles.statValue}>{getTotalStock()}</Text>
-          <Text style={styles.statLabel}>На складе</Text>
+          <Text style={styles.statLabel}>{t.inventory.inStock}</Text>
         </Card>
         <Pressable onPress={handleLowStockToggle}>
           <Card
@@ -172,7 +307,7 @@ export default function InventoryScreen() {
             <Text
               style={showLowStockOnly ? [styles.statLabel, styles.statLabelActive] : styles.statLabel}
             >
-              Мало
+              {t.inventory.lowStockLabel}
             </Text>
           </Card>
         </Pressable>
@@ -184,7 +319,7 @@ export default function InventoryScreen() {
           <Ionicons name="search" size={20} color={colors.textLight} />
           <TextInput
             style={styles.searchTextInput}
-            placeholder="Поиск по названию или SKU..."
+            placeholder={t.inventory.searchPlaceholder}
             placeholderTextColor={colors.textLight}
             value={searchQuery}
             onChangeText={setSearchQuery}
@@ -235,8 +370,28 @@ export default function InventoryScreen() {
             Показаны товары с низким запасом
           </Text>
           <Pressable onPress={handleLowStockToggle}>
-            <Text style={styles.clearFilterText}>Сбросить</Text>
+            <Text style={styles.clearFilterText}>{t.common.clear}</Text>
           </Pressable>
+        </View>
+      )}
+
+      {/* Batch Mode Banner */}
+      {batchMode && (
+        <View style={styles.batchModeBanner}>
+          <View style={styles.batchModeInfo}>
+            <Ionicons name="checkbox" size={20} color={colors.primary} />
+            <Text style={styles.batchModeText}>
+              {selectedProducts.size} {t.inventory.productsSelected}
+            </Text>
+          </View>
+          <View style={styles.batchModeActions}>
+            <Pressable onPress={selectAll} style={styles.batchModeAction}>
+              <Text style={styles.batchModeActionText}>{t.common.all}</Text>
+            </Pressable>
+            <Pressable onPress={deselectAll} style={styles.batchModeAction}>
+              <Text style={styles.batchModeActionText}>{t.common.clear}</Text>
+            </Pressable>
+          </View>
         </View>
       )}
     </>
@@ -249,18 +404,30 @@ export default function InventoryScreen() {
         visible={scannerVisible}
         onClose={() => setScannerVisible(false)}
         onScan={handleScan}
-        title="Сканировать товар"
+        title={t.inventory.scanProduct}
         description="Наведите камеру на штрих-код товара"
       />
 
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.title}>Склад</Text>
-        <ScannerButton
-          onPress={() => setScannerVisible(true)}
-          variant="secondary"
-          size="medium"
-        />
+        <Text style={styles.title}>{t.nav.inventory}</Text>
+        <View style={styles.headerActions}>
+          <Pressable
+            style={[styles.headerButton, batchMode && styles.headerButtonActive]}
+            onPress={toggleBatchMode}
+          >
+            <Ionicons
+              name={batchMode ? 'close' : 'checkbox-outline'}
+              size={22}
+              color={batchMode ? colors.textInverse : colors.text}
+            />
+          </Pressable>
+          <ScannerButton
+            onPress={() => setScannerVisible(true)}
+            variant="secondary"
+            size="medium"
+          />
+        </View>
       </View>
 
       {isLoading ? (
@@ -292,6 +459,118 @@ export default function InventoryScreen() {
           }
         />
       )}
+
+      {/* Batch Actions Bottom Bar */}
+      {batchMode && selectedProducts.size > 0 && (
+        <View style={[styles.batchActionsBar, { paddingBottom: insets.bottom + spacing.sm }]}>
+          <Pressable style={styles.batchActionButton} onPress={() => openBatchModal('stock')}>
+            <Ionicons name="add-circle" size={24} color={colors.primary} />
+            <Text style={styles.batchActionLabel}>{t.inventory.stock}</Text>
+          </Pressable>
+          <Pressable style={styles.batchActionButton} onPress={() => openBatchModal('category')}>
+            <Ionicons name="folder" size={24} color={colors.primary} />
+            <Text style={styles.batchActionLabel}>{t.inventory.category}</Text>
+          </Pressable>
+          <Pressable style={styles.batchActionButton} onPress={() => openBatchModal('status')}>
+            <Ionicons name="toggle" size={24} color={colors.primary} />
+            <Text style={styles.batchActionLabel}>Статус</Text>
+          </Pressable>
+        </View>
+      )}
+
+      {/* Batch Update Modal */}
+      <Modal
+        visible={showBatchModal}
+        transparent
+        animationType="slide"
+        onRequestClose={() => setShowBatchModal(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={[styles.modalContent, { paddingBottom: insets.bottom + spacing.lg }]}>
+            <View style={styles.modalHeader}>
+              <Text style={styles.modalTitle}>{t.inventory.batchUpdate}</Text>
+              <Pressable onPress={() => setShowBatchModal(false)}>
+                <Ionicons name="close" size={24} color={colors.textSecondary} />
+              </Pressable>
+            </View>
+
+            <View style={styles.modalBody}>
+              <Text style={styles.modalSubtitle}>
+                {selectedProducts.size} {t.inventory.productsSelected}
+              </Text>
+
+              {batchAction === 'stock' && (
+                <View style={styles.inputGroup}>
+                  <Text style={styles.inputLabel}>
+                    Изменение остатка (+ или -)
+                  </Text>
+                  <TextInput
+                    style={styles.input}
+                    value={batchStockAdjustment}
+                    onChangeText={setBatchStockAdjustment}
+                    placeholder="+10 или -5"
+                    placeholderTextColor={colors.textLight}
+                    keyboardType="numeric"
+                  />
+                  <Text style={styles.inputHint}>
+                    Используйте + для добавления, - для уменьшения
+                  </Text>
+                </View>
+              )}
+
+              {batchAction === 'category' && (
+                <View style={styles.inputGroup}>
+                  <Text style={styles.inputLabel}>{t.inventory.category}</Text>
+                  <View style={styles.categoryPicker}>
+                    {categories.filter((c) => c !== 'all').map((cat) => (
+                      <Pressable
+                        key={cat}
+                        style={[
+                          styles.categoryOption,
+                          batchCategory === cat && styles.categoryOptionActive,
+                        ]}
+                        onPress={() => setBatchCategory(cat)}
+                      >
+                        <Text
+                          style={[
+                            styles.categoryOptionText,
+                            batchCategory === cat && styles.categoryOptionTextActive,
+                          ]}
+                        >
+                          {cat}
+                        </Text>
+                      </Pressable>
+                    ))}
+                  </View>
+                </View>
+              )}
+
+              {batchAction === 'status' && (
+                <View style={styles.statusInfo}>
+                  <Ionicons name="information-circle" size={24} color={colors.primary} />
+                  <Text style={styles.statusInfoText}>
+                    Статус выбранных товаров будет изменён на противоположный
+                  </Text>
+                </View>
+              )}
+            </View>
+
+            <View style={styles.modalFooter}>
+              <Button
+                title={t.common.cancel}
+                variant="outline"
+                onPress={() => setShowBatchModal(false)}
+                style={{ flex: 1 }}
+              />
+              <Button
+                title={t.inventory.updateSelected}
+                onPress={handleBatchUpdate}
+                style={{ flex: 1 }}
+              />
+            </View>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -312,6 +591,23 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.xxl,
     fontWeight: '700',
     color: colors.text,
+  },
+  headerActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+  },
+  headerButton: {
+    width: 40,
+    height: 40,
+    borderRadius: borderRadius.md,
+    backgroundColor: colors.surface,
+    alignItems: 'center',
+    justifyContent: 'center',
+    ...shadows.sm,
+  },
+  headerButtonActive: {
+    backgroundColor: colors.primary,
   },
   loadingContainer: {
     padding: spacing.md,
@@ -418,6 +714,60 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: colors.primary,
   },
+  batchModeBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: `${colors.primary}15`,
+    padding: spacing.md,
+    borderRadius: borderRadius.md,
+    marginBottom: spacing.md,
+  },
+  batchModeInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+  },
+  batchModeText: {
+    fontSize: typography.sizes.sm,
+    fontWeight: '600',
+    color: colors.primary,
+  },
+  batchModeActions: {
+    flexDirection: 'row',
+    gap: spacing.md,
+  },
+  batchModeAction: {
+    paddingHorizontal: spacing.sm,
+  },
+  batchModeActionText: {
+    fontSize: typography.sizes.sm,
+    fontWeight: '500',
+    color: colors.primary,
+  },
+  productWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: spacing.sm,
+  },
+  productWrapperSelected: {
+    backgroundColor: `${colors.primary}10`,
+    borderRadius: borderRadius.lg,
+  },
+  selectionCheckbox: {
+    width: 24,
+    height: 24,
+    borderRadius: borderRadius.sm,
+    borderWidth: 2,
+    borderColor: colors.borderLight,
+    marginRight: spacing.sm,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  selectionCheckboxSelected: {
+    backgroundColor: colors.primary,
+    borderColor: colors.primary,
+  },
   emptyState: {
     flex: 1,
     alignItems: 'center',
@@ -435,5 +785,126 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
     marginTop: spacing.xs,
     textAlign: 'center',
+  },
+  batchActionsBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    backgroundColor: colors.surface,
+    paddingTop: spacing.md,
+    borderTopWidth: 1,
+    borderTopColor: colors.borderLight,
+    ...shadows.lg,
+  },
+  batchActionButton: {
+    alignItems: 'center',
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.lg,
+  },
+  batchActionLabel: {
+    fontSize: typography.sizes.xs,
+    color: colors.text,
+    marginTop: spacing.xs,
+  },
+  // Modal styles
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'flex-end',
+  },
+  modalContent: {
+    backgroundColor: colors.surface,
+    borderTopLeftRadius: borderRadius.xl,
+    borderTopRightRadius: borderRadius.xl,
+    ...shadows.lg,
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: spacing.lg,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.borderLight,
+  },
+  modalTitle: {
+    fontSize: typography.sizes.lg,
+    fontWeight: '700',
+    color: colors.text,
+  },
+  modalBody: {
+    padding: spacing.lg,
+  },
+  modalSubtitle: {
+    fontSize: typography.sizes.md,
+    color: colors.textSecondary,
+    marginBottom: spacing.lg,
+  },
+  inputGroup: {
+    marginBottom: spacing.md,
+  },
+  inputLabel: {
+    fontSize: typography.sizes.sm,
+    fontWeight: '500',
+    color: colors.textSecondary,
+    marginBottom: spacing.xs,
+  },
+  input: {
+    backgroundColor: colors.background,
+    borderRadius: borderRadius.md,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.sm,
+    fontSize: typography.sizes.md,
+    color: colors.text,
+    borderWidth: 1,
+    borderColor: colors.borderLight,
+  },
+  inputHint: {
+    fontSize: typography.sizes.xs,
+    color: colors.textLight,
+    marginTop: spacing.xs,
+  },
+  categoryPicker: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: spacing.sm,
+  },
+  categoryOption: {
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.sm,
+    borderRadius: borderRadius.full,
+    backgroundColor: colors.background,
+    borderWidth: 1,
+    borderColor: colors.borderLight,
+  },
+  categoryOptionActive: {
+    backgroundColor: colors.primary,
+    borderColor: colors.primary,
+  },
+  categoryOptionText: {
+    fontSize: typography.sizes.sm,
+    color: colors.text,
+  },
+  categoryOptionTextActive: {
+    color: colors.textInverse,
+  },
+  statusInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.background,
+    padding: spacing.md,
+    borderRadius: borderRadius.md,
+    gap: spacing.sm,
+  },
+  statusInfoText: {
+    flex: 1,
+    fontSize: typography.sizes.sm,
+    color: colors.textSecondary,
+    lineHeight: typography.sizes.sm * 1.5,
+  },
+  modalFooter: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+    padding: spacing.lg,
+    borderTopWidth: 1,
+    borderTopColor: colors.borderLight,
   },
 });

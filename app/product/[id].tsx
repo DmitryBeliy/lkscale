@@ -6,6 +6,8 @@ import {
   ScrollView,
   Pressable,
   Alert,
+  Modal,
+  TextInput,
 } from 'react-native';
 import { useLocalSearchParams, router, Stack } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -13,29 +15,41 @@ import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import { Card, Button } from '@/components/ui';
-import { getProductById } from '@/store/dataStore';
-import { Product } from '@/types';
-import { colors, spacing, typography, borderRadius } from '@/constants/theme';
-
-const formatCurrency = (amount: number) => {
-  return new Intl.NumberFormat('ru-RU', {
-    style: 'currency',
-    currency: 'RUB',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(amount);
-};
+import {
+  getProductWithVariants,
+  updateVariant,
+  addVariant,
+  deleteVariant,
+  getTotalProductStock,
+} from '@/store/dataStore';
+import { ProductWithVariants, ProductVariant } from '@/types';
+import { useLocalization } from '@/localization';
+import { colors, spacing, typography, borderRadius, shadows } from '@/constants/theme';
 
 export default function ProductDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const insets = useSafeAreaInsets();
-  const [product, setProduct] = useState<Product | null>(null);
+  const { t, formatCurrency } = useLocalization();
+  const [product, setProduct] = useState<ProductWithVariants | null>(null);
+  const [showVariantModal, setShowVariantModal] = useState(false);
+  const [editingVariant, setEditingVariant] = useState<ProductVariant | null>(null);
+  const [variantForm, setVariantForm] = useState({
+    sku: '',
+    size: '',
+    color: '',
+    price: '',
+    stock: '',
+  });
 
-  useEffect(() => {
+  const loadProduct = () => {
     if (id) {
-      const foundProduct = getProductById(id);
+      const foundProduct = getProductWithVariants(id);
       setProduct(foundProduct || null);
     }
+  };
+
+  useEffect(() => {
+    loadProduct();
   }, [id]);
 
   const handleBack = () => {
@@ -48,6 +62,93 @@ export default function ProductDetailScreen() {
     Alert.alert('Действие', `${action} для товара ${product?.name}`);
   };
 
+  const handleAddVariant = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    setEditingVariant(null);
+    setVariantForm({ sku: '', size: '', color: '', price: '', stock: '' });
+    setShowVariantModal(true);
+  };
+
+  const handleEditVariant = (variant: ProductVariant) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setEditingVariant(variant);
+    setVariantForm({
+      sku: variant.sku,
+      size: variant.attributes.size || '',
+      color: variant.attributes.color || '',
+      price: String(variant.price),
+      stock: String(variant.stock),
+    });
+    setShowVariantModal(true);
+  };
+
+  const handleDeleteVariant = (variant: ProductVariant) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    Alert.alert(
+      t.common.delete,
+      `${t.common.confirm} ${variant.name}?`,
+      [
+        { text: t.common.cancel, style: 'cancel' },
+        {
+          text: t.common.delete,
+          style: 'destructive',
+          onPress: async () => {
+            await deleteVariant(variant.id);
+            loadProduct();
+          },
+        },
+      ]
+    );
+  };
+
+  const handleSaveVariant = async () => {
+    if (!product) return;
+
+    const price = parseFloat(variantForm.price);
+    const stock = parseInt(variantForm.stock, 10);
+
+    if (isNaN(price) || isNaN(stock)) {
+      Alert.alert(t.common.error, 'Invalid price or stock value');
+      return;
+    }
+
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+
+    if (editingVariant) {
+      await updateVariant(editingVariant.id, {
+        sku: variantForm.sku,
+        attributes: {
+          size: variantForm.size || undefined,
+          color: variantForm.color || undefined,
+        },
+        price,
+        stock,
+      });
+    } else {
+      const variantName = [
+        product.name,
+        variantForm.size,
+        variantForm.color,
+      ].filter(Boolean).join(' - ');
+
+      await addVariant({
+        productId: product.id,
+        name: variantName,
+        sku: variantForm.sku || `${product.sku}-${Date.now()}`,
+        attributes: {
+          size: variantForm.size || undefined,
+          color: variantForm.color || undefined,
+        },
+        price,
+        stock,
+        isActive: true,
+      });
+    }
+
+    setShowVariantModal(false);
+    loadProduct();
+  };
+
   if (!product) {
     return (
       <View style={[styles.container, { paddingTop: insets.top }]}>
@@ -56,20 +157,21 @@ export default function ProductDetailScreen() {
           <Pressable style={styles.backButton} onPress={handleBack}>
             <Ionicons name="arrow-back" size={24} color={colors.text} />
           </Pressable>
-          <Text style={styles.headerTitle}>Товар не найден</Text>
+          <Text style={styles.headerTitle}>{t.inventory.productNotFound}</Text>
           <View style={styles.headerSpacer} />
         </View>
         <View style={styles.emptyState}>
           <Ionicons name="alert-circle-outline" size={64} color={colors.textLight} />
-          <Text style={styles.emptyTitle}>Товар не найден</Text>
+          <Text style={styles.emptyTitle}>{t.inventory.productNotFound}</Text>
         </View>
       </View>
     );
   }
 
-  const isLowStock = product.stock <= product.minStock;
-  const isOutOfStock = product.stock === 0;
-  const stockPercentage = Math.min((product.stock / product.minStock) * 100, 100);
+  const totalStock = getTotalProductStock(product.id);
+  const isLowStock = totalStock <= product.minStock;
+  const isOutOfStock = totalStock === 0;
+  const stockPercentage = Math.min((totalStock / product.minStock) * 100, 100);
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
@@ -100,7 +202,15 @@ export default function ProductDetailScreen() {
             </View>
             {!product.isActive && (
               <View style={styles.inactiveBadge}>
-                <Text style={styles.inactiveBadgeText}>Неактивен</Text>
+                <Text style={styles.inactiveBadgeText}>{t.inventory.inactive}</Text>
+              </View>
+            )}
+            {product.hasVariants && (
+              <View style={styles.variantsBadge}>
+                <Ionicons name="layers" size={14} color={colors.textInverse} />
+                <Text style={styles.variantsBadgeText}>
+                  {product.variants?.length} {t.inventory.variants.toLowerCase()}
+                </Text>
               </View>
             )}
           </View>
@@ -110,9 +220,9 @@ export default function ProductDetailScreen() {
         <Animated.View entering={FadeInDown.delay(200).duration(400)}>
           <Card style={styles.infoCard}>
             <Text style={styles.productName}>{product.name}</Text>
-            <Text style={styles.productSku}>SKU: {product.sku}</Text>
+            <Text style={styles.productSku}>{t.inventory.sku}: {product.sku}</Text>
             <View style={styles.priceRow}>
-              <Text style={styles.priceLabel}>Цена</Text>
+              <Text style={styles.priceLabel}>{t.inventory.price}</Text>
               <Text style={styles.priceValue}>{formatCurrency(product.price)}</Text>
             </View>
             <View style={styles.categoryRow}>
@@ -122,9 +232,100 @@ export default function ProductDetailScreen() {
           </Card>
         </Animated.View>
 
+        {/* Variants Section */}
+        {product.hasVariants && product.variants && (
+          <Animated.View entering={FadeInDown.delay(250).duration(400)}>
+            <View style={styles.sectionHeader}>
+              <Text style={styles.sectionTitle}>{t.inventory.variants}</Text>
+              <Pressable style={styles.addVariantButton} onPress={handleAddVariant}>
+                <Ionicons name="add" size={20} color={colors.primary} />
+                <Text style={styles.addVariantText}>{t.inventory.addVariant}</Text>
+              </Pressable>
+            </View>
+
+            {product.variants.map((variant, index) => (
+              <Card
+                key={variant.id}
+                style={[
+                  styles.variantCard,
+                  !variant.isActive && styles.variantCardInactive,
+                ]}
+              >
+                <View style={styles.variantHeader}>
+                  <View style={styles.variantInfo}>
+                    <Text style={styles.variantName}>{variant.name}</Text>
+                    <Text style={styles.variantSku}>{variant.sku}</Text>
+                  </View>
+                  <View style={styles.variantActions}>
+                    <Pressable
+                      style={styles.variantActionButton}
+                      onPress={() => handleEditVariant(variant)}
+                    >
+                      <Ionicons name="pencil" size={18} color={colors.primary} />
+                    </Pressable>
+                    <Pressable
+                      style={styles.variantActionButton}
+                      onPress={() => handleDeleteVariant(variant)}
+                    >
+                      <Ionicons name="trash" size={18} color={colors.error} />
+                    </Pressable>
+                  </View>
+                </View>
+
+                <View style={styles.variantAttributes}>
+                  {variant.attributes.size && (
+                    <View style={styles.attributeChip}>
+                      <Ionicons name="resize" size={14} color={colors.textSecondary} />
+                      <Text style={styles.attributeText}>{variant.attributes.size}</Text>
+                    </View>
+                  )}
+                  {variant.attributes.color && (
+                    <View style={styles.attributeChip}>
+                      <Ionicons name="color-palette" size={14} color={colors.textSecondary} />
+                      <Text style={styles.attributeText}>{variant.attributes.color}</Text>
+                    </View>
+                  )}
+                </View>
+
+                <View style={styles.variantStats}>
+                  <View style={styles.variantStat}>
+                    <Text style={styles.variantStatLabel}>{t.inventory.price}</Text>
+                    <Text style={styles.variantStatValue}>{formatCurrency(variant.price)}</Text>
+                  </View>
+                  <View style={styles.variantStat}>
+                    <Text style={styles.variantStatLabel}>{t.inventory.stock}</Text>
+                    <Text
+                      style={[
+                        styles.variantStatValue,
+                        variant.stock === 0 && styles.variantStatValueError,
+                        variant.stock > 0 && variant.stock <= 5 && styles.variantStatValueWarning,
+                      ]}
+                    >
+                      {variant.stock} шт.
+                    </Text>
+                  </View>
+                </View>
+              </Card>
+            ))}
+          </Animated.View>
+        )}
+
+        {/* Add Variant Button (if no variants yet) */}
+        {!product.hasVariants && (
+          <Animated.View entering={FadeInDown.delay(250).duration(400)}>
+            <Pressable style={styles.addFirstVariantCard} onPress={handleAddVariant}>
+              <Ionicons name="layers-outline" size={32} color={colors.primary} />
+              <Text style={styles.addFirstVariantTitle}>{t.inventory.addVariant}</Text>
+              <Text style={styles.addFirstVariantDesc}>
+                Добавьте варианты для размеров, цветов и т.д.
+              </Text>
+            </Pressable>
+          </Animated.View>
+        )}
+
         {/* Stock Info */}
         <Animated.View entering={FadeInDown.delay(300).duration(400)}>
-          <Text style={styles.sectionTitle}>Остатки на складе</Text>
+          <Text style={styles.sectionTitle}>{t.inventory.stock}</Text>
           <Card
             style={[
               styles.stockCard,
@@ -141,7 +342,9 @@ export default function ProductDetailScreen() {
                 />
               </View>
               <View style={styles.stockInfo}>
-                <Text style={styles.stockLabel}>Текущий остаток</Text>
+                <Text style={styles.stockLabel}>
+                  {product.hasVariants ? 'Общий остаток' : 'Текущий остаток'}
+                </Text>
                 <Text
                   style={[
                     styles.stockValue,
@@ -149,7 +352,7 @@ export default function ProductDetailScreen() {
                     isLowStock && !isOutOfStock && styles.stockValueWarning,
                   ]}
                 >
-                  {product.stock} шт.
+                  {totalStock} шт.
                 </Text>
               </View>
             </View>
@@ -168,7 +371,7 @@ export default function ProductDetailScreen() {
               </View>
               <View style={styles.progressLabels}>
                 <Text style={styles.progressLabel}>0</Text>
-                <Text style={styles.progressLabel}>Мин: {product.minStock}</Text>
+                <Text style={styles.progressLabel}>{t.inventory.minStock}: {product.minStock}</Text>
               </View>
             </View>
 
@@ -188,7 +391,7 @@ export default function ProductDetailScreen() {
         {/* Description */}
         {product.description && (
           <Animated.View entering={FadeInDown.delay(400).duration(400)}>
-            <Text style={styles.sectionTitle}>Описание</Text>
+            <Text style={styles.sectionTitle}>{t.inventory.description}</Text>
             <Card>
               <Text style={styles.descriptionText}>{product.description}</Text>
             </Card>
@@ -206,7 +409,7 @@ export default function ProductDetailScreen() {
             </Card>
             <Card style={styles.statCard}>
               <Ionicons name="cash" size={24} color={colors.success} />
-              <Text style={styles.statValue}>{formatCurrency(product.price * 24)}</Text>
+              <Text style={styles.statValue}>{formatCurrency(product.price * 24, true)}</Text>
               <Text style={styles.statLabel}>Выручка</Text>
             </Card>
           </View>
@@ -228,6 +431,102 @@ export default function ProductDetailScreen() {
           />
         </Animated.View>
       </ScrollView>
+
+      {/* Variant Modal */}
+      <Modal
+        visible={showVariantModal}
+        transparent
+        animationType="slide"
+        onRequestClose={() => setShowVariantModal(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={[styles.modalContent, { paddingBottom: insets.bottom + spacing.lg }]}>
+            <View style={styles.modalHeader}>
+              <Text style={styles.modalTitle}>
+                {editingVariant ? t.common.edit : t.inventory.addVariant}
+              </Text>
+              <Pressable onPress={() => setShowVariantModal(false)}>
+                <Ionicons name="close" size={24} color={colors.textSecondary} />
+              </Pressable>
+            </View>
+
+            <ScrollView style={styles.modalBody}>
+              <View style={styles.inputGroup}>
+                <Text style={styles.inputLabel}>{t.inventory.sku}</Text>
+                <TextInput
+                  style={styles.input}
+                  value={variantForm.sku}
+                  onChangeText={(text) => setVariantForm({ ...variantForm, sku: text })}
+                  placeholder="SKU-001-M"
+                  placeholderTextColor={colors.textLight}
+                />
+              </View>
+
+              <View style={styles.inputRow}>
+                <View style={[styles.inputGroup, { flex: 1 }]}>
+                  <Text style={styles.inputLabel}>{t.inventory.size}</Text>
+                  <TextInput
+                    style={styles.input}
+                    value={variantForm.size}
+                    onChangeText={(text) => setVariantForm({ ...variantForm, size: text })}
+                    placeholder="M, L, XL..."
+                    placeholderTextColor={colors.textLight}
+                  />
+                </View>
+                <View style={[styles.inputGroup, { flex: 1 }]}>
+                  <Text style={styles.inputLabel}>{t.inventory.color}</Text>
+                  <TextInput
+                    style={styles.input}
+                    value={variantForm.color}
+                    onChangeText={(text) => setVariantForm({ ...variantForm, color: text })}
+                    placeholder="Черный, Белый..."
+                    placeholderTextColor={colors.textLight}
+                  />
+                </View>
+              </View>
+
+              <View style={styles.inputRow}>
+                <View style={[styles.inputGroup, { flex: 1 }]}>
+                  <Text style={styles.inputLabel}>{t.inventory.price}</Text>
+                  <TextInput
+                    style={styles.input}
+                    value={variantForm.price}
+                    onChangeText={(text) => setVariantForm({ ...variantForm, price: text })}
+                    placeholder="5000"
+                    placeholderTextColor={colors.textLight}
+                    keyboardType="numeric"
+                  />
+                </View>
+                <View style={[styles.inputGroup, { flex: 1 }]}>
+                  <Text style={styles.inputLabel}>{t.inventory.stock}</Text>
+                  <TextInput
+                    style={styles.input}
+                    value={variantForm.stock}
+                    onChangeText={(text) => setVariantForm({ ...variantForm, stock: text })}
+                    placeholder="10"
+                    placeholderTextColor={colors.textLight}
+                    keyboardType="numeric"
+                  />
+                </View>
+              </View>
+            </ScrollView>
+
+            <View style={styles.modalFooter}>
+              <Button
+                title={t.common.cancel}
+                variant="outline"
+                onPress={() => setShowVariantModal(false)}
+                style={{ flex: 1 }}
+              />
+              <Button
+                title={t.common.save}
+                onPress={handleSaveVariant}
+                style={{ flex: 1 }}
+              />
+            </View>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -301,6 +600,22 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: colors.textInverse,
   },
+  variantsBadge: {
+    position: 'absolute',
+    bottom: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    backgroundColor: colors.primary,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 4,
+    borderRadius: borderRadius.full,
+  },
+  variantsBadgeText: {
+    fontSize: typography.sizes.xs,
+    fontWeight: '600',
+    color: colors.textInverse,
+  },
   infoCard: {
     marginBottom: spacing.lg,
   },
@@ -342,11 +657,131 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.sm,
     color: colors.textSecondary,
   },
+  sectionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: spacing.sm,
+  },
   sectionTitle: {
     fontSize: typography.sizes.md,
     fontWeight: '600',
     color: colors.text,
     marginBottom: spacing.sm,
+  },
+  addVariantButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  addVariantText: {
+    fontSize: typography.sizes.sm,
+    fontWeight: '600',
+    color: colors.primary,
+  },
+  variantCard: {
+    marginBottom: spacing.sm,
+    padding: spacing.md,
+  },
+  variantCardInactive: {
+    opacity: 0.6,
+  },
+  variantHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    marginBottom: spacing.sm,
+  },
+  variantInfo: {
+    flex: 1,
+  },
+  variantName: {
+    fontSize: typography.sizes.md,
+    fontWeight: '600',
+    color: colors.text,
+  },
+  variantSku: {
+    fontSize: typography.sizes.xs,
+    color: colors.textLight,
+    marginTop: 2,
+  },
+  variantActions: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+  },
+  variantActionButton: {
+    width: 32,
+    height: 32,
+    borderRadius: borderRadius.sm,
+    backgroundColor: colors.background,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  variantAttributes: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+    marginBottom: spacing.sm,
+  },
+  attributeChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    backgroundColor: colors.background,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 4,
+    borderRadius: borderRadius.full,
+  },
+  attributeText: {
+    fontSize: typography.sizes.xs,
+    color: colors.textSecondary,
+  },
+  variantStats: {
+    flexDirection: 'row',
+    gap: spacing.lg,
+    paddingTop: spacing.sm,
+    borderTopWidth: 1,
+    borderTopColor: colors.borderLight,
+  },
+  variantStat: {
+    flex: 1,
+  },
+  variantStatLabel: {
+    fontSize: typography.sizes.xs,
+    color: colors.textLight,
+  },
+  variantStatValue: {
+    fontSize: typography.sizes.md,
+    fontWeight: '600',
+    color: colors.text,
+  },
+  variantStatValueWarning: {
+    color: colors.warning,
+  },
+  variantStatValueError: {
+    color: colors.error,
+  },
+  addFirstVariantCard: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: spacing.xl,
+    marginBottom: spacing.lg,
+    backgroundColor: colors.surface,
+    borderRadius: borderRadius.lg,
+    borderWidth: 2,
+    borderStyle: 'dashed',
+    borderColor: colors.borderLight,
+  },
+  addFirstVariantTitle: {
+    fontSize: typography.sizes.md,
+    fontWeight: '600',
+    color: colors.primary,
+    marginTop: spacing.sm,
+  },
+  addFirstVariantDesc: {
+    fontSize: typography.sizes.sm,
+    color: colors.textSecondary,
+    marginTop: spacing.xs,
+    textAlign: 'center',
   },
   stockCard: {
     marginBottom: spacing.lg,
@@ -478,5 +913,64 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: colors.text,
     marginTop: spacing.md,
+  },
+  // Modal styles
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'flex-end',
+  },
+  modalContent: {
+    backgroundColor: colors.surface,
+    borderTopLeftRadius: borderRadius.xl,
+    borderTopRightRadius: borderRadius.xl,
+    maxHeight: '80%',
+    ...shadows.lg,
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: spacing.lg,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.borderLight,
+  },
+  modalTitle: {
+    fontSize: typography.sizes.lg,
+    fontWeight: '700',
+    color: colors.text,
+  },
+  modalBody: {
+    padding: spacing.lg,
+  },
+  inputGroup: {
+    marginBottom: spacing.md,
+  },
+  inputLabel: {
+    fontSize: typography.sizes.sm,
+    fontWeight: '500',
+    color: colors.textSecondary,
+    marginBottom: spacing.xs,
+  },
+  input: {
+    backgroundColor: colors.background,
+    borderRadius: borderRadius.md,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.sm,
+    fontSize: typography.sizes.md,
+    color: colors.text,
+    borderWidth: 1,
+    borderColor: colors.borderLight,
+  },
+  inputRow: {
+    flexDirection: 'row',
+    gap: spacing.md,
+  },
+  modalFooter: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+    padding: spacing.lg,
+    borderTopWidth: 1,
+    borderTopColor: colors.borderLight,
   },
 });

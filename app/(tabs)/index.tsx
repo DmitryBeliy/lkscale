@@ -16,28 +16,26 @@ import { Card, SkeletonKPICard, SkeletonCard } from '@/components/ui';
 import { KPICard } from '@/components/KPICard';
 import { SalesChart } from '@/components/charts/SalesChart';
 import { ActivityItem } from '@/components/ActivityItem';
+import { SyncStatusIndicator } from '@/components/SyncStatusIndicator';
 import { getAuthState, subscribeAuth } from '@/store/authStore';
 import {
   getDataState,
   subscribeData,
   fetchData,
 } from '@/store/dataStore';
+import {
+  getNotificationState,
+  subscribeNotifications,
+  hasUnreadAIInsights,
+} from '@/store/notificationStore';
 import { useAIInsights } from '@/services/aiInsights';
+import { useLocalization } from '@/localization';
 import { colors, spacing, typography, borderRadius, shadows } from '@/constants/theme';
 import { KPIData, Activity, SalesDataPoint } from '@/types';
 
-const formatCurrency = (amount: number) => {
-  if (amount >= 1000000) {
-    return `${(amount / 1000000).toFixed(1)} млн ₽`;
-  }
-  if (amount >= 1000) {
-    return `${(amount / 1000).toFixed(0)} тыс ₽`;
-  }
-  return `${amount.toFixed(0)} ₽`;
-};
-
 export default function DashboardScreen() {
   const insets = useSafeAreaInsets();
+  const { t, formatCurrency } = useLocalization();
   const [user, setUser] = useState(getAuthState().user);
   const [kpi, setKpi] = useState<KPIData | null>(null);
   const [activities, setActivities] = useState<Activity[]>([]);
@@ -47,6 +45,8 @@ export default function DashboardScreen() {
   });
   const [isLoading, setIsLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [unreadNotifications, setUnreadNotifications] = useState(0);
+  const [hasAIInsight, setHasAIInsight] = useState(false);
 
   const {
     insights: aiInsights,
@@ -76,11 +76,23 @@ export default function DashboardScreen() {
       }
     });
 
+    const unsubNotifications = subscribeNotifications(() => {
+      const state = getNotificationState();
+      setUnreadNotifications(state.unreadCount);
+      setHasAIInsight(hasUnreadAIInsights());
+    });
+
+    // Initial state
+    const notificationState = getNotificationState();
+    setUnreadNotifications(notificationState.unreadCount);
+    setHasAIInsight(hasUnreadAIInsights());
+
     fetchData();
 
     return () => {
       unsubAuth();
       unsubData();
+      unsubNotifications();
     };
   }, [generateInsights]);
 
@@ -88,7 +100,6 @@ export default function DashboardScreen() {
     setRefreshing(true);
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     await fetchData();
-    // AI insights will be regenerated via the subscription
     setRefreshing(false);
   }, []);
 
@@ -109,6 +120,12 @@ export default function DashboardScreen() {
         break;
       case 'assistant':
         router.push('/(tabs)/assistant');
+        break;
+      case 'customers':
+        router.push('/customers/');
+        break;
+      case 'notifications':
+        router.push('/notifications');
         break;
     }
   };
@@ -133,27 +150,52 @@ export default function DashboardScreen() {
               <Ionicons name="person" size={28} color={colors.primary} />
             </View>
             <View>
-              <Text style={styles.greeting}>Привет,</Text>
+              <Text style={styles.greeting}>{t.dashboard.greeting}</Text>
               <Text style={styles.userName}>{user?.name || 'Пользователь'}!</Text>
             </View>
           </View>
-          <Pressable
-            style={styles.notificationButton}
-            onPress={() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)}
-          >
-            <Ionicons name="notifications-outline" size={24} color={colors.text} />
-            <View style={styles.notificationBadge} />
-          </Pressable>
+          <View style={styles.headerActions}>
+            <SyncStatusIndicator />
+            <Pressable
+              style={styles.notificationButton}
+              onPress={() => handleQuickAction('notifications')}
+            >
+              <Ionicons name="notifications-outline" size={24} color={colors.text} />
+              {unreadNotifications > 0 && (
+                <View style={styles.notificationBadge}>
+                  <Text style={styles.notificationBadgeText}>
+                    {unreadNotifications > 9 ? '9+' : unreadNotifications}
+                  </Text>
+                </View>
+              )}
+            </Pressable>
+          </View>
         </Animated.View>
+
+        {/* AI Insight Banner */}
+        {hasAIInsight && (
+          <Animated.View entering={FadeInDown.delay(120).duration(500)}>
+            <Pressable
+              style={styles.aiInsightBanner}
+              onPress={() => handleQuickAction('notifications')}
+            >
+              <View style={styles.aiInsightIcon}>
+                <Ionicons name="sparkles" size={20} color={colors.primary} />
+              </View>
+              <Text style={styles.aiInsightText}>{t.dashboard.aiInsightAvailable}</Text>
+              <Ionicons name="chevron-forward" size={18} color={colors.primary} />
+            </Pressable>
+          </Animated.View>
+        )}
 
         {/* Sales Chart */}
         <Animated.View entering={FadeInDown.delay(150).duration(500)}>
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Продажи</Text>
+            <Text style={styles.sectionTitle}>{t.dashboard.sales}</Text>
             <Pressable onPress={() => handleQuickAction('assistant')}>
               <View style={styles.aiAnalyzeButton}>
                 <Ionicons name="sparkles" size={14} color={colors.primary} />
-                <Text style={styles.aiAnalyzeText}>Анализ AI</Text>
+                <Text style={styles.aiAnalyzeText}>{t.dashboard.aiAnalysis}</Text>
               </View>
             </Pressable>
           </View>
@@ -166,7 +208,7 @@ export default function DashboardScreen() {
 
         {/* KPI Cards */}
         <Animated.View entering={FadeInDown.delay(200).duration(500)}>
-          <Text style={styles.sectionTitle}>Показатели</Text>
+          <Text style={styles.sectionTitle}>{t.dashboard.metrics}</Text>
           {isLoading ? (
             <View style={styles.kpiRow}>
               <View style={styles.kpiCardSkeleton}>
@@ -180,14 +222,14 @@ export default function DashboardScreen() {
             <>
               <View style={styles.kpiRow}>
                 <KPICard
-                  title="Общие продажи"
-                  value={formatCurrency(kpi?.totalSales || 0)}
+                  title={t.dashboard.totalSales}
+                  value={formatCurrency(kpi?.totalSales || 0, true)}
                   change={kpi?.salesChange}
                   icon="trending-up"
                   iconColor={colors.success}
                 />
                 <KPICard
-                  title="Активные заказы"
+                  title={t.dashboard.activeOrders}
                   value={`${kpi?.activeOrders || 0}`}
                   change={kpi?.ordersChange}
                   icon="cart"
@@ -196,15 +238,15 @@ export default function DashboardScreen() {
               </View>
               <View style={styles.kpiRow}>
                 <KPICard
-                  title="Баланс"
-                  value={formatCurrency(kpi?.balance || 0)}
+                  title={t.dashboard.balance}
+                  value={formatCurrency(kpi?.balance || 0, true)}
                   change={kpi?.balanceChange}
                   icon="wallet"
                   iconColor={colors.warning}
                 />
                 <KPICard
-                  title="Низкий запас"
-                  value={`${kpi?.lowStockItems || 0} товаров`}
+                  title={t.dashboard.lowStock}
+                  value={`${kpi?.lowStockItems || 0} ${t.dashboard.lowStockItems}`}
                   icon="warning"
                   iconColor={colors.error}
                   onPress={() => handleQuickAction('inventory')}
@@ -217,7 +259,7 @@ export default function DashboardScreen() {
         {/* AI Insights */}
         <Animated.View entering={FadeInDown.delay(300).duration(500)}>
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Умные подсказки</Text>
+            <Text style={styles.sectionTitle}>{t.dashboard.smartTips}</Text>
             <View style={styles.aiBadge}>
               <Ionicons name="sparkles" size={14} color={colors.primary} />
               <Text style={styles.aiBadgeText}>AI</Text>
@@ -274,7 +316,7 @@ export default function DashboardScreen() {
 
         {/* Quick Actions */}
         <Animated.View entering={FadeInDown.delay(400).duration(500)}>
-          <Text style={styles.sectionTitle}>Быстрые действия</Text>
+          <Text style={styles.sectionTitle}>{t.dashboard.quickActions}</Text>
           <View style={styles.quickActions}>
             <Pressable
               style={[styles.quickActionCard, styles.primaryAction]}
@@ -283,7 +325,7 @@ export default function DashboardScreen() {
               <View style={[styles.quickActionIcon, { backgroundColor: 'rgba(255,255,255,0.2)' }]}>
                 <Ionicons name="add-circle" size={24} color={colors.textInverse} />
               </View>
-              <Text style={[styles.quickActionText, { color: colors.textInverse }]}>Новый заказ</Text>
+              <Text style={[styles.quickActionText, { color: colors.textInverse }]}>{t.dashboard.newOrder}</Text>
               <Ionicons name="chevron-forward" size={20} color="rgba(255,255,255,0.7)" />
             </Pressable>
 
@@ -294,7 +336,18 @@ export default function DashboardScreen() {
               <View style={[styles.quickActionIcon, { backgroundColor: `${colors.primary}15` }]}>
                 <Ionicons name="receipt" size={24} color={colors.primary} />
               </View>
-              <Text style={styles.quickActionText}>Мои Заказы</Text>
+              <Text style={styles.quickActionText}>{t.dashboard.myOrders}</Text>
+              <Ionicons name="chevron-forward" size={20} color={colors.textLight} />
+            </Pressable>
+
+            <Pressable
+              style={styles.quickActionCard}
+              onPress={() => handleQuickAction('customers')}
+            >
+              <View style={[styles.quickActionIcon, { backgroundColor: `${colors.success}15` }]}>
+                <Ionicons name="people" size={24} color={colors.success} />
+              </View>
+              <Text style={styles.quickActionText}>{t.nav.customers}</Text>
               <Ionicons name="chevron-forward" size={20} color={colors.textLight} />
             </Pressable>
 
@@ -302,21 +355,10 @@ export default function DashboardScreen() {
               style={styles.quickActionCard}
               onPress={() => handleQuickAction('inventory')}
             >
-              <View style={[styles.quickActionIcon, { backgroundColor: `${colors.success}15` }]}>
-                <Ionicons name="cube" size={24} color={colors.success} />
-              </View>
-              <Text style={styles.quickActionText}>Склад</Text>
-              <Ionicons name="chevron-forward" size={20} color={colors.textLight} />
-            </Pressable>
-
-            <Pressable
-              style={styles.quickActionCard}
-              onPress={() => handleQuickAction('profile')}
-            >
               <View style={[styles.quickActionIcon, { backgroundColor: `${colors.warning}15` }]}>
-                <Ionicons name="settings" size={24} color={colors.warning} />
+                <Ionicons name="cube" size={24} color={colors.warning} />
               </View>
-              <Text style={styles.quickActionText}>Настройки</Text>
+              <Text style={styles.quickActionText}>{t.dashboard.warehouse}</Text>
               <Ionicons name="chevron-forward" size={20} color={colors.textLight} />
             </Pressable>
           </View>
@@ -325,9 +367,9 @@ export default function DashboardScreen() {
         {/* Recent Activity */}
         <Animated.View entering={FadeInDown.delay(500).duration(500)}>
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Последняя активность</Text>
+            <Text style={styles.sectionTitle}>{t.dashboard.recentActivity}</Text>
             <Pressable onPress={() => handleQuickAction('orders')}>
-              <Text style={styles.seeAllText}>Все</Text>
+              <Text style={styles.seeAllText}>{t.common.seeAll}</Text>
             </Pressable>
           </View>
 
@@ -385,6 +427,11 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: colors.text,
   },
+  headerActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+  },
   notificationButton: {
     width: 44,
     height: 44,
@@ -397,12 +444,45 @@ const styles = StyleSheet.create({
   },
   notificationBadge: {
     position: 'absolute',
-    top: 10,
-    right: 10,
-    width: 8,
-    height: 8,
-    borderRadius: 4,
+    top: 6,
+    right: 6,
+    minWidth: 18,
+    height: 18,
+    borderRadius: 9,
     backgroundColor: colors.error,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 4,
+  },
+  notificationBadgeText: {
+    fontSize: 10,
+    fontWeight: '700',
+    color: colors.textInverse,
+  },
+  aiInsightBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: `${colors.primary}10`,
+    borderRadius: borderRadius.md,
+    padding: spacing.md,
+    marginBottom: spacing.md,
+    borderWidth: 1,
+    borderColor: `${colors.primary}30`,
+  },
+  aiInsightIcon: {
+    width: 36,
+    height: 36,
+    borderRadius: borderRadius.full,
+    backgroundColor: `${colors.primary}15`,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: spacing.md,
+  },
+  aiInsightText: {
+    flex: 1,
+    fontSize: typography.sizes.sm,
+    fontWeight: '500',
+    color: colors.text,
   },
   sectionTitle: {
     fontSize: typography.sizes.lg,

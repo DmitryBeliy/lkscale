@@ -9,15 +9,59 @@ import {
   KeyboardAvoidingView,
   Platform,
   ActivityIndicator,
+  ScrollView,
+  Share,
+  Alert,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
-import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
+import * as Clipboard from 'expo-clipboard';
+import Animated, { FadeInDown, FadeInUp, FadeIn } from 'react-native-reanimated';
 import { useTextGeneration } from '@fastshot/ai';
 import { getBusinessSummary, subscribeData } from '@/store/dataStore';
+import { useLocalization } from '@/localization';
 import { ChatMessage } from '@/types';
 import { colors, spacing, typography, borderRadius, shadows } from '@/constants/theme';
+
+interface ActionCommand {
+  id: string;
+  icon: keyof typeof Ionicons.glyphMap;
+  label: string;
+  description: string;
+  action: 'monthly_report' | 'promotional' | 'inventory_report' | 'customer_analysis';
+}
+
+const ACTION_COMMANDS: ActionCommand[] = [
+  {
+    id: 'monthly',
+    icon: 'document-text',
+    label: 'Месячный отчёт',
+    description: 'Сгенерировать отчёт по продажам',
+    action: 'monthly_report',
+  },
+  {
+    id: 'promo',
+    icon: 'megaphone',
+    label: 'Промо-сообщение',
+    description: 'Создать промо для VIP-клиентов',
+    action: 'promotional',
+  },
+  {
+    id: 'inventory',
+    icon: 'cube',
+    label: 'Анализ склада',
+    description: 'Отчёт по состоянию запасов',
+    action: 'inventory_report',
+  },
+  {
+    id: 'customers',
+    icon: 'people',
+    label: 'Анализ клиентов',
+    description: 'Сегментация и рекомендации',
+    action: 'customer_analysis',
+  },
+];
 
 const SUGGESTED_QUESTIONS = [
   { id: '1', text: 'Какой товар самый прибыльный?', icon: 'trending-up' },
@@ -29,13 +73,15 @@ const SUGGESTED_QUESTIONS = [
 
 export default function AssistantScreen() {
   const insets = useSafeAreaInsets();
+  const { t, language } = useLocalization();
   const flatListRef = useRef<FlatList>(null);
   const [inputText, setInputText] = useState('');
+  const [showActions, setShowActions] = useState(true);
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: 'welcome',
       role: 'assistant',
-      content: 'Привет! Я ваш бизнес-ассистент. Задайте мне любой вопрос о вашем бизнесе — продажах, товарах, клиентах или прогнозах. Чем могу помочь?',
+      content: t.assistant.welcome,
       timestamp: new Date().toISOString(),
     },
   ]);
@@ -60,7 +106,7 @@ export default function AssistantScreen() {
       const errorMessage: ChatMessage = {
         id: `error-${Date.now()}`,
         role: 'assistant',
-        content: 'Извините, произошла ошибка. Пожалуйста, попробуйте еще раз.',
+        content: t.assistant.errorMessage,
         timestamp: new Date().toISOString(),
       };
       setMessages((prev) => {
@@ -79,7 +125,6 @@ export default function AssistantScreen() {
   }, []);
 
   useEffect(() => {
-    // Scroll to bottom when messages change
     setTimeout(() => {
       flatListRef.current?.scrollToEnd({ animated: true });
     }, 100);
@@ -87,33 +132,103 @@ export default function AssistantScreen() {
 
   const buildContextPrompt = useCallback((question: string) => {
     const data = businessData;
+    const lang = language === 'ru' ? 'Russian' : 'English';
 
-    return `Ты — бизнес-ассистент для приложения управления складом и заказами. Отвечай на русском языке, кратко и по делу.
+    return `You are a business assistant for an inventory and order management app. Respond in ${lang}, concisely and with specific numbers.
 
-Текущие данные бизнеса:
-- Общие продажи: ${data.kpi?.totalSales?.toLocaleString('ru-RU') || 0} ₽
-- Изменение продаж: ${data.kpi?.salesChange || 0}%
-- Активные заказы: ${data.kpi?.activeOrders || 0}
-- Баланс: ${data.kpi?.balance?.toLocaleString('ru-RU') || 0} ₽
-- Всего заказов: ${data.totalOrders}
-- Выполненных заказов: ${data.completedOrders}
-- Ожидающих заказов: ${data.pendingOrders}
-- Всего товаров: ${data.totalProducts}
-- Всего клиентов: ${data.totalCustomers}
-- Продажи за неделю: ${data.weekSales?.toLocaleString('ru-RU') || 0} ₽
-- Продажи за месяц: ${data.monthSales?.toLocaleString('ru-RU') || 0} ₽
-- Средний чек: ${Math.round(data.avgOrderValue || 0).toLocaleString('ru-RU')} ₽
+Current business data:
+- Total Sales: ${data.kpi?.totalSales?.toLocaleString() || 0} RUB
+- Sales Change: ${data.kpi?.salesChange || 0}%
+- Active Orders: ${data.kpi?.activeOrders || 0}
+- Balance: ${data.kpi?.balance?.toLocaleString() || 0} RUB
+- Total Orders: ${data.totalOrders}
+- Completed Orders: ${data.completedOrders}
+- Pending Orders: ${data.pendingOrders}
+- Total Products: ${data.totalProducts}
+- Total Customers: ${data.totalCustomers}
+- Week Sales: ${data.weekSales?.toLocaleString() || 0} RUB
+- Month Sales: ${data.monthSales?.toLocaleString() || 0} RUB
+- Average Order Value: ${Math.round(data.avgOrderValue || 0).toLocaleString()} RUB
 
-Товары с низким запасом:
-${data.lowStockProducts?.map((p) => `- ${p.name}: ${p.stock} шт. (мин: ${p.minStock})`).join('\n') || 'Нет'}
+Low stock products:
+${data.lowStockProducts?.map((p) => `- ${p.name}: ${p.stock} pcs (min: ${p.minStock})`).join('\n') || 'None'}
 
-Топ-5 товаров по выручке:
-${data.topProducts?.map((p, i) => `${i + 1}. ${p.name}: ${p.revenue?.toLocaleString('ru-RU')} ₽ (продано: ${p.sold} шт.)`).join('\n') || 'Нет данных'}
+Top 5 products by revenue:
+${data.topProducts?.map((p, i) => `${i + 1}. ${p.name}: ${p.revenue?.toLocaleString()} RUB (sold: ${p.sold} pcs)`).join('\n') || 'No data'}
 
-Вопрос пользователя: ${question}
+User question: ${question}
 
-Ответь кратко (2-4 предложения), конкретно и с цифрами. Если нужен прогноз, основывайся на текущих трендах.`;
-  }, [businessData]);
+Answer briefly (2-4 sentences) with specific numbers and actionable insights.`;
+  }, [businessData, language]);
+
+  const buildActionPrompt = useCallback((action: ActionCommand['action']) => {
+    const data = businessData;
+    const lang = language === 'ru' ? 'Russian' : 'English';
+
+    switch (action) {
+      case 'monthly_report':
+        return `Generate a professional monthly sales report in ${lang}. Format it clearly with sections. Include:
+
+Business Data:
+- Total Sales: ${data.kpi?.totalSales?.toLocaleString() || 0} RUB
+- Month Sales: ${data.monthSales?.toLocaleString() || 0} RUB
+- Active Orders: ${data.kpi?.activeOrders || 0}
+- Completed Orders: ${data.completedOrders}
+- Average Order Value: ${Math.round(data.avgOrderValue || 0).toLocaleString()} RUB
+- Total Products: ${data.totalProducts}
+- Total Customers: ${data.totalCustomers}
+
+Top products:
+${data.topProducts?.map((p, i) => `${i + 1}. ${p.name}: ${p.revenue?.toLocaleString()} RUB`).join('\n') || 'No data'}
+
+Create a structured report with: Executive Summary (2-3 sentences), Sales Overview (key metrics), Top Products (top 3), Key Insights (2-3 points), and Recommendations (2-3 actionable items).`;
+
+      case 'promotional':
+        return `Create engaging promotional messages in ${lang} for VIP customers. The messages should:
+1. Be warm and personalized
+2. Highlight exclusive offers
+3. Create urgency
+4. Include call to action
+
+Business context:
+- Top products: ${data.topProducts?.slice(0, 3).map(p => p.name).join(', ')}
+- Average order value: ${Math.round(data.avgOrderValue || 0).toLocaleString()} RUB
+
+Create 3 versions:
+1. SMS (max 160 characters) - short and punchy
+2. WhatsApp (2-3 sentences) - friendly and personal
+3. Email subject + body (short paragraph) - professional but engaging`;
+
+      case 'inventory_report':
+        return `Generate an inventory status report in ${lang}. Include:
+
+Current inventory:
+- Total Products: ${data.totalProducts}
+- Low Stock Items: ${data.lowStockProducts?.length || 0}
+
+Low stock details:
+${data.lowStockProducts?.map((p) => `- ${p.name}: ${p.stock}/${p.minStock} pcs`).join('\n') || 'All stock levels are healthy'}
+
+Top selling products:
+${data.topProducts?.map((p, i) => `${i + 1}. ${p.name}: ${p.sold} sold`).join('\n') || 'No data'}
+
+Create a report with: Stock Status Summary, Critical Items (if any), Restock Recommendations, and Optimization Tips.`;
+
+      case 'customer_analysis':
+        return `Generate a customer analysis report in ${lang}. Include:
+
+Customer data:
+- Total Customers: ${data.totalCustomers}
+- Total Orders: ${data.totalOrders}
+- Average Order Value: ${Math.round(data.avgOrderValue || 0).toLocaleString()} RUB
+- Completed Orders: ${data.completedOrders}
+
+Create a report with: Customer Overview, Value Segments (VIP criteria, Regular, New, Inactive), Retention Insights, and Growth Recommendations.`;
+
+      default:
+        return '';
+    }
+  }, [businessData, language]);
 
   const handleSend = async (text?: string) => {
     const messageText = text || inputText.trim();
@@ -121,8 +236,8 @@ ${data.topProducts?.map((p, i) => `${i + 1}. ${p.name}: ${p.revenue?.toLocaleStr
 
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     setInputText('');
+    setShowActions(false);
 
-    // Add user message
     const userMessage: ChatMessage = {
       id: `user-${Date.now()}`,
       role: 'user',
@@ -130,7 +245,6 @@ ${data.topProducts?.map((p, i) => `${i + 1}. ${p.name}: ${p.revenue?.toLocaleStr
       timestamp: new Date().toISOString(),
     };
 
-    // Add loading message
     const loadingMessage: ChatMessage = {
       id: `loading-${Date.now()}`,
       role: 'assistant',
@@ -141,9 +255,51 @@ ${data.topProducts?.map((p, i) => `${i + 1}. ${p.name}: ${p.revenue?.toLocaleStr
 
     setMessages((prev) => [...prev, userMessage, loadingMessage]);
 
-    // Generate AI response
     const prompt = buildContextPrompt(messageText);
     await generateText(prompt);
+  };
+
+  const handleActionCommand = async (action: ActionCommand) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+    setShowActions(false);
+
+    const userMessage: ChatMessage = {
+      id: `user-${Date.now()}`,
+      role: 'user',
+      content: `📋 ${action.label}: ${action.description}`,
+      timestamp: new Date().toISOString(),
+    };
+
+    const loadingMessage: ChatMessage = {
+      id: `loading-${Date.now()}`,
+      role: 'assistant',
+      content: '',
+      timestamp: new Date().toISOString(),
+      isLoading: true,
+    };
+
+    setMessages((prev) => [...prev, userMessage, loadingMessage]);
+
+    const prompt = buildActionPrompt(action.action);
+    await generateText(prompt);
+  };
+
+  const handleCopyMessage = async (content: string) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    await Clipboard.setStringAsync(content);
+    Alert.alert(
+      language === 'ru' ? 'Скопировано' : 'Copied',
+      language === 'ru' ? 'Текст скопирован в буфер обмена' : 'Text copied to clipboard'
+    );
+  };
+
+  const handleShareMessage = async (content: string) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    try {
+      await Share.share({ message: content });
+    } catch (error) {
+      console.error('Share error:', error);
+    }
   };
 
   const handleSuggestedQuestion = (question: string) => {
@@ -162,7 +318,7 @@ ${data.topProducts?.map((p, i) => `${i + 1}. ${p.name}: ${p.revenue?.toLocaleStr
         >
           <View style={styles.loadingContainer}>
             <ActivityIndicator size="small" color={colors.primary} />
-            <Text style={styles.loadingText}>Анализирую данные...</Text>
+            <Text style={styles.loadingText}>{t.assistant.analyzing}</Text>
           </View>
         </Animated.View>
       );
@@ -184,22 +340,70 @@ ${data.topProducts?.map((p, i) => `${i + 1}. ${p.name}: ${p.revenue?.toLocaleStr
         <Text style={[styles.messageText, isUser && styles.userMessageText]}>
           {item.content}
         </Text>
-        <Text style={[styles.messageTime, isUser && styles.userMessageTime]}>
-          {new Date(item.timestamp).toLocaleTimeString('ru-RU', {
-            hour: '2-digit',
-            minute: '2-digit',
-          })}
-        </Text>
+        <View style={styles.messageFooter}>
+          <Text style={[styles.messageTime, isUser && styles.userMessageTime]}>
+            {new Date(item.timestamp).toLocaleTimeString(language === 'ru' ? 'ru-RU' : 'en-US', {
+              hour: '2-digit',
+              minute: '2-digit',
+            })}
+          </Text>
+          {!isUser && item.content.length > 50 && (
+            <View style={styles.messageActions}>
+              <Pressable
+                style={styles.messageActionButton}
+                onPress={() => handleCopyMessage(item.content)}
+              >
+                <Ionicons name="copy-outline" size={14} color={colors.textLight} />
+              </Pressable>
+              <Pressable
+                style={styles.messageActionButton}
+                onPress={() => handleShareMessage(item.content)}
+              >
+                <Ionicons name="share-outline" size={14} color={colors.textLight} />
+              </Pressable>
+            </View>
+          )}
+        </View>
       </Animated.View>
     );
   };
+
+  const renderActionCommands = () => (
+    <Animated.View entering={FadeIn.delay(200).duration(400)} style={styles.actionsContainer}>
+      <View style={styles.actionsHeader}>
+        <Ionicons name="flash" size={18} color={colors.primary} />
+        <Text style={styles.actionsTitle}>{t.assistant.actionCommands}</Text>
+      </View>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.actionsScroll}
+      >
+        {ACTION_COMMANDS.map((action) => (
+          <Pressable
+            key={action.id}
+            style={styles.actionCard}
+            onPress={() => handleActionCommand(action)}
+          >
+            <View style={[styles.actionIcon, { backgroundColor: `${colors.primary}15` }]}>
+              <Ionicons name={action.icon} size={24} color={colors.primary} />
+            </View>
+            <Text style={styles.actionLabel}>{action.label}</Text>
+            <Text style={styles.actionDescription} numberOfLines={2}>
+              {action.description}
+            </Text>
+          </Pressable>
+        ))}
+      </ScrollView>
+    </Animated.View>
+  );
 
   const renderSuggestedQuestions = () => {
     if (messages.length > 1) return null;
 
     return (
       <Animated.View entering={FadeInDown.delay(300).duration(400)} style={styles.suggestedContainer}>
-        <Text style={styles.suggestedTitle}>Попробуйте спросить:</Text>
+        <Text style={styles.suggestedTitle}>{t.assistant.suggestedQuestions}</Text>
         {SUGGESTED_QUESTIONS.map((q) => (
           <Pressable
             key={q.id}
@@ -224,11 +428,26 @@ ${data.topProducts?.map((p, i) => `${i + 1}. ${p.name}: ${p.revenue?.toLocaleStr
         <View style={styles.headerIcon}>
           <Ionicons name="sparkles" size={24} color={colors.primary} />
         </View>
-        <View>
-          <Text style={styles.headerTitle}>Бизнес-ассистент</Text>
-          <Text style={styles.headerSubtitle}>Анализ данных с помощью AI</Text>
+        <View style={styles.headerContent}>
+          <Text style={styles.headerTitle}>{t.assistant.title}</Text>
+          <Text style={styles.headerSubtitle}>{t.assistant.subtitle}</Text>
         </View>
+        {messages.length > 1 && (
+          <Pressable
+            style={styles.actionsToggle}
+            onPress={() => setShowActions(!showActions)}
+          >
+            <Ionicons
+              name={showActions ? 'chevron-up' : 'flash'}
+              size={20}
+              color={colors.primary}
+            />
+          </Pressable>
+        )}
       </View>
+
+      {/* Action Commands */}
+      {showActions && renderActionCommands()}
 
       {/* Chat */}
       <KeyboardAvoidingView
@@ -251,7 +470,7 @@ ${data.topProducts?.map((p, i) => `${i + 1}. ${p.name}: ${p.revenue?.toLocaleStr
           <View style={styles.inputWrapper}>
             <TextInput
               style={styles.input}
-              placeholder="Задайте вопрос..."
+              placeholder={t.assistant.askQuestion}
               placeholderTextColor={colors.textLight}
               value={inputText}
               onChangeText={setInputText}
@@ -303,6 +522,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginRight: spacing.md,
   },
+  headerContent: {
+    flex: 1,
+  },
   headerTitle: {
     fontSize: typography.sizes.lg,
     fontWeight: '700',
@@ -312,6 +534,62 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.sm,
     color: colors.textSecondary,
     marginTop: 2,
+  },
+  actionsToggle: {
+    width: 40,
+    height: 40,
+    borderRadius: borderRadius.full,
+    backgroundColor: `${colors.primary}15`,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  actionsContainer: {
+    backgroundColor: colors.surface,
+    paddingVertical: spacing.md,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.borderLight,
+  },
+  actionsHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: spacing.md,
+    marginBottom: spacing.sm,
+    gap: spacing.xs,
+  },
+  actionsTitle: {
+    fontSize: typography.sizes.sm,
+    fontWeight: '600',
+    color: colors.primary,
+  },
+  actionsScroll: {
+    paddingHorizontal: spacing.md,
+    gap: spacing.sm,
+  },
+  actionCard: {
+    width: 140,
+    backgroundColor: colors.background,
+    borderRadius: borderRadius.lg,
+    padding: spacing.md,
+    ...shadows.sm,
+  },
+  actionIcon: {
+    width: 44,
+    height: 44,
+    borderRadius: borderRadius.md,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: spacing.sm,
+  },
+  actionLabel: {
+    fontSize: typography.sizes.sm,
+    fontWeight: '600',
+    color: colors.text,
+    marginBottom: 4,
+  },
+  actionDescription: {
+    fontSize: typography.sizes.xs,
+    color: colors.textSecondary,
+    lineHeight: typography.sizes.xs * 1.4,
   },
   chatContainer: {
     flex: 1,
@@ -357,14 +635,30 @@ const styles = StyleSheet.create({
   userMessageText: {
     color: colors.textInverse,
   },
+  messageFooter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: spacing.xs,
+  },
   messageTime: {
     fontSize: typography.sizes.xs,
     color: colors.textLight,
-    marginTop: spacing.xs,
-    alignSelf: 'flex-end',
   },
   userMessageTime: {
     color: 'rgba(255,255,255,0.7)',
+  },
+  messageActions: {
+    flexDirection: 'row',
+    gap: spacing.xs,
+  },
+  messageActionButton: {
+    width: 28,
+    height: 28,
+    borderRadius: borderRadius.sm,
+    backgroundColor: colors.background,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   loadingContainer: {
     flexDirection: 'row',

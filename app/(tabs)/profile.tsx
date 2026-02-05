@@ -7,6 +7,7 @@ import {
   Pressable,
   Alert,
   Switch,
+  Modal,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
@@ -16,17 +17,9 @@ import Animated, { FadeInDown } from 'react-native-reanimated';
 import { Card, Button } from '@/components/ui';
 import { getAuthState, subscribeAuth, logout } from '@/store/authStore';
 import { getDataState, subscribeData } from '@/store/dataStore';
+import { useLocalization, Language } from '@/localization';
 import { User, AppSettings } from '@/types';
-import { colors, spacing, typography, borderRadius } from '@/constants/theme';
-
-const formatCurrency = (amount: number) => {
-  return new Intl.NumberFormat('ru-RU', {
-    style: 'currency',
-    currency: 'RUB',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(amount);
-};
+import { colors, spacing, typography, borderRadius, shadows } from '@/constants/theme';
 
 interface MenuItemProps {
   icon: keyof typeof Ionicons.glyphMap;
@@ -67,12 +60,14 @@ const MenuItem: React.FC<MenuItemProps> = ({
 
 export default function ProfileScreen() {
   const insets = useSafeAreaInsets();
+  const { t, language, setLanguage, formatCurrency, formatDate } = useLocalization();
   const [user, setUser] = useState<User | null>(getAuthState().user);
   const [lastSync, setLastSync] = useState<string | null>(null);
+  const [showLanguageModal, setShowLanguageModal] = useState(false);
   const [settings, setSettings] = useState<AppSettings>({
     notifications: true,
     darkMode: false,
-    language: 'ru',
+    language: language,
     autoSync: true,
   });
 
@@ -94,12 +89,12 @@ export default function ProfileScreen() {
   const handleLogout = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     Alert.alert(
-      'Выход',
-      'Вы уверены, что хотите выйти?',
+      t.profile.logout,
+      t.profile.logoutConfirm,
       [
-        { text: 'Отмена', style: 'cancel' },
+        { text: t.common.cancel, style: 'cancel' },
         {
-          text: 'Выйти',
+          text: t.profile.logout,
           style: 'destructive',
           onPress: async () => {
             await logout();
@@ -112,7 +107,7 @@ export default function ProfileScreen() {
 
   const handleMenuPress = (item: string) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    Alert.alert(item, `Переход в раздел "${item}"`);
+    Alert.alert(item, language === 'ru' ? `Переход в раздел "${item}"` : `Navigate to "${item}"`);
   };
 
   const toggleSetting = (key: keyof AppSettings) => {
@@ -123,15 +118,20 @@ export default function ProfileScreen() {
     }));
   };
 
+  const handleLanguageSelect = async (lang: Language) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    await setLanguage(lang);
+    setSettings((prev) => ({ ...prev, language: lang }));
+    setShowLanguageModal(false);
+  };
+
   const formatLastSync = (dateString: string | null) => {
-    if (!dateString) return 'Никогда';
-    const date = new Date(dateString);
-    return date.toLocaleString('ru-RU', {
-      day: 'numeric',
-      month: 'short',
-      hour: '2-digit',
-      minute: '2-digit',
-    });
+    if (!dateString) return t.profile.never;
+    return formatDate(dateString, 'short');
+  };
+
+  const getLanguageLabel = () => {
+    return language === 'ru' ? t.profile.russian : t.profile.english;
   };
 
   return (
@@ -142,7 +142,7 @@ export default function ProfileScreen() {
       >
         {/* Header */}
         <Animated.View entering={FadeInDown.delay(100).duration(500)} style={styles.header}>
-          <Text style={styles.title}>Профиль</Text>
+          <Text style={styles.title}>{t.nav.profile}</Text>
         </Animated.View>
 
         {/* User Card */}
@@ -153,12 +153,12 @@ export default function ProfileScreen() {
                 <Ionicons name="person" size={40} color={colors.primary} />
               </View>
               <View style={styles.userInfo}>
-                <Text style={styles.userName}>{user?.name || 'Пользователь'}</Text>
+                <Text style={styles.userName}>{user?.name || (language === 'ru' ? 'Пользователь' : 'User')}</Text>
                 <Text style={styles.userEmail}>{user?.email}</Text>
               </View>
               <Pressable
                 style={styles.editButton}
-                onPress={() => handleMenuPress('Редактировать профиль')}
+                onPress={() => handleMenuPress(t.common.edit)}
               >
                 <Ionicons name="create-outline" size={22} color={colors.primary} />
               </Pressable>
@@ -166,15 +166,15 @@ export default function ProfileScreen() {
 
             <View style={styles.balanceRow}>
               <View style={styles.balanceInfo}>
-                <Text style={styles.balanceLabel}>Баланс</Text>
+                <Text style={styles.balanceLabel}>{t.profile.title === 'Profile' ? 'Balance' : 'Баланс'}</Text>
                 <Text style={styles.balanceValue}>
                   {formatCurrency(user?.balance || 0)}
                 </Text>
               </View>
               <Button
-                title="Пополнить"
+                title={t.profile.topUp}
                 size="sm"
-                onPress={() => handleMenuPress('Пополнение баланса')}
+                onPress={() => handleMenuPress(t.profile.topUp)}
               />
             </View>
           </Card>
@@ -182,37 +182,37 @@ export default function ProfileScreen() {
 
         {/* Quick Menu */}
         <Animated.View entering={FadeInDown.delay(300).duration(500)}>
-          <Text style={styles.sectionTitle}>Мой Профиль</Text>
+          <Text style={styles.sectionTitle}>{t.profile.myProfile}</Text>
           <Card style={styles.menuCard}>
             <MenuItem
               icon="person-outline"
-              title="Мой Профиль"
-              subtitle="Личные данные и контакты"
-              onPress={() => handleMenuPress('Мой Профиль')}
+              title={t.profile.myProfile}
+              subtitle={t.profile.personalData}
+              onPress={() => handleMenuPress(t.profile.myProfile)}
             />
             <MenuItem
               icon="receipt-outline"
-              title="Мои Заказы"
-              subtitle="История заказов"
+              title={t.profile.orderHistory}
+              subtitle={t.nav.orders}
               onPress={() => router.push('/(tabs)/orders')}
             />
             <MenuItem
               icon="settings-outline"
-              title="Настройки"
-              subtitle="Уведомления и прочее"
+              title={t.profile.settings}
+              subtitle={t.profile.notifications}
               iconColor={colors.textSecondary}
-              onPress={() => handleMenuPress('Настройки')}
+              onPress={() => handleMenuPress(t.profile.settings)}
             />
           </Card>
         </Animated.View>
 
         {/* Settings */}
         <Animated.View entering={FadeInDown.delay(400).duration(500)}>
-          <Text style={styles.sectionTitle}>Настройки</Text>
+          <Text style={styles.sectionTitle}>{t.profile.settings}</Text>
           <Card style={styles.menuCard}>
             <MenuItem
               icon="notifications-outline"
-              title="Уведомления"
+              title={t.profile.notifications}
               iconColor={colors.warning}
               showArrow={false}
               rightElement={
@@ -226,8 +226,8 @@ export default function ProfileScreen() {
             />
             <MenuItem
               icon="sync-outline"
-              title="Автосинхронизация"
-              subtitle={`Последняя: ${formatLastSync(lastSync)}`}
+              title={t.profile.autoSync}
+              subtitle={`${t.profile.lastSync}: ${formatLastSync(lastSync)}`}
               iconColor={colors.success}
               showArrow={false}
               rightElement={
@@ -241,35 +241,35 @@ export default function ProfileScreen() {
             />
             <MenuItem
               icon="language-outline"
-              title="Язык"
-              subtitle="Русский"
+              title={t.profile.language}
+              subtitle={getLanguageLabel()}
               iconColor={colors.primary}
-              onPress={() => handleMenuPress('Выбор языка')}
+              onPress={() => setShowLanguageModal(true)}
             />
           </Card>
         </Animated.View>
 
         {/* Support */}
         <Animated.View entering={FadeInDown.delay(500).duration(500)}>
-          <Text style={styles.sectionTitle}>Поддержка</Text>
+          <Text style={styles.sectionTitle}>{t.profile.support}</Text>
           <Card style={styles.menuCard}>
             <MenuItem
               icon="help-circle-outline"
-              title="Помощь и FAQ"
+              title={t.profile.helpFaq}
               iconColor={colors.primary}
-              onPress={() => handleMenuPress('Помощь')}
+              onPress={() => handleMenuPress(t.profile.helpFaq)}
             />
             <MenuItem
               icon="chatbubble-outline"
-              title="Связаться с поддержкой"
+              title={t.profile.contactSupport}
               iconColor={colors.success}
-              onPress={() => handleMenuPress('Поддержка')}
+              onPress={() => handleMenuPress(t.profile.contactSupport)}
             />
             <MenuItem
               icon="document-text-outline"
-              title="Условия использования"
+              title={t.profile.terms}
               iconColor={colors.textSecondary}
-              onPress={() => handleMenuPress('Условия')}
+              onPress={() => handleMenuPress(t.profile.terms)}
             />
           </Card>
         </Animated.View>
@@ -277,7 +277,7 @@ export default function ProfileScreen() {
         {/* Logout */}
         <Animated.View entering={FadeInDown.delay(600).duration(500)}>
           <Button
-            title="Выйти из аккаунта"
+            title={t.profile.logout}
             variant="outline"
             onPress={handleLogout}
             style={styles.logoutButton}
@@ -285,9 +285,75 @@ export default function ProfileScreen() {
             icon={<Ionicons name="log-out-outline" size={20} color={colors.error} />}
           />
 
-          <Text style={styles.versionText}>Версия 1.0.0</Text>
+          <Text style={styles.versionText}>{t.profile.version} 1.0.0</Text>
         </Animated.View>
       </ScrollView>
+
+      {/* Language Selection Modal */}
+      <Modal
+        visible={showLanguageModal}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setShowLanguageModal(false)}
+      >
+        <Pressable
+          style={styles.modalOverlay}
+          onPress={() => setShowLanguageModal(false)}
+        >
+          <Pressable style={styles.languageModal} onPress={(e) => e.stopPropagation()}>
+            <Text style={styles.modalTitle}>{t.profile.language}</Text>
+
+            <Pressable
+              style={[
+                styles.languageOption,
+                language === 'ru' && styles.languageOptionActive,
+              ]}
+              onPress={() => handleLanguageSelect('ru')}
+            >
+              <View style={styles.languageInfo}>
+                <Text style={styles.languageFlag}>🇷🇺</Text>
+                <Text style={[
+                  styles.languageText,
+                  language === 'ru' && styles.languageTextActive,
+                ]}>
+                  {t.profile.russian}
+                </Text>
+              </View>
+              {language === 'ru' && (
+                <Ionicons name="checkmark-circle" size={24} color={colors.primary} />
+              )}
+            </Pressable>
+
+            <Pressable
+              style={[
+                styles.languageOption,
+                language === 'en' && styles.languageOptionActive,
+              ]}
+              onPress={() => handleLanguageSelect('en')}
+            >
+              <View style={styles.languageInfo}>
+                <Text style={styles.languageFlag}>🇬🇧</Text>
+                <Text style={[
+                  styles.languageText,
+                  language === 'en' && styles.languageTextActive,
+                ]}>
+                  {t.profile.english}
+                </Text>
+              </View>
+              {language === 'en' && (
+                <Ionicons name="checkmark-circle" size={24} color={colors.primary} />
+              )}
+            </Pressable>
+
+            <Button
+              title={t.common.cancel}
+              variant="outline"
+              onPress={() => setShowLanguageModal(false)}
+              style={styles.modalButton}
+            />
+          </Pressable>
+        </Pressable>
+      </Modal>
     </View>
   );
 }
@@ -412,5 +478,62 @@ const styles = StyleSheet.create({
     color: colors.textLight,
     textAlign: 'center',
     marginTop: spacing.lg,
+  },
+  // Modal styles
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: spacing.lg,
+  },
+  languageModal: {
+    backgroundColor: colors.surface,
+    borderRadius: borderRadius.xl,
+    padding: spacing.lg,
+    width: '100%',
+    maxWidth: 320,
+    ...shadows.lg,
+  },
+  modalTitle: {
+    fontSize: typography.sizes.lg,
+    fontWeight: '700',
+    color: colors.text,
+    textAlign: 'center',
+    marginBottom: spacing.lg,
+  },
+  languageOption: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: spacing.md,
+    borderRadius: borderRadius.md,
+    marginBottom: spacing.sm,
+    backgroundColor: colors.background,
+  },
+  languageOptionActive: {
+    backgroundColor: `${colors.primary}15`,
+    borderWidth: 2,
+    borderColor: colors.primary,
+  },
+  languageInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md,
+  },
+  languageFlag: {
+    fontSize: 24,
+  },
+  languageText: {
+    fontSize: typography.sizes.md,
+    fontWeight: '500',
+    color: colors.text,
+  },
+  languageTextActive: {
+    color: colors.primary,
+    fontWeight: '600',
+  },
+  modalButton: {
+    marginTop: spacing.md,
   },
 });

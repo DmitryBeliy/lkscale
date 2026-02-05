@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Order, Product, KPIData, Activity, Customer, SalesDataPoint, ProductCategory, CartItem, NewOrderData } from '@/types';
+import { Order, Product, KPIData, Activity, Customer, SalesDataPoint, ProductCategory, CartItem, NewOrderData, ProductVariant, ProductWithVariants } from '@/types';
 
 const ORDERS_CACHE_KEY = '@lkscale_orders';
 const PRODUCTS_CACHE_KEY = '@lkscale_products';
@@ -7,6 +7,7 @@ const CUSTOMERS_CACHE_KEY = '@lkscale_customers';
 const KPI_CACHE_KEY = '@lkscale_kpi';
 const ACTIVITIES_CACHE_KEY = '@lkscale_activities';
 const LAST_SYNC_KEY = '@lkscale_last_sync';
+const VARIANTS_CACHE_KEY = '@lkscale_variants';
 
 // Generate price/stock history data
 const generatePriceHistory = (basePrice: number) => {
@@ -339,6 +340,101 @@ export const mockProducts: Product[] = [
   },
 ];
 
+// Mock Product Variants
+export const mockVariants: ProductVariant[] = [
+  // Variants for Product А (p1)
+  {
+    id: 'v1-1',
+    productId: 'p1',
+    name: 'Товар А - S Черный',
+    sku: 'SKU-001-S-BLK',
+    barcode: '4601234567890001',
+    attributes: { size: 'S', color: 'Черный' },
+    price: 5000,
+    stock: 15,
+    isActive: true,
+  },
+  {
+    id: 'v1-2',
+    productId: 'p1',
+    name: 'Товар А - M Черный',
+    sku: 'SKU-001-M-BLK',
+    barcode: '4601234567890002',
+    attributes: { size: 'M', color: 'Черный' },
+    price: 5000,
+    stock: 20,
+    isActive: true,
+  },
+  {
+    id: 'v1-3',
+    productId: 'p1',
+    name: 'Товар А - L Черный',
+    sku: 'SKU-001-L-BLK',
+    barcode: '4601234567890003',
+    attributes: { size: 'L', color: 'Черный' },
+    price: 5200,
+    stock: 10,
+    isActive: true,
+  },
+  {
+    id: 'v1-4',
+    productId: 'p1',
+    name: 'Товар А - M Белый',
+    sku: 'SKU-001-M-WHT',
+    barcode: '4601234567890004',
+    attributes: { size: 'M', color: 'Белый' },
+    price: 5000,
+    stock: 0,
+    isActive: false,
+  },
+  // Variants for Product Б (p2)
+  {
+    id: 'v2-1',
+    productId: 'p2',
+    name: 'Товар Б - 64GB',
+    sku: 'SKU-002-64',
+    barcode: '4601234567891001',
+    attributes: { size: '64GB' },
+    price: 5420,
+    stock: 5,
+    isActive: true,
+  },
+  {
+    id: 'v2-2',
+    productId: 'p2',
+    name: 'Товар Б - 128GB',
+    sku: 'SKU-002-128',
+    barcode: '4601234567891002',
+    attributes: { size: '128GB' },
+    price: 6420,
+    stock: 3,
+    isActive: true,
+  },
+  // Variants for Product Г (p4)
+  {
+    id: 'v4-1',
+    productId: 'p4',
+    name: 'Товар Г - Золото',
+    sku: 'SKU-004-GLD',
+    barcode: '4601234567893001',
+    attributes: { color: 'Золото' },
+    price: 12500,
+    stock: 2,
+    isActive: true,
+  },
+  {
+    id: 'v4-2',
+    productId: 'p4',
+    name: 'Товар Г - Серебро',
+    sku: 'SKU-004-SLV',
+    barcode: '4601234567893002',
+    attributes: { color: 'Серебро' },
+    price: 12000,
+    stock: 3,
+    isActive: true,
+  },
+];
+
 export const mockKPI: KPIData = {
   totalSales: 245680.50,
   salesChange: 12.5,
@@ -429,6 +525,7 @@ interface DataState {
   products: Product[];
   customers: Customer[];
   categories: ProductCategory[];
+  variants: ProductVariant[];
   kpi: KPIData | null;
   activities: Activity[];
   salesData: {
@@ -445,6 +542,7 @@ let dataState: DataState = {
   products: [],
   customers: [],
   categories: [],
+  variants: [],
   kpi: null,
   activities: [],
   salesData: {
@@ -481,6 +579,7 @@ export const cacheData = async () => {
       AsyncStorage.setItem(ORDERS_CACHE_KEY, JSON.stringify(dataState.orders)),
       AsyncStorage.setItem(PRODUCTS_CACHE_KEY, JSON.stringify(dataState.products)),
       AsyncStorage.setItem(CUSTOMERS_CACHE_KEY, JSON.stringify(dataState.customers)),
+      AsyncStorage.setItem(VARIANTS_CACHE_KEY, JSON.stringify(dataState.variants)),
       AsyncStorage.setItem(KPI_CACHE_KEY, JSON.stringify(dataState.kpi)),
       AsyncStorage.setItem(ACTIVITIES_CACHE_KEY, JSON.stringify(dataState.activities)),
       AsyncStorage.setItem(LAST_SYNC_KEY, new Date().toISOString()),
@@ -492,10 +591,11 @@ export const cacheData = async () => {
 
 export const loadCachedData = async () => {
   try {
-    const [orders, products, customers, kpi, activities, lastSync] = await Promise.all([
+    const [orders, products, customers, variants, kpi, activities, lastSync] = await Promise.all([
       AsyncStorage.getItem(ORDERS_CACHE_KEY),
       AsyncStorage.getItem(PRODUCTS_CACHE_KEY),
       AsyncStorage.getItem(CUSTOMERS_CACHE_KEY),
+      AsyncStorage.getItem(VARIANTS_CACHE_KEY),
       AsyncStorage.getItem(KPI_CACHE_KEY),
       AsyncStorage.getItem(ACTIVITIES_CACHE_KEY),
       AsyncStorage.getItem(LAST_SYNC_KEY),
@@ -506,6 +606,7 @@ export const loadCachedData = async () => {
       products: products ? JSON.parse(products) : [],
       customers: customers ? JSON.parse(customers) : [],
       categories: mockCategories,
+      variants: variants ? JSON.parse(variants) : [],
       kpi: kpi ? JSON.parse(kpi) : null,
       activities: activities ? JSON.parse(activities) : [],
       salesData: {
@@ -537,6 +638,7 @@ export const fetchData = async () => {
       products: mockProducts,
       customers: mockCustomers,
       categories: mockCategories,
+      variants: mockVariants,
       kpi: mockKPI,
       activities: mockActivities,
       salesData: {
@@ -800,4 +902,178 @@ export const getBusinessSummary = () => {
       ? completedOrders.reduce((sum, o) => sum + o.totalAmount, 0) / completedOrders.length
       : 0,
   };
+};
+
+// ============== PRODUCT VARIANTS ==============
+
+// Get variants for a product
+export const getVariantsByProductId = (productId: string): ProductVariant[] => {
+  return dataState.variants.filter((v) => v.productId === productId);
+};
+
+// Get a single variant by ID
+export const getVariantById = (variantId: string): ProductVariant | undefined => {
+  return dataState.variants.find((v) => v.id === variantId);
+};
+
+// Check if product has variants
+export const productHasVariants = (productId: string): boolean => {
+  return dataState.variants.some((v) => v.productId === productId);
+};
+
+// Get product with variants
+export const getProductWithVariants = (productId: string): ProductWithVariants | undefined => {
+  const product = getProductById(productId);
+  if (!product) return undefined;
+
+  const variants = getVariantsByProductId(productId);
+  return {
+    ...product,
+    variants: variants.length > 0 ? variants : undefined,
+    hasVariants: variants.length > 0,
+  };
+};
+
+// Get all products with their variants
+export const getAllProductsWithVariants = (): ProductWithVariants[] => {
+  return dataState.products.map((product) => {
+    const variants = getVariantsByProductId(product.id);
+    return {
+      ...product,
+      variants: variants.length > 0 ? variants : undefined,
+      hasVariants: variants.length > 0,
+    };
+  });
+};
+
+// Add a new variant
+export const addVariant = async (variant: Omit<ProductVariant, 'id'>): Promise<ProductVariant> => {
+  const newVariant: ProductVariant = {
+    ...variant,
+    id: `var-${Date.now()}`,
+  };
+
+  const newVariants = [...dataState.variants, newVariant];
+  setDataState({ variants: newVariants });
+  await cacheData();
+  return newVariant;
+};
+
+// Update a variant
+export const updateVariant = async (variantId: string, updates: Partial<ProductVariant>): Promise<ProductVariant | null> => {
+  const index = dataState.variants.findIndex((v) => v.id === variantId);
+  if (index === -1) return null;
+
+  const updatedVariant: ProductVariant = {
+    ...dataState.variants[index],
+    ...updates,
+  };
+
+  const newVariants = [...dataState.variants];
+  newVariants[index] = updatedVariant;
+  setDataState({ variants: newVariants });
+  await cacheData();
+  return updatedVariant;
+};
+
+// Delete a variant
+export const deleteVariant = async (variantId: string): Promise<boolean> => {
+  const index = dataState.variants.findIndex((v) => v.id === variantId);
+  if (index === -1) return false;
+
+  const newVariants = dataState.variants.filter((v) => v.id !== variantId);
+  setDataState({ variants: newVariants });
+  await cacheData();
+  return true;
+};
+
+// Get total stock including variants
+export const getTotalProductStock = (productId: string): number => {
+  const variants = getVariantsByProductId(productId);
+  if (variants.length > 0) {
+    return variants.reduce((sum, v) => sum + v.stock, 0);
+  }
+  const product = getProductById(productId);
+  return product?.stock || 0;
+};
+
+// ============== BATCH UPDATE ==============
+
+// Batch update products
+export const batchUpdateProducts = async (
+  productIds: string[],
+  updates: Partial<Pick<Product, 'category' | 'categoryId' | 'isActive'>> & { stockAdjustment?: number }
+): Promise<Product[]> => {
+  const updatedProducts: Product[] = [];
+
+  for (const productId of productIds) {
+    const index = dataState.products.findIndex((p) => p.id === productId);
+    if (index === -1) continue;
+
+    const currentProduct = dataState.products[index];
+    const productUpdates: Partial<Product> = {
+      ...updates,
+      updatedAt: new Date().toISOString(),
+    };
+
+    // Handle stock adjustment
+    if (updates.stockAdjustment !== undefined) {
+      const newStock = Math.max(0, currentProduct.stock + updates.stockAdjustment);
+      productUpdates.stock = newStock;
+
+      // Add to stock history
+      productUpdates.stockHistory = [
+        ...(currentProduct.stockHistory || []),
+        {
+          date: new Date().toISOString(),
+          stock: newStock,
+          change: updates.stockAdjustment,
+          reason: updates.stockAdjustment > 0 ? 'restock' : 'adjustment',
+        },
+      ];
+    }
+
+    // Remove stockAdjustment from updates (not a Product field)
+    delete (productUpdates as Record<string, unknown>).stockAdjustment;
+
+    const updatedProduct: Product = {
+      ...currentProduct,
+      ...productUpdates,
+    };
+
+    dataState.products[index] = updatedProduct;
+    updatedProducts.push(updatedProduct);
+  }
+
+  setDataState({ products: [...dataState.products] });
+  await cacheData();
+  return updatedProducts;
+};
+
+// Batch update variant stock
+export const batchUpdateVariantStock = async (
+  variantIds: string[],
+  stockAdjustment: number
+): Promise<ProductVariant[]> => {
+  const updatedVariants: ProductVariant[] = [];
+
+  for (const variantId of variantIds) {
+    const index = dataState.variants.findIndex((v) => v.id === variantId);
+    if (index === -1) continue;
+
+    const currentVariant = dataState.variants[index];
+    const newStock = Math.max(0, currentVariant.stock + stockAdjustment);
+
+    const updatedVariant: ProductVariant = {
+      ...currentVariant,
+      stock: newStock,
+    };
+
+    dataState.variants[index] = updatedVariant;
+    updatedVariants.push(updatedVariant);
+  }
+
+  setDataState({ variants: [...dataState.variants] });
+  await cacheData();
+  return updatedVariants;
 };

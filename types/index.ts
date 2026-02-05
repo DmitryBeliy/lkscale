@@ -163,3 +163,83 @@ export interface NewOrderData {
   paymentMethod: 'cash' | 'card' | 'transfer' | 'online';
   notes?: string;
 }
+
+// Notification types
+export type NotificationType =
+  | 'new_order'
+  | 'order_completed'
+  | 'low_stock'
+  | 'payment_received'
+  | 'ai_insight'
+  | 'system';
+
+export interface Notification {
+  id: string;
+  type: NotificationType;
+  title: string;
+  message: string;
+  timestamp: string;
+  isRead: boolean;
+  data?: Record<string, unknown>;
+  actionUrl?: string;
+}
+
+// Customer value tags
+export type CustomerValueTag = 'vip' | 'regular' | 'new' | 'inactive' | 'high_value';
+
+export interface CustomerWithValue extends Customer {
+  valueTag: CustomerValueTag;
+  lastOrderDate?: string;
+  averageOrderValue: number;
+}
+
+// Product variants
+export interface ProductVariant {
+  id: string;
+  productId: string;
+  name: string;
+  sku: string;
+  barcode?: string;
+  attributes: {
+    size?: string;
+    color?: string;
+    [key: string]: string | undefined;
+  };
+  price: number;
+  stock: number;
+  isActive: boolean;
+}
+
+export interface ProductWithVariants extends Product {
+  variants?: ProductVariant[];
+  hasVariants: boolean;
+}
+
+// Sync status
+export type SyncStatus = 'synced' | 'pending' | 'offline' | 'syncing' | 'conflict';
+
+export interface SyncState {
+  status: SyncStatus;
+  lastSyncTime: string | null;
+  pendingChanges: number;
+  conflicts: SyncConflict[];
+}
+
+export interface SyncConflict {
+  id: string;
+  entityType: 'order' | 'product' | 'customer';
+  entityId: string;
+  localData: Record<string, unknown>;
+  serverData: Record<string, unknown>;
+  timestamp: string;
+}
+
+// AI Report types
+export interface AIReport {
+  id: string;
+  type: 'monthly_sales' | 'promotional' | 'inventory' | 'customer_analysis';
+  title: string;
+  content: string;
+  generatedAt: string;
+  data?: Record<string, unknown>;
+}

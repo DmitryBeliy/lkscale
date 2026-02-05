@@ -8,6 +8,7 @@ import { colors, spacing, typography, borderRadius } from '@/constants/theme';
 interface ProductCardProps {
   product: Product;
   onPress: () => void;
+  showVariantBadge?: boolean;
 }
 
 const formatCurrency = (amount: number) => {
@@ -19,7 +20,7 @@ const formatCurrency = (amount: number) => {
   }).format(amount);
 };
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, onPress }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product, onPress, showVariantBadge }) => {
   const isLowStock = product.stock <= product.minStock;
   const isOutOfStock = product.stock === 0;
 
@@ -27,6 +28,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onPress }) =>
     <Card style={styles.card} onPress={onPress}>
       <View style={styles.imageContainer}>
         <Ionicons name="cube" size={32} color={colors.primary} />
+        {showVariantBadge && (
+          <View style={styles.variantBadge}>
+            <Ionicons name="layers" size={10} color={colors.textInverse} />
+          </View>
+        )}
       </View>
 
       <View style={styles.content}>
@@ -85,6 +91,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: spacing.md,
+    position: 'relative',
+  },
+  variantBadge: {
+    position: 'absolute',
+    bottom: -2,
+    right: -2,
+    width: 18,
+    height: 18,
+    borderRadius: 9,
+    backgroundColor: colors.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 2,
+    borderColor: colors.surface,
   },
   content: {
     flex: 1,

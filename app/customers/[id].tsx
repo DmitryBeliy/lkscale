@@ -13,8 +13,8 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 import Animated, { FadeInDown } from 'react-native-reanimated';
-import { Card, Button } from '@/components/ui';
-import { getCustomerById, getDataState, searchOrders } from '@/store/dataStore';
+import { Card } from '@/components/ui';
+import { getCustomerById, getDataState, getCustomerMetrics } from '@/store/dataStore';
 import { useLocalization } from '@/localization';
 import { Customer, Order, CustomerValueTag } from '@/types';
 import { colors, spacing, typography, borderRadius, shadows } from '@/constants/theme';
@@ -86,6 +86,16 @@ const getStatusLabel = (status: Order['status'], t: any) => {
   }
 };
 
+interface CustomerMetrics {
+  totalOrders: number;
+  completedOrders: number;
+  totalRevenue: number;
+  avgCheck: number;
+  topCategories: string[];
+  daysSinceLastOrder: number | null;
+  lastOrderDate: string | undefined;
+}
+
 export default function CustomerDetailScreen() {
   const insets = useSafeAreaInsets();
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -93,6 +103,7 @@ export default function CustomerDetailScreen() {
   const [customer, setCustomer] = useState<Customer | null>(null);
   const [customerOrders, setCustomerOrders] = useState<Order[]>([]);
   const [valueTag, setValueTag] = useState<CustomerValueTag>('regular');
+  const [metrics, setMetrics] = useState<CustomerMetrics | null>(null);
 
   useEffect(() => {
     if (id) {
@@ -104,7 +115,13 @@ export default function CustomerDetailScreen() {
         // Get customer orders
         const state = getDataState();
         const orders = state.orders.filter((o) => o.customerId === id);
-        setCustomerOrders(orders);
+        setCustomerOrders(orders.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()));
+
+        // Get customer metrics
+        const customerMetrics = getCustomerMetrics(id);
+        if (customerMetrics) {
+          setMetrics(customerMetrics);
+        }
       }
     }
   }, [id]);
@@ -295,6 +312,86 @@ export default function CustomerDetailScreen() {
             </Card>
           </View>
         </Animated.View>
+
+        {/* Top Categories */}
+        {metrics?.topCategories && metrics.topCategories.length > 0 && (
+          <Animated.View entering={FadeInDown.delay(350).duration(500)}>
+            <Text style={styles.sectionTitle}>Топ категории покупок</Text>
+            <Card style={styles.categoriesCard}>
+              <View style={styles.categoriesList}>
+                {metrics.topCategories.map((category, index) => (
+                  <View key={category} style={styles.categoryItem}>
+                    <View style={[styles.categoryRank, index === 0 && styles.categoryRankTop]}>
+                      <Text style={[styles.categoryRankText, index === 0 && styles.categoryRankTextTop]}>
+                        {index + 1}
+                      </Text>
+                    </View>
+                    <Text style={styles.categoryName}>{category}</Text>
+                    {index === 0 && (
+                      <View style={styles.topBadge}>
+                        <Ionicons name="trophy" size={12} color={colors.warning} />
+                      </View>
+                    )}
+                  </View>
+                ))}
+              </View>
+            </Card>
+          </Animated.View>
+        )}
+
+        {/* Activity Metrics */}
+        {metrics && (
+          <Animated.View entering={FadeInDown.delay(370).duration(500)}>
+            <Text style={styles.sectionTitle}>Активность</Text>
+            <Card style={styles.activityCard}>
+              <View style={styles.activityItem}>
+                <View style={styles.activityIcon}>
+                  <Ionicons name="time" size={20} color={colors.primary} />
+                </View>
+                <View style={styles.activityInfo}>
+                  <Text style={styles.activityLabel}>Последний заказ</Text>
+                  <Text style={styles.activityValue}>
+                    {metrics.lastOrderDate ? formatDate(metrics.lastOrderDate) : 'Нет заказов'}
+                  </Text>
+                </View>
+                {metrics.daysSinceLastOrder !== null && (
+                  <View style={[
+                    styles.daysAgoBadge,
+                    metrics.daysSinceLastOrder <= 7 ? styles.daysAgoBadgeRecent :
+                    metrics.daysSinceLastOrder <= 30 ? styles.daysAgoBadgeNormal :
+                    styles.daysAgoBadgeOld
+                  ]}>
+                    <Text style={[
+                      styles.daysAgoText,
+                      metrics.daysSinceLastOrder <= 7 ? styles.daysAgoTextRecent :
+                      metrics.daysSinceLastOrder <= 30 ? styles.daysAgoTextNormal :
+                      styles.daysAgoTextOld
+                    ]}>
+                      {metrics.daysSinceLastOrder === 0 ? 'Сегодня' :
+                       metrics.daysSinceLastOrder === 1 ? 'Вчера' :
+                       `${metrics.daysSinceLastOrder} дн. назад`}
+                    </Text>
+                  </View>
+                )}
+              </View>
+              <View style={styles.activityDivider} />
+              <View style={styles.activityItem}>
+                <View style={styles.activityIcon}>
+                  <Ionicons name="checkmark-circle" size={20} color={colors.success} />
+                </View>
+                <View style={styles.activityInfo}>
+                  <Text style={styles.activityLabel}>Выполнено заказов</Text>
+                  <Text style={styles.activityValue}>
+                    {metrics.completedOrders} из {metrics.totalOrders}
+                  </Text>
+                </View>
+                <Text style={styles.completionRate}>
+                  {metrics.totalOrders > 0 ? Math.round((metrics.completedOrders / metrics.totalOrders) * 100) : 0}%
+                </Text>
+              </View>
+            </Card>
+          </Animated.View>
+        )}
 
         {/* Purchase History */}
         <Animated.View entering={FadeInDown.delay(400).duration(500)}>
@@ -519,6 +616,115 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
     marginTop: 2,
     textAlign: 'center',
+  },
+  categoriesCard: {
+    marginBottom: spacing.lg,
+  },
+  categoriesList: {
+    gap: spacing.sm,
+  },
+  categoryItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md,
+  },
+  categoryRank: {
+    width: 28,
+    height: 28,
+    borderRadius: borderRadius.full,
+    backgroundColor: colors.background,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  categoryRankTop: {
+    backgroundColor: `${colors.warning}20`,
+  },
+  categoryRankText: {
+    fontSize: typography.sizes.sm,
+    fontWeight: '600',
+    color: colors.textSecondary,
+  },
+  categoryRankTextTop: {
+    color: colors.warning,
+  },
+  categoryName: {
+    flex: 1,
+    fontSize: typography.sizes.md,
+    color: colors.text,
+  },
+  topBadge: {
+    width: 24,
+    height: 24,
+    borderRadius: borderRadius.full,
+    backgroundColor: `${colors.warning}15`,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  activityCard: {
+    marginBottom: spacing.lg,
+  },
+  activityItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md,
+  },
+  activityIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: borderRadius.md,
+    backgroundColor: colors.background,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  activityInfo: {
+    flex: 1,
+  },
+  activityLabel: {
+    fontSize: typography.sizes.xs,
+    color: colors.textSecondary,
+  },
+  activityValue: {
+    fontSize: typography.sizes.md,
+    fontWeight: '600',
+    color: colors.text,
+    marginTop: 2,
+  },
+  activityDivider: {
+    height: 1,
+    backgroundColor: colors.borderLight,
+    marginVertical: spacing.md,
+  },
+  daysAgoBadge: {
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 4,
+    borderRadius: borderRadius.full,
+  },
+  daysAgoBadgeRecent: {
+    backgroundColor: `${colors.success}15`,
+  },
+  daysAgoBadgeNormal: {
+    backgroundColor: `${colors.primary}15`,
+  },
+  daysAgoBadgeOld: {
+    backgroundColor: `${colors.warning}15`,
+  },
+  daysAgoText: {
+    fontSize: typography.sizes.xs,
+    fontWeight: '600',
+  },
+  daysAgoTextRecent: {
+    color: colors.success,
+  },
+  daysAgoTextNormal: {
+    color: colors.primary,
+  },
+  daysAgoTextOld: {
+    color: colors.warning,
+  },
+  completionRate: {
+    fontSize: typography.sizes.lg,
+    fontWeight: '700',
+    color: colors.success,
   },
   ordersCard: {
     paddingVertical: spacing.xs,

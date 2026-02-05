@@ -18,7 +18,6 @@ import {
   getDataState,
   subscribeData,
   fetchData,
-  searchCustomers,
 } from '@/store/dataStore';
 import { useLocalization } from '@/localization';
 import { Customer, CustomerValueTag, CustomerWithValue } from '@/types';
@@ -199,7 +198,7 @@ export default function CustomersScreen() {
     setFilterTag(tag);
   };
 
-  const filterTags: Array<{ tag: CustomerValueTag | 'all'; label: string }> = [
+  const filterTags: { tag: CustomerValueTag | 'all'; label: string }[] = [
     { tag: 'all', label: t.common.all },
     { tag: 'vip', label: t.customers.vip },
     { tag: 'high_value', label: t.customers.highValue },

@@ -16,9 +16,15 @@ export interface Customer {
   phone?: string;
   email?: string;
   address?: string;
+  company?: string;
+  notes?: string;
   totalOrders: number;
   totalSpent: number;
+  lastOrderDate?: string;
+  averageCheck?: number;
+  topCategories?: string[];
   createdAt: string;
+  updatedAt?: string;
 }
 
 export interface Order {
@@ -75,6 +81,7 @@ export interface Product {
   sku: string;
   barcode?: string;
   price: number;
+  costPrice: number; // Себестоимость
   stock: number;
   category: string;
   categoryId?: string;
@@ -87,6 +94,9 @@ export interface Product {
   stockHistory?: StockHistoryEntry[];
   createdAt?: string;
   updatedAt?: string;
+  // Computed fields (can be calculated)
+  margin?: number; // (price - costPrice) / price * 100
+  profit?: number; // price - costPrice
 }
 
 export interface KPIData {
@@ -189,8 +199,9 @@ export type CustomerValueTag = 'vip' | 'regular' | 'new' | 'inactive' | 'high_va
 
 export interface CustomerWithValue extends Customer {
   valueTag: CustomerValueTag;
-  lastOrderDate?: string;
   averageOrderValue: number;
+  daysSinceLastOrder?: number;
+  orderFrequency?: number; // orders per month
 }
 
 // Product variants

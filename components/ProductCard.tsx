@@ -24,6 +24,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onPress, show
   const isLowStock = product.stock <= product.minStock;
   const isOutOfStock = product.stock === 0;
 
+  // Calculate margin
+  const margin = product.costPrice > 0
+    ? Math.round(((product.price - product.costPrice) / product.price) * 100)
+    : 0;
+  const profit = product.price - (product.costPrice || 0);
+
   return (
     <Card style={styles.card} onPress={onPress}>
       <View style={styles.imageContainer}>
@@ -47,7 +53,24 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onPress, show
           )}
         </View>
 
-        <Text style={styles.sku}>SKU: {product.sku}</Text>
+        <View style={styles.skuRow}>
+          <Text style={styles.sku}>SKU: {product.sku}</Text>
+          {margin > 0 && (
+            <View style={[styles.marginBadge, margin >= 40 ? styles.marginHigh : margin >= 25 ? styles.marginMedium : styles.marginLow]}>
+              <Text style={[styles.marginText, margin >= 40 ? styles.marginTextHigh : margin >= 25 ? styles.marginTextMedium : styles.marginTextLow]}>
+                {margin}%
+              </Text>
+            </View>
+          )}
+        </View>
+
+        <View style={styles.priceRow}>
+          {product.costPrice > 0 && (
+            <Text style={styles.costPrice}>
+              Себест.: {formatCurrency(product.costPrice)}
+            </Text>
+          )}
+        </View>
 
         <View style={styles.footer}>
           <View style={styles.stockContainer}>
@@ -66,7 +89,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onPress, show
               {isOutOfStock ? 'Нет в наличии' : `${product.stock} шт.`}
             </Text>
           </View>
-          <Text style={styles.price}>{formatCurrency(product.price)}</Text>
+          <View style={styles.priceContainer}>
+            <Text style={styles.price}>{formatCurrency(product.price)}</Text>
+            {profit > 0 && (
+              <Text style={styles.profitText}>+{formatCurrency(profit)}</Text>
+            )}
+          </View>
         </View>
       </View>
 
@@ -132,10 +160,57 @@ const styles = StyleSheet.create({
     color: colors.error,
     fontWeight: '500',
   },
+  skuRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 2,
+  },
   sku: {
     fontSize: typography.sizes.xs,
     color: colors.textLight,
-    marginBottom: spacing.sm,
+  },
+  marginBadge: {
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: borderRadius.sm,
+  },
+  marginHigh: {
+    backgroundColor: `${colors.success}15`,
+  },
+  marginMedium: {
+    backgroundColor: `${colors.warning}15`,
+  },
+  marginLow: {
+    backgroundColor: `${colors.textLight}15`,
+  },
+  marginText: {
+    fontSize: 10,
+    fontWeight: '700',
+  },
+  marginTextHigh: {
+    color: colors.success,
+  },
+  marginTextMedium: {
+    color: colors.warning,
+  },
+  marginTextLow: {
+    color: colors.textSecondary,
+  },
+  priceRow: {
+    marginBottom: spacing.xs,
+  },
+  costPrice: {
+    fontSize: typography.sizes.xs,
+    color: colors.textLight,
+  },
+  priceContainer: {
+    alignItems: 'flex-end',
+  },
+  profitText: {
+    fontSize: typography.sizes.xs,
+    color: colors.success,
+    fontWeight: '500',
   },
   footer: {
     flexDirection: 'row',

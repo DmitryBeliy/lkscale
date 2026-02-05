@@ -221,10 +221,57 @@ export default function ProductDetailScreen() {
           <Card style={styles.infoCard}>
             <Text style={styles.productName}>{product.name}</Text>
             <Text style={styles.productSku}>{t.inventory.sku}: {product.sku}</Text>
-            <View style={styles.priceRow}>
-              <Text style={styles.priceLabel}>{t.inventory.price}</Text>
-              <Text style={styles.priceValue}>{formatCurrency(product.price)}</Text>
+
+            {/* Price Section with Cost and Margin */}
+            <View style={styles.pricingSection}>
+              <View style={styles.priceMainRow}>
+                <View>
+                  <Text style={styles.priceLabel}>{t.inventory.price}</Text>
+                  <Text style={styles.priceValue}>{formatCurrency(product.price)}</Text>
+                </View>
+                {(() => {
+                  const margin = product.costPrice > 0
+                    ? Math.round(((product.price - product.costPrice) / product.price) * 100)
+                    : 0;
+                  const profit = product.price - (product.costPrice || 0);
+                  return margin > 0 ? (
+                    <View style={[
+                      styles.marginCard,
+                      margin >= 40 ? styles.marginCardHigh : margin >= 25 ? styles.marginCardMedium : styles.marginCardLow
+                    ]}>
+                      <Text style={styles.marginLabel}>Маржа</Text>
+                      <Text style={[
+                        styles.marginValue,
+                        margin >= 40 ? styles.marginValueHigh : margin >= 25 ? styles.marginValueMedium : styles.marginValueLow
+                      ]}>
+                        {margin}%
+                      </Text>
+                    </View>
+                  ) : null;
+                })()}
+              </View>
+
+              {/* Cost Price and Profit Row */}
+              {product.costPrice > 0 && (
+                <View style={styles.costProfitRow}>
+                  <View style={styles.costItem}>
+                    <Ionicons name="wallet-outline" size={16} color={colors.textSecondary} />
+                    <View>
+                      <Text style={styles.costLabel}>Себестоимость</Text>
+                      <Text style={styles.costValue}>{formatCurrency(product.costPrice)}</Text>
+                    </View>
+                  </View>
+                  <View style={styles.costItem}>
+                    <Ionicons name="trending-up" size={16} color={colors.success} />
+                    <View>
+                      <Text style={styles.costLabel}>Прибыль</Text>
+                      <Text style={styles.profitValue}>+{formatCurrency(product.price - product.costPrice)}</Text>
+                    </View>
+                  </View>
+                </View>
+              )}
             </View>
+
             <View style={styles.categoryRow}>
               <Ionicons name="pricetag-outline" size={18} color={colors.textSecondary} />
               <Text style={styles.categoryText}>{product.category}</Text>
@@ -630,22 +677,86 @@ const styles = StyleSheet.create({
     color: colors.textLight,
     marginBottom: spacing.md,
   },
-  priceRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+  pricingSection: {
     paddingTop: spacing.md,
     borderTopWidth: 1,
     borderTopColor: colors.borderLight,
   },
+  priceMainRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    marginBottom: spacing.md,
+  },
   priceLabel: {
-    fontSize: typography.sizes.md,
+    fontSize: typography.sizes.sm,
     color: colors.textSecondary,
+    marginBottom: 2,
   },
   priceValue: {
     fontSize: typography.sizes.xxl,
     fontWeight: '700',
     color: colors.primary,
+  },
+  marginCard: {
+    alignItems: 'center',
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.sm,
+    borderRadius: borderRadius.md,
+  },
+  marginCardHigh: {
+    backgroundColor: `${colors.success}15`,
+  },
+  marginCardMedium: {
+    backgroundColor: `${colors.warning}15`,
+  },
+  marginCardLow: {
+    backgroundColor: `${colors.textLight}15`,
+  },
+  marginLabel: {
+    fontSize: typography.sizes.xs,
+    color: colors.textSecondary,
+  },
+  marginValue: {
+    fontSize: typography.sizes.xl,
+    fontWeight: '700',
+  },
+  marginValueHigh: {
+    color: colors.success,
+  },
+  marginValueMedium: {
+    color: colors.warning,
+  },
+  marginValueLow: {
+    color: colors.textSecondary,
+  },
+  costProfitRow: {
+    flexDirection: 'row',
+    gap: spacing.md,
+    marginBottom: spacing.md,
+  },
+  costItem: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    backgroundColor: colors.background,
+    padding: spacing.sm,
+    borderRadius: borderRadius.md,
+  },
+  costLabel: {
+    fontSize: typography.sizes.xs,
+    color: colors.textSecondary,
+  },
+  costValue: {
+    fontSize: typography.sizes.md,
+    fontWeight: '600',
+    color: colors.text,
+  },
+  profitValue: {
+    fontSize: typography.sizes.md,
+    fontWeight: '600',
+    color: colors.success,
   },
   categoryRow: {
     flexDirection: 'row',

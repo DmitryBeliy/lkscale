@@ -134,31 +134,47 @@ export default function AssistantScreen() {
     const data = businessData;
     const lang = language === 'ru' ? 'Russian' : 'English';
 
-    return `You are a business assistant for an inventory and order management app. Respond in ${lang}, concisely and with specific numbers.
+    return `You are a business assistant for "Lkscale" - an inventory, order management and CRM app. Respond in ${lang}, concisely and with specific numbers.
 
-Current business data:
+## Current Business Metrics:
 - Total Sales: ${data.kpi?.totalSales?.toLocaleString() || 0} RUB
-- Sales Change: ${data.kpi?.salesChange || 0}%
+- Sales Change: ${(data.kpi?.salesChange ?? 0) > 0 ? '+' : ''}${data.kpi?.salesChange ?? 0}%
 - Active Orders: ${data.kpi?.activeOrders || 0}
 - Balance: ${data.kpi?.balance?.toLocaleString() || 0} RUB
+- Average Order Value: ${Math.round(data.avgOrderValue || 0).toLocaleString()} RUB
+- Average Margin: ${data.avgMargin || 0}%
+
+## Orders Overview:
 - Total Orders: ${data.totalOrders}
-- Completed Orders: ${data.completedOrders}
-- Pending Orders: ${data.pendingOrders}
-- Total Products: ${data.totalProducts}
-- Total Customers: ${data.totalCustomers}
+- Completed: ${data.completedOrders}
+- Pending: ${data.pendingOrders}
 - Week Sales: ${data.weekSales?.toLocaleString() || 0} RUB
 - Month Sales: ${data.monthSales?.toLocaleString() || 0} RUB
-- Average Order Value: ${Math.round(data.avgOrderValue || 0).toLocaleString()} RUB
+
+## Inventory:
+- Total Products: ${data.totalProducts}
+- Low Stock Items: ${data.lowStockProducts?.length || 0}
 
 Low stock products:
-${data.lowStockProducts?.map((p) => `- ${p.name}: ${p.stock} pcs (min: ${p.minStock})`).join('\n') || 'None'}
+${data.lowStockProducts?.map((p: any) => `- ${p.name}: ${p.stock} pcs (min: ${p.minStock}), margin: ${p.margin}%`).join('\n') || 'None'}
 
-Top 5 products by revenue:
-${data.topProducts?.map((p, i) => `${i + 1}. ${p.name}: ${p.revenue?.toLocaleString()} RUB (sold: ${p.sold} pcs)`).join('\n') || 'No data'}
+## Top 5 Products by Revenue:
+${data.topProducts?.map((p: any, i: number) => `${i + 1}. ${p.name}: ${p.revenue?.toLocaleString()} RUB (sold: ${p.sold}, margin: ${p.margin}%, profit: ${p.profit?.toLocaleString()} RUB)`).join('\n') || 'No data'}
+
+## Highest Margin Products:
+${data.highestMarginProducts?.map((p: any, i: number) => `${i + 1}. ${p.name}: margin ${p.margin}%, profit per unit ${p.profit?.toLocaleString()} RUB`).join('\n') || 'No data'}
+
+## CRM - Top Customers by Revenue:
+${data.topCustomers?.map((c: any, i: number) => `${i + 1}. ${c.name}: ${c.totalSpent?.toLocaleString()} RUB (${c.totalOrders} orders, avg check: ${c.avgCheck?.toLocaleString()} RUB)`).join('\n') || 'No data'}
+
+## Inactive Customers (no orders in 30+ days):
+${data.inactiveCustomers?.map((c: any) => `- ${c.name}: last order ${c.lastOrderDate ? new Date(c.lastOrderDate).toLocaleDateString('ru-RU') : 'never'}, total spent: ${c.totalSpent?.toLocaleString()} RUB`).join('\n') || 'All customers are active'}
+
+## Total Customers: ${data.totalCustomers}
 
 User question: ${question}
 
-Answer briefly (2-4 sentences) with specific numbers and actionable insights.`;
+Answer briefly (2-4 sentences) with specific numbers, names and actionable insights. If asked about customers, products or profits, use the real data provided above.`;
   }, [businessData, language]);
 
   const buildActionPrompt = useCallback((action: ActionCommand['action']) => {
@@ -167,63 +183,93 @@ Answer briefly (2-4 sentences) with specific numbers and actionable insights.`;
 
     switch (action) {
       case 'monthly_report':
-        return `Generate a professional monthly sales report in ${lang}. Format it clearly with sections. Include:
+        return `Generate a professional monthly sales report in ${lang}. Format it clearly with sections and use REAL product and customer names from the data.
 
-Business Data:
+## Business Data:
 - Total Sales: ${data.kpi?.totalSales?.toLocaleString() || 0} RUB
 - Month Sales: ${data.monthSales?.toLocaleString() || 0} RUB
 - Active Orders: ${data.kpi?.activeOrders || 0}
 - Completed Orders: ${data.completedOrders}
 - Average Order Value: ${Math.round(data.avgOrderValue || 0).toLocaleString()} RUB
+- Average Margin: ${data.avgMargin || 0}%
 - Total Products: ${data.totalProducts}
 - Total Customers: ${data.totalCustomers}
 
-Top products:
-${data.topProducts?.map((p, i) => `${i + 1}. ${p.name}: ${p.revenue?.toLocaleString()} RUB`).join('\n') || 'No data'}
+## Top Products (with profit data):
+${data.topProducts?.map((p: any, i: number) => `${i + 1}. ${p.name}: ${p.revenue?.toLocaleString()} RUB revenue, ${p.margin}% margin, ${p.profit?.toLocaleString()} RUB profit`).join('\n') || 'No data'}
 
-Create a structured report with: Executive Summary (2-3 sentences), Sales Overview (key metrics), Top Products (top 3), Key Insights (2-3 points), and Recommendations (2-3 actionable items).`;
+## Top Customers:
+${data.topCustomers?.map((c: any, i: number) => `${i + 1}. ${c.name}: ${c.totalSpent?.toLocaleString()} RUB (${c.totalOrders} orders)`).join('\n') || 'No data'}
+
+Create a structured report with:
+1. Executive Summary (2-3 sentences with key metrics)
+2. Sales & Profit Overview (revenue, margins, order values)
+3. Top Products Analysis (top 3 with margins)
+4. VIP Customer Highlights (mention specific names)
+5. Key Insights (2-3 actionable points)
+6. Recommendations for next month`;
 
       case 'promotional':
-        return `Create engaging promotional messages in ${lang} for VIP customers. The messages should:
-1. Be warm and personalized
-2. Highlight exclusive offers
-3. Create urgency
-4. Include call to action
+        return `Create engaging promotional messages in ${lang} for VIP customers. Use REAL customer and product names.
 
-Business context:
-- Top products: ${data.topProducts?.slice(0, 3).map(p => p.name).join(', ')}
-- Average order value: ${Math.round(data.avgOrderValue || 0).toLocaleString()} RUB
+## VIP Customers to target:
+${data.topCustomers?.slice(0, 3).map((c: any) => `- ${c.name}: ${c.totalSpent?.toLocaleString()} RUB total, avg check ${c.avgCheck?.toLocaleString()} RUB`).join('\n') || 'No VIP data'}
 
-Create 3 versions:
-1. SMS (max 160 characters) - short and punchy
-2. WhatsApp (2-3 sentences) - friendly and personal
-3. Email subject + body (short paragraph) - professional but engaging`;
+## Hot Products to promote:
+${data.topProducts?.slice(0, 3).map((p: any) => `- ${p.name}: bestseller`).join('\n') || 'No data'}
+
+## Highest Margin Products (best for promotions):
+${data.highestMarginProducts?.slice(0, 3).map((p: any) => `- ${p.name}: ${p.margin}% margin`).join('\n') || 'No data'}
+
+Create 3 personalized versions:
+1. SMS (max 160 chars) - for ${data.topCustomers?.[0]?.name || 'VIP client'}, short and punchy
+2. WhatsApp (2-3 sentences) - friendly, mention specific product
+3. Email subject + body - professional, exclusive offer feel`;
 
       case 'inventory_report':
-        return `Generate an inventory status report in ${lang}. Include:
+        return `Generate an inventory status report with profit analysis in ${lang}.
 
-Current inventory:
+## Current Inventory:
 - Total Products: ${data.totalProducts}
 - Low Stock Items: ${data.lowStockProducts?.length || 0}
+- Average Margin: ${data.avgMargin || 0}%
 
-Low stock details:
-${data.lowStockProducts?.map((p) => `- ${p.name}: ${p.stock}/${p.minStock} pcs`).join('\n') || 'All stock levels are healthy'}
+## Low Stock Critical Items:
+${data.lowStockProducts?.map((p: any) => `- ${p.name}: ${p.stock}/${p.minStock} pcs, margin ${p.margin}%`).join('\n') || 'All stock levels are healthy'}
 
-Top selling products:
-${data.topProducts?.map((p, i) => `${i + 1}. ${p.name}: ${p.sold} sold`).join('\n') || 'No data'}
+## Best Selling (High Priority to Restock):
+${data.topProducts?.map((p: any, i: number) => `${i + 1}. ${p.name}: ${p.sold} sold, ${p.margin}% margin`).join('\n') || 'No data'}
 
-Create a report with: Stock Status Summary, Critical Items (if any), Restock Recommendations, and Optimization Tips.`;
+## Highest Margin Products (Maximize Profit):
+${data.highestMarginProducts?.map((p: any, i: number) => `${i + 1}. ${p.name}: ${p.margin}% margin, +${p.profit?.toLocaleString()} RUB per unit`).join('\n') || 'No data'}
+
+Create a report with:
+1. Stock Status Summary
+2. Critical Restock Items (prioritized by margin & sales)
+3. Profit Optimization Recommendations
+4. Dead Stock Analysis (if any)`;
 
       case 'customer_analysis':
-        return `Generate a customer analysis report in ${lang}. Include:
+        return `Generate a comprehensive CRM analysis report in ${lang}. Use REAL customer names.
 
-Customer data:
+## Customer Overview:
 - Total Customers: ${data.totalCustomers}
 - Total Orders: ${data.totalOrders}
 - Average Order Value: ${Math.round(data.avgOrderValue || 0).toLocaleString()} RUB
 - Completed Orders: ${data.completedOrders}
 
-Create a report with: Customer Overview, Value Segments (VIP criteria, Regular, New, Inactive), Retention Insights, and Growth Recommendations.`;
+## Top 5 Customers by Revenue (VIPs):
+${data.topCustomers?.map((c: any, i: number) => `${i + 1}. ${c.name}: ${c.totalSpent?.toLocaleString()} RUB total, ${c.totalOrders} orders, avg ${c.avgCheck?.toLocaleString()} RUB`).join('\n') || 'No data'}
+
+## At-Risk Customers (Inactive 30+ days):
+${data.inactiveCustomers?.map((c: any) => `- ${c.name}: last order ${c.lastOrderDate ? new Date(c.lastOrderDate).toLocaleDateString('ru-RU') : 'never'}, lifetime value ${c.totalSpent?.toLocaleString()} RUB`).join('\n') || 'No inactive customers'}
+
+Create a report with:
+1. Customer Base Overview (total, growth)
+2. VIP Segment Analysis (name specific VIPs, their value)
+3. Retention Insights (active vs at-risk)
+4. Reactivation Recommendations for inactive customers
+5. Growth Strategy (how to increase customer value)`;
 
       default:
         return '';

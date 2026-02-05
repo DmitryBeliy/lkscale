@@ -58,7 +58,19 @@ export default function RootLayout() {
             }}
           />
           <Stack.Screen
+            name="order/create"
+            options={{
+              presentation: 'card',
+            }}
+          />
+          <Stack.Screen
             name="product/[id]"
+            options={{
+              presentation: 'card',
+            }}
+          />
+          <Stack.Screen
+            name="product/edit/[id]"
             options={{
               presentation: 'card',
             }}

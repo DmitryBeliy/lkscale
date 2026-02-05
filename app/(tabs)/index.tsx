@@ -14,6 +14,7 @@ import * as Haptics from 'expo-haptics';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import { Card, SkeletonKPICard, SkeletonCard } from '@/components/ui';
 import { KPICard } from '@/components/KPICard';
+import { SalesChart } from '@/components/charts/SalesChart';
 import { ActivityItem } from '@/components/ActivityItem';
 import { getAuthState, subscribeAuth } from '@/store/authStore';
 import {
@@ -23,7 +24,7 @@ import {
 } from '@/store/dataStore';
 import { useAIInsights } from '@/services/aiInsights';
 import { colors, spacing, typography, borderRadius, shadows } from '@/constants/theme';
-import { KPIData, Activity } from '@/types';
+import { KPIData, Activity, SalesDataPoint } from '@/types';
 
 const formatCurrency = (amount: number) => {
   if (amount >= 1000000) {
@@ -40,6 +41,10 @@ export default function DashboardScreen() {
   const [user, setUser] = useState(getAuthState().user);
   const [kpi, setKpi] = useState<KPIData | null>(null);
   const [activities, setActivities] = useState<Activity[]>([]);
+  const [salesData, setSalesData] = useState<{ week: SalesDataPoint[]; month: SalesDataPoint[] }>({
+    week: [],
+    month: [],
+  });
   const [isLoading, setIsLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -58,6 +63,7 @@ export default function DashboardScreen() {
       const state = getDataState();
       setKpi(state.kpi);
       setActivities(state.activities);
+      setSalesData(state.salesData);
       setIsLoading(state.isLoading);
 
       // Generate AI insights when data is loaded
@@ -98,6 +104,12 @@ export default function DashboardScreen() {
       case 'profile':
         router.push('/(tabs)/profile');
         break;
+      case 'newOrder':
+        router.push('/order/create');
+        break;
+      case 'assistant':
+        router.push('/(tabs)/assistant');
+        break;
     }
   };
 
@@ -134,6 +146,24 @@ export default function DashboardScreen() {
           </Pressable>
         </Animated.View>
 
+        {/* Sales Chart */}
+        <Animated.View entering={FadeInDown.delay(150).duration(500)}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>Продажи</Text>
+            <Pressable onPress={() => handleQuickAction('assistant')}>
+              <View style={styles.aiAnalyzeButton}>
+                <Ionicons name="sparkles" size={14} color={colors.primary} />
+                <Text style={styles.aiAnalyzeText}>Анализ AI</Text>
+              </View>
+            </Pressable>
+          </View>
+          {isLoading ? (
+            <SkeletonCard lines={5} />
+          ) : (
+            <SalesChart weekData={salesData.week} monthData={salesData.month} />
+          )}
+        </Animated.View>
+
         {/* KPI Cards */}
         <Animated.View entering={FadeInDown.delay(200).duration(500)}>
           <Text style={styles.sectionTitle}>Показатели</Text>
@@ -150,7 +180,7 @@ export default function DashboardScreen() {
             <>
               <View style={styles.kpiRow}>
                 <KPICard
-                  title="Продажи"
+                  title="Общие продажи"
                   value={formatCurrency(kpi?.totalSales || 0)}
                   change={kpi?.salesChange}
                   icon="trending-up"
@@ -246,6 +276,17 @@ export default function DashboardScreen() {
         <Animated.View entering={FadeInDown.delay(400).duration(500)}>
           <Text style={styles.sectionTitle}>Быстрые действия</Text>
           <View style={styles.quickActions}>
+            <Pressable
+              style={[styles.quickActionCard, styles.primaryAction]}
+              onPress={() => handleQuickAction('newOrder')}
+            >
+              <View style={[styles.quickActionIcon, { backgroundColor: 'rgba(255,255,255,0.2)' }]}>
+                <Ionicons name="add-circle" size={24} color={colors.textInverse} />
+              </View>
+              <Text style={[styles.quickActionText, { color: colors.textInverse }]}>Новый заказ</Text>
+              <Ionicons name="chevron-forward" size={20} color="rgba(255,255,255,0.7)" />
+            </Pressable>
+
             <Pressable
               style={styles.quickActionCard}
               onPress={() => handleQuickAction('orders')}
@@ -374,11 +415,26 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: spacing.md,
+    marginTop: spacing.md,
   },
   seeAllText: {
     fontSize: typography.sizes.sm,
     color: colors.primary,
     fontWeight: '500',
+  },
+  aiAnalyzeButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: `${colors.primary}15`,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 6,
+    borderRadius: borderRadius.full,
+    gap: 4,
+  },
+  aiAnalyzeText: {
+    fontSize: typography.sizes.xs,
+    fontWeight: '600',
+    color: colors.primary,
   },
   kpiRow: {
     flexDirection: 'row',
@@ -461,6 +517,9 @@ const styles = StyleSheet.create({
     borderRadius: borderRadius.lg,
     padding: spacing.md,
     ...shadows.md,
+  },
+  primaryAction: {
+    backgroundColor: colors.primary,
   },
   quickActionIcon: {
     width: 48,

@@ -10,6 +10,17 @@ export interface User {
   createdAt: string;
 }
 
+export interface Customer {
+  id: string;
+  name: string;
+  phone?: string;
+  email?: string;
+  address?: string;
+  totalOrders: number;
+  totalSpent: number;
+  createdAt: string;
+}
+
 export interface Order {
   id: string;
   orderNumber: string;
@@ -18,6 +29,7 @@ export interface Order {
   itemsCount: number;
   createdAt: string;
   updatedAt: string;
+  customerId?: string;
   customer?: {
     name: string;
     phone?: string;
@@ -25,6 +37,7 @@ export interface Order {
   };
   items: OrderItem[];
   notes?: string;
+  paymentMethod?: 'cash' | 'card' | 'transfer' | 'online';
 }
 
 export interface OrderItem {
@@ -36,17 +49,44 @@ export interface OrderItem {
   sku?: string;
 }
 
+export interface PriceHistoryEntry {
+  date: string;
+  price: number;
+}
+
+export interface StockHistoryEntry {
+  date: string;
+  stock: number;
+  change: number;
+  reason: 'sale' | 'restock' | 'adjustment' | 'return';
+}
+
+export interface ProductCategory {
+  id: string;
+  name: string;
+  icon: string;
+  color: string;
+  productCount: number;
+}
+
 export interface Product {
   id: string;
   name: string;
   sku: string;
+  barcode?: string;
   price: number;
   stock: number;
   category: string;
+  categoryId?: string;
   image?: string;
+  images?: string[];
   description?: string;
   minStock: number;
   isActive: boolean;
+  priceHistory?: PriceHistoryEntry[];
+  stockHistory?: StockHistoryEntry[];
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface KPIData {
@@ -57,6 +97,13 @@ export interface KPIData {
   balance: number;
   balanceChange: number;
   lowStockItems: number;
+}
+
+export interface SalesDataPoint {
+  date: string;
+  label: string;
+  sales: number;
+  orders: number;
 }
 
 export interface Activity {
@@ -78,6 +125,14 @@ export interface AIInsight {
   action?: string;
 }
 
+export interface ChatMessage {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+  timestamp: string;
+  isLoading?: boolean;
+}
+
 export interface AuthState {
   isAuthenticated: boolean;
   isLoading: boolean;
@@ -90,4 +145,21 @@ export interface AppSettings {
   darkMode: boolean;
   language: 'ru' | 'en';
   autoSync: boolean;
+}
+
+export interface CartItem {
+  product: Product;
+  quantity: number;
+}
+
+export interface NewOrderData {
+  customerId?: string;
+  customer?: {
+    name: string;
+    phone?: string;
+    address?: string;
+  };
+  items: CartItem[];
+  paymentMethod: 'cash' | 'card' | 'transfer' | 'online';
+  notes?: string;
 }

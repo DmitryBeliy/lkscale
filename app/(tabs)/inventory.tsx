@@ -7,6 +7,7 @@ import {
   RefreshControl,
   Pressable,
   TextInput,
+  Alert,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
@@ -16,6 +17,7 @@ import Animated, { FadeInDown } from 'react-native-reanimated';
 import { ProductCard } from '@/components/ProductCard';
 import { SkeletonCard } from '@/components/ui/Skeleton';
 import { Card } from '@/components/ui/Card';
+import { BarcodeScanner, ScannerButton } from '@/components/BarcodeScanner';
 import {
   getDataState,
   subscribeData,
@@ -23,6 +25,8 @@ import {
   searchProducts,
   getCategories,
   getLowStockProducts,
+  getProductByBarcode,
+  getProductBySku,
 } from '@/store/dataStore';
 import { Product } from '@/types';
 import { colors, spacing, typography, borderRadius, shadows } from '@/constants/theme';
@@ -38,6 +42,7 @@ export default function InventoryScreen() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
   const [showLowStockOnly, setShowLowStockOnly] = useState(false);
+  const [scannerVisible, setScannerVisible] = useState(false);
 
   useEffect(() => {
     const unsub = subscribeData(() => {
@@ -85,6 +90,28 @@ export default function InventoryScreen() {
   const handleProductPress = (productId: string) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     router.push(`/product/${productId}`);
+  };
+
+  const handleScan = (data: string, type: string) => {
+    // Try to find product by barcode first, then by SKU
+    let product = getProductByBarcode(data);
+    if (!product) {
+      product = getProductBySku(data);
+    }
+
+    if (product) {
+      router.push(`/product/${product.id}`);
+    } else {
+      // If not found, set it as search query
+      Alert.alert(
+        'Товар не найден',
+        `Товар со штрих-кодом или SKU "${data}" не найден. Хотите использовать это значение для поиска?`,
+        [
+          { text: 'Отмена', style: 'cancel' },
+          { text: 'Искать', onPress: () => setSearchQuery(data) },
+        ]
+      );
+    }
   };
 
   const getCategoryLabel = (category: string) => {
@@ -217,9 +244,23 @@ export default function InventoryScreen() {
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
+      {/* Barcode Scanner */}
+      <BarcodeScanner
+        visible={scannerVisible}
+        onClose={() => setScannerVisible(false)}
+        onScan={handleScan}
+        title="Сканировать товар"
+        description="Наведите камеру на штрих-код товара"
+      />
+
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.title}>Склад</Text>
+        <ScannerButton
+          onPress={() => setScannerVisible(true)}
+          variant="secondary"
+          size="medium"
+        />
       </View>
 
       {isLoading ? (
@@ -263,6 +304,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.md,
   },

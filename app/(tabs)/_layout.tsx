@@ -66,6 +66,19 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="assistant"
+        options={{
+          title: 'Ассистент',
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? 'sparkles' : 'sparkles-outline'}
+              size={24}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="profile"
         options={{
           title: 'Профиль',

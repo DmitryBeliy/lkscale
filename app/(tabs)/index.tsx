@@ -1,0 +1,483 @@
+import React, { useEffect, useState, useCallback } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  RefreshControl,
+  Pressable,
+} from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { router } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
+import * as Haptics from 'expo-haptics';
+import Animated, { FadeInDown } from 'react-native-reanimated';
+import { Card, SkeletonKPICard, SkeletonCard } from '@/components/ui';
+import { KPICard } from '@/components/KPICard';
+import { ActivityItem } from '@/components/ActivityItem';
+import { getAuthState, subscribeAuth } from '@/store/authStore';
+import {
+  getDataState,
+  subscribeData,
+  fetchData,
+} from '@/store/dataStore';
+import { useAIInsights } from '@/services/aiInsights';
+import { colors, spacing, typography, borderRadius, shadows } from '@/constants/theme';
+import { KPIData, Activity } from '@/types';
+
+const formatCurrency = (amount: number) => {
+  if (amount >= 1000000) {
+    return `${(amount / 1000000).toFixed(1)} млн ₽`;
+  }
+  if (amount >= 1000) {
+    return `${(amount / 1000).toFixed(0)} тыс ₽`;
+  }
+  return `${amount.toFixed(0)} ₽`;
+};
+
+export default function DashboardScreen() {
+  const insets = useSafeAreaInsets();
+  const [user, setUser] = useState(getAuthState().user);
+  const [kpi, setKpi] = useState<KPIData | null>(null);
+  const [activities, setActivities] = useState<Activity[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const {
+    insights: aiInsights,
+    isLoading: loadingInsights,
+    generateInsights,
+  } = useAIInsights();
+
+  useEffect(() => {
+    const unsubAuth = subscribeAuth(() => {
+      setUser(getAuthState().user);
+    });
+
+    const unsubData = subscribeData(() => {
+      const state = getDataState();
+      setKpi(state.kpi);
+      setActivities(state.activities);
+      setIsLoading(state.isLoading);
+
+      // Generate AI insights when data is loaded
+      if (!state.isLoading && state.kpi) {
+        generateInsights({
+          kpi: state.kpi,
+          orders: state.orders,
+          products: state.products,
+        });
+      }
+    });
+
+    fetchData();
+
+    return () => {
+      unsubAuth();
+      unsubData();
+    };
+  }, [generateInsights]);
+
+  const onRefresh = useCallback(async () => {
+    setRefreshing(true);
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    await fetchData();
+    // AI insights will be regenerated via the subscription
+    setRefreshing(false);
+  }, []);
+
+  const handleQuickAction = (action: string) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    switch (action) {
+      case 'orders':
+        router.push('/(tabs)/orders');
+        break;
+      case 'inventory':
+        router.push('/(tabs)/inventory');
+        break;
+      case 'profile':
+        router.push('/(tabs)/profile');
+        break;
+    }
+  };
+
+  return (
+    <View style={[styles.container, { paddingTop: insets.top }]}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContent}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            tintColor={colors.primary}
+          />
+        }
+      >
+        {/* Header */}
+        <Animated.View entering={FadeInDown.delay(100).duration(500)} style={styles.header}>
+          <View style={styles.userInfo}>
+            <View style={styles.avatar}>
+              <Ionicons name="person" size={28} color={colors.primary} />
+            </View>
+            <View>
+              <Text style={styles.greeting}>Привет,</Text>
+              <Text style={styles.userName}>{user?.name || 'Пользователь'}!</Text>
+            </View>
+          </View>
+          <Pressable
+            style={styles.notificationButton}
+            onPress={() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)}
+          >
+            <Ionicons name="notifications-outline" size={24} color={colors.text} />
+            <View style={styles.notificationBadge} />
+          </Pressable>
+        </Animated.View>
+
+        {/* KPI Cards */}
+        <Animated.View entering={FadeInDown.delay(200).duration(500)}>
+          <Text style={styles.sectionTitle}>Показатели</Text>
+          {isLoading ? (
+            <View style={styles.kpiRow}>
+              <View style={styles.kpiCardSkeleton}>
+                <SkeletonKPICard />
+              </View>
+              <View style={styles.kpiCardSkeleton}>
+                <SkeletonKPICard />
+              </View>
+            </View>
+          ) : (
+            <>
+              <View style={styles.kpiRow}>
+                <KPICard
+                  title="Продажи"
+                  value={formatCurrency(kpi?.totalSales || 0)}
+                  change={kpi?.salesChange}
+                  icon="trending-up"
+                  iconColor={colors.success}
+                />
+                <KPICard
+                  title="Активные заказы"
+                  value={`${kpi?.activeOrders || 0}`}
+                  change={kpi?.ordersChange}
+                  icon="cart"
+                  iconColor={colors.primary}
+                />
+              </View>
+              <View style={styles.kpiRow}>
+                <KPICard
+                  title="Баланс"
+                  value={formatCurrency(kpi?.balance || 0)}
+                  change={kpi?.balanceChange}
+                  icon="wallet"
+                  iconColor={colors.warning}
+                />
+                <KPICard
+                  title="Низкий запас"
+                  value={`${kpi?.lowStockItems || 0} товаров`}
+                  icon="warning"
+                  iconColor={colors.error}
+                  onPress={() => handleQuickAction('inventory')}
+                />
+              </View>
+            </>
+          )}
+        </Animated.View>
+
+        {/* AI Insights */}
+        <Animated.View entering={FadeInDown.delay(300).duration(500)}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>Умные подсказки</Text>
+            <View style={styles.aiBadge}>
+              <Ionicons name="sparkles" size={14} color={colors.primary} />
+              <Text style={styles.aiBadgeText}>AI</Text>
+            </View>
+          </View>
+
+          {loadingInsights || isLoading ? (
+            <SkeletonCard lines={2} />
+          ) : (
+            aiInsights.map((insight) => (
+              <Card key={insight.id} style={styles.insightCard}>
+                <View style={styles.insightHeader}>
+                  <View
+                    style={[
+                      styles.insightIcon,
+                      insight.type === 'recommendation' && styles.insightIconRecommendation,
+                      insight.type === 'alert' && styles.insightIconAlert,
+                    ]}
+                  >
+                    <Ionicons
+                      name={
+                        insight.type === 'trend'
+                          ? 'analytics'
+                          : insight.type === 'recommendation'
+                          ? 'bulb'
+                          : 'alert-circle'
+                      }
+                      size={18}
+                      color={
+                        insight.type === 'trend'
+                          ? colors.primary
+                          : insight.type === 'recommendation'
+                          ? colors.warning
+                          : colors.error
+                      }
+                    />
+                  </View>
+                  <Text style={styles.insightTitle}>{insight.title}</Text>
+                </View>
+                <Text style={styles.insightDescription}>{insight.description}</Text>
+                {insight.actionable && (
+                  <Pressable
+                    style={styles.insightAction}
+                    onPress={() => handleQuickAction('inventory')}
+                  >
+                    <Text style={styles.insightActionText}>{insight.action}</Text>
+                    <Ionicons name="chevron-forward" size={16} color={colors.primary} />
+                  </Pressable>
+                )}
+              </Card>
+            ))
+          )}
+        </Animated.View>
+
+        {/* Quick Actions */}
+        <Animated.View entering={FadeInDown.delay(400).duration(500)}>
+          <Text style={styles.sectionTitle}>Быстрые действия</Text>
+          <View style={styles.quickActions}>
+            <Pressable
+              style={styles.quickActionCard}
+              onPress={() => handleQuickAction('orders')}
+            >
+              <View style={[styles.quickActionIcon, { backgroundColor: `${colors.primary}15` }]}>
+                <Ionicons name="receipt" size={24} color={colors.primary} />
+              </View>
+              <Text style={styles.quickActionText}>Мои Заказы</Text>
+              <Ionicons name="chevron-forward" size={20} color={colors.textLight} />
+            </Pressable>
+
+            <Pressable
+              style={styles.quickActionCard}
+              onPress={() => handleQuickAction('inventory')}
+            >
+              <View style={[styles.quickActionIcon, { backgroundColor: `${colors.success}15` }]}>
+                <Ionicons name="cube" size={24} color={colors.success} />
+              </View>
+              <Text style={styles.quickActionText}>Склад</Text>
+              <Ionicons name="chevron-forward" size={20} color={colors.textLight} />
+            </Pressable>
+
+            <Pressable
+              style={styles.quickActionCard}
+              onPress={() => handleQuickAction('profile')}
+            >
+              <View style={[styles.quickActionIcon, { backgroundColor: `${colors.warning}15` }]}>
+                <Ionicons name="settings" size={24} color={colors.warning} />
+              </View>
+              <Text style={styles.quickActionText}>Настройки</Text>
+              <Ionicons name="chevron-forward" size={20} color={colors.textLight} />
+            </Pressable>
+          </View>
+        </Animated.View>
+
+        {/* Recent Activity */}
+        <Animated.View entering={FadeInDown.delay(500).duration(500)}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>Последняя активность</Text>
+            <Pressable onPress={() => handleQuickAction('orders')}>
+              <Text style={styles.seeAllText}>Все</Text>
+            </Pressable>
+          </View>
+
+          <Card style={styles.activityCard}>
+            {isLoading ? (
+              Array.from({ length: 3 }).map((_, i) => (
+                <SkeletonCard key={i} lines={2} />
+              ))
+            ) : (
+              activities.slice(0, 5).map((activity) => (
+                <ActivityItem key={activity.id} activity={activity} />
+              ))
+            )}
+          </Card>
+        </Animated.View>
+      </ScrollView>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.background,
+  },
+  scrollContent: {
+    padding: spacing.md,
+    paddingBottom: spacing.xxl,
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: spacing.lg,
+  },
+  userInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  avatar: {
+    width: 50,
+    height: 50,
+    borderRadius: borderRadius.full,
+    backgroundColor: `${colors.primary}15`,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: spacing.md,
+  },
+  greeting: {
+    fontSize: typography.sizes.sm,
+    color: colors.textSecondary,
+  },
+  userName: {
+    fontSize: typography.sizes.lg,
+    fontWeight: '700',
+    color: colors.text,
+  },
+  notificationButton: {
+    width: 44,
+    height: 44,
+    borderRadius: borderRadius.full,
+    backgroundColor: colors.surface,
+    alignItems: 'center',
+    justifyContent: 'center',
+    ...shadows.sm,
+    position: 'relative',
+  },
+  notificationBadge: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: colors.error,
+  },
+  sectionTitle: {
+    fontSize: typography.sizes.lg,
+    fontWeight: '600',
+    color: colors.text,
+    marginBottom: spacing.md,
+  },
+  sectionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: spacing.md,
+  },
+  seeAllText: {
+    fontSize: typography.sizes.sm,
+    color: colors.primary,
+    fontWeight: '500',
+  },
+  kpiRow: {
+    flexDirection: 'row',
+    marginHorizontal: -spacing.xs,
+    marginBottom: spacing.xs,
+  },
+  kpiCardSkeleton: {
+    flex: 1,
+    marginHorizontal: spacing.xs,
+  },
+  aiBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: `${colors.primary}15`,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 4,
+    borderRadius: borderRadius.full,
+    gap: 4,
+  },
+  aiBadgeText: {
+    fontSize: typography.sizes.xs,
+    fontWeight: '600',
+    color: colors.primary,
+  },
+  insightCard: {
+    marginBottom: spacing.sm,
+  },
+  insightHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: spacing.sm,
+  },
+  insightIcon: {
+    width: 32,
+    height: 32,
+    borderRadius: borderRadius.sm,
+    backgroundColor: `${colors.primary}15`,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: spacing.sm,
+  },
+  insightIconRecommendation: {
+    backgroundColor: `${colors.warning}15`,
+  },
+  insightIconAlert: {
+    backgroundColor: `${colors.error}15`,
+  },
+  insightTitle: {
+    fontSize: typography.sizes.md,
+    fontWeight: '600',
+    color: colors.text,
+  },
+  insightDescription: {
+    fontSize: typography.sizes.sm,
+    color: colors.textSecondary,
+    lineHeight: typography.sizes.sm * 1.5,
+  },
+  insightAction: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: spacing.sm,
+    paddingTop: spacing.sm,
+    borderTopWidth: 1,
+    borderTopColor: colors.borderLight,
+  },
+  insightActionText: {
+    fontSize: typography.sizes.sm,
+    fontWeight: '500',
+    color: colors.primary,
+    marginRight: spacing.xs,
+  },
+  quickActions: {
+    gap: spacing.sm,
+    marginBottom: spacing.lg,
+  },
+  quickActionCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.surface,
+    borderRadius: borderRadius.lg,
+    padding: spacing.md,
+    ...shadows.md,
+  },
+  quickActionIcon: {
+    width: 48,
+    height: 48,
+    borderRadius: borderRadius.md,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: spacing.md,
+  },
+  quickActionText: {
+    flex: 1,
+    fontSize: typography.sizes.md,
+    fontWeight: '600',
+    color: colors.text,
+  },
+  activityCard: {
+    paddingTop: spacing.xs,
+    paddingBottom: spacing.xs,
+  },
+});

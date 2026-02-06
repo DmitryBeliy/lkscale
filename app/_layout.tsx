@@ -7,6 +7,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AuthProvider } from '@fastshot/auth';
 import { LocalizationProvider } from '@/localization';
 import { ThemeProvider, useTheme } from '@/contexts/ThemeContext';
+import { OnboardingProvider } from '@/contexts/OnboardingContext';
 import { supabase, initConnectionMonitor } from '@/lib/supabase';
 import { loadCachedData } from '@/store/dataStore';
 import { loadNotifications } from '@/store/notificationStore';
@@ -121,6 +122,48 @@ function RootLayoutContent() {
             presentation: 'card',
           }}
         />
+        <Stack.Screen
+          name="onboarding/index"
+          options={{
+            animation: 'fade',
+          }}
+        />
+        <Stack.Screen
+          name="support/faq"
+          options={{
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="support/feedback"
+          options={{
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="support/privacy"
+          options={{
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="support/terms"
+          options={{
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="settings/regional"
+          options={{
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="settings/business"
+          options={{
+            presentation: 'card',
+          }}
+        />
       </Stack>
     </>
   );
@@ -165,7 +208,9 @@ export default function RootLayout() {
             }}
           >
             <LocalizationProvider>
-              <RootLayoutContent />
+              <OnboardingProvider>
+                <RootLayoutContent />
+              </OnboardingProvider>
             </LocalizationProvider>
           </AuthProvider>
         </ThemeProvider>

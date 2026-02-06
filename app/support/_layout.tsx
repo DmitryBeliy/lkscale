@@ -1,7 +1,7 @@
 import { Stack } from 'expo-router';
 import { useTheme } from '@/contexts/ThemeContext';
 
-export default function SettingsLayout() {
+export default function SupportLayout() {
   const { colors } = useTheme();
 
   return (
@@ -12,9 +12,10 @@ export default function SettingsLayout() {
         animation: 'slide_from_right',
       }}
     >
-      <Stack.Screen name="store" />
-      <Stack.Screen name="regional" />
-      <Stack.Screen name="business" />
+      <Stack.Screen name="faq" />
+      <Stack.Screen name="feedback" />
+      <Stack.Screen name="privacy" />
+      <Stack.Screen name="terms" />
     </Stack>
   );
 }

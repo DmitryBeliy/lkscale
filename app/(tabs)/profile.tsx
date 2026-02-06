@@ -19,8 +19,11 @@ import { Card, Button } from '@/components/ui';
 import { getAuthState, subscribeAuth, logout } from '@/store/authStore';
 import { getDataState, subscribeData } from '@/store/dataStore';
 import { useLocalization, Language } from '@/localization';
+import { useOnboarding } from '@/contexts/OnboardingContext';
+import { useTheme } from '@/contexts/ThemeContext';
 import { User, AppSettings } from '@/types';
-import { colors, spacing, typography, borderRadius, shadows } from '@/constants/theme';
+import { AISmartSearch } from '@/components/AISmartSearch';
+import { AIVirtualGuide } from '@/components/AIVirtualGuide';
 
 interface MenuItemProps {
   icon: keyof typeof Ionicons.glyphMap;
@@ -35,61 +38,66 @@ interface MenuItemProps {
   gradient?: [string, string];
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({
-  icon,
-  iconColor = colors.primary,
-  title,
-  subtitle,
-  onPress,
-  showArrow = true,
-  rightElement,
-  badge,
-  badgeColor = colors.primary,
-  gradient,
-}) => (
-  <Pressable
-    style={styles.menuItem}
-    onPress={onPress}
-    disabled={!onPress}
-  >
-    {gradient ? (
-      <LinearGradient colors={gradient} style={styles.menuIcon}>
-        <Ionicons name={icon} size={22} color="#fff" />
-      </LinearGradient>
-    ) : (
-      <View style={[styles.menuIcon, { backgroundColor: `${iconColor}15` }]}>
-        <Ionicons name={icon} size={22} color={iconColor} />
-      </View>
-    )}
-    <View style={styles.menuContent}>
-      <View style={styles.menuTitleRow}>
-        <Text style={styles.menuTitle}>{title}</Text>
-        {badge && (
-          <View style={[styles.menuBadge, { backgroundColor: `${badgeColor}15` }]}>
-            <Text style={[styles.menuBadgeText, { color: badgeColor }]}>{badge}</Text>
-          </View>
-        )}
-      </View>
-      {subtitle && <Text style={styles.menuSubtitle}>{subtitle}</Text>}
-    </View>
-    {rightElement || (showArrow && onPress && (
-      <Ionicons name="chevron-forward" size={20} color={colors.textLight} />
-    ))}
-  </Pressable>
-);
-
 export default function ProfileScreen() {
   const insets = useSafeAreaInsets();
   const { t, language, setLanguage, formatCurrency, formatDate } = useLocalization();
+  const { isDemoMode, toggleDemoMode, resetOnboarding } = useOnboarding();
+  const { colors, spacing, typography, borderRadius, shadows, isDark, toggleTheme } = useTheme();
+
   const [user, setUser] = useState<User | null>(getAuthState().user);
   const [lastSync, setLastSync] = useState<string | null>(null);
   const [showLanguageModal, setShowLanguageModal] = useState(false);
+  const [showAISearch, setShowAISearch] = useState(false);
+  const [showAIGuide, setShowAIGuide] = useState(false);
   const [settings, setSettings] = useState<AppSettings>({
     notifications: true,
-    darkMode: false,
+    darkMode: isDark,
     language: language,
     autoSync: true,
   });
+
+  const MenuItem: React.FC<MenuItemProps> = ({
+    icon,
+    iconColor = colors.primary,
+    title,
+    subtitle,
+    onPress,
+    showArrow = true,
+    rightElement,
+    badge,
+    badgeColor = colors.primary,
+    gradient,
+  }) => (
+    <Pressable
+      style={[styles.menuItem, { borderBottomColor: colors.borderLight }]}
+      onPress={onPress}
+      disabled={!onPress}
+    >
+      {gradient ? (
+        <LinearGradient colors={gradient} style={[styles.menuIcon, { borderRadius: borderRadius.md }]}>
+          <Ionicons name={icon} size={22} color="#fff" />
+        </LinearGradient>
+      ) : (
+        <View style={[styles.menuIcon, { backgroundColor: `${iconColor}15`, borderRadius: borderRadius.md }]}>
+          <Ionicons name={icon} size={22} color={iconColor} />
+        </View>
+      )}
+      <View style={styles.menuContent}>
+        <View style={styles.menuTitleRow}>
+          <Text style={[styles.menuTitle, { color: colors.text, fontSize: typography.sizes.md }]}>{title}</Text>
+          {badge && (
+            <View style={[styles.menuBadge, { backgroundColor: `${badgeColor}15`, borderRadius: borderRadius.sm }]}>
+              <Text style={[styles.menuBadgeText, { color: badgeColor }]}>{badge}</Text>
+            </View>
+          )}
+        </View>
+        {subtitle && <Text style={[styles.menuSubtitle, { color: colors.textSecondary, fontSize: typography.sizes.xs }]}>{subtitle}</Text>}
+      </View>
+      {rightElement || (showArrow && onPress && (
+        <Ionicons name="chevron-forward" size={20} color={colors.textLight} />
+      ))}
+    </Pressable>
+  );
 
   useEffect(() => {
     const unsubAuth = subscribeAuth(() => {
@@ -154,40 +162,89 @@ export default function ProfileScreen() {
     return language === 'ru' ? t.profile.russian : t.profile.english;
   };
 
+  const handleDemoModeToggle = async () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    await toggleDemoMode();
+  };
+
+  const handleResetOnboarding = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    Alert.alert(
+      language === 'ru' ? 'Сбросить обучение' : 'Reset Onboarding',
+      language === 'ru'
+        ? 'Вы увидите экраны знакомства с приложением заново при следующем запуске.'
+        : 'You will see the onboarding screens again on next launch.',
+      [
+        { text: t.common.cancel, style: 'cancel' },
+        {
+          text: language === 'ru' ? 'Сбросить' : 'Reset',
+          onPress: async () => {
+            await resetOnboarding();
+            Alert.alert(
+              language === 'ru' ? 'Готово' : 'Done',
+              language === 'ru' ? 'Обучение будет показано при следующем запуске' : 'Onboarding will show on next launch'
+            );
+          },
+        },
+      ]
+    );
+  };
+
+  const handleThemeToggle = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    toggleTheme();
+    setSettings((prev) => ({ ...prev, darkMode: !prev.darkMode }));
+  };
+
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={[styles.container, { paddingTop: insets.top, backgroundColor: colors.background }]}>
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.scrollContent}
+        contentContainerStyle={[styles.scrollContent, { padding: spacing.md, paddingBottom: spacing.xxl }]}
       >
         {/* Header */}
         <Animated.View entering={FadeInDown.delay(100).duration(500)} style={styles.header}>
-          <Text style={styles.title}>{t.nav.profile}</Text>
+          <Text style={[styles.title, { color: colors.text, fontSize: typography.sizes.xxl }]}>{t.nav.profile}</Text>
+          <Pressable
+            style={[styles.searchButton, { backgroundColor: colors.surface }]}
+            onPress={() => {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+              setShowAISearch(true);
+            }}
+          >
+            <Ionicons name="search" size={22} color={colors.primary} />
+          </Pressable>
         </Animated.View>
 
         {/* User Card */}
         <Animated.View entering={FadeInDown.delay(200).duration(500)}>
-          <Card style={styles.userCard}>
-            <View style={styles.userHeader}>
-              <View style={styles.avatar}>
+          <Card style={[styles.userCard, { marginBottom: spacing.lg }]}>
+            <View style={[styles.userHeader, { marginBottom: spacing.md }]}>
+              <View style={[styles.avatar, { backgroundColor: `${colors.primary}15`, borderRadius: borderRadius.full }]}>
                 <Ionicons name="person" size={40} color={colors.primary} />
               </View>
               <View style={styles.userInfo}>
-                <Text style={styles.userName}>{user?.name || (language === 'ru' ? 'Пользователь' : 'User')}</Text>
-                <Text style={styles.userEmail}>{user?.email}</Text>
+                <Text style={[styles.userName, { color: colors.text, fontSize: typography.sizes.lg }]}>
+                  {user?.name || (language === 'ru' ? 'Пользователь' : 'User')}
+                </Text>
+                <Text style={[styles.userEmail, { color: colors.textSecondary, fontSize: typography.sizes.sm }]}>
+                  {user?.email}
+                </Text>
               </View>
               <Pressable
-                style={styles.editButton}
+                style={[styles.editButton, { backgroundColor: `${colors.primary}15`, borderRadius: borderRadius.full }]}
                 onPress={() => handleMenuPress(t.common.edit)}
               >
                 <Ionicons name="create-outline" size={22} color={colors.primary} />
               </Pressable>
             </View>
 
-            <View style={styles.balanceRow}>
+            <View style={[styles.balanceRow, { borderTopColor: colors.borderLight, paddingTop: spacing.md }]}>
               <View style={styles.balanceInfo}>
-                <Text style={styles.balanceLabel}>{t.profile.title === 'Profile' ? 'Balance' : 'Баланс'}</Text>
-                <Text style={styles.balanceValue}>
+                <Text style={[styles.balanceLabel, { color: colors.textSecondary, fontSize: typography.sizes.sm }]}>
+                  {t.profile.title === 'Profile' ? 'Balance' : 'Баланс'}
+                </Text>
+                <Text style={[styles.balanceValue, { color: colors.success, fontSize: typography.sizes.xl }]}>
                   {formatCurrency(user?.balance || 0)}
                 </Text>
               </View>
@@ -200,10 +257,44 @@ export default function ProfileScreen() {
           </Card>
         </Animated.View>
 
+        {/* AI Assistant Card */}
+        <Animated.View entering={FadeInDown.delay(250).duration(500)}>
+          <Pressable
+            onPress={() => {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+              setShowAIGuide(true);
+            }}
+          >
+            <LinearGradient
+              colors={[colors.gradientStart, colors.gradientEnd]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={[styles.aiCard, { borderRadius: borderRadius.xl, marginBottom: spacing.lg }]}
+            >
+              <View style={styles.aiCardContent}>
+                <View style={styles.aiIconContainer}>
+                  <Ionicons name="sparkles" size={28} color="#fff" />
+                </View>
+                <View style={styles.aiTextContainer}>
+                  <Text style={styles.aiTitle}>
+                    {language === 'ru' ? 'AI Помощник' : 'AI Assistant'}
+                  </Text>
+                  <Text style={styles.aiSubtitle}>
+                    {language === 'ru' ? 'Задайте любой вопрос о приложении' : 'Ask any question about the app'}
+                  </Text>
+                </View>
+                <Ionicons name="chevron-forward" size={24} color="rgba(255,255,255,0.7)" />
+              </View>
+            </LinearGradient>
+          </Pressable>
+        </Animated.View>
+
         {/* Quick Menu */}
         <Animated.View entering={FadeInDown.delay(300).duration(500)}>
-          <Text style={styles.sectionTitle}>{t.profile.myProfile}</Text>
-          <Card style={styles.menuCard}>
+          <Text style={[styles.sectionTitle, { color: colors.text, fontSize: typography.sizes.md, marginBottom: spacing.sm }]}>
+            {t.profile.myProfile}
+          </Text>
+          <Card style={[styles.menuCard, { marginBottom: spacing.lg }]}>
             <MenuItem
               icon="person-outline"
               title={t.profile.myProfile}
@@ -228,8 +319,10 @@ export default function ProfileScreen() {
 
         {/* Business Tools */}
         <Animated.View entering={FadeInDown.delay(350).duration(500)}>
-          <Text style={styles.sectionTitle}>{t.team?.title || 'Business Tools'}</Text>
-          <Card style={styles.menuCard}>
+          <Text style={[styles.sectionTitle, { color: colors.text, fontSize: typography.sizes.md, marginBottom: spacing.sm }]}>
+            {t.team?.title || 'Business Tools'}
+          </Text>
+          <Card style={[styles.menuCard, { marginBottom: spacing.lg }]}>
             <MenuItem
               icon="people"
               title={t.team?.title || 'Team'}
@@ -264,13 +357,35 @@ export default function ProfileScreen() {
                 router.push('/marketing');
               }}
             />
+            <MenuItem
+              icon="globe-outline"
+              title={language === 'ru' ? 'Региональные настройки' : 'Regional Settings'}
+              subtitle={language === 'ru' ? 'Валюта, даты, налоги' : 'Currency, dates, taxes'}
+              iconColor={colors.info}
+              onPress={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                router.push('/settings/regional');
+              }}
+            />
+            <MenuItem
+              icon="image-outline"
+              title={language === 'ru' ? 'Бизнес-профиль' : 'Business Profile'}
+              subtitle={language === 'ru' ? 'Логотип для чеков и накладных' : 'Logo for receipts and invoices'}
+              iconColor="#10B981"
+              onPress={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                router.push('/settings/business');
+              }}
+            />
           </Card>
         </Animated.View>
 
         {/* Settings */}
         <Animated.View entering={FadeInDown.delay(450).duration(500)}>
-          <Text style={styles.sectionTitle}>{t.profile.settings}</Text>
-          <Card style={styles.menuCard}>
+          <Text style={[styles.sectionTitle, { color: colors.text, fontSize: typography.sizes.md, marginBottom: spacing.sm }]}>
+            {t.profile.settings}
+          </Text>
+          <Card style={[styles.menuCard, { marginBottom: spacing.lg }]}>
             <MenuItem
               icon="notifications-outline"
               title={t.profile.notifications}
@@ -282,6 +397,20 @@ export default function ProfileScreen() {
                   onValueChange={() => toggleSetting('notifications')}
                   trackColor={{ false: colors.border, true: `${colors.primary}50` }}
                   thumbColor={settings.notifications ? colors.primary : colors.textLight}
+                />
+              }
+            />
+            <MenuItem
+              icon="moon-outline"
+              title={language === 'ru' ? 'Тёмная тема' : 'Dark Mode'}
+              iconColor="#6366F1"
+              showArrow={false}
+              rightElement={
+                <Switch
+                  value={isDark}
+                  onValueChange={handleThemeToggle}
+                  trackColor={{ false: colors.border, true: `${colors.primary}50` }}
+                  thumbColor={isDark ? colors.primary : colors.textLight}
                 />
               }
             />
@@ -301,6 +430,21 @@ export default function ProfileScreen() {
               }
             />
             <MenuItem
+              icon="flask-outline"
+              title={language === 'ru' ? 'Демо-режим' : 'Demo Mode'}
+              subtitle={language === 'ru' ? 'Тестовые данные для демонстрации' : 'Sample data for demonstration'}
+              iconColor="#EC4899"
+              showArrow={false}
+              rightElement={
+                <Switch
+                  value={isDemoMode}
+                  onValueChange={handleDemoModeToggle}
+                  trackColor={{ false: colors.border, true: `#EC4899` }}
+                  thumbColor={isDemoMode ? '#EC4899' : colors.textLight}
+                />
+              }
+            />
+            <MenuItem
               icon="language-outline"
               title={t.profile.language}
               subtitle={getLanguageLabel()}
@@ -312,25 +456,52 @@ export default function ProfileScreen() {
 
         {/* Support */}
         <Animated.View entering={FadeInDown.delay(550).duration(500)}>
-          <Text style={styles.sectionTitle}>{t.profile.support}</Text>
-          <Card style={styles.menuCard}>
+          <Text style={[styles.sectionTitle, { color: colors.text, fontSize: typography.sizes.md, marginBottom: spacing.sm }]}>
+            {t.profile.support}
+          </Text>
+          <Card style={[styles.menuCard, { marginBottom: spacing.lg }]}>
             <MenuItem
               icon="help-circle-outline"
               title={t.profile.helpFaq}
               iconColor={colors.primary}
-              onPress={() => handleMenuPress(t.profile.helpFaq)}
+              onPress={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                router.push('/support/faq');
+              }}
             />
             <MenuItem
               icon="chatbubble-outline"
-              title={t.profile.contactSupport}
+              title={language === 'ru' ? 'Обратная связь' : 'Feedback'}
+              subtitle={language === 'ru' ? 'Отправить предложение или сообщить об ошибке' : 'Send suggestion or report bug'}
               iconColor={colors.success}
-              onPress={() => handleMenuPress(t.profile.contactSupport)}
+              onPress={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                router.push('/support/feedback');
+              }}
+            />
+            <MenuItem
+              icon="shield-checkmark-outline"
+              title={language === 'ru' ? 'Политика конфиденциальности' : 'Privacy Policy'}
+              iconColor={colors.info}
+              onPress={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                router.push('/support/privacy');
+              }}
             />
             <MenuItem
               icon="document-text-outline"
               title={t.profile.terms}
               iconColor={colors.textSecondary}
-              onPress={() => handleMenuPress(t.profile.terms)}
+              onPress={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                router.push('/support/terms');
+              }}
+            />
+            <MenuItem
+              icon="refresh-outline"
+              title={language === 'ru' ? 'Показать обучение заново' : 'Show Onboarding Again'}
+              iconColor={colors.warning}
+              onPress={handleResetOnboarding}
             />
           </Card>
         </Animated.View>
@@ -341,12 +512,14 @@ export default function ProfileScreen() {
             title={t.profile.logout}
             variant="outline"
             onPress={handleLogout}
-            style={styles.logoutButton}
+            style={{ borderColor: colors.error, marginTop: spacing.md }}
             textStyle={{ color: colors.error }}
             icon={<Ionicons name="log-out-outline" size={20} color={colors.error} />}
           />
 
-          <Text style={styles.versionText}>{t.profile.version} 1.0.0</Text>
+          <Text style={[styles.versionText, { color: colors.textLight, fontSize: typography.sizes.xs, marginTop: spacing.lg }]}>
+            {t.profile.version} 1.0.0
+          </Text>
         </Animated.View>
       </ScrollView>
 
@@ -358,24 +531,36 @@ export default function ProfileScreen() {
         onRequestClose={() => setShowLanguageModal(false)}
       >
         <Pressable
-          style={styles.modalOverlay}
+          style={[styles.modalOverlay, { padding: spacing.lg }]}
           onPress={() => setShowLanguageModal(false)}
         >
-          <Pressable style={styles.languageModal} onPress={(e) => e.stopPropagation()}>
-            <Text style={styles.modalTitle}>{t.profile.language}</Text>
+          <Pressable
+            style={[styles.languageModal, {
+              backgroundColor: colors.surface,
+              borderRadius: borderRadius.xl,
+              padding: spacing.lg,
+              ...shadows.lg,
+            }]}
+            onPress={(e) => e.stopPropagation()}
+          >
+            <Text style={[styles.modalTitle, { color: colors.text, fontSize: typography.sizes.lg, marginBottom: spacing.lg }]}>
+              {t.profile.language}
+            </Text>
 
             <Pressable
               style={[
                 styles.languageOption,
-                language === 'ru' && styles.languageOptionActive,
+                { backgroundColor: colors.background, borderRadius: borderRadius.md, marginBottom: spacing.sm, padding: spacing.md },
+                language === 'ru' && { backgroundColor: `${colors.primary}15`, borderWidth: 2, borderColor: colors.primary },
               ]}
               onPress={() => handleLanguageSelect('ru')}
             >
-              <View style={styles.languageInfo}>
+              <View style={[styles.languageInfo, { gap: spacing.md }]}>
                 <Text style={styles.languageFlag}>🇷🇺</Text>
                 <Text style={[
                   styles.languageText,
-                  language === 'ru' && styles.languageTextActive,
+                  { color: colors.text, fontSize: typography.sizes.md },
+                  language === 'ru' && { color: colors.primary, fontWeight: '600' },
                 ]}>
                   {t.profile.russian}
                 </Text>
@@ -388,15 +573,17 @@ export default function ProfileScreen() {
             <Pressable
               style={[
                 styles.languageOption,
-                language === 'en' && styles.languageOptionActive,
+                { backgroundColor: colors.background, borderRadius: borderRadius.md, marginBottom: spacing.sm, padding: spacing.md },
+                language === 'en' && { backgroundColor: `${colors.primary}15`, borderWidth: 2, borderColor: colors.primary },
               ]}
               onPress={() => handleLanguageSelect('en')}
             >
-              <View style={styles.languageInfo}>
+              <View style={[styles.languageInfo, { gap: spacing.md }]}>
                 <Text style={styles.languageFlag}>🇬🇧</Text>
                 <Text style={[
                   styles.languageText,
-                  language === 'en' && styles.languageTextActive,
+                  { color: colors.text, fontSize: typography.sizes.md },
+                  language === 'en' && { color: colors.primary, fontWeight: '600' },
                 ]}>
                   {t.profile.english}
                 </Text>
@@ -410,11 +597,24 @@ export default function ProfileScreen() {
               title={t.common.cancel}
               variant="outline"
               onPress={() => setShowLanguageModal(false)}
-              style={styles.modalButton}
+              style={{ marginTop: spacing.md }}
             />
           </Pressable>
         </Pressable>
       </Modal>
+
+      {/* AI Smart Search */}
+      <AISmartSearch
+        visible={showAISearch}
+        onClose={() => setShowAISearch(false)}
+      />
+
+      {/* AI Virtual Guide */}
+      <AIVirtualGuide
+        visible={showAIGuide}
+        onClose={() => setShowAIGuide(false)}
+        mode="help"
+      />
     </View>
   );
 }
@@ -422,55 +622,48 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
   },
-  scrollContent: {
-    padding: spacing.md,
-    paddingBottom: spacing.xxl,
-  },
+  scrollContent: {},
   header: {
-    marginBottom: spacing.lg,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 24,
   },
   title: {
-    fontSize: typography.sizes.xxl,
     fontWeight: '700',
-    color: colors.text,
   },
-  userCard: {
-    marginBottom: spacing.lg,
+  searchButton: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
+  userCard: {},
   userHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: spacing.md,
   },
   avatar: {
     width: 70,
     height: 70,
-    borderRadius: borderRadius.full,
-    backgroundColor: `${colors.primary}15`,
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: spacing.md,
+    marginRight: 16,
   },
   userInfo: {
     flex: 1,
   },
   userName: {
-    fontSize: typography.sizes.lg,
     fontWeight: '700',
-    color: colors.text,
   },
   userEmail: {
-    fontSize: typography.sizes.sm,
-    color: colors.textSecondary,
     marginTop: 2,
   },
   editButton: {
     width: 44,
     height: 44,
-    borderRadius: borderRadius.full,
-    backgroundColor: `${colors.primary}15`,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -478,44 +671,60 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingTop: spacing.md,
     borderTopWidth: 1,
-    borderTopColor: colors.borderLight,
   },
   balanceInfo: {},
-  balanceLabel: {
-    fontSize: typography.sizes.sm,
-    color: colors.textSecondary,
-  },
+  balanceLabel: {},
   balanceValue: {
-    fontSize: typography.sizes.xl,
     fontWeight: '700',
-    color: colors.success,
+  },
+  aiCard: {
+    padding: 16,
+  },
+  aiCardContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  aiIconContainer: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 12,
+  },
+  aiTextContainer: {
+    flex: 1,
+  },
+  aiTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#fff',
+  },
+  aiSubtitle: {
+    fontSize: 13,
+    color: 'rgba(255,255,255,0.8)',
+    marginTop: 2,
   },
   sectionTitle: {
-    fontSize: typography.sizes.md,
     fontWeight: '600',
-    color: colors.text,
-    marginBottom: spacing.sm,
   },
   menuCard: {
-    marginBottom: spacing.lg,
-    paddingVertical: spacing.xs,
+    paddingVertical: 4,
   },
   menuItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: spacing.sm,
+    paddingVertical: 8,
     borderBottomWidth: 1,
-    borderBottomColor: colors.borderLight,
   },
   menuIcon: {
     width: 42,
     height: 42,
-    borderRadius: borderRadius.md,
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: spacing.md,
+    marginRight: 16,
   },
   menuContent: {
     flex: 1,
@@ -523,36 +732,25 @@ const styles = StyleSheet.create({
   menuTitleRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: spacing.xs,
+    gap: 4,
   },
   menuTitle: {
-    fontSize: typography.sizes.md,
     fontWeight: '500',
-    color: colors.text,
   },
   menuSubtitle: {
-    fontSize: typography.sizes.xs,
-    color: colors.textSecondary,
     marginTop: 2,
   },
   menuBadge: {
-    paddingHorizontal: spacing.xs,
+    paddingHorizontal: 4,
     paddingVertical: 2,
-    borderRadius: borderRadius.sm,
   },
   menuBadgeText: {
     fontSize: 10,
     fontWeight: '700',
   },
-  logoutButton: {
-    marginTop: spacing.md,
-    borderColor: colors.error,
-  },
+  logoutButton: {},
   versionText: {
-    fontSize: typography.sizes.xs,
-    color: colors.textLight,
     textAlign: 'center',
-    marginTop: spacing.lg,
   },
   // Modal styles
   modalOverlay: {
@@ -560,55 +758,28 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: spacing.lg,
   },
   languageModal: {
-    backgroundColor: colors.surface,
-    borderRadius: borderRadius.xl,
-    padding: spacing.lg,
     width: '100%',
     maxWidth: 320,
-    ...shadows.lg,
   },
   modalTitle: {
-    fontSize: typography.sizes.lg,
     fontWeight: '700',
-    color: colors.text,
     textAlign: 'center',
-    marginBottom: spacing.lg,
   },
   languageOption: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: spacing.md,
-    borderRadius: borderRadius.md,
-    marginBottom: spacing.sm,
-    backgroundColor: colors.background,
-  },
-  languageOptionActive: {
-    backgroundColor: `${colors.primary}15`,
-    borderWidth: 2,
-    borderColor: colors.primary,
   },
   languageInfo: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: spacing.md,
   },
   languageFlag: {
     fontSize: 24,
   },
   languageText: {
-    fontSize: typography.sizes.md,
     fontWeight: '500',
-    color: colors.text,
-  },
-  languageTextActive: {
-    color: colors.primary,
-    fontWeight: '600',
-  },
-  modalButton: {
-    marginTop: spacing.md,
   },
 });

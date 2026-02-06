@@ -6,13 +6,125 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AuthProvider } from '@fastshot/auth';
 import { LocalizationProvider } from '@/localization';
+import { ThemeProvider, useTheme } from '@/contexts/ThemeContext';
 import { supabase, initConnectionMonitor } from '@/lib/supabase';
 import { loadCachedData } from '@/store/dataStore';
 import { loadNotifications } from '@/store/notificationStore';
-import { colors } from '@/constants/theme';
 
 // Prevent auto-hiding splash screen
 SplashScreen.preventAutoHideAsync();
+
+// Inner content that uses theme
+function RootLayoutContent() {
+  const { colors, isDark } = useTheme();
+
+  return (
+    <>
+      <StatusBar style={isDark ? 'light' : 'dark'} />
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          contentStyle: { backgroundColor: colors.background },
+          animation: 'slide_from_right',
+        }}
+      >
+        <Stack.Screen name="index" />
+        <Stack.Screen name="login" options={{ animation: 'fade' }} />
+        <Stack.Screen name="(tabs)" options={{ animation: 'fade' }} />
+        <Stack.Screen
+          name="order/[id]"
+          options={{
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="order/create"
+          options={{
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="product/[id]"
+          options={{
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="product/edit/[id]"
+          options={{
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="notifications"
+          options={{
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="customers/index"
+          options={{
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="customers/[id]"
+          options={{
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="auth/callback"
+          options={{
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="executive"
+          options={{
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="finance"
+          options={{
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="stores"
+          options={{
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="paywall"
+          options={{
+            presentation: 'modal',
+          }}
+        />
+        <Stack.Screen
+          name="cfo"
+          options={{
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="reports"
+          options={{
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="telegram"
+          options={{
+            presentation: 'card',
+          }}
+        />
+      </Stack>
+    </>
+  );
+}
 
 export default function RootLayout() {
   const [isReady, setIsReady] = useState(false);
@@ -44,76 +156,19 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
-        <AuthProvider
-          supabaseClient={supabase}
-          routes={{
-            login: '/login',
-            afterLogin: '/(tabs)',
-          }}
-        >
-          <LocalizationProvider>
-            <StatusBar style="dark" />
-            <Stack
-              screenOptions={{
-                headerShown: false,
-                contentStyle: { backgroundColor: colors.background },
-                animation: 'slide_from_right',
-              }}
-            >
-              <Stack.Screen name="index" />
-              <Stack.Screen name="login" options={{ animation: 'fade' }} />
-              <Stack.Screen name="(tabs)" options={{ animation: 'fade' }} />
-              <Stack.Screen
-                name="order/[id]"
-                options={{
-                  presentation: 'card',
-                }}
-              />
-              <Stack.Screen
-                name="order/create"
-                options={{
-                  presentation: 'card',
-                }}
-              />
-              <Stack.Screen
-                name="product/[id]"
-                options={{
-                  presentation: 'card',
-                }}
-              />
-              <Stack.Screen
-                name="product/edit/[id]"
-                options={{
-                  presentation: 'card',
-                }}
-              />
-              <Stack.Screen
-                name="notifications"
-                options={{
-                  presentation: 'card',
-                }}
-              />
-              <Stack.Screen
-                name="customers/index"
-                options={{
-                  presentation: 'card',
-                }}
-              />
-              <Stack.Screen
-                name="customers/[id]"
-                options={{
-                  presentation: 'card',
-                }}
-              />
-              <Stack.Screen
-                name="auth/callback"
-                options={{
-                  presentation: 'card',
-                }}
-              />
-            </Stack>
-          </LocalizationProvider>
-        </AuthProvider>
+        <ThemeProvider>
+          <AuthProvider
+            supabaseClient={supabase}
+            routes={{
+              login: '/login',
+              afterLogin: '/(tabs)',
+            }}
+          >
+            <LocalizationProvider>
+              <RootLayoutContent />
+            </LocalizationProvider>
+          </AuthProvider>
+        </ThemeProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );

@@ -27,6 +27,11 @@ export interface Translations {
     selected: string;
     markAllRead: string;
     deleteAll: string;
+    add: string;
+    active: string;
+    details: string;
+    settings: string;
+    orders: string;
   };
 
   // Navigation
@@ -447,6 +452,202 @@ export interface Translations {
     improvement: string;
     rank: string;
   };
+
+  // Enterprise Features
+  enterprise: {
+    multiStore: string;
+    stores: string;
+    addStore: string;
+    mainStore: string;
+    branches: string;
+    stockTransfer: string;
+    transferStock: string;
+    fromStore: string;
+    toStore: string;
+    consolidatedReport: string;
+    storePerformance: string;
+    storesManagement: string;
+    activeStores: string;
+    yourStores: string;
+    storeName: string;
+    storeCode: string;
+    storeAddress: string;
+    storePhone: string;
+    storeManager: string;
+    transferFrom: string;
+    transferTo: string;
+    productName: string;
+    quantity: string;
+    transferNotes: string;
+    createTransfer: string;
+    inventory: string;
+  };
+
+  executive: {
+    dashboard: string;
+    overview: string;
+    salesTrends: string;
+    profitMargins: string;
+    categoryPerformance: string;
+    revenueVsExpenses: string;
+    netProfit: string;
+    grossProfit: string;
+    operatingExpenses: string;
+    periodComparison: string;
+    forecast: string;
+    revenue: string;
+    profit: string;
+    margin: string;
+    growth: string;
+    grossRevenue: string;
+  };
+
+  finance: {
+    expenses: string;
+    addExpense: string;
+    expenseCategory: string;
+    rent: string;
+    salaries: string;
+    utilities: string;
+    taxes: string;
+    inventory: string;
+    marketing: string;
+    equipment: string;
+    supplies: string;
+    insurance: string;
+    maintenance: string;
+    delivery: string;
+    banking: string;
+    other: string;
+    budget: string;
+    setBudget: string;
+    overBudget: string;
+    recurring: string;
+    financialSummary: string;
+  };
+
+  payments: {
+    qrPayment: string;
+    generateQR: string;
+    scanToPay: string;
+    paymentReceived: string;
+    paymentPending: string;
+    paymentExpired: string;
+    sbpPayment: string;
+    sharePaymentLink: string;
+  };
+
+  reports: {
+    title: string;
+    advancedReports: string;
+    generateReport: string;
+    exportPDF: string;
+    exportExcel: string;
+    salesReport: string;
+    inventoryReport: string;
+    financialReport: string;
+    taxReport: string;
+    customReport: string;
+    dateRange: string;
+    includeCharts: string;
+    selectReport: string;
+    selectPeriod: string;
+    exportFormat: string;
+    preview: string;
+    week: string;
+    month: string;
+    quarter: string;
+    year: string;
+    consolidatedReport: string;
+  };
+
+  telegram: {
+    title: string;
+    integration: string;
+    connect: string;
+    disconnect: string;
+    botToken: string;
+    chatId: string;
+    dailySummary: string;
+    alertNotifications: string;
+    summaryTime: string;
+    testMessage: string;
+    connected: string;
+    notConnected: string;
+    botSettings: string;
+    howToGetToken: string;
+    connecting: string;
+    connectionSuccess: string;
+    disconnectTitle: string;
+    disconnectMessage: string;
+    notificationSettings: string;
+    dailySummaryDesc: string;
+    lowStockAlerts: string;
+    lowStockAlertsDesc: string;
+    newOrderAlerts: string;
+    newOrderAlertsDesc: string;
+    anomalyAlerts: string;
+    anomalyAlertsDesc: string;
+    actions: string;
+    sendTest: string;
+    preview: string;
+    howItWorks: string;
+    howItWorksDesc: string;
+    testMessageSent: string;
+  };
+
+  subscription: {
+    title: string;
+    currentPlan: string;
+    upgrade: string;
+    downgrade: string;
+    freeTier: string;
+    basicTier: string;
+    proTier: string;
+    enterpriseTier: string;
+    monthlyBilling: string;
+    yearlyBilling: string;
+    savePercent: string;
+    features: string;
+    subscribe: string;
+    cancel: string;
+    trialDays: string;
+    popularChoice: string;
+    contactSales: string;
+    limitReached: string;
+  };
+
+  aiCfo: {
+    title: string;
+    subtitle: string;
+    virtualCFO: string;
+    revenueForecast: string;
+    anomalyDetection: string;
+    taxOptimization: string;
+    financialInsights: string;
+    predictedRevenue: string;
+    confidence: string;
+    anomalyAlert: string;
+    salesDrop: string;
+    salesSpike: string;
+    expenseSpike: string;
+    suggestedActions: string;
+    taxSuggestion: string;
+    potentialSavings: string;
+    chat: string;
+    insights: string;
+    forecast: string;
+    askQuestion: string;
+    keyInsights: string;
+    potentialImpact: string;
+  };
+
+  theme: {
+    appearance: string;
+    lightMode: string;
+    darkMode: string;
+    systemDefault: string;
+  };
 }
 
 export const translations: Record<Language, Translations> = {
@@ -474,6 +675,11 @@ export const translations: Record<Language, Translations> = {
       selected: 'Выбрано',
       markAllRead: 'Прочитать все',
       deleteAll: 'Удалить все',
+      add: 'Добавить',
+      active: 'Активен',
+      details: 'Подробнее',
+      settings: 'Настройки',
+      orders: 'Заказы',
     },
     nav: {
       home: 'Главная',
@@ -852,6 +1058,192 @@ export const translations: Record<Language, Translations> = {
       improvement: 'Изменение',
       rank: 'Место',
     },
+    enterprise: {
+      multiStore: 'Мульти-магазин',
+      stores: 'Магазины',
+      addStore: 'Добавить магазин',
+      mainStore: 'Главный магазин',
+      branches: 'Филиалы',
+      stockTransfer: 'Перемещение товара',
+      transferStock: 'Переместить товар',
+      fromStore: 'Из магазина',
+      toStore: 'В магазин',
+      consolidatedReport: 'Консолидированный отчёт',
+      storePerformance: 'Показатели магазина',
+      storesManagement: 'Управление магазинами',
+      activeStores: 'Активных магазинов',
+      yourStores: 'Ваши магазины',
+      storeName: 'Название магазина',
+      storeCode: 'Код магазина',
+      storeAddress: 'Адрес',
+      storePhone: 'Телефон',
+      storeManager: 'Управляющий',
+      transferFrom: 'Откуда',
+      transferTo: 'Куда',
+      productName: 'Товар',
+      quantity: 'Количество',
+      transferNotes: 'Примечания',
+      createTransfer: 'Создать перемещение',
+      inventory: 'Товары',
+    },
+    executive: {
+      dashboard: 'Панель руководителя',
+      overview: 'Обзор',
+      salesTrends: 'Тренды продаж',
+      profitMargins: 'Маржинальность',
+      categoryPerformance: 'По категориям',
+      revenueVsExpenses: 'Доходы vs Расходы',
+      netProfit: 'Чистая прибыль',
+      grossProfit: 'Валовая прибыль',
+      operatingExpenses: 'Операционные расходы',
+      periodComparison: 'Сравнение периодов',
+      forecast: 'Прогноз',
+      revenue: 'Выручка',
+      profit: 'Прибыль',
+      margin: 'Маржа',
+      growth: 'Рост',
+      grossRevenue: 'Валовая выручка',
+    },
+    finance: {
+      expenses: 'Расходы',
+      addExpense: 'Добавить расход',
+      expenseCategory: 'Категория расхода',
+      rent: 'Аренда',
+      salaries: 'Зарплаты',
+      utilities: 'Коммунальные услуги',
+      taxes: 'Налоги',
+      inventory: 'Закупки',
+      marketing: 'Маркетинг',
+      equipment: 'Оборудование',
+      supplies: 'Расходные материалы',
+      insurance: 'Страхование',
+      maintenance: 'Обслуживание',
+      delivery: 'Доставка',
+      banking: 'Банковские услуги',
+      other: 'Прочее',
+      budget: 'Бюджет',
+      setBudget: 'Установить бюджет',
+      overBudget: 'Превышение бюджета',
+      recurring: 'Регулярный',
+      financialSummary: 'Финансовый отчёт',
+    },
+    payments: {
+      qrPayment: 'QR-платёж',
+      generateQR: 'Создать QR-код',
+      scanToPay: 'Отсканируйте для оплаты',
+      paymentReceived: 'Платёж получен',
+      paymentPending: 'Ожидание оплаты',
+      paymentExpired: 'Срок оплаты истёк',
+      sbpPayment: 'Оплата по СБП',
+      sharePaymentLink: 'Поделиться ссылкой',
+    },
+    reports: {
+      title: 'Отчёты',
+      advancedReports: 'Расширенные отчёты',
+      generateReport: 'Сформировать отчёт',
+      exportPDF: 'Экспорт в PDF',
+      exportExcel: 'Экспорт в Excel',
+      salesReport: 'Отчёт по продажам',
+      inventoryReport: 'Отчёт по складу',
+      financialReport: 'Финансовый отчёт',
+      taxReport: 'Налоговый отчёт',
+      customReport: 'Свой отчёт',
+      dateRange: 'Период',
+      includeCharts: 'Включить графики',
+      selectReport: 'Выберите тип отчёта',
+      selectPeriod: 'Выберите период',
+      exportFormat: 'Формат экспорта',
+      preview: 'Предпросмотр',
+      week: 'Неделя',
+      month: 'Месяц',
+      quarter: 'Квартал',
+      year: 'Год',
+      consolidatedReport: 'Сводный отчёт',
+    },
+    telegram: {
+      title: 'Telegram',
+      integration: 'Интеграция с Telegram',
+      connect: 'Подключить',
+      disconnect: 'Отключить',
+      botToken: 'Токен бота',
+      chatId: 'ID чата',
+      dailySummary: 'Ежедневная сводка',
+      alertNotifications: 'Уведомления об аномалиях',
+      summaryTime: 'Время отправки',
+      testMessage: 'Тестовое сообщение',
+      connected: 'Подключено',
+      notConnected: 'Не подключено',
+      botSettings: 'Настройки бота',
+      howToGetToken: 'Как получить токен?',
+      connecting: 'Подключение...',
+      connectionSuccess: 'Бот успешно подключен!',
+      disconnectTitle: 'Отключить бота?',
+      disconnectMessage: 'Вы перестанете получать уведомления в Telegram',
+      notificationSettings: 'Настройки уведомлений',
+      dailySummaryDesc: 'Ежедневный отчёт о продажах и прибыли',
+      lowStockAlerts: 'Уведомления о низких остатках',
+      lowStockAlertsDesc: 'Когда товар заканчивается',
+      newOrderAlerts: 'Уведомления о новых заказах',
+      newOrderAlertsDesc: 'Мгновенно о каждом заказе',
+      anomalyAlerts: 'Уведомления об аномалиях',
+      anomalyAlertsDesc: 'Необычные изменения в продажах',
+      actions: 'Действия',
+      sendTest: 'Тестовое сообщение',
+      preview: 'Предпросмотр',
+      howItWorks: 'Как это работает?',
+      howItWorksDesc: 'Создайте бота через @BotFather, получите токен и укажите ID чата для получения уведомлений. Бот будет отправлять вам ежедневные сводки и важные уведомления.',
+      testMessageSent: 'Тестовое сообщение отправлено!',
+    },
+    subscription: {
+      title: 'Подписка',
+      currentPlan: 'Текущий план',
+      upgrade: 'Улучшить',
+      downgrade: 'Понизить',
+      freeTier: 'Бесплатный',
+      basicTier: 'Базовый',
+      proTier: 'Профессиональный',
+      enterpriseTier: 'Корпоративный',
+      monthlyBilling: 'Помесячно',
+      yearlyBilling: 'Ежегодно',
+      savePercent: 'Экономия',
+      features: 'Возможности',
+      subscribe: 'Подписаться',
+      cancel: 'Отменить подписку',
+      trialDays: 'дней бесплатно',
+      popularChoice: 'Популярный выбор',
+      contactSales: 'Связаться с нами',
+      limitReached: 'Лимит достигнут',
+    },
+    aiCfo: {
+      title: 'AI Финансовый директор',
+      subtitle: 'Умный анализ вашего бизнеса',
+      virtualCFO: 'Виртуальный CFO',
+      revenueForecast: 'Прогноз выручки',
+      anomalyDetection: 'Обнаружение аномалий',
+      taxOptimization: 'Оптимизация налогов',
+      financialInsights: 'Финансовые инсайты',
+      predictedRevenue: 'Прогнозируемая выручка',
+      confidence: 'Точность',
+      anomalyAlert: 'Обнаружена аномалия',
+      salesDrop: 'Падение продаж',
+      salesSpike: 'Всплеск продаж',
+      expenseSpike: 'Рост расходов',
+      suggestedActions: 'Рекомендуемые действия',
+      taxSuggestion: 'Рекомендация по налогам',
+      potentialSavings: 'Потенциальная экономия',
+      chat: 'Чат',
+      insights: 'Инсайты',
+      forecast: 'Прогноз',
+      askQuestion: 'Задайте вопрос о бизнесе...',
+      keyInsights: 'Ключевые инсайты',
+      potentialImpact: 'Потенциальный эффект',
+    },
+    theme: {
+      appearance: 'Внешний вид',
+      lightMode: 'Светлая тема',
+      darkMode: 'Тёмная тема',
+      systemDefault: 'Как в системе',
+    },
   },
 
   en: {
@@ -878,6 +1270,11 @@ export const translations: Record<Language, Translations> = {
       selected: 'Selected',
       markAllRead: 'Mark all read',
       deleteAll: 'Delete all',
+      add: 'Add',
+      active: 'Active',
+      details: 'Details',
+      settings: 'Settings',
+      orders: 'Orders',
     },
     nav: {
       home: 'Home',
@@ -1255,6 +1652,192 @@ export const translations: Record<Language, Translations> = {
       stockAdjustments: 'Stock Adjustments',
       improvement: 'Change',
       rank: 'Rank',
+    },
+    enterprise: {
+      multiStore: 'Multi-Store',
+      stores: 'Stores',
+      addStore: 'Add Store',
+      mainStore: 'Main Store',
+      branches: 'Branches',
+      stockTransfer: 'Stock Transfer',
+      transferStock: 'Transfer Stock',
+      fromStore: 'From Store',
+      toStore: 'To Store',
+      consolidatedReport: 'Consolidated Report',
+      storePerformance: 'Store Performance',
+      storesManagement: 'Store Management',
+      activeStores: 'Active Stores',
+      yourStores: 'Your Stores',
+      storeName: 'Store Name',
+      storeCode: 'Store Code',
+      storeAddress: 'Address',
+      storePhone: 'Phone',
+      storeManager: 'Manager',
+      transferFrom: 'From',
+      transferTo: 'To',
+      productName: 'Product',
+      quantity: 'Quantity',
+      transferNotes: 'Notes',
+      createTransfer: 'Create Transfer',
+      inventory: 'Inventory',
+    },
+    executive: {
+      dashboard: 'Executive Dashboard',
+      overview: 'Overview',
+      salesTrends: 'Sales Trends',
+      profitMargins: 'Profit Margins',
+      categoryPerformance: 'Category Performance',
+      revenueVsExpenses: 'Revenue vs Expenses',
+      netProfit: 'Net Profit',
+      grossProfit: 'Gross Profit',
+      operatingExpenses: 'Operating Expenses',
+      periodComparison: 'Period Comparison',
+      forecast: 'Forecast',
+      revenue: 'Revenue',
+      profit: 'Profit',
+      margin: 'Margin',
+      growth: 'Growth',
+      grossRevenue: 'Gross Revenue',
+    },
+    finance: {
+      expenses: 'Expenses',
+      addExpense: 'Add Expense',
+      expenseCategory: 'Expense Category',
+      rent: 'Rent',
+      salaries: 'Salaries',
+      utilities: 'Utilities',
+      taxes: 'Taxes',
+      inventory: 'Inventory',
+      marketing: 'Marketing',
+      equipment: 'Equipment',
+      supplies: 'Supplies',
+      insurance: 'Insurance',
+      maintenance: 'Maintenance',
+      delivery: 'Delivery',
+      banking: 'Banking',
+      other: 'Other',
+      budget: 'Budget',
+      setBudget: 'Set Budget',
+      overBudget: 'Over Budget',
+      recurring: 'Recurring',
+      financialSummary: 'Financial Summary',
+    },
+    payments: {
+      qrPayment: 'QR Payment',
+      generateQR: 'Generate QR Code',
+      scanToPay: 'Scan to Pay',
+      paymentReceived: 'Payment Received',
+      paymentPending: 'Payment Pending',
+      paymentExpired: 'Payment Expired',
+      sbpPayment: 'SBP Payment',
+      sharePaymentLink: 'Share Payment Link',
+    },
+    reports: {
+      title: 'Reports',
+      advancedReports: 'Advanced Reports',
+      generateReport: 'Generate Report',
+      exportPDF: 'Export PDF',
+      exportExcel: 'Export Excel',
+      salesReport: 'Sales Report',
+      inventoryReport: 'Inventory Report',
+      financialReport: 'Financial Report',
+      taxReport: 'Tax Report',
+      customReport: 'Custom Report',
+      dateRange: 'Date Range',
+      includeCharts: 'Include Charts',
+      selectReport: 'Select Report Type',
+      selectPeriod: 'Select Period',
+      exportFormat: 'Export Format',
+      preview: 'Preview',
+      week: 'Week',
+      month: 'Month',
+      quarter: 'Quarter',
+      year: 'Year',
+      consolidatedReport: 'Consolidated Report',
+    },
+    telegram: {
+      title: 'Telegram',
+      integration: 'Telegram Integration',
+      connect: 'Connect',
+      disconnect: 'Disconnect',
+      botToken: 'Bot Token',
+      chatId: 'Chat ID',
+      dailySummary: 'Daily Summary',
+      alertNotifications: 'Alert Notifications',
+      summaryTime: 'Summary Time',
+      testMessage: 'Test Message',
+      connected: 'Connected',
+      notConnected: 'Not Connected',
+      botSettings: 'Bot Settings',
+      howToGetToken: 'How to get a token?',
+      connecting: 'Connecting...',
+      connectionSuccess: 'Bot connected successfully!',
+      disconnectTitle: 'Disconnect bot?',
+      disconnectMessage: 'You will stop receiving notifications in Telegram',
+      notificationSettings: 'Notification Settings',
+      dailySummaryDesc: 'Daily sales and profit report',
+      lowStockAlerts: 'Low stock alerts',
+      lowStockAlertsDesc: 'When products run low',
+      newOrderAlerts: 'New order alerts',
+      newOrderAlertsDesc: 'Instant notification for every order',
+      anomalyAlerts: 'Anomaly alerts',
+      anomalyAlertsDesc: 'Unusual changes in sales',
+      actions: 'Actions',
+      sendTest: 'Send Test',
+      preview: 'Preview',
+      howItWorks: 'How it works?',
+      howItWorksDesc: 'Create a bot via @BotFather, get the token and specify the chat ID to receive notifications. The bot will send you daily summaries and important alerts.',
+      testMessageSent: 'Test message sent!',
+    },
+    subscription: {
+      title: 'Subscription',
+      currentPlan: 'Current Plan',
+      upgrade: 'Upgrade',
+      downgrade: 'Downgrade',
+      freeTier: 'Free',
+      basicTier: 'Basic',
+      proTier: 'Professional',
+      enterpriseTier: 'Enterprise',
+      monthlyBilling: 'Monthly',
+      yearlyBilling: 'Yearly',
+      savePercent: 'Save',
+      features: 'Features',
+      subscribe: 'Subscribe',
+      cancel: 'Cancel Subscription',
+      trialDays: 'days free',
+      popularChoice: 'Popular Choice',
+      contactSales: 'Contact Sales',
+      limitReached: 'Limit Reached',
+    },
+    aiCfo: {
+      title: 'AI Financial Director',
+      subtitle: 'Smart analysis of your business',
+      virtualCFO: 'Virtual CFO',
+      revenueForecast: 'Revenue Forecast',
+      anomalyDetection: 'Anomaly Detection',
+      taxOptimization: 'Tax Optimization',
+      financialInsights: 'Financial Insights',
+      predictedRevenue: 'Predicted Revenue',
+      confidence: 'Confidence',
+      anomalyAlert: 'Anomaly Alert',
+      salesDrop: 'Sales Drop',
+      salesSpike: 'Sales Spike',
+      expenseSpike: 'Expense Spike',
+      suggestedActions: 'Suggested Actions',
+      taxSuggestion: 'Tax Suggestion',
+      potentialSavings: 'Potential Savings',
+      chat: 'Chat',
+      insights: 'Insights',
+      forecast: 'Forecast',
+      askQuestion: 'Ask about your business...',
+      keyInsights: 'Key Insights',
+      potentialImpact: 'Potential Impact',
+    },
+    theme: {
+      appearance: 'Appearance',
+      lightMode: 'Light Mode',
+      darkMode: 'Dark Mode',
+      systemDefault: 'System Default',
     },
   },
 };

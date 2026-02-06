@@ -21,6 +21,7 @@ import { ProductCard } from '@/components/ProductCard';
 import { SkeletonListLoader } from '@/components/ui/Skeleton';
 import { Card, Button } from '@/components/ui';
 import { BarcodeScanner, ScannerButton } from '@/components/BarcodeScanner';
+import { StockInIcon } from '@/components/warehouse/WarehouseIcons';
 import {
   getDataState,
   subscribeData,
@@ -379,6 +380,15 @@ export default function InventoryScreen() {
               <Ionicons name="close-circle" size={20} color={colors.textLight} />
             </Pressable>
           )}
+          <Pressable
+            style={styles.searchScanButton}
+            onPress={() => {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+              setScannerVisible(true);
+            }}
+          >
+            <Ionicons name="scan" size={22} color={colors.primary} />
+          </Pressable>
         </View>
       </View>
 
@@ -462,6 +472,15 @@ export default function InventoryScreen() {
       <View style={styles.header}>
         <Text style={styles.title}>{t.nav.inventory}</Text>
         <View style={styles.headerActions}>
+          <Pressable
+            style={[styles.headerButton, styles.warehouseButton]}
+            onPress={() => {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+              router.push('/warehouse');
+            }}
+          >
+            <StockInIcon size={20} color={colors.textInverse} />
+          </Pressable>
           <Pressable
             style={styles.headerButton}
             onPress={handleOpenReportModal}
@@ -771,6 +790,9 @@ const styles = StyleSheet.create({
   headerButtonActive: {
     backgroundColor: colors.primary,
   },
+  warehouseButton: {
+    backgroundColor: colors.success,
+  },
   loadingContainer: {
     padding: spacing.md,
   },
@@ -832,6 +854,12 @@ const styles = StyleSheet.create({
     color: colors.text,
     marginLeft: spacing.sm,
     paddingVertical: 4,
+  },
+  searchScanButton: {
+    marginLeft: spacing.sm,
+    padding: spacing.xs,
+    borderRadius: borderRadius.sm,
+    backgroundColor: `${colors.primary}15`,
   },
   filtersContainer: {
     marginBottom: spacing.md,

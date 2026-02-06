@@ -309,6 +309,302 @@ export type Database = {
           }
         ]
       }
+      suppliers: {
+        Row: {
+          id: string
+          user_id: string | null
+          name: string
+          contact_name: string | null
+          email: string | null
+          phone: string | null
+          address: string | null
+          website: string | null
+          notes: string | null
+          payment_terms: string | null
+          lead_time_days: number | null
+          rating: number | null
+          is_active: boolean | null
+          created_at: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          id?: string
+          user_id?: string | null
+          name: string
+          contact_name?: string | null
+          email?: string | null
+          phone?: string | null
+          address?: string | null
+          website?: string | null
+          notes?: string | null
+          payment_terms?: string | null
+          lead_time_days?: number | null
+          rating?: number | null
+          is_active?: boolean | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          id?: string
+          user_id?: string | null
+          name?: string
+          contact_name?: string | null
+          email?: string | null
+          phone?: string | null
+          address?: string | null
+          website?: string | null
+          notes?: string | null
+          payment_terms?: string | null
+          lead_time_days?: number | null
+          rating?: number | null
+          is_active?: boolean | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "suppliers_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      purchase_orders: {
+        Row: {
+          id: string
+          user_id: string | null
+          supplier_id: string | null
+          order_number: string
+          status: string | null
+          total_amount: number | null
+          total_items: number | null
+          notes: string | null
+          expected_date: string | null
+          received_date: string | null
+          created_at: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          id?: string
+          user_id?: string | null
+          supplier_id?: string | null
+          order_number: string
+          status?: string | null
+          total_amount?: number | null
+          total_items?: number | null
+          notes?: string | null
+          expected_date?: string | null
+          received_date?: string | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          id?: string
+          user_id?: string | null
+          supplier_id?: string | null
+          order_number?: string
+          status?: string | null
+          total_amount?: number | null
+          total_items?: number | null
+          notes?: string | null
+          expected_date?: string | null
+          received_date?: string | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "purchase_orders_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "purchase_orders_supplier_id_fkey"
+            columns: ["supplier_id"]
+            isOneToOne: false
+            referencedRelation: "suppliers"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      purchase_order_items: {
+        Row: {
+          id: string
+          purchase_order_id: string | null
+          product_id: string | null
+          product_name: string
+          product_sku: string | null
+          quantity_ordered: number
+          quantity_received: number | null
+          unit_cost: number
+          total_cost: number
+          created_at: string | null
+        }
+        Insert: {
+          id?: string
+          purchase_order_id?: string | null
+          product_id?: string | null
+          product_name: string
+          product_sku?: string | null
+          quantity_ordered: number
+          quantity_received?: number | null
+          unit_cost: number
+          total_cost: number
+          created_at?: string | null
+        }
+        Update: {
+          id?: string
+          purchase_order_id?: string | null
+          product_id?: string | null
+          product_name?: string
+          product_sku?: string | null
+          quantity_ordered?: number
+          quantity_received?: number | null
+          unit_cost?: number
+          total_cost?: number
+          created_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "purchase_order_items_purchase_order_id_fkey"
+            columns: ["purchase_order_id"]
+            isOneToOne: false
+            referencedRelation: "purchase_orders"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "purchase_order_items_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      stock_adjustments: {
+        Row: {
+          id: string
+          user_id: string | null
+          product_id: string | null
+          product_name: string
+          product_sku: string | null
+          adjustment_type: string
+          quantity_change: number
+          previous_stock: number
+          new_stock: number
+          unit_cost: number | null
+          total_value: number | null
+          reason: string | null
+          reference_number: string | null
+          created_at: string | null
+        }
+        Insert: {
+          id?: string
+          user_id?: string | null
+          product_id?: string | null
+          product_name: string
+          product_sku?: string | null
+          adjustment_type: string
+          quantity_change: number
+          previous_stock: number
+          new_stock: number
+          unit_cost?: number | null
+          total_value?: number | null
+          reason?: string | null
+          reference_number?: string | null
+          created_at?: string | null
+        }
+        Update: {
+          id?: string
+          user_id?: string | null
+          product_id?: string | null
+          product_name?: string
+          product_sku?: string | null
+          adjustment_type?: string
+          quantity_change?: number
+          previous_stock?: number
+          new_stock?: number
+          unit_cost?: number | null
+          total_value?: number | null
+          reason?: string | null
+          reference_number?: string | null
+          created_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "stock_adjustments_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stock_adjustments_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      product_suppliers: {
+        Row: {
+          id: string
+          product_id: string | null
+          supplier_id: string | null
+          supplier_sku: string | null
+          cost_price: number | null
+          min_order_quantity: number | null
+          is_preferred: boolean | null
+          last_order_date: string | null
+          created_at: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          id?: string
+          product_id?: string | null
+          supplier_id?: string | null
+          supplier_sku?: string | null
+          cost_price?: number | null
+          min_order_quantity?: number | null
+          is_preferred?: boolean | null
+          last_order_date?: string | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          id?: string
+          product_id?: string | null
+          supplier_id?: string | null
+          supplier_sku?: string | null
+          cost_price?: number | null
+          min_order_quantity?: number | null
+          is_preferred?: boolean | null
+          last_order_date?: string | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_suppliers_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "product_suppliers_supplier_id_fkey"
+            columns: ["supplier_id"]
+            isOneToOne: false
+            referencedRelation: "suppliers"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
     }
     Views: {
       [_ in never]: never

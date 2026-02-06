@@ -349,3 +349,174 @@ export interface StockReport {
   outOfStockItems: number;
   items: StockReportItem[];
 }
+
+// Warehouse & Supply Chain Types
+
+export interface Supplier {
+  id: string;
+  name: string;
+  contactName?: string;
+  email?: string;
+  phone?: string;
+  address?: string;
+  website?: string;
+  notes?: string;
+  paymentTerms?: string;
+  leadTimeDays: number;
+  rating?: number;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt?: string;
+  // Computed fields
+  totalOrders?: number;
+  totalSpent?: number;
+  avgDeliveryDays?: number;
+}
+
+export interface ProductSupplier {
+  id: string;
+  productId: string;
+  supplierId: string;
+  supplierSku?: string;
+  costPrice?: number;
+  minOrderQuantity: number;
+  isPreferred: boolean;
+  lastOrderDate?: string;
+  // Joined fields
+  supplier?: Supplier;
+}
+
+export type PurchaseOrderStatus = 'draft' | 'pending' | 'ordered' | 'partial' | 'received' | 'cancelled';
+
+export interface PurchaseOrder {
+  id: string;
+  orderNumber: string;
+  supplierId?: string;
+  supplier?: Supplier;
+  status: PurchaseOrderStatus;
+  totalAmount: number;
+  totalItems: number;
+  notes?: string;
+  expectedDate?: string;
+  receivedDate?: string;
+  items: PurchaseOrderItem[];
+  createdAt: string;
+  updatedAt?: string;
+}
+
+export interface PurchaseOrderItem {
+  id: string;
+  purchaseOrderId: string;
+  productId?: string;
+  productName: string;
+  productSku?: string;
+  quantityOrdered: number;
+  quantityReceived: number;
+  unitCost: number;
+  totalCost: number;
+  product?: Product;
+}
+
+export type StockAdjustmentType =
+  | 'write_off'
+  | 'damage'
+  | 'theft'
+  | 'count'
+  | 'return'
+  | 'transfer_in'
+  | 'transfer_out'
+  | 'other';
+
+export interface StockAdjustment {
+  id: string;
+  productId?: string;
+  productName: string;
+  productSku?: string;
+  adjustmentType: StockAdjustmentType;
+  quantityChange: number;
+  previousStock: number;
+  newStock: number;
+  unitCost?: number;
+  totalValue?: number;
+  reason?: string;
+  referenceNumber?: string;
+  createdAt: string;
+  product?: Product;
+}
+
+export interface PurchaseHistoryEntry {
+  id: string;
+  date: string;
+  supplierId?: string;
+  supplierName?: string;
+  quantity: number;
+  unitCost: number;
+  totalCost: number;
+  purchaseOrderId?: string;
+}
+
+// Warehouse operation types
+export type WarehouseOperation = 'stock_in' | 'write_off' | 'transfer' | 'return' | 'adjustment';
+
+export interface WarehouseOperationConfig {
+  type: WarehouseOperation;
+  title: string;
+  description: string;
+  icon: string;
+  color: string;
+  bgColor: string;
+}
+
+// Price Tag types
+export interface PriceTag {
+  productId: string;
+  name: string;
+  price: number;
+  barcode?: string;
+  sku?: string;
+  category?: string;
+}
+
+export interface PriceTagBatch {
+  tags: PriceTag[];
+  generatedAt: string;
+  format: 'small' | 'medium' | 'large';
+}
+
+// AI Supply Chain types
+export interface ProcurementForecast {
+  productId: string;
+  productName: string;
+  currentStock: number;
+  avgDailySales: number;
+  daysUntilStockout: number;
+  recommendedOrderDate: string;
+  recommendedQuantity: number;
+  confidence: number;
+}
+
+export interface SupplierPerformance {
+  supplierId: string;
+  supplierName: string;
+  totalOrders: number;
+  totalSpent: number;
+  avgLeadTime: number;
+  onTimeDeliveryRate: number;
+  avgMargin: number;
+  profitability: 'high' | 'medium' | 'low';
+  recommendation?: string;
+}
+
+export interface PricingAlert {
+  productId: string;
+  productName: string;
+  currentCost: number;
+  previousCost: number;
+  costChange: number;
+  costChangePercent: number;
+  currentMargin: number;
+  targetMargin: number;
+  suggestedPrice: number;
+  currentPrice: number;
+  priority: 'high' | 'medium' | 'low';
+}

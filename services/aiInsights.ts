@@ -1,5 +1,7 @@
 import { generateText } from '@fastshot/ai';
 import { KPIData, Order, Product, AIInsight } from '@/types';
+import { findDeadStock, calculateProjectedTaxes, generateWeeklyComparison } from './analyticsService';
+import { getStoreSettingsState } from './storeSettingsService';
 
 interface BusinessData {
   kpi: KPIData | null;
@@ -20,8 +22,15 @@ export const generateBusinessInsights = async (data: BusinessData): Promise<AIIn
   const completedOrders = orders.filter((o) => o.status === 'completed');
   const totalRevenue = completedOrders.reduce((sum, o) => sum + o.totalAmount, 0);
 
+  // Advanced analytics
+  const storeSettings = getStoreSettingsState().settings;
+  const taxRate = storeSettings?.taxRate || 20;
+  const deadStock = findDeadStock(orders, products, 30);
+  const taxProjection = calculateProjectedTaxes(orders, taxRate, '30days');
+  const weeklyComparison = generateWeeklyComparison(orders, products);
+
   const businessSummary = `
-Analyze this business data and provide 2-3 actionable insights in Russian:
+Analyze this business data and provide 3-4 actionable insights in Russian:
 
 Business Metrics:
 - Total Sales: ${kpi.totalSales.toFixed(0)} RUB
@@ -30,6 +39,19 @@ Business Metrics:
 - Orders Change: ${kpi.ordersChange > 0 ? '+' : ''}${kpi.ordersChange}%
 - Account Balance: ${kpi.balance.toFixed(0)} RUB
 - Low Stock Items: ${kpi.lowStockItems}
+
+Weekly Performance:
+- This Week Revenue: ${weeklyComparison.thisWeek.revenue.toFixed(0)} RUB
+- Last Week Revenue: ${weeklyComparison.lastWeek.revenue.toFixed(0)} RUB
+- Week-over-Week Change: ${weeklyComparison.changes.revenue > 0 ? '+' : ''}${weeklyComparison.changes.revenue.toFixed(1)}%
+
+Tax Information:
+- Tax Rate: ${taxRate}%
+- Projected Monthly Tax: ${taxProjection.projectedMonthlyTax.toLocaleString()} RUB
+
+Dead Stock Alert:
+- Products with NO sales in 30+ days: ${deadStock.length}
+${deadStock.length > 0 ? `- Top dead stock: ${deadStock.slice(0, 3).map(p => p.name).join(', ')}` : '- No dead stock detected'}
 
 Orders Summary:
 - Total Orders: ${orders.length}
@@ -54,9 +76,11 @@ Provide insights in this exact JSON format (array of objects):
 ]
 
 Focus on:
-1. Sales trends and performance
-2. Stock replenishment needs
-3. Order processing efficiency
+1. Weekly performance trends (is business growing?)
+2. Tax preparation (upcoming obligations)
+3. Dead stock (capital tied up, recommendations)
+4. Stock replenishment needs
+5. High priority operational issues
 `;
 
   try {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import {
   View,
   Text,
@@ -15,6 +15,12 @@ import Animated, { FadeInDown } from 'react-native-reanimated';
 import { Card, SkeletonKPICard, SkeletonCard } from '@/components/ui';
 import { KPICard } from '@/components/KPICard';
 import { SalesChart } from '@/components/charts/SalesChart';
+import {
+  TimePeriodSelector,
+  RevenueVsProfitChart,
+  CategoryPieChart,
+  EmptyState,
+} from '@/components/charts/AnalyticsCharts';
 import { ActivityItem } from '@/components/ActivityItem';
 import { SyncStatusIndicator } from '@/components/SyncStatusIndicator';
 import { getAuthState, subscribeAuth } from '@/store/authStore';
@@ -28,10 +34,15 @@ import {
   subscribeNotifications,
   hasUnreadAIInsights,
 } from '@/store/notificationStore';
+import {
+  generateRevenueVsProfitData,
+  generateCategorySalesData,
+  calculateAdvancedMetrics,
+} from '@/services/analyticsService';
 import { useAIInsights } from '@/services/aiInsights';
 import { useLocalization } from '@/localization';
 import { colors, spacing, typography, borderRadius, shadows } from '@/constants/theme';
-import { KPIData, Activity, SalesDataPoint } from '@/types';
+import { KPIData, Activity, SalesDataPoint, TimePeriod, RevenueVsProfitData, CategorySalesData } from '@/types';
 
 export default function DashboardScreen() {
   const insets = useSafeAreaInsets();
@@ -48,11 +59,27 @@ export default function DashboardScreen() {
   const [unreadNotifications, setUnreadNotifications] = useState(0);
   const [hasAIInsight, setHasAIInsight] = useState(false);
 
+  // Analytics state
+  const [timePeriod, setTimePeriod] = useState<TimePeriod>('7days');
+  const [revenueData, setRevenueData] = useState<RevenueVsProfitData[]>([]);
+  const [categoryData, setCategoryData] = useState<CategorySalesData[]>([]);
+
   const {
     insights: aiInsights,
     isLoading: loadingInsights,
     generateInsights,
   } = useAIInsights();
+
+  // Calculate analytics when data changes
+  const updateAnalytics = useCallback(() => {
+    const state = getDataState();
+    if (state.orders.length > 0 && state.products.length > 0) {
+      const revData = generateRevenueVsProfitData(state.orders, state.products, timePeriod);
+      const catData = generateCategorySalesData(state.orders, state.products, timePeriod);
+      setRevenueData(revData);
+      setCategoryData(catData);
+    }
+  }, [timePeriod]);
 
   useEffect(() => {
     const unsubAuth = subscribeAuth(() => {
@@ -73,6 +100,7 @@ export default function DashboardScreen() {
           orders: state.orders,
           products: state.products,
         });
+        updateAnalytics();
       }
     });
 
@@ -94,7 +122,12 @@ export default function DashboardScreen() {
       unsubData();
       unsubNotifications();
     };
-  }, [generateInsights]);
+  }, [generateInsights, updateAnalytics]);
+
+  // Update analytics when time period changes
+  useEffect(() => {
+    updateAnalytics();
+  }, [timePeriod, updateAnalytics]);
 
   const onRefresh = useCallback(async () => {
     setRefreshing(true);
@@ -127,8 +160,17 @@ export default function DashboardScreen() {
       case 'notifications':
         router.push('/notifications');
         break;
+      case 'settings':
+        router.push('/settings/store');
+        break;
     }
   };
+
+  // Calculate advanced metrics for display
+  const advancedMetrics = useMemo(() => {
+    const state = getDataState();
+    return calculateAdvancedMetrics(state.orders, state.products, timePeriod);
+  }, [timePeriod]);
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
@@ -156,6 +198,12 @@ export default function DashboardScreen() {
           </View>
           <View style={styles.headerActions}>
             <SyncStatusIndicator />
+            <Pressable
+              style={styles.settingsButton}
+              onPress={() => handleQuickAction('settings')}
+            >
+              <Ionicons name="settings-outline" size={22} color={colors.textSecondary} />
+            </Pressable>
             <Pressable
               style={styles.notificationButton}
               onPress={() => handleQuickAction('notifications')}
@@ -188,10 +236,15 @@ export default function DashboardScreen() {
           </Animated.View>
         )}
 
-        {/* Sales Chart */}
-        <Animated.View entering={FadeInDown.delay(150).duration(500)}>
+        {/* Time Period Selector */}
+        <Animated.View entering={FadeInDown.delay(140).duration(500)}>
+          <TimePeriodSelector selected={timePeriod} onSelect={setTimePeriod} />
+        </Animated.View>
+
+        {/* Revenue vs Profit Chart */}
+        <Animated.View entering={FadeInDown.delay(160).duration(500)} style={styles.chartSection}>
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>{t.dashboard.sales}</Text>
+            <Text style={styles.sectionTitle}>{t.analytics.revenueVsProfit}</Text>
             <Pressable onPress={() => handleQuickAction('assistant')}>
               <View style={styles.aiAnalyzeButton}>
                 <Ionicons name="sparkles" size={14} color={colors.primary} />
@@ -200,9 +253,39 @@ export default function DashboardScreen() {
             </Pressable>
           </View>
           {isLoading ? (
-            <SkeletonCard lines={5} />
+            <SkeletonCard lines={6} />
+          ) : revenueData.length > 0 ? (
+            <RevenueVsProfitChart data={revenueData} />
           ) : (
-            <SalesChart weekData={salesData.week} monthData={salesData.month} />
+            <Card style={styles.emptyChartCard}>
+              <EmptyState
+                icon="analytics-outline"
+                title={t.analytics.noDataForPeriod}
+                description={t.emptyStates.noOrdersDesc}
+                action={{
+                  label: t.dashboard.newOrder,
+                  onPress: () => handleQuickAction('newOrder'),
+                }}
+              />
+            </Card>
+          )}
+        </Animated.View>
+
+        {/* Sales by Category */}
+        <Animated.View entering={FadeInDown.delay(180).duration(500)} style={styles.chartSection}>
+          <Text style={styles.sectionTitle}>{t.analytics.salesByCategory}</Text>
+          {isLoading ? (
+            <SkeletonCard lines={5} />
+          ) : categoryData.length > 0 ? (
+            <CategoryPieChart data={categoryData} />
+          ) : (
+            <Card style={styles.emptyChartCard}>
+              <EmptyState
+                icon="pie-chart-outline"
+                title={t.analytics.noDataForPeriod}
+                description={t.emptyStates.noOrdersDesc}
+              />
+            </Card>
           )}
         </Animated.View>
 
@@ -223,26 +306,26 @@ export default function DashboardScreen() {
               <View style={styles.kpiRow}>
                 <KPICard
                   title={t.dashboard.totalSales}
-                  value={formatCurrency(kpi?.totalSales || 0, true)}
+                  value={formatCurrency(advancedMetrics.totalRevenue, true)}
                   change={kpi?.salesChange}
                   icon="trending-up"
                   iconColor={colors.success}
                 />
                 <KPICard
-                  title={t.dashboard.activeOrders}
-                  value={`${kpi?.activeOrders || 0}`}
-                  change={kpi?.ordersChange}
-                  icon="cart"
-                  iconColor={colors.primary}
+                  title={t.analytics.profit}
+                  value={formatCurrency(advancedMetrics.totalProfit, true)}
+                  icon="wallet"
+                  iconColor={colors.warning}
+                  subtitle={`${t.analytics.margin}: ${advancedMetrics.profitMargin.toFixed(1)}%`}
                 />
               </View>
               <View style={styles.kpiRow}>
                 <KPICard
-                  title={t.dashboard.balance}
-                  value={formatCurrency(kpi?.balance || 0, true)}
-                  change={kpi?.balanceChange}
-                  icon="wallet"
-                  iconColor={colors.warning}
+                  title={t.dashboard.activeOrders}
+                  value={`${advancedMetrics.totalOrders}`}
+                  change={kpi?.ordersChange}
+                  icon="cart"
+                  iconColor={colors.primary}
                 />
                 <KPICard
                   title={t.dashboard.lowStock}
@@ -256,8 +339,20 @@ export default function DashboardScreen() {
           )}
         </Animated.View>
 
+        {/* Traditional Sales Chart */}
+        <Animated.View entering={FadeInDown.delay(220).duration(500)}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>{t.dashboard.sales}</Text>
+          </View>
+          {isLoading ? (
+            <SkeletonCard lines={5} />
+          ) : (
+            <SalesChart weekData={salesData.week} monthData={salesData.month} />
+          )}
+        </Animated.View>
+
         {/* AI Insights */}
-        <Animated.View entering={FadeInDown.delay(300).duration(500)}>
+        <Animated.View entering={FadeInDown.delay(260).duration(500)}>
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>{t.dashboard.smartTips}</Text>
             <View style={styles.aiBadge}>
@@ -315,7 +410,7 @@ export default function DashboardScreen() {
         </Animated.View>
 
         {/* Quick Actions */}
-        <Animated.View entering={FadeInDown.delay(400).duration(500)}>
+        <Animated.View entering={FadeInDown.delay(300).duration(500)}>
           <Text style={styles.sectionTitle}>{t.dashboard.quickActions}</Text>
           <View style={styles.quickActions}>
             <Pressable
@@ -365,7 +460,7 @@ export default function DashboardScreen() {
         </Animated.View>
 
         {/* Recent Activity */}
-        <Animated.View entering={FadeInDown.delay(500).duration(500)}>
+        <Animated.View entering={FadeInDown.delay(340).duration(500)}>
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>{t.dashboard.recentActivity}</Text>
             <Pressable onPress={() => handleQuickAction('orders')}>
@@ -378,10 +473,16 @@ export default function DashboardScreen() {
               Array.from({ length: 3 }).map((_, i) => (
                 <SkeletonCard key={i} lines={2} />
               ))
-            ) : (
+            ) : activities.length > 0 ? (
               activities.slice(0, 5).map((activity) => (
                 <ActivityItem key={activity.id} activity={activity} />
               ))
+            ) : (
+              <EmptyState
+                icon="time-outline"
+                title={t.emptyStates.noOrders}
+                description={t.emptyStates.noOrdersDesc}
+              />
             )}
           </Card>
         </Animated.View>
@@ -430,7 +531,15 @@ const styles = StyleSheet.create({
   headerActions: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: spacing.sm,
+    gap: spacing.xs,
+  },
+  settingsButton: {
+    width: 40,
+    height: 40,
+    borderRadius: borderRadius.full,
+    backgroundColor: colors.surface,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   notificationButton: {
     width: 44,
@@ -483,6 +592,9 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.sm,
     fontWeight: '500',
     color: colors.text,
+  },
+  chartSection: {
+    marginTop: spacing.md,
   },
   sectionTitle: {
     fontSize: typography.sizes.lg,
@@ -618,5 +730,8 @@ const styles = StyleSheet.create({
   activityCard: {
     paddingTop: spacing.xs,
     paddingBottom: spacing.xs,
+  },
+  emptyChartCard: {
+    paddingVertical: spacing.md,
   },
 });

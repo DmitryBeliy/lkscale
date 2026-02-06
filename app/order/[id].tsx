@@ -6,14 +6,17 @@ import {
   ScrollView,
   Pressable,
   Alert,
+  ActivityIndicator,
 } from 'react-native';
 import { useLocalSearchParams, router, Stack } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
+import * as Clipboard from 'expo-clipboard';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import { Card, Button, StatusBadge } from '@/components/ui';
 import { getOrderById } from '@/store/dataStore';
+import { shareInvoice, getInvoiceSummary } from '@/services/documentExportService';
 import { Order } from '@/types';
 import { colors, spacing, typography, borderRadius } from '@/constants/theme';
 
@@ -53,9 +56,45 @@ export default function OrderDetailScreen() {
     router.back();
   };
 
+  const [isSharing, setIsSharing] = useState(false);
+
   const handleAction = (action: string) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     Alert.alert('Действие', `${action} для заказа ${order?.orderNumber}`);
+  };
+
+  const handleShareInvoice = async () => {
+    if (!order) return;
+
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    setIsSharing(true);
+
+    try {
+      const success = await shareInvoice(order);
+      if (!success) {
+        // Fallback to clipboard
+        const summary = getInvoiceSummary(order);
+        await Clipboard.setStringAsync(summary);
+        Alert.alert('Счёт скопирован', 'Счёт скопирован в буфер обмена');
+      }
+    } catch (error) {
+      Alert.alert('Ошибка', 'Не удалось поделиться счётом');
+    } finally {
+      setIsSharing(false);
+    }
+  };
+
+  const handleCopyInvoice = async () => {
+    if (!order) return;
+
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    try {
+      const summary = getInvoiceSummary(order);
+      await Clipboard.setStringAsync(summary);
+      Alert.alert('Скопировано', 'Счёт скопирован в буфер обмена');
+    } catch (error) {
+      Alert.alert('Ошибка', 'Не удалось скопировать счёт');
+    }
   };
 
   if (!order) {
@@ -193,8 +232,51 @@ export default function OrderDetailScreen() {
           </Animated.View>
         )}
 
+        {/* Invoice Actions */}
+        <Animated.View entering={FadeInDown.delay(500).duration(400)}>
+          <Text style={styles.sectionTitle}>Документы</Text>
+          <Card style={styles.invoiceCard}>
+            <View style={styles.invoiceHeader}>
+              <View style={styles.invoiceIcon}>
+                <Ionicons name="document-text" size={24} color={colors.primary} />
+              </View>
+              <View style={styles.invoiceInfo}>
+                <Text style={styles.invoiceTitle}>Счёт</Text>
+                <Text style={styles.invoiceDescription}>
+                  Поделитесь счётом с клиентом
+                </Text>
+              </View>
+            </View>
+            <View style={styles.invoiceActions}>
+              <Pressable
+                style={styles.invoiceActionButton}
+                onPress={handleCopyInvoice}
+              >
+                <Ionicons name="copy-outline" size={20} color={colors.primary} />
+                <Text style={styles.invoiceActionText}>Копировать</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.invoiceActionButton, styles.invoiceShareButton]}
+                onPress={handleShareInvoice}
+                disabled={isSharing}
+              >
+                {isSharing ? (
+                  <ActivityIndicator size="small" color={colors.textInverse} />
+                ) : (
+                  <>
+                    <Ionicons name="share-outline" size={20} color={colors.textInverse} />
+                    <Text style={[styles.invoiceActionText, styles.invoiceShareText]}>
+                      Поделиться
+                    </Text>
+                  </>
+                )}
+              </Pressable>
+            </View>
+          </Card>
+        </Animated.View>
+
         {/* Actions */}
-        <Animated.View entering={FadeInDown.delay(500).duration(400)} style={styles.actionsContainer}>
+        <Animated.View entering={FadeInDown.delay(600).duration(400)} style={styles.actionsContainer}>
           {order.status === 'pending' && (
             <Button
               title="Принять в работу"
@@ -413,6 +495,62 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.sm,
     color: colors.textSecondary,
     lineHeight: typography.sizes.sm * 1.5,
+  },
+  invoiceCard: {
+    marginBottom: spacing.lg,
+  },
+  invoiceHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: spacing.md,
+  },
+  invoiceIcon: {
+    width: 48,
+    height: 48,
+    borderRadius: borderRadius.md,
+    backgroundColor: `${colors.primary}15`,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: spacing.md,
+  },
+  invoiceInfo: {
+    flex: 1,
+  },
+  invoiceTitle: {
+    fontSize: typography.sizes.md,
+    fontWeight: '600',
+    color: colors.text,
+  },
+  invoiceDescription: {
+    fontSize: typography.sizes.sm,
+    color: colors.textSecondary,
+    marginTop: 2,
+  },
+  invoiceActions: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+  },
+  invoiceActionButton: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.md,
+    borderRadius: borderRadius.md,
+    backgroundColor: `${colors.primary}15`,
+    gap: spacing.xs,
+  },
+  invoiceShareButton: {
+    backgroundColor: colors.primary,
+  },
+  invoiceActionText: {
+    fontSize: typography.sizes.sm,
+    fontWeight: '600',
+    color: colors.primary,
+  },
+  invoiceShareText: {
+    color: colors.textInverse,
   },
   actionsContainer: {
     marginTop: spacing.lg,

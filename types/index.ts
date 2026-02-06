@@ -254,3 +254,98 @@ export interface AIReport {
   generatedAt: string;
   data?: Record<string, unknown>;
 }
+
+// Store Settings
+export interface StoreSettings {
+  id: string;
+  userId: string;
+  businessName: string;
+  logoUrl?: string;
+  currency: string;
+  currencySymbol: string;
+  taxRate: number;
+  taxName: string;
+  address?: string;
+  phone?: string;
+  email?: string;
+  website?: string;
+  invoicePrefix: string;
+  invoiceNotes?: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+// Analytics types
+export interface RevenueVsProfitData {
+  date: string;
+  label: string;
+  revenue: number;
+  profit: number;
+  cost: number;
+}
+
+export interface CategorySalesData {
+  category: string;
+  sales: number;
+  percentage: number;
+  color: string;
+  count: number;
+}
+
+export type TimePeriod = 'today' | '7days' | '30days' | 'year';
+
+// Invoice types
+export interface InvoiceData {
+  orderNumber: string;
+  date: string;
+  customer: {
+    name: string;
+    phone?: string;
+    address?: string;
+    email?: string;
+  };
+  items: {
+    name: string;
+    quantity: number;
+    price: number;
+    total: number;
+  }[];
+  subtotal: number;
+  taxAmount: number;
+  taxRate: number;
+  total: number;
+  paymentMethod: string;
+  businessInfo: {
+    name: string;
+    address?: string;
+    phone?: string;
+    email?: string;
+  };
+  notes?: string;
+}
+
+// Stock Report types
+export interface StockReportItem {
+  id: string;
+  name: string;
+  sku: string;
+  category: string;
+  stock: number;
+  minStock: number;
+  costPrice: number;
+  retailPrice: number;
+  costValue: number;
+  retailValue: number;
+  status: 'ok' | 'low' | 'out';
+}
+
+export interface StockReport {
+  generatedAt: string;
+  totalItems: number;
+  totalCostValue: number;
+  totalRetailValue: number;
+  potentialProfit: number;
+  lowStockItems: number;
+  outOfStockItems: number;
+  items: StockReportItem[];
+}

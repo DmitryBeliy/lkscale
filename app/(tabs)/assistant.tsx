@@ -23,6 +23,12 @@ import { getBusinessSummary, subscribeData, getDataState } from '@/store/dataSto
 import { getLiveAnalytics, LiveAnalyticsData } from '@/lib/supabaseDataService';
 import { getCurrentUserId } from '@/store/authStore';
 import { getConnectionStatus } from '@/lib/supabase';
+import { getStoreSettingsState } from '@/services/storeSettingsService';
+import {
+  findDeadStock,
+  calculateProjectedTaxes,
+  generateWeeklyComparison,
+} from '@/services/analyticsService';
 import { useLocalization } from '@/localization';
 import { ChatMessage } from '@/types';
 import { colors, spacing, typography, borderRadius, shadows } from '@/constants/theme';
@@ -33,7 +39,7 @@ interface ActionCommand {
   icon: keyof typeof Ionicons.glyphMap;
   label: string;
   description: string;
-  action: 'today_report' | 'week_report' | 'monthly_report' | 'promotional' | 'inventory_report' | 'customer_analysis' | 'low_stock_alert';
+  action: 'today_report' | 'week_report' | 'monthly_report' | 'promotional' | 'inventory_report' | 'customer_analysis' | 'low_stock_alert' | 'tax_projection' | 'dead_stock' | 'weekly_digest';
 }
 
 const ACTION_COMMANDS: ActionCommand[] = [
@@ -86,14 +92,36 @@ const ACTION_COMMANDS: ActionCommand[] = [
     description: 'Сегментация и рекомендации',
     action: 'customer_analysis',
   },
+  {
+    id: 'taxes',
+    icon: 'calculator',
+    label: 'Прогноз налогов',
+    description: 'Расчёт НДС на месяц',
+    action: 'tax_projection',
+  },
+  {
+    id: 'deadstock',
+    icon: 'archive',
+    label: 'Мёртвые остатки',
+    description: 'Товары без продаж 30+ дней',
+    action: 'dead_stock',
+  },
+  {
+    id: 'digest',
+    icon: 'newspaper',
+    label: 'Недельный дайджест',
+    description: 'Сравнение с прошлой неделей',
+    action: 'weekly_digest',
+  },
 ];
 
 const SUGGESTED_QUESTIONS = [
   { id: '1', text: 'Какая выручка и прибыль за сегодня?', icon: 'cash' },
   { id: '2', text: 'Какой товар самый прибыльный?', icon: 'trending-up' },
   { id: '3', text: 'Какие товары нужно срочно пополнить?', icon: 'alert-circle' },
-  { id: '4', text: 'Сравни продажи этой и прошлой недели', icon: 'stats-chart' },
-  { id: '5', text: 'Кто мои VIP клиенты?', icon: 'person' },
+  { id: '4', text: 'Сколько налогов я должен заплатить?', icon: 'calculator' },
+  { id: '5', text: 'Есть ли товары без продаж?', icon: 'archive' },
+  { id: '6', text: 'Как прошла эта неделя?', icon: 'newspaper' },
 ];
 
 export default function AssistantScreen() {
@@ -386,6 +414,110 @@ Create a report with:
 3. Retention Insights (active vs at-risk)
 4. Reactivation Recommendations for inactive customers
 5. Growth Strategy (how to increase customer value)`;
+
+      case 'tax_projection':
+        const storeSettings = getStoreSettingsState().settings;
+        const taxRate = storeSettings?.taxRate || 20;
+        const taxName = storeSettings?.taxName || 'НДС';
+        const { orders: allOrders } = getDataState();
+        const taxProjection = calculateProjectedTaxes(allOrders, taxRate, '30days');
+
+        return `Generate a tax projection report in ${lang}. This is a financial planning tool.
+
+## Tax Configuration:
+- Tax Name: ${taxName}
+- Tax Rate: ${taxRate}%
+
+## Tax Calculations (Last 30 Days):
+- Revenue for Period: ${data.monthSales?.toLocaleString() || 0} RUB
+- ${taxName} for Current Period: ${taxProjection.currentPeriodTax.toLocaleString()} RUB
+- Projected Monthly ${taxName}: ${taxProjection.projectedMonthlyTax.toLocaleString()} RUB
+
+## Business Context:
+- Total Sales All Time: ${data.kpi?.totalSales?.toLocaleString() || 0} RUB
+- Average Order Value: ${Math.round(data.avgOrderValue || 0).toLocaleString()} RUB
+- Average Margin: ${data.avgMargin || 0}%
+
+Create a professional tax projection report with:
+1. 📊 Current Tax Summary (tax owed for period)
+2. 📈 Monthly Projection (based on current trends)
+3. 💡 Tax Optimization Tips (legal ways to optimize)
+4. 📅 Quarterly Estimate (if trends continue)
+5. ⚠️ Important Reminders (payment deadlines, documentation)
+
+Note: This is an estimate only. Consult a tax professional for official advice.`;
+
+      case 'dead_stock':
+        const { orders: stockOrders, products: stockProducts } = getDataState();
+        const deadStockItems = findDeadStock(stockOrders, stockProducts, 30);
+        const totalDeadStockValue = deadStockItems.reduce((sum, p) => sum + (p.costPrice * p.stock), 0);
+        const totalDeadStockRetail = deadStockItems.reduce((sum, p) => sum + (p.price * p.stock), 0);
+
+        return `Generate a dead stock analysis report in ${lang}. Help identify items that haven't sold in 30+ days.
+
+## Dead Stock Summary:
+- Total Items with No Sales (30+ days): ${deadStockItems.length} products
+- Total Value at Cost: ${totalDeadStockValue.toLocaleString()} RUB
+- Total Value at Retail: ${totalDeadStockRetail.toLocaleString()} RUB
+- Potential Loss if Unsold: ${totalDeadStockValue.toLocaleString()} RUB
+
+## Dead Stock Items:
+${deadStockItems.length > 0
+  ? deadStockItems.slice(0, 10).map((p, i) => `${i + 1}. ${p.name}
+   - Stock: ${p.stock} units
+   - Cost Price: ${p.costPrice.toLocaleString()} RUB
+   - Retail Price: ${p.price.toLocaleString()} RUB
+   - Tied Capital: ${(p.costPrice * p.stock).toLocaleString()} RUB
+   - Category: ${p.category || 'Без категории'}`).join('\n\n')
+  : '✅ Отлично! Нет товаров без продаж за последние 30 дней.'}
+
+## Inventory Overview:
+- Total Products: ${data.totalProducts}
+- Low Stock Items: ${data.lowStockProducts?.length || 0}
+
+Create a report with:
+1. 🔴 Critical Dead Stock (highest value items)
+2. 💰 Capital Analysis (money tied up in dead stock)
+3. 📉 Recommendations (discount strategies, bundle offers)
+4. 🎯 Action Plan (prioritized list of what to do)
+5. 🚀 Prevention Tips (how to avoid dead stock in future)`;
+
+      case 'weekly_digest':
+        const { orders: digestOrders, products: digestProducts } = getDataState();
+        const weeklyComparison = generateWeeklyComparison(digestOrders, digestProducts);
+        const revenueEmoji = weeklyComparison.changes.revenue >= 0 ? '📈' : '📉';
+        const ordersEmoji = weeklyComparison.changes.orderCount >= 0 ? '📈' : '📉';
+        const avgCheckEmoji = weeklyComparison.changes.avgCheck >= 0 ? '📈' : '📉';
+
+        return `Generate a weekly business digest in ${lang}. Compare this week vs last week performance.
+
+## THIS WEEK Performance:
+- Revenue: ${weeklyComparison.thisWeek.revenue.toLocaleString()} RUB ${revenueEmoji} (${weeklyComparison.changes.revenue >= 0 ? '+' : ''}${weeklyComparison.changes.revenue.toFixed(1)}% vs last week)
+- Orders: ${weeklyComparison.thisWeek.orderCount} ${ordersEmoji} (${weeklyComparison.changes.orderCount >= 0 ? '+' : ''}${weeklyComparison.changes.orderCount.toFixed(1)}%)
+- Avg Check: ${Math.round(weeklyComparison.thisWeek.avgCheck).toLocaleString()} RUB ${avgCheckEmoji} (${weeklyComparison.changes.avgCheck >= 0 ? '+' : ''}${weeklyComparison.changes.avgCheck.toFixed(1)}%)
+
+## LAST WEEK (for comparison):
+- Revenue: ${weeklyComparison.lastWeek.revenue.toLocaleString()} RUB
+- Orders: ${weeklyComparison.lastWeek.orderCount}
+- Avg Check: ${Math.round(weeklyComparison.lastWeek.avgCheck).toLocaleString()} RUB
+
+## TOP SELLING Products This Week:
+${weeklyComparison.topProducts.map((p, i) => `${i + 1}. ${p.name}: ${p.quantity} sold`).join('\n') || 'No sales this week'}
+
+## Low Stock Alerts:
+${data.lowStockProducts?.slice(0, 3).map((p: any) => `⚠️ ${p.name}: ${p.stock}/${p.minStock} шт.`).join('\n') || '✅ All stock levels OK'}
+
+## General Stats:
+- Total Customers: ${data.totalCustomers}
+- Total Products: ${data.totalProducts}
+
+Create a weekly digest with:
+1. 📊 Week at a Glance (key metrics with arrows ↑↓)
+2. 🏆 Wins This Week (what went well)
+3. ⚠️ Areas of Concern (what needs attention)
+4. 🎯 Top Performers (best-selling products)
+5. 📋 Action Items for Next Week (3-5 specific tasks)
+6. 💡 One Key Insight (most important takeaway)`;
 
       default:
         return '';

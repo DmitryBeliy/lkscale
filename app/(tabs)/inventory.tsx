@@ -9,11 +9,13 @@ import {
   TextInput,
   Alert,
   Modal,
+  ActivityIndicator,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
+import * as Clipboard from 'expo-clipboard';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import { ProductCard } from '@/components/ProductCard';
 import { SkeletonListLoader } from '@/components/ui/Skeleton';
@@ -31,6 +33,7 @@ import {
   productHasVariants,
   batchUpdateProducts,
 } from '@/store/dataStore';
+import { shareStockReport, getStockReportSummary, generateStockReport } from '@/services/documentExportService';
 import { Product } from '@/types';
 import { useLocalization } from '@/localization';
 import { colors, spacing, typography, borderRadius, shadows } from '@/constants/theme';
@@ -56,6 +59,10 @@ export default function InventoryScreen() {
   const [batchAction, setBatchAction] = useState<'stock' | 'category' | 'status'>('stock');
   const [batchStockAdjustment, setBatchStockAdjustment] = useState('');
   const [batchCategory, setBatchCategory] = useState('');
+
+  // Stock report state
+  const [showReportModal, setShowReportModal] = useState(false);
+  const [isGeneratingReport, setIsGeneratingReport] = useState(false);
 
   useEffect(() => {
     const unsub = subscribeData(() => {
@@ -216,6 +223,49 @@ export default function InventoryScreen() {
   const getCategoryLabel = (category: string) => {
     if (category === 'all') return t.common.all;
     return category;
+  };
+
+  // Stock Report functions
+  const handleOpenReportModal = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    setShowReportModal(true);
+  };
+
+  const handleShareReport = async () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    setIsGeneratingReport(true);
+
+    try {
+      const success = await shareStockReport(products);
+      if (!success) {
+        // Fallback to clipboard
+        const summary = getStockReportSummary(products);
+        await Clipboard.setStringAsync(summary);
+        Alert.alert('Отчёт скопирован', 'Отчёт скопирован в буфер обмена');
+      }
+      setShowReportModal(false);
+    } catch (error) {
+      Alert.alert('Ошибка', 'Не удалось сгенерировать отчёт');
+    } finally {
+      setIsGeneratingReport(false);
+    }
+  };
+
+  const handleCopyReport = async () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    try {
+      const summary = getStockReportSummary(products);
+      await Clipboard.setStringAsync(summary);
+      Alert.alert('Скопировано', 'Краткий отчёт скопирован в буфер обмена');
+    } catch (error) {
+      Alert.alert('Ошибка', 'Не удалось скопировать отчёт');
+    }
+  };
+
+  const getReportPreview = () => {
+    if (products.length === 0) return null;
+    const report = generateStockReport(products);
+    return report;
   };
 
   const getTotalStock = () => {
@@ -413,6 +463,12 @@ export default function InventoryScreen() {
         <Text style={styles.title}>{t.nav.inventory}</Text>
         <View style={styles.headerActions}>
           <Pressable
+            style={styles.headerButton}
+            onPress={handleOpenReportModal}
+          >
+            <Ionicons name="document-text-outline" size={22} color={colors.text} />
+          </Pressable>
+          <Pressable
             style={[styles.headerButton, batchMode && styles.headerButtonActive]}
             onPress={toggleBatchMode}
           >
@@ -565,6 +621,114 @@ export default function InventoryScreen() {
                 onPress={handleBatchUpdate}
                 style={{ flex: 1 }}
               />
+            </View>
+          </View>
+        </View>
+      </Modal>
+
+      {/* Stock Report Modal */}
+      <Modal
+        visible={showReportModal}
+        transparent
+        animationType="slide"
+        onRequestClose={() => setShowReportModal(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={[styles.modalContent, { paddingBottom: insets.bottom + spacing.lg }]}>
+            <View style={styles.modalHeader}>
+              <Text style={styles.modalTitle}>Отчёт по складу</Text>
+              <Pressable onPress={() => setShowReportModal(false)}>
+                <Ionicons name="close" size={24} color={colors.textSecondary} />
+              </Pressable>
+            </View>
+
+            <View style={styles.modalBody}>
+              {(() => {
+                const report = getReportPreview();
+                if (!report) {
+                  return (
+                    <View style={styles.reportEmptyState}>
+                      <Ionicons name="cube-outline" size={48} color={colors.textLight} />
+                      <Text style={styles.reportEmptyText}>Нет товаров для отчёта</Text>
+                    </View>
+                  );
+                }
+                return (
+                  <>
+                    <View style={styles.reportSummary}>
+                      <View style={styles.reportSummaryRow}>
+                        <View style={styles.reportSummaryItem}>
+                          <Text style={styles.reportSummaryLabel}>Товаров</Text>
+                          <Text style={styles.reportSummaryValue}>{report.totalItems}</Text>
+                        </View>
+                        <View style={styles.reportSummaryItem}>
+                          <Text style={styles.reportSummaryLabel}>Низкий остаток</Text>
+                          <Text style={[styles.reportSummaryValue, styles.reportWarning]}>
+                            {report.lowStockItems}
+                          </Text>
+                        </View>
+                        <View style={styles.reportSummaryItem}>
+                          <Text style={styles.reportSummaryLabel}>Нет в наличии</Text>
+                          <Text style={[styles.reportSummaryValue, styles.reportDanger]}>
+                            {report.outOfStockItems}
+                          </Text>
+                        </View>
+                      </View>
+
+                      <View style={styles.reportDivider} />
+
+                      <View style={styles.reportValueRow}>
+                        <View style={styles.reportValueItem}>
+                          <Text style={styles.reportValueLabel}>Себестоимость</Text>
+                          <Text style={styles.reportValueAmount}>
+                            {formatCurrency(report.totalCostValue)}
+                          </Text>
+                        </View>
+                        <View style={styles.reportValueItem}>
+                          <Text style={styles.reportValueLabel}>Розничная стоимость</Text>
+                          <Text style={[styles.reportValueAmount, styles.reportValueHighlight]}>
+                            {formatCurrency(report.totalRetailValue)}
+                          </Text>
+                        </View>
+                      </View>
+
+                      <View style={styles.reportProfitRow}>
+                        <View style={styles.reportProfitIcon}>
+                          <Ionicons name="trending-up" size={20} color={colors.success} />
+                        </View>
+                        <Text style={styles.reportProfitLabel}>Потенциальная прибыль:</Text>
+                        <Text style={styles.reportProfitValue}>
+                          {formatCurrency(report.potentialProfit)}
+                        </Text>
+                      </View>
+                    </View>
+                  </>
+                );
+              })()}
+            </View>
+
+            <View style={styles.modalFooter}>
+              <Pressable
+                style={styles.reportCopyButton}
+                onPress={handleCopyReport}
+              >
+                <Ionicons name="copy-outline" size={20} color={colors.primary} />
+                <Text style={styles.reportCopyText}>Копировать</Text>
+              </Pressable>
+              <Pressable
+                style={styles.reportShareButton}
+                onPress={handleShareReport}
+                disabled={isGeneratingReport || products.length === 0}
+              >
+                {isGeneratingReport ? (
+                  <ActivityIndicator size="small" color={colors.textInverse} />
+                ) : (
+                  <>
+                    <Ionicons name="share-outline" size={20} color={colors.textInverse} />
+                    <Text style={styles.reportShareText}>Поделиться отчётом</Text>
+                  </>
+                )}
+              </Pressable>
             </View>
           </View>
         </View>
@@ -904,5 +1068,128 @@ const styles = StyleSheet.create({
     padding: spacing.lg,
     borderTopWidth: 1,
     borderTopColor: colors.borderLight,
+  },
+  // Report Modal Styles
+  reportEmptyState: {
+    alignItems: 'center',
+    paddingVertical: spacing.xl,
+  },
+  reportEmptyText: {
+    fontSize: typography.sizes.md,
+    color: colors.textSecondary,
+    marginTop: spacing.sm,
+  },
+  reportSummary: {
+    backgroundColor: colors.background,
+    borderRadius: borderRadius.lg,
+    padding: spacing.md,
+  },
+  reportSummaryRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  reportSummaryItem: {
+    alignItems: 'center',
+    flex: 1,
+  },
+  reportSummaryLabel: {
+    fontSize: typography.sizes.xs,
+    color: colors.textSecondary,
+    marginBottom: spacing.xs,
+  },
+  reportSummaryValue: {
+    fontSize: typography.sizes.xl,
+    fontWeight: '700',
+    color: colors.text,
+  },
+  reportWarning: {
+    color: colors.warning,
+  },
+  reportDanger: {
+    color: colors.error,
+  },
+  reportDivider: {
+    height: 1,
+    backgroundColor: colors.borderLight,
+    marginVertical: spacing.md,
+  },
+  reportValueRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: spacing.md,
+  },
+  reportValueItem: {
+    flex: 1,
+  },
+  reportValueLabel: {
+    fontSize: typography.sizes.sm,
+    color: colors.textSecondary,
+    marginBottom: spacing.xs,
+  },
+  reportValueAmount: {
+    fontSize: typography.sizes.lg,
+    fontWeight: '600',
+    color: colors.text,
+  },
+  reportValueHighlight: {
+    color: colors.primary,
+  },
+  reportProfitRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: `${colors.success}15`,
+    padding: spacing.sm,
+    borderRadius: borderRadius.md,
+    gap: spacing.sm,
+  },
+  reportProfitIcon: {
+    width: 32,
+    height: 32,
+    borderRadius: borderRadius.full,
+    backgroundColor: `${colors.success}20`,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  reportProfitLabel: {
+    flex: 1,
+    fontSize: typography.sizes.sm,
+    color: colors.text,
+  },
+  reportProfitValue: {
+    fontSize: typography.sizes.lg,
+    fontWeight: '700',
+    color: colors.success,
+  },
+  reportCopyButton: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: spacing.md,
+    paddingHorizontal: spacing.lg,
+    borderRadius: borderRadius.md,
+    backgroundColor: `${colors.primary}15`,
+    gap: spacing.sm,
+  },
+  reportCopyText: {
+    fontSize: typography.sizes.md,
+    fontWeight: '600',
+    color: colors.primary,
+  },
+  reportShareButton: {
+    flex: 2,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: spacing.md,
+    paddingHorizontal: spacing.lg,
+    borderRadius: borderRadius.md,
+    backgroundColor: colors.primary,
+    gap: spacing.sm,
+  },
+  reportShareText: {
+    fontSize: typography.sizes.md,
+    fontWeight: '600',
+    color: colors.textInverse,
   },
 });

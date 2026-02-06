@@ -10,6 +10,7 @@ interface KPICardProps {
   change?: number;
   icon: keyof typeof Ionicons.glyphMap;
   iconColor?: string;
+  subtitle?: string;
   onPress?: () => void;
 }
 
@@ -19,6 +20,7 @@ export const KPICard: React.FC<KPICardProps> = ({
   change,
   icon,
   iconColor = colors.primary,
+  subtitle,
   onPress,
 }) => {
   const isPositive = change !== undefined && change > 0;
@@ -59,6 +61,7 @@ export const KPICard: React.FC<KPICardProps> = ({
       </View>
       <Text style={styles.value}>{value}</Text>
       <Text style={styles.title}>{title}</Text>
+      {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
     </Card>
   );
 };
@@ -118,5 +121,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: typography.sizes.sm,
     color: colors.textSecondary,
+  },
+  subtitle: {
+    fontSize: typography.sizes.xs,
+    color: colors.textLight,
+    marginTop: 2,
   },
 });

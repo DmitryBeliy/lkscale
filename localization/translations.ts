@@ -230,6 +230,62 @@ export interface Translations {
     thousand: string;
     million: string;
   };
+
+  // Analytics
+  analytics: {
+    revenueVsProfit: string;
+    salesByCategory: string;
+    today: string;
+    sevenDays: string;
+    thirtyDays: string;
+    year: string;
+    revenue: string;
+    profit: string;
+    margin: string;
+    total: string;
+    noDataForPeriod: string;
+  };
+
+  // Store Settings
+  storeSettings: {
+    title: string;
+    businessName: string;
+    logo: string;
+    uploadLogo: string;
+    currency: string;
+    taxRate: string;
+    taxName: string;
+    address: string;
+    phone: string;
+    email: string;
+    website: string;
+    invoicePrefix: string;
+    invoiceNotes: string;
+    saved: string;
+    saveChanges: string;
+  };
+
+  // Documents
+  documents: {
+    shareInvoice: string;
+    stockReport: string;
+    generating: string;
+    shareSuccess: string;
+    shareError: string;
+    copyToClipboard: string;
+    copied: string;
+  };
+
+  // Empty States
+  emptyStates: {
+    noOrders: string;
+    noOrdersDesc: string;
+    noProducts: string;
+    noProductsDesc: string;
+    noCustomers: string;
+    noCustomersDesc: string;
+    createFirst: string;
+  };
 }
 
 export const translations: Record<Language, Translations> = {
@@ -438,6 +494,54 @@ export const translations: Record<Language, Translations> = {
       thousand: 'тыс',
       million: 'млн',
     },
+    analytics: {
+      revenueVsProfit: 'Выручка и прибыль',
+      salesByCategory: 'Продажи по категориям',
+      today: 'Сегодня',
+      sevenDays: '7 дней',
+      thirtyDays: '30 дней',
+      year: 'Год',
+      revenue: 'Выручка',
+      profit: 'Прибыль',
+      margin: 'Маржа',
+      total: 'Всего',
+      noDataForPeriod: 'Нет данных за выбранный период',
+    },
+    storeSettings: {
+      title: 'Настройки магазина',
+      businessName: 'Название бизнеса',
+      logo: 'Логотип',
+      uploadLogo: 'Загрузить логотип',
+      currency: 'Валюта',
+      taxRate: 'Ставка налога',
+      taxName: 'Название налога',
+      address: 'Адрес',
+      phone: 'Телефон',
+      email: 'Email',
+      website: 'Веб-сайт',
+      invoicePrefix: 'Префикс счёта',
+      invoiceNotes: 'Примечания к счёту',
+      saved: 'Сохранено',
+      saveChanges: 'Сохранить изменения',
+    },
+    documents: {
+      shareInvoice: 'Поделиться счётом',
+      stockReport: 'Отчёт по остаткам',
+      generating: 'Генерация...',
+      shareSuccess: 'Документ готов к отправке',
+      shareError: 'Ошибка при создании документа',
+      copyToClipboard: 'Копировать',
+      copied: 'Скопировано!',
+    },
+    emptyStates: {
+      noOrders: 'Нет заказов',
+      noOrdersDesc: 'Заказы появятся здесь после их создания',
+      noProducts: 'Нет товаров',
+      noProductsDesc: 'Добавьте товары для управления складом',
+      noCustomers: 'Нет клиентов',
+      noCustomersDesc: 'Клиенты появятся после первого заказа',
+      createFirst: 'Создать первый',
+    },
   },
 
   en: {
@@ -644,6 +748,54 @@ export const translations: Record<Language, Translations> = {
       code: 'RUB',
       thousand: 'K',
       million: 'M',
+    },
+    analytics: {
+      revenueVsProfit: 'Revenue vs Profit',
+      salesByCategory: 'Sales by Category',
+      today: 'Today',
+      sevenDays: '7 Days',
+      thirtyDays: '30 Days',
+      year: 'Year',
+      revenue: 'Revenue',
+      profit: 'Profit',
+      margin: 'Margin',
+      total: 'Total',
+      noDataForPeriod: 'No data for selected period',
+    },
+    storeSettings: {
+      title: 'Store Settings',
+      businessName: 'Business Name',
+      logo: 'Logo',
+      uploadLogo: 'Upload Logo',
+      currency: 'Currency',
+      taxRate: 'Tax Rate',
+      taxName: 'Tax Name',
+      address: 'Address',
+      phone: 'Phone',
+      email: 'Email',
+      website: 'Website',
+      invoicePrefix: 'Invoice Prefix',
+      invoiceNotes: 'Invoice Notes',
+      saved: 'Saved',
+      saveChanges: 'Save Changes',
+    },
+    documents: {
+      shareInvoice: 'Share Invoice',
+      stockReport: 'Stock Report',
+      generating: 'Generating...',
+      shareSuccess: 'Document ready to share',
+      shareError: 'Error creating document',
+      copyToClipboard: 'Copy',
+      copied: 'Copied!',
+    },
+    emptyStates: {
+      noOrders: 'No orders',
+      noOrdersDesc: 'Orders will appear here after creation',
+      noProducts: 'No products',
+      noProductsDesc: 'Add products to manage inventory',
+      noCustomers: 'No customers',
+      noCustomersDesc: 'Customers will appear after first order',
+      createFirst: 'Create first',
     },
   },
 };

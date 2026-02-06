@@ -244,6 +244,71 @@ export type Database = {
         }
         Relationships: []
       }
+      store_settings: {
+        Row: {
+          id: string
+          user_id: string
+          business_name: string | null
+          logo_url: string | null
+          currency: string | null
+          currency_symbol: string | null
+          tax_rate: number | null
+          tax_name: string | null
+          address: string | null
+          phone: string | null
+          email: string | null
+          website: string | null
+          invoice_prefix: string | null
+          invoice_notes: string | null
+          created_at: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          business_name?: string | null
+          logo_url?: string | null
+          currency?: string | null
+          currency_symbol?: string | null
+          tax_rate?: number | null
+          tax_name?: string | null
+          address?: string | null
+          phone?: string | null
+          email?: string | null
+          website?: string | null
+          invoice_prefix?: string | null
+          invoice_notes?: string | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          business_name?: string | null
+          logo_url?: string | null
+          currency?: string | null
+          currency_symbol?: string | null
+          tax_rate?: number | null
+          tax_name?: string | null
+          address?: string | null
+          phone?: string | null
+          email?: string | null
+          website?: string | null
+          invoice_prefix?: string | null
+          invoice_notes?: string | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "store_settings_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
     }
     Views: {
       [_ in never]: never

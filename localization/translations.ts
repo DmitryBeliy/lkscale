@@ -286,6 +286,167 @@ export interface Translations {
     noCustomersDesc: string;
     createFirst: string;
   };
+
+  // Team Management
+  team: {
+    title: string;
+    members: string;
+    inviteMember: string;
+    inviteByEmail: string;
+    pendingInvites: string;
+    activeMembers: string;
+    roles: {
+      admin: string;
+      cashier: string;
+      stockManager: string;
+    };
+    status: {
+      pending: string;
+      active: string;
+      suspended: string;
+    };
+    permissions: string;
+    editPermissions: string;
+    removeFromTeam: string;
+    removeConfirm: string;
+    noMembers: string;
+    noMembersDesc: string;
+    inviteSent: string;
+    memberProfile: string;
+    shiftsHistory: string;
+    currentShift: string;
+    startShift: string;
+    endShift: string;
+    onBreak: string;
+    totalHours: string;
+    salesThisShift: string;
+  };
+
+  // Activity Log
+  activityLog: {
+    title: string;
+    allActivity: string;
+    filterByAction: string;
+    filterByMember: string;
+    noActivity: string;
+    actions: {
+      orderCreated: string;
+      orderCompleted: string;
+      orderCancelled: string;
+      orderDeleted: string;
+      productCreated: string;
+      productUpdated: string;
+      productDeleted: string;
+      priceChanged: string;
+      stockAdjusted: string;
+      customerCreated: string;
+      customerUpdated: string;
+      couponCreated: string;
+      couponUsed: string;
+      shiftStarted: string;
+      shiftEnded: string;
+      teamMemberInvited: string;
+      teamMemberUpdated: string;
+      teamMemberRemoved: string;
+      settingsChanged: string;
+    };
+  };
+
+  // Loyalty & CRM
+  loyalty: {
+    title: string;
+    bonusPoints: string;
+    lifetimePoints: string;
+    earnPoints: string;
+    spendPoints: string;
+    pointsHistory: string;
+    tier: string;
+    tiers: {
+      standard: string;
+      silver: string;
+      gold: string;
+      vip: string;
+    };
+    tierBenefits: string;
+    nextTier: string;
+    spendToReach: string;
+    favoriteProducts: string;
+    personalNotes: string;
+    preferences: string;
+    topCategories: string;
+    lastVisit: string;
+    visitCount: string;
+    churnRisk: string;
+    atRisk: string;
+    winBack: string;
+  };
+
+  // Coupons & Promotions
+  coupons: {
+    title: string;
+    createCoupon: string;
+    editCoupon: string;
+    couponCode: string;
+    discountType: string;
+    percentage: string;
+    fixedAmount: string;
+    discountValue: string;
+    minPurchase: string;
+    maxDiscount: string;
+    usageLimit: string;
+    unlimited: string;
+    singleUse: string;
+    validFrom: string;
+    validUntil: string;
+    noExpiry: string;
+    targetCustomers: string;
+    allCustomers: string;
+    specificTiers: string;
+    specificCustomers: string;
+    active: string;
+    inactive: string;
+    expired: string;
+    usages: string;
+    noCoupons: string;
+  };
+
+  // Marketing Campaigns
+  marketing: {
+    title: string;
+    campaigns: string;
+    createCampaign: string;
+    churnPrevention: string;
+    winBack: string;
+    vipRewards: string;
+    seasonal: string;
+    custom: string;
+    aiGenerated: string;
+    generateWithAI: string;
+    targetAudience: string;
+    messageTemplate: string;
+    offerDetails: string;
+    stats: string;
+    sent: string;
+    opened: string;
+    converted: string;
+    schedule: string;
+    sendNow: string;
+    noCampaigns: string;
+  };
+
+  // Staff Performance
+  staffPerformance: {
+    title: string;
+    topSellers: string;
+    salesPerHour: string;
+    totalSales: string;
+    ordersProcessed: string;
+    avgOrderValue: string;
+    hoursWorked: string;
+    stockAdjustments: string;
+    improvement: string;
+    rank: string;
+  };
 }
 
 export const translations: Record<Language, Translations> = {
@@ -542,6 +703,155 @@ export const translations: Record<Language, Translations> = {
       noCustomersDesc: 'Клиенты появятся после первого заказа',
       createFirst: 'Создать первый',
     },
+    team: {
+      title: 'Команда',
+      members: 'Сотрудники',
+      inviteMember: 'Пригласить сотрудника',
+      inviteByEmail: 'Пригласить по email',
+      pendingInvites: 'Ожидают приглашения',
+      activeMembers: 'Активные сотрудники',
+      roles: {
+        admin: 'Администратор',
+        cashier: 'Кассир',
+        stockManager: 'Кладовщик',
+      },
+      status: {
+        pending: 'Ожидает',
+        active: 'Активен',
+        suspended: 'Заблокирован',
+      },
+      permissions: 'Права доступа',
+      editPermissions: 'Изменить права',
+      removeFromTeam: 'Удалить из команды',
+      removeConfirm: 'Удалить сотрудника из команды?',
+      noMembers: 'Нет сотрудников',
+      noMembersDesc: 'Пригласите первого сотрудника',
+      inviteSent: 'Приглашение отправлено',
+      memberProfile: 'Профиль сотрудника',
+      shiftsHistory: 'История смен',
+      currentShift: 'Текущая смена',
+      startShift: 'Начать смену',
+      endShift: 'Завершить смену',
+      onBreak: 'На перерыве',
+      totalHours: 'Всего часов',
+      salesThisShift: 'Продажи за смену',
+    },
+    activityLog: {
+      title: 'Журнал действий',
+      allActivity: 'Все действия',
+      filterByAction: 'Фильтр по действию',
+      filterByMember: 'Фильтр по сотруднику',
+      noActivity: 'Нет записей',
+      actions: {
+        orderCreated: 'Создан заказ',
+        orderCompleted: 'Заказ выполнен',
+        orderCancelled: 'Заказ отменён',
+        orderDeleted: 'Заказ удалён',
+        productCreated: 'Добавлен товар',
+        productUpdated: 'Изменён товар',
+        productDeleted: 'Удалён товар',
+        priceChanged: 'Изменена цена',
+        stockAdjusted: 'Корректировка остатков',
+        customerCreated: 'Добавлен клиент',
+        customerUpdated: 'Изменён клиент',
+        couponCreated: 'Создан купон',
+        couponUsed: 'Использован купон',
+        shiftStarted: 'Начало смены',
+        shiftEnded: 'Конец смены',
+        teamMemberInvited: 'Приглашён сотрудник',
+        teamMemberUpdated: 'Изменён сотрудник',
+        teamMemberRemoved: 'Удалён сотрудник',
+        settingsChanged: 'Изменены настройки',
+      },
+    },
+    loyalty: {
+      title: 'Программа лояльности',
+      bonusPoints: 'Бонусные баллы',
+      lifetimePoints: 'Накоплено всего',
+      earnPoints: 'Начислено',
+      spendPoints: 'Списано',
+      pointsHistory: 'История баллов',
+      tier: 'Статус',
+      tiers: {
+        standard: 'Стандарт',
+        silver: 'Серебро',
+        gold: 'Золото',
+        vip: 'VIP',
+      },
+      tierBenefits: 'Привилегии статуса',
+      nextTier: 'До следующего статуса',
+      spendToReach: 'Осталось потратить',
+      favoriteProducts: 'Любимые товары',
+      personalNotes: 'Заметки о клиенте',
+      preferences: 'Предпочтения',
+      topCategories: 'Топ категории',
+      lastVisit: 'Последний визит',
+      visitCount: 'Всего визитов',
+      churnRisk: 'Риск оттока',
+      atRisk: 'Под угрозой',
+      winBack: 'Вернуть клиента',
+    },
+    coupons: {
+      title: 'Купоны и акции',
+      createCoupon: 'Создать купон',
+      editCoupon: 'Редактировать купон',
+      couponCode: 'Код купона',
+      discountType: 'Тип скидки',
+      percentage: 'Процент',
+      fixedAmount: 'Фиксированная сумма',
+      discountValue: 'Размер скидки',
+      minPurchase: 'Мин. сумма покупки',
+      maxDiscount: 'Макс. скидка',
+      usageLimit: 'Лимит использований',
+      unlimited: 'Без ограничений',
+      singleUse: 'Одноразовый',
+      validFrom: 'Действует с',
+      validUntil: 'Действует до',
+      noExpiry: 'Бессрочный',
+      targetCustomers: 'Для кого',
+      allCustomers: 'Все клиенты',
+      specificTiers: 'По статусу',
+      specificCustomers: 'Выбранные клиенты',
+      active: 'Активный',
+      inactive: 'Неактивный',
+      expired: 'Истёк',
+      usages: 'Использований',
+      noCoupons: 'Нет купонов',
+    },
+    marketing: {
+      title: 'Маркетинг',
+      campaigns: 'Кампании',
+      createCampaign: 'Создать кампанию',
+      churnPrevention: 'Предотвращение оттока',
+      winBack: 'Возврат клиентов',
+      vipRewards: 'Награды VIP',
+      seasonal: 'Сезонная',
+      custom: 'Пользовательская',
+      aiGenerated: 'Создано AI',
+      generateWithAI: 'Создать с помощью AI',
+      targetAudience: 'Целевая аудитория',
+      messageTemplate: 'Шаблон сообщения',
+      offerDetails: 'Детали предложения',
+      stats: 'Статистика',
+      sent: 'Отправлено',
+      opened: 'Открыто',
+      converted: 'Конверсия',
+      schedule: 'Запланировать',
+      sendNow: 'Отправить сейчас',
+      noCampaigns: 'Нет кампаний',
+    },
+    staffPerformance: {
+      title: 'Эффективность сотрудников',
+      topSellers: 'Лучшие продавцы',
+      salesPerHour: 'Продаж в час',
+      totalSales: 'Всего продаж',
+      ordersProcessed: 'Обработано заказов',
+      avgOrderValue: 'Средний чек',
+      hoursWorked: 'Часов отработано',
+      stockAdjustments: 'Корректировок склада',
+      improvement: 'Изменение',
+      rank: 'Место',
+    },
   },
 
   en: {
@@ -796,6 +1106,155 @@ export const translations: Record<Language, Translations> = {
       noCustomers: 'No customers',
       noCustomersDesc: 'Customers will appear after first order',
       createFirst: 'Create first',
+    },
+    team: {
+      title: 'Team',
+      members: 'Team Members',
+      inviteMember: 'Invite Member',
+      inviteByEmail: 'Invite by email',
+      pendingInvites: 'Pending Invites',
+      activeMembers: 'Active Members',
+      roles: {
+        admin: 'Admin',
+        cashier: 'Cashier',
+        stockManager: 'Stock Manager',
+      },
+      status: {
+        pending: 'Pending',
+        active: 'Active',
+        suspended: 'Suspended',
+      },
+      permissions: 'Permissions',
+      editPermissions: 'Edit Permissions',
+      removeFromTeam: 'Remove from Team',
+      removeConfirm: 'Remove member from team?',
+      noMembers: 'No team members',
+      noMembersDesc: 'Invite your first team member',
+      inviteSent: 'Invitation sent',
+      memberProfile: 'Member Profile',
+      shiftsHistory: 'Shifts History',
+      currentShift: 'Current Shift',
+      startShift: 'Start Shift',
+      endShift: 'End Shift',
+      onBreak: 'On Break',
+      totalHours: 'Total Hours',
+      salesThisShift: 'Shift Sales',
+    },
+    activityLog: {
+      title: 'Activity Log',
+      allActivity: 'All Activity',
+      filterByAction: 'Filter by Action',
+      filterByMember: 'Filter by Member',
+      noActivity: 'No activity',
+      actions: {
+        orderCreated: 'Order created',
+        orderCompleted: 'Order completed',
+        orderCancelled: 'Order cancelled',
+        orderDeleted: 'Order deleted',
+        productCreated: 'Product added',
+        productUpdated: 'Product updated',
+        productDeleted: 'Product deleted',
+        priceChanged: 'Price changed',
+        stockAdjusted: 'Stock adjusted',
+        customerCreated: 'Customer added',
+        customerUpdated: 'Customer updated',
+        couponCreated: 'Coupon created',
+        couponUsed: 'Coupon used',
+        shiftStarted: 'Shift started',
+        shiftEnded: 'Shift ended',
+        teamMemberInvited: 'Team member invited',
+        teamMemberUpdated: 'Team member updated',
+        teamMemberRemoved: 'Team member removed',
+        settingsChanged: 'Settings changed',
+      },
+    },
+    loyalty: {
+      title: 'Loyalty Program',
+      bonusPoints: 'Bonus Points',
+      lifetimePoints: 'Lifetime Points',
+      earnPoints: 'Earned',
+      spendPoints: 'Spent',
+      pointsHistory: 'Points History',
+      tier: 'Tier',
+      tiers: {
+        standard: 'Standard',
+        silver: 'Silver',
+        gold: 'Gold',
+        vip: 'VIP',
+      },
+      tierBenefits: 'Tier Benefits',
+      nextTier: 'Next Tier',
+      spendToReach: 'Spend to reach',
+      favoriteProducts: 'Favorite Products',
+      personalNotes: 'Personal Notes',
+      preferences: 'Preferences',
+      topCategories: 'Top Categories',
+      lastVisit: 'Last Visit',
+      visitCount: 'Total Visits',
+      churnRisk: 'Churn Risk',
+      atRisk: 'At Risk',
+      winBack: 'Win Back',
+    },
+    coupons: {
+      title: 'Coupons & Promotions',
+      createCoupon: 'Create Coupon',
+      editCoupon: 'Edit Coupon',
+      couponCode: 'Coupon Code',
+      discountType: 'Discount Type',
+      percentage: 'Percentage',
+      fixedAmount: 'Fixed Amount',
+      discountValue: 'Discount Value',
+      minPurchase: 'Min. Purchase',
+      maxDiscount: 'Max. Discount',
+      usageLimit: 'Usage Limit',
+      unlimited: 'Unlimited',
+      singleUse: 'Single Use',
+      validFrom: 'Valid From',
+      validUntil: 'Valid Until',
+      noExpiry: 'No Expiry',
+      targetCustomers: 'Target Customers',
+      allCustomers: 'All Customers',
+      specificTiers: 'By Tier',
+      specificCustomers: 'Specific Customers',
+      active: 'Active',
+      inactive: 'Inactive',
+      expired: 'Expired',
+      usages: 'Usages',
+      noCoupons: 'No coupons',
+    },
+    marketing: {
+      title: 'Marketing',
+      campaigns: 'Campaigns',
+      createCampaign: 'Create Campaign',
+      churnPrevention: 'Churn Prevention',
+      winBack: 'Win Back',
+      vipRewards: 'VIP Rewards',
+      seasonal: 'Seasonal',
+      custom: 'Custom',
+      aiGenerated: 'AI Generated',
+      generateWithAI: 'Generate with AI',
+      targetAudience: 'Target Audience',
+      messageTemplate: 'Message Template',
+      offerDetails: 'Offer Details',
+      stats: 'Statistics',
+      sent: 'Sent',
+      opened: 'Opened',
+      converted: 'Converted',
+      schedule: 'Schedule',
+      sendNow: 'Send Now',
+      noCampaigns: 'No campaigns',
+    },
+    staffPerformance: {
+      title: 'Staff Performance',
+      topSellers: 'Top Sellers',
+      salesPerHour: 'Sales/Hour',
+      totalSales: 'Total Sales',
+      ordersProcessed: 'Orders Processed',
+      avgOrderValue: 'Avg. Order Value',
+      hoursWorked: 'Hours Worked',
+      stockAdjustments: 'Stock Adjustments',
+      improvement: 'Change',
+      rank: 'Rank',
     },
   },
 };

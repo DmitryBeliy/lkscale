@@ -14,6 +14,7 @@ import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 import Animated, { FadeInDown } from 'react-native-reanimated';
+import { LinearGradient } from 'expo-linear-gradient';
 import { Card, Button } from '@/components/ui';
 import { getAuthState, subscribeAuth, logout } from '@/store/authStore';
 import { getDataState, subscribeData } from '@/store/dataStore';
@@ -29,6 +30,9 @@ interface MenuItemProps {
   onPress?: () => void;
   showArrow?: boolean;
   rightElement?: React.ReactNode;
+  badge?: string;
+  badgeColor?: string;
+  gradient?: [string, string];
 }
 
 const MenuItem: React.FC<MenuItemProps> = ({
@@ -39,17 +43,33 @@ const MenuItem: React.FC<MenuItemProps> = ({
   onPress,
   showArrow = true,
   rightElement,
+  badge,
+  badgeColor = colors.primary,
+  gradient,
 }) => (
   <Pressable
     style={styles.menuItem}
     onPress={onPress}
     disabled={!onPress}
   >
-    <View style={[styles.menuIcon, { backgroundColor: `${iconColor}15` }]}>
-      <Ionicons name={icon} size={22} color={iconColor} />
-    </View>
+    {gradient ? (
+      <LinearGradient colors={gradient} style={styles.menuIcon}>
+        <Ionicons name={icon} size={22} color="#fff" />
+      </LinearGradient>
+    ) : (
+      <View style={[styles.menuIcon, { backgroundColor: `${iconColor}15` }]}>
+        <Ionicons name={icon} size={22} color={iconColor} />
+      </View>
+    )}
     <View style={styles.menuContent}>
-      <Text style={styles.menuTitle}>{title}</Text>
+      <View style={styles.menuTitleRow}>
+        <Text style={styles.menuTitle}>{title}</Text>
+        {badge && (
+          <View style={[styles.menuBadge, { backgroundColor: `${badgeColor}15` }]}>
+            <Text style={[styles.menuBadgeText, { color: badgeColor }]}>{badge}</Text>
+          </View>
+        )}
+      </View>
       {subtitle && <Text style={styles.menuSubtitle}>{subtitle}</Text>}
     </View>
     {rightElement || (showArrow && onPress && (
@@ -206,8 +226,49 @@ export default function ProfileScreen() {
           </Card>
         </Animated.View>
 
+        {/* Business Tools */}
+        <Animated.View entering={FadeInDown.delay(350).duration(500)}>
+          <Text style={styles.sectionTitle}>{t.team?.title || 'Business Tools'}</Text>
+          <Card style={styles.menuCard}>
+            <MenuItem
+              icon="people"
+              title={t.team?.title || 'Team'}
+              subtitle={t.team?.members || 'Manage team members'}
+              gradient={[colors.primary, colors.primaryDark]}
+              onPress={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                router.push('/team');
+              }}
+            />
+            <MenuItem
+              icon="gift"
+              title={t.loyalty?.title || 'Loyalty Program'}
+              subtitle={t.loyalty?.bonusPoints || 'Points & rewards'}
+              gradient={['#F59E0B', '#D97706']}
+              badge="PRO"
+              badgeColor="#F59E0B"
+              onPress={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                router.push('/loyalty');
+              }}
+            />
+            <MenuItem
+              icon="megaphone"
+              title={t.marketing?.title || 'Marketing'}
+              subtitle={t.marketing?.aiGenerated || 'AI-powered insights'}
+              gradient={['#8B5CF6', '#7C3AED']}
+              badge="AI"
+              badgeColor="#8B5CF6"
+              onPress={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                router.push('/marketing');
+              }}
+            />
+          </Card>
+        </Animated.View>
+
         {/* Settings */}
-        <Animated.View entering={FadeInDown.delay(400).duration(500)}>
+        <Animated.View entering={FadeInDown.delay(450).duration(500)}>
           <Text style={styles.sectionTitle}>{t.profile.settings}</Text>
           <Card style={styles.menuCard}>
             <MenuItem
@@ -250,7 +311,7 @@ export default function ProfileScreen() {
         </Animated.View>
 
         {/* Support */}
-        <Animated.View entering={FadeInDown.delay(500).duration(500)}>
+        <Animated.View entering={FadeInDown.delay(550).duration(500)}>
           <Text style={styles.sectionTitle}>{t.profile.support}</Text>
           <Card style={styles.menuCard}>
             <MenuItem
@@ -275,7 +336,7 @@ export default function ProfileScreen() {
         </Animated.View>
 
         {/* Logout */}
-        <Animated.View entering={FadeInDown.delay(600).duration(500)}>
+        <Animated.View entering={FadeInDown.delay(650).duration(500)}>
           <Button
             title={t.profile.logout}
             variant="outline"
@@ -459,6 +520,11 @@ const styles = StyleSheet.create({
   menuContent: {
     flex: 1,
   },
+  menuTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+  },
   menuTitle: {
     fontSize: typography.sizes.md,
     fontWeight: '500',
@@ -468,6 +534,15 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.xs,
     color: colors.textSecondary,
     marginTop: 2,
+  },
+  menuBadge: {
+    paddingHorizontal: spacing.xs,
+    paddingVertical: 2,
+    borderRadius: borderRadius.sm,
+  },
+  menuBadgeText: {
+    fontSize: 10,
+    fontWeight: '700',
   },
   logoutButton: {
     marginTop: spacing.md,

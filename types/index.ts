@@ -520,3 +520,278 @@ export interface PricingAlert {
   currentPrice: number;
   priority: 'high' | 'medium' | 'low';
 }
+
+// Team Management Types
+export type TeamRole = 'admin' | 'cashier' | 'stock_manager';
+export type TeamMemberStatus = 'pending' | 'active' | 'suspended';
+
+export interface TeamPermissions {
+  canCreateOrders?: boolean;
+  canEditOrders?: boolean;
+  canDeleteOrders?: boolean;
+  canViewAllOrders?: boolean;
+  canManageProducts?: boolean;
+  canEditPrices?: boolean;
+  canAdjustStock?: boolean;
+  canViewCustomers?: boolean;
+  canEditCustomers?: boolean;
+  canViewReports?: boolean;
+  canManageCoupons?: boolean;
+  canViewActivityLog?: boolean;
+}
+
+export interface TeamMember {
+  id: string;
+  userId?: string;
+  ownerId: string;
+  email: string;
+  name?: string;
+  phone?: string;
+  avatarUrl?: string;
+  role: TeamRole;
+  status: TeamMemberStatus;
+  permissions: TeamPermissions;
+  invitedAt: string;
+  joinedAt?: string;
+  createdAt: string;
+  updatedAt: string;
+  // Computed
+  isOnline?: boolean;
+  currentShift?: Shift;
+}
+
+export type ActivityActionType =
+  | 'order_created'
+  | 'order_completed'
+  | 'order_cancelled'
+  | 'order_deleted'
+  | 'product_created'
+  | 'product_updated'
+  | 'product_deleted'
+  | 'price_changed'
+  | 'stock_adjusted'
+  | 'customer_created'
+  | 'customer_updated'
+  | 'coupon_created'
+  | 'coupon_used'
+  | 'shift_started'
+  | 'shift_ended'
+  | 'team_member_invited'
+  | 'team_member_updated'
+  | 'team_member_removed'
+  | 'settings_changed'
+  | 'other';
+
+export interface ActivityLogEntry {
+  id: string;
+  ownerId: string;
+  teamMemberId?: string;
+  actorName: string;
+  actorRole?: TeamRole;
+  actionType: ActivityActionType;
+  description: string;
+  entityType?: string;
+  entityId?: string;
+  entityName?: string;
+  oldValue?: Record<string, unknown>;
+  newValue?: Record<string, unknown>;
+  metadata?: Record<string, unknown>;
+  createdAt: string;
+}
+
+export interface Shift {
+  id: string;
+  ownerId: string;
+  teamMemberId: string;
+  startedAt: string;
+  endedAt?: string;
+  durationMinutes?: number;
+  breakMinutes: number;
+  notes?: string;
+  salesCount: number;
+  salesAmount: number;
+  createdAt: string;
+  updatedAt: string;
+  // Joined
+  teamMember?: TeamMember;
+}
+
+// Loyalty System Types
+export type CustomerTier = 'standard' | 'silver' | 'gold' | 'vip';
+
+export interface CustomerLoyalty {
+  id: string;
+  customerId: string;
+  ownerId: string;
+  bonusPoints: number;
+  lifetimePoints: number;
+  tier: CustomerTier;
+  tierUpdatedAt: string;
+  favoriteProducts: string[];
+  personalNotes?: string;
+  lastVisitDate?: string;
+  visitCount: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export type PointsTransactionType = 'earned' | 'spent' | 'expired' | 'adjusted' | 'bonus';
+
+export interface PointsTransaction {
+  id: string;
+  customerId: string;
+  ownerId: string;
+  points: number;
+  transactionType: PointsTransactionType;
+  orderId?: string;
+  description?: string;
+  createdAt: string;
+}
+
+export type CouponDiscountType = 'percentage' | 'fixed';
+
+export interface Coupon {
+  id: string;
+  ownerId: string;
+  code: string;
+  name: string;
+  description?: string;
+  discountType: CouponDiscountType;
+  discountValue: number;
+  minPurchaseAmount: number;
+  maxDiscountAmount?: number;
+  usageLimit?: number;
+  usageCount: number;
+  isSingleUse: boolean;
+  customerTier: CustomerTier[];
+  customerIds: string[];
+  validFrom: string;
+  validUntil?: string;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface CouponUsage {
+  id: string;
+  couponId: string;
+  customerId?: string;
+  orderId?: string;
+  discountApplied: number;
+  createdAt: string;
+}
+
+export type CampaignType = 'churn_prevention' | 'win_back' | 'vip_rewards' | 'seasonal' | 'custom';
+export type CampaignStatus = 'draft' | 'active' | 'paused' | 'completed';
+
+export interface MarketingCampaign {
+  id: string;
+  ownerId: string;
+  name: string;
+  campaignType: CampaignType;
+  status: CampaignStatus;
+  targetCustomers: string[];
+  targetTier: CustomerTier[];
+  aiGenerated: boolean;
+  messageTemplate?: string;
+  offerDetails?: Record<string, unknown>;
+  stats: {
+    sent: number;
+    opened: number;
+    converted: number;
+  };
+  scheduledAt?: string;
+  completedAt?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+// Extended Customer with Loyalty
+export interface CustomerWithLoyalty extends Customer {
+  loyalty?: CustomerLoyalty;
+  daysSinceLastVisit?: number;
+  isChurning?: boolean;
+}
+
+// AI Marketing Insights
+export interface ChurnRiskCustomer {
+  customerId: string;
+  customerName: string;
+  daysSinceLastVisit: number;
+  totalSpent: number;
+  tier: CustomerTier;
+  favoriteProducts: string[];
+  suggestedOffer?: string;
+  churnProbability: number;
+}
+
+export interface StaffPerformanceReport {
+  teamMemberId: string;
+  teamMemberName: string;
+  role: TeamRole;
+  totalSales: number;
+  totalOrders: number;
+  averageOrderValue: number;
+  totalHoursWorked: number;
+  salesPerHour: number;
+  stockAdjustments?: number;
+  rank: number;
+  improvement: number;
+}
+
+// Role permission defaults
+export const DEFAULT_PERMISSIONS: Record<TeamRole, TeamPermissions> = {
+  admin: {
+    canCreateOrders: true,
+    canEditOrders: true,
+    canDeleteOrders: true,
+    canViewAllOrders: true,
+    canManageProducts: true,
+    canEditPrices: true,
+    canAdjustStock: true,
+    canViewCustomers: true,
+    canEditCustomers: true,
+    canViewReports: true,
+    canManageCoupons: true,
+    canViewActivityLog: true,
+  },
+  cashier: {
+    canCreateOrders: true,
+    canEditOrders: true,
+    canDeleteOrders: false,
+    canViewAllOrders: false,
+    canManageProducts: false,
+    canEditPrices: false,
+    canAdjustStock: false,
+    canViewCustomers: true,
+    canEditCustomers: false,
+    canViewReports: false,
+    canManageCoupons: false,
+    canViewActivityLog: false,
+  },
+  stock_manager: {
+    canCreateOrders: false,
+    canEditOrders: false,
+    canDeleteOrders: false,
+    canViewAllOrders: false,
+    canManageProducts: true,
+    canEditPrices: false,
+    canAdjustStock: true,
+    canViewCustomers: false,
+    canEditCustomers: false,
+    canViewReports: true,
+    canManageCoupons: false,
+    canViewActivityLog: false,
+  },
+};
+
+// Tier thresholds (total spent)
+export const TIER_THRESHOLDS: Record<CustomerTier, number> = {
+  standard: 0,
+  silver: 10000,
+  gold: 50000,
+  vip: 150000,
+};
+
+// Points earning rate (percentage of purchase)
+export const POINTS_EARNING_RATE = 5; // 5% of purchase value

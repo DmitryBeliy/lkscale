@@ -15,6 +15,9 @@ export default function SettingsLayout() {
       <Stack.Screen name="store" />
       <Stack.Screen name="regional" />
       <Stack.Screen name="business" />
+      <Stack.Screen name="notifications" />
+      <Stack.Screen name="announcements" />
+      <Stack.Screen name="biometric" />
     </Stack>
   );
 }

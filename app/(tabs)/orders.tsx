@@ -16,6 +16,8 @@ import * as Haptics from 'expo-haptics';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import { OrderCard } from '@/components/OrderCard';
 import { SkeletonListLoader } from '@/components/ui/Skeleton';
+import { EmptyState } from '@/components/ui/EmptyState';
+import { OfflineBanner } from '@/components/ui/OfflineBanner';
 import { BarcodeScanner, ScannerButton } from '@/components/BarcodeScanner';
 import {
   getDataState,
@@ -109,19 +111,24 @@ export default function OrdersScreen() {
   );
 
   const renderEmptyState = () => (
-    <View style={styles.emptyState}>
-      <Ionicons name="receipt-outline" size={64} color={colors.textLight} />
-      <Text style={styles.emptyTitle}>Заказов не найдено</Text>
-      <Text style={styles.emptyDescription}>
-        {searchQuery || activeFilter !== 'all'
+    <EmptyState
+      variant="orders"
+      title={searchQuery || activeFilter !== 'all' ? 'Заказов не найдено' : 'Нет заказов'}
+      description={
+        searchQuery || activeFilter !== 'all'
           ? 'Попробуйте изменить параметры поиска'
-          : 'Здесь появятся ваши заказы'}
-      </Text>
-    </View>
+          : 'Заказы появятся здесь после их создания. Начните с первого заказа!'
+      }
+      actionLabel={!searchQuery && activeFilter === 'all' ? 'Создать заказ' : undefined}
+      onAction={!searchQuery && activeFilter === 'all' ? () => router.push('/order/create') : undefined}
+    />
   );
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
+      {/* Offline Banner */}
+      <OfflineBanner />
+
       {/* Barcode Scanner */}
       <BarcodeScanner
         visible={scannerVisible}

@@ -19,6 +19,8 @@ import * as Clipboard from 'expo-clipboard';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import { ProductCard } from '@/components/ProductCard';
 import { SkeletonListLoader } from '@/components/ui/Skeleton';
+import { EmptyState } from '@/components/ui/EmptyState';
+import { OfflineBanner } from '@/components/ui/OfflineBanner';
 import { Card, Button } from '@/components/ui';
 import { BarcodeScanner, ScannerButton } from '@/components/BarcodeScanner';
 import { StockInIcon } from '@/components/warehouse/WarehouseIcons';
@@ -41,7 +43,7 @@ import { colors, spacing, typography, borderRadius, shadows } from '@/constants/
 
 export default function InventoryScreen() {
   const insets = useSafeAreaInsets();
-  const { t, formatCurrency } = useLocalization();
+  const { t, formatCurrency, language } = useLocalization();
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
@@ -316,15 +318,17 @@ export default function InventoryScreen() {
   };
 
   const renderEmptyState = () => (
-    <View style={styles.emptyState}>
-      <Ionicons name="cube-outline" size={64} color={colors.textLight} />
-      <Text style={styles.emptyTitle}>{t.inventory.noProducts}</Text>
-      <Text style={styles.emptyDescription}>
-        {searchQuery || activeCategory !== 'all' || showLowStockOnly
-          ? 'Попробуйте изменить параметры поиска'
-          : 'Здесь появятся ваши товары'}
-      </Text>
-    </View>
+    <EmptyState
+      variant="products"
+      title={searchQuery || activeCategory !== 'all' || showLowStockOnly ? t.inventory.noProducts : (language === 'ru' ? 'Нет товаров' : 'No Products')}
+      description={
+        searchQuery || activeCategory !== 'all' || showLowStockOnly
+          ? (language === 'ru' ? 'Попробуйте изменить параметры поиска' : 'Try different search criteria')
+          : (language === 'ru' ? 'Добавьте товары для управления складом и продажами' : 'Add products to manage inventory and sales')
+      }
+      actionLabel={!searchQuery && activeCategory === 'all' ? (language === 'ru' ? 'Добавить товар' : 'Add Product') : undefined}
+      onAction={!searchQuery && activeCategory === 'all' ? () => router.push('/warehouse/stock_in') : undefined}
+    />
   );
 
   const renderHeader = () => (
@@ -459,6 +463,9 @@ export default function InventoryScreen() {
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
+      {/* Offline Banner */}
+      <OfflineBanner />
+
       {/* Barcode Scanner */}
       <BarcodeScanner
         visible={scannerVisible}

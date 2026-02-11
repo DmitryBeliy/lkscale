@@ -23,6 +23,7 @@ import {
 } from '@/components/charts/AnalyticsCharts';
 import { ActivityItem } from '@/components/ActivityItem';
 import { SyncStatusIndicator } from '@/components/SyncStatusIndicator';
+import { OfflineBanner } from '@/components/ui/OfflineBanner';
 import { getAuthState, subscribeAuth } from '@/store/authStore';
 import {
   getDataState,
@@ -174,6 +175,9 @@ export default function DashboardScreen() {
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
+      {/* Offline Banner */}
+      <OfflineBanner />
+
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}

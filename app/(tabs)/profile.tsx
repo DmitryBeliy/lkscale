@@ -380,6 +380,57 @@ export default function ProfileScreen() {
           </Card>
         </Animated.View>
 
+        {/* Security & Privacy */}
+        <Animated.View entering={FadeInDown.delay(400).duration(500)}>
+          <Text style={[styles.sectionTitle, { color: colors.text, fontSize: typography.sizes.md, marginBottom: spacing.sm }]}>
+            {language === 'ru' ? 'Безопасность' : 'Security & Privacy'}
+          </Text>
+          <Card style={[styles.menuCard, { marginBottom: spacing.lg }]}>
+            <MenuItem
+              icon="finger-print"
+              title={language === 'ru' ? 'Биометрия' : 'Biometrics'}
+              subtitle={language === 'ru' ? 'Face ID / Touch ID' : 'Face ID / Touch ID'}
+              gradient={['#10B981', '#059669']}
+              onPress={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                router.push('/settings/biometric');
+              }}
+            />
+            <MenuItem
+              icon="shield-checkmark"
+              title={language === 'ru' ? 'Журнал безопасности' : 'Security Log'}
+              subtitle={language === 'ru' ? 'AI мониторинг активности' : 'AI activity monitoring'}
+              gradient={[colors.error, '#c52a46']}
+              badge="AI"
+              badgeColor={colors.error}
+              onPress={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                router.push('/security');
+              }}
+            />
+            <MenuItem
+              icon="notifications"
+              title={language === 'ru' ? 'Настройки уведомлений' : 'Notification Settings'}
+              subtitle={language === 'ru' ? 'Пороги и категории' : 'Thresholds and categories'}
+              iconColor={colors.warning}
+              onPress={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                router.push('/settings/notifications');
+              }}
+            />
+            <MenuItem
+              icon="megaphone"
+              title={language === 'ru' ? 'Объявления' : 'Announcements'}
+              subtitle={language === 'ru' ? 'Отправка уведомлений команде' : 'Send notifications to team'}
+              gradient={[colors.info, '#2b8db0']}
+              onPress={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                router.push('/settings/announcements');
+              }}
+            />
+          </Card>
+        </Animated.View>
+
         {/* Settings */}
         <Animated.View entering={FadeInDown.delay(450).duration(500)}>
           <Text style={[styles.sectionTitle, { color: colors.text, fontSize: typography.sizes.md, marginBottom: spacing.sm }]}>

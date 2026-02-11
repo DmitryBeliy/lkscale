@@ -15,6 +15,7 @@ import * as Haptics from 'expo-haptics';
 import Animated, { FadeInDown, FadeInRight } from 'react-native-reanimated';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Card, Button } from '@/components/ui';
+import { EmptyState } from '@/components/ui/EmptyState';
 import { useLocalization } from '@/localization';
 import { getAuthState } from '@/store/authStore';
 import { supabase } from '@/lib/supabase';
@@ -236,13 +237,16 @@ export default function TeamScreen() {
             <Text style={styles.loadingText}>{t.common.loading}</Text>
           </View>
         ) : members.length === 0 ? (
-          <Animated.View entering={FadeInDown.delay(400).duration(500)} style={styles.emptyState}>
-            <View style={styles.emptyIcon}>
-              <Ionicons name="people-outline" size={48} color={colors.textLight} />
-            </View>
-            <Text style={styles.emptyTitle}>{t.team.noMembers}</Text>
-            <Text style={styles.emptySubtitle}>{t.team.noMembersDesc}</Text>
-          </Animated.View>
+          <EmptyState
+            variant="team"
+            title={t.team.noMembers}
+            description={t.team.noMembersDesc}
+            actionLabel={t.team.inviteMember}
+            onAction={() => {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+              router.push('/team/invite');
+            }}
+          />
         ) : (
           <>
             {pendingMembers.length > 0 && (

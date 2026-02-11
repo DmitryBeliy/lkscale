@@ -164,6 +164,30 @@ function RootLayoutContent() {
             presentation: 'card',
           }}
         />
+        <Stack.Screen
+          name="settings/notifications"
+          options={{
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="settings/announcements"
+          options={{
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="settings/biometric"
+          options={{
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="security"
+          options={{
+            presentation: 'card',
+          }}
+        />
       </Stack>
     </>
   );

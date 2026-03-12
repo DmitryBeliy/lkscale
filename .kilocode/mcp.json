@@ -1,0 +1,51 @@
+{
+  "mcpServers": {
+    "servers": {
+      "supabase": {
+        "type": "http",
+        "url": "https://mcp.supabase.com/mcp?project_ref=onnncepenxxxfprqaodu"
+      }
+    },
+    "supabase": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@supabase/mcp-server-supabase@0.5.5",
+        "--access-token",
+        "sb_publishable_hQ0xAE3z-6vFOeKAlTwgdA_9enykXiv"
+      ]
+    }
+  },
+  "customModes": [
+    {
+      "slug": "architect",
+      "name": "Architect",
+      "fileRegex": "\\.md$",
+      "roleDefinition": "You are an experienced technical leader and architect. Your role is to plan, design, and strategize before implementation. You excel at breaking down complex problems, creating technical specifications, and designing system architecture. You create clear, actionable plans that other modes can execute."
+    },
+    {
+      "slug": "code",
+      "name": "Code",
+      "fileRegex": "\\.(ts|tsx|js|jsx)$",
+      "roleDefinition": "You are an expert software engineer specializing in React Native, TypeScript, and Expo. Your role is to write, modify, and refactor code. You implement features, fix bugs, and improve code quality. You follow project-specific patterns and best practices."
+    },
+    {
+      "slug": "debug",
+      "name": "Debug",
+      "fileRegex": "\\.(ts|tsx|js|jsx)$",
+      "roleDefinition": "You are a debugging specialist. Your role is to troubleshoot issues, investigate errors, and diagnose problems. You systematically analyze issues, add logging, review stack traces, and identify root causes before applying fixes."
+    },
+    {
+      "slug": "review",
+      "name": "Review",
+      "fileRegex": "\\.(ts|tsx|js|jsx)$",
+      "roleDefinition": "You are a senior software engineer conducting thorough code reviews. Your role is to review code changes, identify issues, ensure code quality, and verify adherence to project standards and patterns."
+    },
+    {
+      "slug": "ask",
+      "name": "Ask",
+      "fileRegex": "\\.md$",
+      "roleDefinition": "You are a technical documentation expert. Your role is to answer questions, provide explanations, and help understand code and concepts. You explain complex topics clearly and provide relevant examples."
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "created": "2026-03-12T19:12:57.111Z",
+  "files": [
+    {
+      "name": "00_setup.sql",
+      "sizeKB": 6.541015625,
+      "path": "supabase/migrations/ready/00_setup.sql"
+    },
+    {
+      "name": "00_truncate.sql",
+      "sizeKB": 0.53125,
+      "path": "supabase/migrations/ready/00_truncate.sql"
+    },
+    {
+      "name": "part_001.sql",
+      "sizeKB": 341.390625,
+      "path": "supabase/migrations/ready/part_001.sql"
+    },
+    {
+      "name": "part_002.sql",
+      "sizeKB": 280.755859375,
+      "path": "supabase/migrations/ready/part_002.sql"
+    },
+    {
+      "name": "part_003_part001.sql",
+      "sizeKB": 349.9814453125,
+      "path": "supabase/migrations/ready/part_003_part001.sql"
+    },
+    {
+      "name": "part_003_part002.sql",
+      "sizeKB": 49.8212890625,
+      "path": "supabase/migrations/ready/part_003_part002.sql"
+    },
+    {
+      "name": "part_004_part001.sql",
+      "sizeKB": 349.83203125,
+      "path": "supabase/migrations/ready/part_004_part001.sql"
+    },
+    {
+      "name": "part_004_part002.sql",
+      "sizeKB": 49.798828125,
+      "path": "supabase/migrations/ready/part_004_part002.sql"
+    },
+    {
+      "name": "part_005_part001.sql",
+      "sizeKB": 349.958984375,
+      "path": "supabase/migrations/ready/part_005_part001.sql"
+    },
+    {
+      "name": "part_005_part002.sql",
+      "sizeKB": 50.6552734375,
+      "path": "supabase/migrations/ready/part_005_part002.sql"
+    },
+    {
+      "name": "part_006_part001.sql",
+      "sizeKB": 349.8359375,
+      "path": "supabase/migrations/ready/part_006_part001.sql"
+    },
+    {
+      "name": "part_006_part002.sql",
+      "sizeKB": 3.900390625,
+      "path": "supabase/migrations/ready/part_006_part002.sql"
+    },
+    {
+      "name": "part_007_part001.sql",
+      "sizeKB": 349.984375,
+      "path": "supabase/migrations/ready/part_007_part001.sql"
+    },
+    {
+      "name": "part_007_part002.sql",
+      "sizeKB": 3.87890625,
+      "path": "supabase/migrations/ready/part_007_part002.sql"
+    },
+    {
+      "name": "part_008_part001.sql",
+      "sizeKB": 349.8095703125,
+      "path": "supabase/migrations/ready/part_008_part001.sql"
+    },
+    {
+      "name": "part_008_part002.sql",
+      "sizeKB": 29.107421875,
+      "path": "supabase/migrations/ready/part_008_part002.sql"
+    },
+    {
+      "name": "part_009.sql",
+      "sizeKB": 286.673828125,
+      "path": "supabase/migrations/ready/part_009.sql"
+    }
+  ]
+}

@@ -98,6 +98,8 @@ export default function MigrationScreen() {
   }, []);
 
   useEffect(() => {
+    if (!logger) return;
+
     const originalInfo = logger.info;
     const originalWarn = logger.warn;
     const originalError = logger.error;

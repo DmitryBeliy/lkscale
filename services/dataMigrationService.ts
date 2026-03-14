@@ -23,6 +23,22 @@ import { logger } from '@/lib/logger';
 import { getCurrentUserId } from '@/store/authStore';
 import { Platform } from 'react-native';
 
+// Safe logger wrapper to handle undefined logger cases
+const safeLogger = {
+  info: (message: string, context?: Record<string, unknown>) => {
+    if (logger?.info) logger.info(message, context);
+    else console.log(`[INFO] ${message}`, context || '');
+  },
+  warn: (message: string, context?: Record<string, unknown>) => {
+    if (logger?.warn) logger.warn(message, context);
+    else console.warn(`[WARN] ${message}`, context || '');
+  },
+  error: (message: string, error?: Error | unknown, context?: Record<string, unknown>) => {
+    if (logger?.error) logger.error(message, error, context);
+    else console.error(`[ERROR] ${message}`, error, context || '');
+  },
+};
+
 // ID Mapping Store - tracks old INT IDs to new UUIDs
 type IdMap = Map<number, string>;
 
@@ -208,7 +224,7 @@ class DataMigrationService {
   private async loadJsonFile<T>(filename: string): Promise<T[]> {
     // Migration only works in Node.js environment, not in browser/React Native
     if (!this.isNodeEnvironment()) {
-      logger.warn(`Cannot load JSON files in browser/React Native environment. File: ${filename}`);
+      safeLogger.warn(`Cannot load JSON files in browser/React Native environment. File: ${filename}`);
       return [];
     }
 
@@ -218,7 +234,7 @@ class DataMigrationService {
       const data = eval(`require('@/../docs/base/extracted_data/${filename}')`);
       return data as T[];
     } catch (error) {
-      logger.error(`Failed to load ${filename}:`, error);
+      safeLogger.error(`Failed to load ${filename}:`, error);
       return [];
     }
   }
@@ -294,7 +310,7 @@ class DataMigrationService {
   // ==================== MANUFACTURERS ====================
 
   async migrateManufacturers(): Promise<void> {
-    logger.info('Starting manufacturers migration...');
+    safeLogger.info('Starting manufacturers migration...');
     const manufacturers = await this.loadJsonFile<OldManufacturer>('dbo_Manufacturer.json');
     this.stats.manufacturers.total = manufacturers.length;
 
@@ -306,14 +322,14 @@ class DataMigrationService {
     });
 
     this.stats.manufacturers.migrated = manufacturers.length;
-    logger.info(`Manufacturers mapping created for ${manufacturers.length} manufacturers`);
-    logger.info('Note: manufacturers table must exist in Supabase. Run migration SQL first.');
+    safeLogger.info(`Manufacturers mapping created for ${manufacturers.length} manufacturers`);
+    safeLogger.info('Note: manufacturers table must exist in Supabase. Run migration SQL first.');
   }
 
   // ==================== CATEGORIES ====================
 
   async migrateCategories(): Promise<void> {
-    logger.info('Starting categories migration...');
+    safeLogger.info('Starting categories migration...');
     const categories = await this.loadJsonFile<OldCategory>('dbo_ProductCategory.json');
     this.stats.categories.total = categories.length;
 
@@ -325,13 +341,13 @@ class DataMigrationService {
     });
 
     this.stats.categories.migrated = categories.length;
-    logger.info('Categories mapping created');
+    safeLogger.info('Categories mapping created');
   }
 
   // ==================== SUPPLIERS ====================
 
   async migrateSuppliers(): Promise<void> {
-    logger.info('Starting suppliers migration...');
+    safeLogger.info('Starting suppliers migration...');
     const suppliers = await this.loadJsonFile<OldSupplier>('dbo_Supplier.json');
     this.stats.suppliers.total = suppliers.length;
 
@@ -362,21 +378,21 @@ class DataMigrationService {
       const { error } = await supabase.from('suppliers').insert(batch);
       
       if (error) {
-        logger.error(`Error inserting suppliers batch ${i}:`, error);
+        safeLogger.error(`Error inserting suppliers batch ${i}:`, error);
         this.stats.suppliers.errors += batch.length;
       } else {
         this.stats.suppliers.migrated += batch.length;
-        logger.info(`Migrated ${this.stats.suppliers.migrated}/${suppliers.length} suppliers`);
+        safeLogger.info(`Migrated ${this.stats.suppliers.migrated}/${suppliers.length} suppliers`);
       }
     }
 
-    logger.info('Suppliers migration completed');
+    safeLogger.info('Suppliers migration completed');
   }
 
   // ==================== LOCATIONS ====================
 
   async migrateLocations(): Promise<void> {
-    logger.info('Starting locations migration...');
+    safeLogger.info('Starting locations migration...');
     const locations = await this.loadJsonFile<OldLocation>('dbo_Location.json');
     this.stats.locations.total = locations.length;
 
@@ -388,14 +404,14 @@ class DataMigrationService {
     });
 
     this.stats.locations.migrated = locations.length;
-    logger.info(`Locations mapping created for ${locations.length} locations`);
-    logger.info('Note: locations table must exist in Supabase. Run migration SQL first.');
+    safeLogger.info(`Locations mapping created for ${locations.length} locations`);
+    safeLogger.info('Note: locations table must exist in Supabase. Run migration SQL first.');
   }
 
   // ==================== OUTLETS ====================
 
   async migrateOutlets(): Promise<void> {
-    logger.info('Starting outlets migration...');
+    safeLogger.info('Starting outlets migration...');
     const outlets = await this.loadJsonFile<OldOutlet>('dbo_Outlet.json');
     this.stats.outlets.total = outlets.length;
 
@@ -407,14 +423,14 @@ class DataMigrationService {
     });
 
     this.stats.outlets.migrated = outlets.length;
-    logger.info(`Outlets mapping created for ${outlets.length} outlets`);
-    logger.info('Note: outlets table must exist in Supabase. Run migration SQL first.');
+    safeLogger.info(`Outlets mapping created for ${outlets.length} outlets`);
+    safeLogger.info('Note: outlets table must exist in Supabase. Run migration SQL first.');
   }
 
   // ==================== PRODUCTS ====================
 
   async migrateProducts(): Promise<void> {
-    logger.info('Starting products migration...');
+    safeLogger.info('Starting products migration...');
     const products = await this.loadJsonFile<OldProduct>('dbo_Product.json');
     this.stats.products.total = products.length;
 
@@ -461,23 +477,23 @@ class DataMigrationService {
       const { error } = await supabase.from('products').insert(batch);
       
       if (error) {
-        logger.error(`Error inserting products batch ${i}:`, error);
+        safeLogger.error(`Error inserting products batch ${i}:`, error);
         this.stats.products.errors += batch.length;
       } else {
         this.stats.products.migrated += batch.length;
         if (this.stats.products.migrated % 100 === 0) {
-          logger.info(`Migrated ${this.stats.products.migrated}/${products.length} products`);
+          safeLogger.info(`Migrated ${this.stats.products.migrated}/${products.length} products`);
         }
       }
     }
 
-    logger.info('Products migration completed');
+    safeLogger.info('Products migration completed');
   }
 
   // ==================== ORDERS ====================
 
   async migrateOrders(): Promise<void> {
-    logger.info('Starting orders migration...');
+    safeLogger.info('Starting orders migration...');
     const orders = await this.loadJsonFile<OldOrder>('dbo_Order.json');
     const orderProducts = await this.loadJsonFile<OldOrderProduct>('dbo_OrderProduct.json');
     this.stats.orders.total = orders.length;
@@ -539,23 +555,23 @@ class DataMigrationService {
       const { error } = await supabase.from('orders').insert(ordersToInsert);
       
       if (error) {
-        logger.error(`Error inserting orders batch ${i}:`, error);
+        safeLogger.error(`Error inserting orders batch ${i}:`, error);
         this.stats.orders.errors += batch.length;
       } else {
         this.stats.orders.migrated += batch.length;
         if (this.stats.orders.migrated % 100 === 0) {
-          logger.info(`Migrated ${this.stats.orders.migrated}/${orders.length} orders`);
+          safeLogger.info(`Migrated ${this.stats.orders.migrated}/${orders.length} orders`);
         }
       }
     }
 
-    logger.info('Orders migration completed');
+    safeLogger.info('Orders migration completed');
   }
 
   // ==================== PURCHASE ORDERS (Consignment Notes) ====================
 
   async migratePurchaseOrders(): Promise<void> {
-    logger.info('Starting purchase orders migration...');
+    safeLogger.info('Starting purchase orders migration...');
     const consignmentNotes = await this.loadJsonFile<OldConsignmentNote>('dbo_ConsignmentNote.json');
     const consignmentNoteProducts = await this.loadJsonFile<OldConsignmentNoteProduct>('dbo_ConsignmentNoteProduct.json');
     this.stats.purchaseOrders.total = consignmentNotes.length;
@@ -646,7 +662,7 @@ class DataMigrationService {
       // Insert purchase orders
       const { error: poError } = await supabase.from('purchase_orders').insert(purchaseOrdersToInsert);
       if (poError) {
-        logger.error(`Error inserting purchase orders batch ${i}:`, poError);
+        safeLogger.error(`Error inserting purchase orders batch ${i}:`, poError);
         this.stats.purchaseOrders.errors += batch.length;
       } else {
         this.stats.purchaseOrders.migrated += batch.length;
@@ -656,7 +672,7 @@ class DataMigrationService {
       if (purchaseOrderItemsToInsert.length > 0) {
         const { error: itemError } = await supabase.from('purchase_order_items').insert(purchaseOrderItemsToInsert);
         if (itemError) {
-          logger.error(`Error inserting purchase order items batch ${i}:`, itemError);
+          safeLogger.error(`Error inserting purchase order items batch ${i}:`, itemError);
           this.stats.purchaseOrderItems.errors += purchaseOrderItemsToInsert.length;
         } else {
           this.stats.purchaseOrderItems.migrated += purchaseOrderItemsToInsert.length;
@@ -664,21 +680,21 @@ class DataMigrationService {
       }
 
       if (this.stats.purchaseOrders.migrated % 100 === 0) {
-        logger.info(`Migrated ${this.stats.purchaseOrders.migrated}/${consignmentNotes.length} purchase orders`);
+        safeLogger.info(`Migrated ${this.stats.purchaseOrders.migrated}/${consignmentNotes.length} purchase orders`);
       }
     }
 
-    logger.info('Purchase orders migration completed');
+    safeLogger.info('Purchase orders migration completed');
   }
 
   // ==================== STOCK DATA (Product Locations & Write-offs) ====================
 
   async migrateStockData(): Promise<void> {
-    logger.info('Starting stock data migration...');
+    safeLogger.info('Starting stock data migration...');
     
     // Migrate product locations as stock records
     const productLocations = await this.loadJsonFile<OldProductLocation>('dbo_ProductLocation.json');
-    logger.info(`Found ${productLocations.length} product location records`);
+    safeLogger.info(`Found ${productLocations.length} product location records`);
 
     // Aggregate stock by product
     const stockByProduct = new Map<number, number>();
@@ -698,13 +714,13 @@ class DataMigrationService {
           .eq('id', newProductId);
         
         if (error) {
-          logger.error(`Error updating stock for product ${productId}:`, error);
+          safeLogger.error(`Error updating stock for product ${productId}:`, error);
         } else {
           updatedCount++;
         }
       }
     }
-    logger.info(`Updated stock for ${updatedCount} products`);
+    safeLogger.info(`Updated stock for ${updatedCount} products`);
 
     // Migrate write-offs as stock adjustments
     const writeOffs = await this.loadJsonFile<OldWriteOff>('dbo_WriteOff.json');
@@ -737,28 +753,28 @@ class DataMigrationService {
       const { error } = await supabase.from('stock_adjustments').insert(batch);
       
       if (error) {
-        logger.error(`Error inserting stock adjustments batch ${i}:`, error);
+        safeLogger.error(`Error inserting stock adjustments batch ${i}:`, error);
         this.stats.stockAdjustments.errors += batch.length;
       } else {
         this.stats.stockAdjustments.migrated += batch.length;
         if (this.stats.stockAdjustments.migrated % 50 === 0) {
-          logger.info(`Migrated ${this.stats.stockAdjustments.migrated}/${writeOffs.length} stock adjustments`);
+          safeLogger.info(`Migrated ${this.stats.stockAdjustments.migrated}/${writeOffs.length} stock adjustments`);
         }
       }
     }
 
-    logger.info('Stock data migration completed');
+    safeLogger.info('Stock data migration completed');
   }
 
   // ==================== ACTIVITY LOGS ====================
 
   async migrateActivityLogs(): Promise<void> {
-    logger.info('Starting activity logs migration...');
+    safeLogger.info('Starting activity logs migration...');
     const activityLogs = await this.loadJsonFile<OldUserActivityLog>('dbo_UserActivityLog.json');
     this.stats.activityLogs.total = activityLogs.length;
 
-    logger.info(`Activity logs migration: ${activityLogs.length} records found`);
-    logger.info('Note: user_activity_logs table must exist in Supabase. Run migration SQL first.');
+    safeLogger.info(`Activity logs migration: ${activityLogs.length} records found`);
+    safeLogger.info('Note: user_activity_logs table must exist in Supabase. Run migration SQL first.');
     
     // For now, just count them as we need the table to exist
     this.stats.activityLogs.migrated = 0;
@@ -775,7 +791,7 @@ class DataMigrationService {
     const errors: string[] = [];
     const warnings: string[] = [];
 
-    logger.info('Starting migration validation...');
+    safeLogger.info('Starting migration validation...');
 
     const userId = this.userId;
     if (!userId) {
@@ -843,7 +859,7 @@ class DataMigrationService {
     }
 
     const isValid = errors.length === 0;
-    logger.info(`Validation completed. Errors: ${errors.length}, Warnings: ${warnings.length}`);
+    safeLogger.info(`Validation completed. Errors: ${errors.length}, Warnings: ${warnings.length}`);
 
     return { isValid, errors, warnings };
   }
@@ -856,7 +872,7 @@ class DataMigrationService {
       throw new Error('User must be authenticated to run migration');
     }
 
-    logger.info('Starting full data migration...');
+    safeLogger.info('Starting full data migration...');
     const startTime = Date.now();
 
     // Reset stats
@@ -887,22 +903,22 @@ class DataMigrationService {
       await this.migrateActivityLogs();
 
       const duration = (Date.now() - startTime) / 1000;
-      logger.info(`Migration completed in ${duration.toFixed(2)} seconds`);
+      safeLogger.info(`Migration completed in ${duration.toFixed(2)} seconds`);
 
       // Run validation
       const validation = await this.validateMigration();
       if (!validation.isValid) {
-        logger.warn('Migration validation found errors:');
-        validation.errors.forEach(err => logger.warn(`  - ${err}`));
+        safeLogger.warn('Migration validation found errors:');
+        validation.errors.forEach(err => safeLogger.warn(`  - ${err}`));
       }
       if (validation.warnings.length > 0) {
-        logger.warn('Migration validation warnings:');
-        validation.warnings.forEach(warn => logger.warn(`  - ${warn}`));
+        safeLogger.warn('Migration validation warnings:');
+        validation.warnings.forEach(warn => safeLogger.warn(`  - ${warn}`));
       }
 
       return this.stats;
     } catch (error) {
-      logger.error('Migration failed:', error);
+      safeLogger.error('Migration failed:', error);
       throw error;
     }
   }
@@ -944,11 +960,11 @@ class DataMigrationService {
   }
 
   async clearMigrationData(): Promise<void> {
-    logger.info('Clearing all migrated data...');
+    safeLogger.info('Clearing all migrated data...');
     
     const userId = this.userId;
     if (!userId) {
-      logger.error('Cannot clear migration data: user ID is null');
+      safeLogger.error('Cannot clear migration data: user ID is null');
       return;
     }
 
@@ -960,9 +976,9 @@ class DataMigrationService {
         .eq('user_id', userId);
       
       if (error) {
-        logger.error(`Error clearing ${table}:`, error);
+        safeLogger.error(`Error clearing ${table}:`, error);
       } else {
-        logger.info(`Cleared ${table}`);
+        safeLogger.info(`Cleared ${table}`);
       }
     };
 
@@ -987,7 +1003,7 @@ class DataMigrationService {
     };
     this.stats = this.getInitialStats();
 
-    logger.info('Migration data cleared');
+    safeLogger.info('Migration data cleared');
   }
 
   // Export migration report

@@ -1,0 +1,102 @@
+[
+  {
+    "MigrationId": "20220215180733_Init",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20220215181257_InitManufacturer",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20220215190301_InitProductType",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20220215191728_InitSupplier",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20220218193152_InitProductCategory",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20220218194244_InitLocation",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20220220141322_ProductsModifyTypeId",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20220307140527_AlterProductAddColumnsMinStockAndDescription",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20220904102246_CreateOrderAndOrderProduct",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20220904123556_AddFK_OrderProduct_Product",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20220911123533_AlterTableAddColumnPaymentType",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20220917134130_AlterTableConsignmentNoteProductAddColumnSoldCount",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20220927154325_AlterTableConsignmentNoteProductAddColumnReceivedDateUtc",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20221001092732_AlterTableOrderProductAddColumnConsignmentNoteId",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20221001104447_AlterTableOrderProductAddColumnRefundCount",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20221006122058_AlterTableProductAddIsArchive",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20221022121423_CreateTableUserActivityLog",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20221030091043_AlterTableConsignmentNoteAddIsOwnerBalance",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20221030121904_CreateTableWriteOff",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20221127121145_CreateOutlet",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20221127121259_InitOutlet",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20221127130439_AlterOrderRenameColumnLocationIdToOutletId",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20230610180809_AlterTableProductAddManufacturerBarcodes",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20230819082223_AlterTableProductLocationAddColumnStorageCell",
+    "ProductVersion": "5.0.14"
+  },
+  {
+    "MigrationId": "20231201172245_AlterTableOrderAddColumnLoyaltyCardNumber",
+    "ProductVersion": "5.0.14"
+  }
+]

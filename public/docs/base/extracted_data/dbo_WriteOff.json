@@ -1,0 +1,2216 @@
+[
+  {
+    "WriteOffId": 1,
+    "ProductId": 19,
+    "Count": 1,
+    "PurchasePrice": "8190.00",
+    "ConsignmentNoteId": 10,
+    "Type": 1,
+    "CreatedDateUtc": "2023-06-03 06:29:27.790926"
+  },
+  {
+    "WriteOffId": 2,
+    "ProductId": 56,
+    "Count": 1,
+    "PurchasePrice": "2500.00",
+    "ConsignmentNoteId": 51,
+    "Type": 1,
+    "CreatedDateUtc": "2023-06-03 07:48:28.625874"
+  },
+  {
+    "WriteOffId": 4,
+    "ProductId": 3,
+    "Count": 1,
+    "PurchasePrice": "16660.00",
+    "ConsignmentNoteId": 1,
+    "Type": 1,
+    "CreatedDateUtc": "2023-06-03 08:00:16.141444"
+  },
+  {
+    "WriteOffId": 5,
+    "ProductId": 24,
+    "Count": 1,
+    "PurchasePrice": "10902.00",
+    "ConsignmentNoteId": 18,
+    "Type": 1,
+    "CreatedDateUtc": "2023-06-03 08:19:24.688357"
+  },
+  {
+    "WriteOffId": 6,
+    "ProductId": 58,
+    "Count": 1,
+    "PurchasePrice": "4620.00",
+    "ConsignmentNoteId": 51,
+    "Type": 1,
+    "CreatedDateUtc": "2023-06-03 08:33:45.264826"
+  },
+  {
+    "WriteOffId": 7,
+    "ProductId": 12,
+    "Count": 3,
+    "PurchasePrice": "4509.00",
+    "ConsignmentNoteId": 5,
+    "Type": 1,
+    "CreatedDateUtc": "2023-06-04 11:08:10.379020"
+  },
+  {
+    "WriteOffId": 8,
+    "ProductId": 12,
+    "Count": 1,
+    "PurchasePrice": "6790.00",
+    "ConsignmentNoteId": 26,
+    "Type": 1,
+    "CreatedDateUtc": "2023-06-04 11:08:10.410483"
+  },
+  {
+    "WriteOffId": 9,
+    "ProductId": 17,
+    "Count": 1,
+    "PurchasePrice": "7200.00",
+    "ConsignmentNoteId": 9,
+    "Type": 1,
+    "CreatedDateUtc": "2023-06-04 15:20:49.838247"
+  },
+  {
+    "WriteOffId": 10,
+    "ProductId": 11,
+    "Count": 1,
+    "PurchasePrice": "2714.00",
+    "ConsignmentNoteId": 3,
+    "Type": 1,
+    "CreatedDateUtc": "2023-06-04 15:22:31.981551"
+  },
+  {
+    "WriteOffId": 11,
+    "ProductId": 4,
+    "Count": 2,
+    "PurchasePrice": "19194.00",
+    "ConsignmentNoteId": 1,
+    "Type": 1,
+    "CreatedDateUtc": "2023-06-08 07:21:23.780181"
+  },
+  {
+    "WriteOffId": 12,
+    "ProductId": 5,
+    "Count": 3,
+    "PurchasePrice": "19880.00",
+    "ConsignmentNoteId": 1,
+    "Type": 1,
+    "CreatedDateUtc": "2023-06-08 07:21:48.510653"
+  },
+  {
+    "WriteOffId": 13,
+    "ProductId": 7,
+    "Count": 1,
+    "PurchasePrice": "25284.00",
+    "ConsignmentNoteId": 1,
+    "Type": 1,
+    "CreatedDateUtc": "2023-06-08 07:22:08.128712"
+  },
+  {
+    "WriteOffId": 14,
+    "ProductId": 6,
+    "Count": 3,
+    "PurchasePrice": "23044.00",
+    "ConsignmentNoteId": 1,
+    "Type": 1,
+    "CreatedDateUtc": "2023-06-08 07:22:39.751216"
+  },
+  {
+    "WriteOffId": 15,
+    "ProductId": 121,
+    "Count": 1,
+    "PurchasePrice": "5890.00",
+    "ConsignmentNoteId": 83,
+    "Type": 1,
+    "CreatedDateUtc": "2023-06-08 07:24:57.289927"
+  },
+  {
+    "WriteOffId": 1007,
+    "ProductId": 17,
+    "Count": 2,
+    "PurchasePrice": "7200.00",
+    "ConsignmentNoteId": 9,
+    "Type": 1,
+    "CreatedDateUtc": "2023-07-02 22:09:10.541811"
+  },
+  {
+    "WriteOffId": 1008,
+    "ProductId": 29,
+    "Count": 1,
+    "PurchasePrice": "42000.00",
+    "ConsignmentNoteId": 22,
+    "Type": 1,
+    "CreatedDateUtc": "2023-07-02 22:26:02.405971"
+  },
+  {
+    "WriteOffId": 1009,
+    "ProductId": 30,
+    "Count": 1,
+    "PurchasePrice": "35364.00",
+    "ConsignmentNoteId": 1070,
+    "Type": 1,
+    "CreatedDateUtc": "2023-07-02 22:26:18.637066"
+  },
+  {
+    "WriteOffId": 1010,
+    "ProductId": 24,
+    "Count": 2,
+    "PurchasePrice": "10902.00",
+    "ConsignmentNoteId": 18,
+    "Type": 1,
+    "CreatedDateUtc": "2023-07-03 11:57:47.102000"
+  },
+  {
+    "WriteOffId": 1011,
+    "ProductId": 112,
+    "Count": 1,
+    "PurchasePrice": "676.00",
+    "ConsignmentNoteId": 73,
+    "Type": 1,
+    "CreatedDateUtc": "2023-07-08 08:15:09.649621"
+  },
+  {
+    "WriteOffId": 1012,
+    "ProductId": 79,
+    "Count": 1,
+    "PurchasePrice": "259.14",
+    "ConsignmentNoteId": 67,
+    "Type": 1,
+    "CreatedDateUtc": "2023-07-10 10:42:45.031298"
+  },
+  {
+    "WriteOffId": 1013,
+    "ProductId": 84,
+    "Count": 1,
+    "PurchasePrice": "192.58",
+    "ConsignmentNoteId": 68,
+    "Type": 1,
+    "CreatedDateUtc": "2023-07-10 10:47:08.155820"
+  },
+  {
+    "WriteOffId": 1014,
+    "ProductId": 101,
+    "Count": 1,
+    "PurchasePrice": "136.03",
+    "ConsignmentNoteId": 64,
+    "Type": 1,
+    "CreatedDateUtc": "2023-07-10 10:54:29.529885"
+  },
+  {
+    "WriteOffId": 1015,
+    "ProductId": 105,
+    "Count": 73,
+    "PurchasePrice": "117.35",
+    "ConsignmentNoteId": 64,
+    "Type": 1,
+    "CreatedDateUtc": "2023-07-10 11:55:42.943624"
+  },
+  {
+    "WriteOffId": 1016,
+    "ProductId": 96,
+    "Count": 1,
+    "PurchasePrice": "171.17",
+    "ConsignmentNoteId": 65,
+    "Type": 1,
+    "CreatedDateUtc": "2023-07-10 12:02:58.562688"
+  },
+  {
+    "WriteOffId": 1017,
+    "ProductId": 102,
+    "Count": 2,
+    "PurchasePrice": "147.40",
+    "ConsignmentNoteId": 64,
+    "Type": 1,
+    "CreatedDateUtc": "2023-07-10 12:08:13.249452"
+  },
+  {
+    "WriteOffId": 1018,
+    "ProductId": 100,
+    "Count": 2,
+    "PurchasePrice": "175.10",
+    "ConsignmentNoteId": 64,
+    "Type": 1,
+    "CreatedDateUtc": "2023-07-10 12:09:15.450527"
+  },
+  {
+    "WriteOffId": 1019,
+    "ProductId": 98,
+    "Count": 1,
+    "PurchasePrice": "317.40",
+    "ConsignmentNoteId": 66,
+    "Type": 1,
+    "CreatedDateUtc": "2023-07-10 12:10:43.660693"
+  },
+  {
+    "WriteOffId": 1020,
+    "ProductId": 87,
+    "Count": 2,
+    "PurchasePrice": "135.41",
+    "ConsignmentNoteId": 68,
+    "Type": 1,
+    "CreatedDateUtc": "2023-07-10 12:20:10.112302"
+  },
+  {
+    "WriteOffId": 1021,
+    "ProductId": 81,
+    "Count": 2,
+    "PurchasePrice": "128.43",
+    "ConsignmentNoteId": 68,
+    "Type": 1,
+    "CreatedDateUtc": "2023-07-10 12:23:15.048954"
+  },
+  {
+    "WriteOffId": 1022,
+    "ProductId": 103,
+    "Count": 5,
+    "PurchasePrice": "135.41",
+    "ConsignmentNoteId": 64,
+    "Type": 1,
+    "CreatedDateUtc": "2023-07-10 12:41:08.208094"
+  },
+  {
+    "WriteOffId": 1023,
+    "ProductId": 93,
+    "Count": 1,
+    "PurchasePrice": "106.06",
+    "ConsignmentNoteId": 65,
+    "Type": 1,
+    "CreatedDateUtc": "2023-07-10 12:42:50.925094"
+  },
+  {
+    "WriteOffId": 1024,
+    "ProductId": 67,
+    "Count": 2,
+    "PurchasePrice": "1500.00",
+    "ConsignmentNoteId": 57,
+    "Type": 1,
+    "CreatedDateUtc": "2023-07-10 15:01:36.579287"
+  },
+  {
+    "WriteOffId": 1025,
+    "ProductId": 25,
+    "Count": 2,
+    "PurchasePrice": "12869.00",
+    "ConsignmentNoteId": 1069,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-01 07:05:51.101910"
+  },
+  {
+    "WriteOffId": 1026,
+    "ProductId": 115,
+    "Count": 11,
+    "PurchasePrice": "3100.00",
+    "ConsignmentNoteId": 76,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-15 09:16:53.523598"
+  },
+  {
+    "WriteOffId": 1027,
+    "ProductId": 115,
+    "Count": 10,
+    "PurchasePrice": "3100.00",
+    "ConsignmentNoteId": 2084,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-15 09:16:53.544233"
+  },
+  {
+    "WriteOffId": 1028,
+    "ProductId": 115,
+    "Count": 11,
+    "PurchasePrice": "3100.00",
+    "ConsignmentNoteId": 76,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-15 09:16:53.525738"
+  },
+  {
+    "WriteOffId": 1029,
+    "ProductId": 115,
+    "Count": 10,
+    "PurchasePrice": "3100.00",
+    "ConsignmentNoteId": 2084,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-15 09:16:53.544387"
+  },
+  {
+    "WriteOffId": 1030,
+    "ProductId": 115,
+    "Count": 11,
+    "PurchasePrice": "3100.00",
+    "ConsignmentNoteId": 76,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-15 09:16:53.525664"
+  },
+  {
+    "WriteOffId": 1031,
+    "ProductId": 115,
+    "Count": 10,
+    "PurchasePrice": "3100.00",
+    "ConsignmentNoteId": 2084,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-15 09:16:53.544209"
+  },
+  {
+    "WriteOffId": 1032,
+    "ProductId": 115,
+    "Count": 11,
+    "PurchasePrice": "3100.00",
+    "ConsignmentNoteId": 76,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-15 09:16:53.522642"
+  },
+  {
+    "WriteOffId": 1033,
+    "ProductId": 115,
+    "Count": 10,
+    "PurchasePrice": "3100.00",
+    "ConsignmentNoteId": 2084,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-15 09:16:53.544297"
+  },
+  {
+    "WriteOffId": 1034,
+    "ProductId": 115,
+    "Count": 11,
+    "PurchasePrice": "3100.00",
+    "ConsignmentNoteId": 76,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-15 09:16:53.525141"
+  },
+  {
+    "WriteOffId": 1035,
+    "ProductId": 115,
+    "Count": 10,
+    "PurchasePrice": "3100.00",
+    "ConsignmentNoteId": 2084,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-15 09:16:53.544382"
+  },
+  {
+    "WriteOffId": 1036,
+    "ProductId": 115,
+    "Count": 11,
+    "PurchasePrice": "3100.00",
+    "ConsignmentNoteId": 76,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-15 09:16:53.522641"
+  },
+  {
+    "WriteOffId": 1037,
+    "ProductId": 115,
+    "Count": 10,
+    "PurchasePrice": "3100.00",
+    "ConsignmentNoteId": 2084,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-15 09:16:53.544391"
+  },
+  {
+    "WriteOffId": 1038,
+    "ProductId": 115,
+    "Count": 11,
+    "PurchasePrice": "3100.00",
+    "ConsignmentNoteId": 76,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-15 09:16:53.525754"
+  },
+  {
+    "WriteOffId": 1039,
+    "ProductId": 115,
+    "Count": 10,
+    "PurchasePrice": "3100.00",
+    "ConsignmentNoteId": 2084,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-15 09:16:53.544376"
+  },
+  {
+    "WriteOffId": 1040,
+    "ProductId": 115,
+    "Count": 11,
+    "PurchasePrice": "3100.00",
+    "ConsignmentNoteId": 76,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-15 09:16:53.525961"
+  },
+  {
+    "WriteOffId": 1041,
+    "ProductId": 115,
+    "Count": 10,
+    "PurchasePrice": "3100.00",
+    "ConsignmentNoteId": 2084,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-15 09:16:53.544297"
+  },
+  {
+    "WriteOffId": 1042,
+    "ProductId": 115,
+    "Count": 11,
+    "PurchasePrice": "3100.00",
+    "ConsignmentNoteId": 76,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-15 09:16:53.527360"
+  },
+  {
+    "WriteOffId": 1043,
+    "ProductId": 115,
+    "Count": 10,
+    "PurchasePrice": "3100.00",
+    "ConsignmentNoteId": 2084,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-15 09:16:53.544382"
+  },
+  {
+    "WriteOffId": 1044,
+    "ProductId": 115,
+    "Count": 11,
+    "PurchasePrice": "3100.00",
+    "ConsignmentNoteId": 76,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-15 09:16:53.522640"
+  },
+  {
+    "WriteOffId": 1045,
+    "ProductId": 115,
+    "Count": 10,
+    "PurchasePrice": "3100.00",
+    "ConsignmentNoteId": 2084,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-15 09:16:53.544633"
+  },
+  {
+    "WriteOffId": 1046,
+    "ProductId": 1445,
+    "Count": 1,
+    "PurchasePrice": "3767.00",
+    "ConsignmentNoteId": 2100,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-24 06:55:13.121111"
+  },
+  {
+    "WriteOffId": 1047,
+    "ProductId": 58,
+    "Count": 1,
+    "PurchasePrice": "4539.00",
+    "ConsignmentNoteId": 2091,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-24 06:55:48.644865"
+  },
+  {
+    "WriteOffId": 1048,
+    "ProductId": 348,
+    "Count": 6,
+    "PurchasePrice": "128.00",
+    "ConsignmentNoteId": 2110,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-25 08:57:11.031496"
+  },
+  {
+    "WriteOffId": 1049,
+    "ProductId": 343,
+    "Count": 44,
+    "PurchasePrice": "7.00",
+    "ConsignmentNoteId": 2110,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-25 09:02:59.750936"
+  },
+  {
+    "WriteOffId": 1050,
+    "ProductId": 349,
+    "Count": 2,
+    "PurchasePrice": "180.00",
+    "ConsignmentNoteId": 2110,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-25 09:03:30.721803"
+  },
+  {
+    "WriteOffId": 1051,
+    "ProductId": 346,
+    "Count": 44,
+    "PurchasePrice": "7.00",
+    "ConsignmentNoteId": 2110,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-25 09:04:54.752216"
+  },
+  {
+    "WriteOffId": 1052,
+    "ProductId": 351,
+    "Count": 19,
+    "PurchasePrice": "180.00",
+    "ConsignmentNoteId": 2110,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-25 09:06:02.333371"
+  },
+  {
+    "WriteOffId": 1053,
+    "ProductId": 227,
+    "Count": 1,
+    "PurchasePrice": "67.00",
+    "ConsignmentNoteId": 2116,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-25 11:18:28.279685"
+  },
+  {
+    "WriteOffId": 1054,
+    "ProductId": 224,
+    "Count": 1,
+    "PurchasePrice": "231.00",
+    "ConsignmentNoteId": 2114,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-25 11:20:58.159209"
+  },
+  {
+    "WriteOffId": 1055,
+    "ProductId": 224,
+    "Count": 1,
+    "PurchasePrice": "231.00",
+    "ConsignmentNoteId": 2114,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-25 11:21:04.178197"
+  },
+  {
+    "WriteOffId": 1056,
+    "ProductId": 228,
+    "Count": 2,
+    "PurchasePrice": "283.00",
+    "ConsignmentNoteId": 2112,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-25 11:24:10.372643"
+  },
+  {
+    "WriteOffId": 1057,
+    "ProductId": 222,
+    "Count": 5,
+    "PurchasePrice": "31.00",
+    "ConsignmentNoteId": 2118,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-25 11:43:02.821630"
+  },
+  {
+    "WriteOffId": 1058,
+    "ProductId": 221,
+    "Count": 2,
+    "PurchasePrice": "336.00",
+    "ConsignmentNoteId": 2115,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-25 11:53:10.027253"
+  },
+  {
+    "WriteOffId": 1059,
+    "ProductId": 1437,
+    "Count": 3,
+    "PurchasePrice": "642.00",
+    "ConsignmentNoteId": 2122,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-25 13:06:22.213204"
+  },
+  {
+    "WriteOffId": 1060,
+    "ProductId": 1504,
+    "Count": 9,
+    "PurchasePrice": "1852.00",
+    "ConsignmentNoteId": 2123,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-25 13:13:21.414677"
+  },
+  {
+    "WriteOffId": 1061,
+    "ProductId": 1501,
+    "Count": 11,
+    "PurchasePrice": "166.00",
+    "ConsignmentNoteId": 2117,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-26 07:58:31.640006"
+  },
+  {
+    "WriteOffId": 1062,
+    "ProductId": 125,
+    "Count": 5,
+    "PurchasePrice": "145.00",
+    "ConsignmentNoteId": 87,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-26 10:43:08.892390"
+  },
+  {
+    "WriteOffId": 1063,
+    "ProductId": 1517,
+    "Count": 3,
+    "PurchasePrice": "454.00",
+    "ConsignmentNoteId": 2133,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-30 11:26:06.408247"
+  },
+  {
+    "WriteOffId": 1064,
+    "ProductId": 439,
+    "Count": 7,
+    "PurchasePrice": "406.00",
+    "ConsignmentNoteId": 2138,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-30 12:51:26.331867"
+  },
+  {
+    "WriteOffId": 1065,
+    "ProductId": 438,
+    "Count": 8,
+    "PurchasePrice": "835.00",
+    "ConsignmentNoteId": 2143,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-31 11:05:03.469666"
+  },
+  {
+    "WriteOffId": 1066,
+    "ProductId": 437,
+    "Count": 8,
+    "PurchasePrice": "926.00",
+    "ConsignmentNoteId": 2144,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-31 11:13:53.790886"
+  },
+  {
+    "WriteOffId": 1067,
+    "ProductId": 1526,
+    "Count": 14,
+    "PurchasePrice": "96.00",
+    "ConsignmentNoteId": 2146,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-31 11:28:45.729277"
+  },
+  {
+    "WriteOffId": 1068,
+    "ProductId": 1527,
+    "Count": 15,
+    "PurchasePrice": "196.00",
+    "ConsignmentNoteId": 2147,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-31 11:38:37.927292"
+  },
+  {
+    "WriteOffId": 1069,
+    "ProductId": 1528,
+    "Count": 9,
+    "PurchasePrice": "106.00",
+    "ConsignmentNoteId": 2148,
+    "Type": 1,
+    "CreatedDateUtc": "2023-08-31 11:47:57.045917"
+  },
+  {
+    "WriteOffId": 1070,
+    "ProductId": 1534,
+    "Count": 9,
+    "PurchasePrice": "125.00",
+    "ConsignmentNoteId": 2155,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-05 11:09:55.815081"
+  },
+  {
+    "WriteOffId": 1071,
+    "ProductId": 1534,
+    "Count": 129,
+    "PurchasePrice": "9.00",
+    "ConsignmentNoteId": 2157,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-05 11:09:55.857499"
+  },
+  {
+    "WriteOffId": 2063,
+    "ProductId": 126,
+    "Count": 1,
+    "PurchasePrice": "488.00",
+    "ConsignmentNoteId": 88,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-08 13:04:24.180180"
+  },
+  {
+    "WriteOffId": 2064,
+    "ProductId": 2513,
+    "Count": 3,
+    "PurchasePrice": "644.00",
+    "ConsignmentNoteId": 3133,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-08 13:19:54.110821"
+  },
+  {
+    "WriteOffId": 2065,
+    "ProductId": 2514,
+    "Count": 16,
+    "PurchasePrice": "154.00",
+    "ConsignmentNoteId": 3134,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-08 13:29:20.303637"
+  },
+  {
+    "WriteOffId": 2066,
+    "ProductId": 2515,
+    "Count": 1,
+    "PurchasePrice": "260.00",
+    "ConsignmentNoteId": 3135,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-08 13:34:17.328417"
+  },
+  {
+    "WriteOffId": 2067,
+    "ProductId": 1499,
+    "Count": 1,
+    "PurchasePrice": "861.00",
+    "ConsignmentNoteId": 3136,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-08 14:15:36.537802"
+  },
+  {
+    "WriteOffId": 2068,
+    "ProductId": 10,
+    "Count": 2,
+    "PurchasePrice": "16766.00",
+    "ConsignmentNoteId": 56,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-09 07:55:14.529859"
+  },
+  {
+    "WriteOffId": 2069,
+    "ProductId": 28,
+    "Count": 1,
+    "PurchasePrice": "60000.00",
+    "ConsignmentNoteId": 50,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-10 07:26:05.728999"
+  },
+  {
+    "WriteOffId": 2070,
+    "ProductId": 28,
+    "Count": 4,
+    "PurchasePrice": "62000.00",
+    "ConsignmentNoteId": 55,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-10 07:26:05.761700"
+  },
+  {
+    "WriteOffId": 2071,
+    "ProductId": 28,
+    "Count": 1,
+    "PurchasePrice": "62000.00",
+    "ConsignmentNoteId": 55,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-10 07:27:01.712613"
+  },
+  {
+    "WriteOffId": 2072,
+    "ProductId": 28,
+    "Count": 2,
+    "PurchasePrice": "65000.00",
+    "ConsignmentNoteId": 2089,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-10 07:27:01.713260"
+  },
+  {
+    "WriteOffId": 2073,
+    "ProductId": 1506,
+    "Count": 1,
+    "PurchasePrice": "77000.00",
+    "ConsignmentNoteId": 2124,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-15 10:04:28.551955"
+  },
+  {
+    "WriteOffId": 2074,
+    "ProductId": 73,
+    "Count": 1,
+    "PurchasePrice": "68500.00",
+    "ConsignmentNoteId": 61,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-15 10:05:30.514259"
+  },
+  {
+    "WriteOffId": 2075,
+    "ProductId": 26,
+    "Count": 1,
+    "PurchasePrice": "10500.00",
+    "ConsignmentNoteId": 20,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-20 11:22:19.637995"
+  },
+  {
+    "WriteOffId": 2076,
+    "ProductId": 230,
+    "Count": 11,
+    "PurchasePrice": "214.00",
+    "ConsignmentNoteId": 3176,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-22 11:05:57.081442"
+  },
+  {
+    "WriteOffId": 2077,
+    "ProductId": 110,
+    "Count": 7,
+    "PurchasePrice": "465.00",
+    "ConsignmentNoteId": 72,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-23 07:40:59.840594"
+  },
+  {
+    "WriteOffId": 2078,
+    "ProductId": 110,
+    "Count": 1,
+    "PurchasePrice": "465.00",
+    "ConsignmentNoteId": 3143,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-23 07:40:59.870622"
+  },
+  {
+    "WriteOffId": 2079,
+    "ProductId": 115,
+    "Count": 6,
+    "PurchasePrice": "3100.00",
+    "ConsignmentNoteId": 2100,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-23 08:25:40.046439"
+  },
+  {
+    "WriteOffId": 2080,
+    "ProductId": 66,
+    "Count": 3,
+    "PurchasePrice": "2400.00",
+    "ConsignmentNoteId": 2090,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-23 08:26:25.548674"
+  },
+  {
+    "WriteOffId": 2081,
+    "ProductId": 64,
+    "Count": 2,
+    "PurchasePrice": "2450.00",
+    "ConsignmentNoteId": 54,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-24 08:49:17.197754"
+  },
+  {
+    "WriteOffId": 2082,
+    "ProductId": 31,
+    "Count": 2,
+    "PurchasePrice": "47200.00",
+    "ConsignmentNoteId": 3182,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-25 12:41:33.146627"
+  },
+  {
+    "WriteOffId": 2083,
+    "ProductId": 25,
+    "Count": 1,
+    "PurchasePrice": "12869.00",
+    "ConsignmentNoteId": 2080,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-26 07:14:46.891599"
+  },
+  {
+    "WriteOffId": 2084,
+    "ProductId": 1449,
+    "Count": 1,
+    "PurchasePrice": "0.00",
+    "ConsignmentNoteId": 3187,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-26 08:03:21.064978"
+  },
+  {
+    "WriteOffId": 2085,
+    "ProductId": 1460,
+    "Count": 1,
+    "PurchasePrice": "61000.00",
+    "ConsignmentNoteId": 3151,
+    "Type": 1,
+    "CreatedDateUtc": "2023-09-27 07:49:37.335564"
+  },
+  {
+    "WriteOffId": 2086,
+    "ProductId": 2575,
+    "Count": 7,
+    "PurchasePrice": "0.80",
+    "ConsignmentNoteId": 3201,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-02 13:36:19.324450"
+  },
+  {
+    "WriteOffId": 2087,
+    "ProductId": 308,
+    "Count": 16,
+    "PurchasePrice": "69.00",
+    "ConsignmentNoteId": 3204,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-05 08:05:10.381113"
+  },
+  {
+    "WriteOffId": 2088,
+    "ProductId": 30,
+    "Count": 1,
+    "PurchasePrice": "38200.00",
+    "ConsignmentNoteId": 3165,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-11 11:28:59.944515"
+  },
+  {
+    "WriteOffId": 2089,
+    "ProductId": 30,
+    "Count": 1,
+    "PurchasePrice": "47200.00",
+    "ConsignmentNoteId": 3185,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-11 11:28:59.977581"
+  },
+  {
+    "WriteOffId": 2090,
+    "ProductId": 30,
+    "Count": 1,
+    "PurchasePrice": "47200.00",
+    "ConsignmentNoteId": 3185,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-11 14:11:17.887693"
+  },
+  {
+    "WriteOffId": 2091,
+    "ProductId": 123,
+    "Count": 1,
+    "PurchasePrice": "6916.00",
+    "ConsignmentNoteId": 2082,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-12 11:36:23.448522"
+  },
+  {
+    "WriteOffId": 2092,
+    "ProductId": 123,
+    "Count": 1,
+    "PurchasePrice": "6916.00",
+    "ConsignmentNoteId": 2098,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-12 11:36:23.491108"
+  },
+  {
+    "WriteOffId": 2093,
+    "ProductId": 122,
+    "Count": 2,
+    "PurchasePrice": "5886.00",
+    "ConsignmentNoteId": 84,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-12 11:37:05.280937"
+  },
+  {
+    "WriteOffId": 2094,
+    "ProductId": 113,
+    "Count": 1,
+    "PurchasePrice": "336.70",
+    "ConsignmentNoteId": 73,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-12 12:22:38.448006"
+  },
+  {
+    "WriteOffId": 2095,
+    "ProductId": 105,
+    "Count": 5,
+    "PurchasePrice": "117.35",
+    "ConsignmentNoteId": 64,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-15 06:50:52.548294"
+  },
+  {
+    "WriteOffId": 2096,
+    "ProductId": 94,
+    "Count": 1,
+    "PurchasePrice": "128.43",
+    "ConsignmentNoteId": 65,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-15 06:56:09.192074"
+  },
+  {
+    "WriteOffId": 2097,
+    "ProductId": 93,
+    "Count": 3,
+    "PurchasePrice": "106.06",
+    "ConsignmentNoteId": 65,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-15 06:57:54.851861"
+  },
+  {
+    "WriteOffId": 2098,
+    "ProductId": 90,
+    "Count": 1,
+    "PurchasePrice": "84.83",
+    "ConsignmentNoteId": 67,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-15 06:59:17.368480"
+  },
+  {
+    "WriteOffId": 2099,
+    "ProductId": 87,
+    "Count": 1,
+    "PurchasePrice": "135.41",
+    "ConsignmentNoteId": 68,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-15 07:01:16.053475"
+  },
+  {
+    "WriteOffId": 2100,
+    "ProductId": 103,
+    "Count": 3,
+    "PurchasePrice": "135.41",
+    "ConsignmentNoteId": 64,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-15 07:03:17.832810"
+  },
+  {
+    "WriteOffId": 2101,
+    "ProductId": 85,
+    "Count": 1,
+    "PurchasePrice": "175.10",
+    "ConsignmentNoteId": 68,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-15 07:04:05.632204"
+  },
+  {
+    "WriteOffId": 2102,
+    "ProductId": 102,
+    "Count": 1,
+    "PurchasePrice": "147.40",
+    "ConsignmentNoteId": 64,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-15 07:07:25.910914"
+  },
+  {
+    "WriteOffId": 2103,
+    "ProductId": 54,
+    "Count": 2,
+    "PurchasePrice": "4269.00",
+    "ConsignmentNoteId": 49,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-16 06:44:17.498764"
+  },
+  {
+    "WriteOffId": 2104,
+    "ProductId": 54,
+    "Count": 4,
+    "PurchasePrice": "4559.00",
+    "ConsignmentNoteId": 2150,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-16 06:44:17.540581"
+  },
+  {
+    "WriteOffId": 2105,
+    "ProductId": 60,
+    "Count": 2,
+    "PurchasePrice": "2250.00",
+    "ConsignmentNoteId": 1077,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-16 06:56:50.752848"
+  },
+  {
+    "WriteOffId": 2106,
+    "ProductId": 1513,
+    "Count": 9,
+    "PurchasePrice": "1000.00",
+    "ConsignmentNoteId": 2129,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-16 06:59:07.710320"
+  },
+  {
+    "WriteOffId": 2107,
+    "ProductId": 1471,
+    "Count": 9,
+    "PurchasePrice": "209.00",
+    "ConsignmentNoteId": 2095,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-16 07:00:50.378281"
+  },
+  {
+    "WriteOffId": 2108,
+    "ProductId": 272,
+    "Count": 1,
+    "PurchasePrice": "402.00",
+    "ConsignmentNoteId": 2134,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-16 07:07:01.972261"
+  },
+  {
+    "WriteOffId": 2109,
+    "ProductId": 249,
+    "Count": 27,
+    "PurchasePrice": "50.00",
+    "ConsignmentNoteId": 2109,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-16 07:17:03.435392"
+  },
+  {
+    "WriteOffId": 2110,
+    "ProductId": 1500,
+    "Count": 13,
+    "PurchasePrice": "586.00",
+    "ConsignmentNoteId": 2108,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-16 07:22:52.996484"
+  },
+  {
+    "WriteOffId": 2111,
+    "ProductId": 440,
+    "Count": 2,
+    "PurchasePrice": "1620.00",
+    "ConsignmentNoteId": 1082,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-16 13:45:11.086057"
+  },
+  {
+    "WriteOffId": 2112,
+    "ProductId": 112,
+    "Count": 1,
+    "PurchasePrice": "676.00",
+    "ConsignmentNoteId": 73,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-16 13:46:02.210173"
+  },
+  {
+    "WriteOffId": 2113,
+    "ProductId": 35,
+    "Count": 2,
+    "PurchasePrice": "844.00",
+    "ConsignmentNoteId": 29,
+    "Type": 1,
+    "CreatedDateUtc": "2023-10-29 08:41:44.057971"
+  },
+  {
+    "WriteOffId": 3113,
+    "ProductId": 196,
+    "Count": 1,
+    "PurchasePrice": "485.00",
+    "ConsignmentNoteId": 3179,
+    "Type": 1,
+    "CreatedDateUtc": "2023-11-01 08:27:20.560376"
+  },
+  {
+    "WriteOffId": 3114,
+    "ProductId": 2538,
+    "Count": 1,
+    "PurchasePrice": "3079.00",
+    "ConsignmentNoteId": 3179,
+    "Type": 1,
+    "CreatedDateUtc": "2023-11-09 13:09:21.954080"
+  },
+  {
+    "WriteOffId": 3115,
+    "ProductId": 118,
+    "Count": 2,
+    "PurchasePrice": "3864.10",
+    "ConsignmentNoteId": 80,
+    "Type": 1,
+    "CreatedDateUtc": "2023-11-09 13:16:13.415888"
+  },
+  {
+    "WriteOffId": 3116,
+    "ProductId": 118,
+    "Count": 1,
+    "PurchasePrice": "4682.00",
+    "ConsignmentNoteId": 3179,
+    "Type": 1,
+    "CreatedDateUtc": "2023-11-09 13:16:13.416971"
+  },
+  {
+    "WriteOffId": 3117,
+    "ProductId": 118,
+    "Count": 1,
+    "PurchasePrice": "4464.00",
+    "ConsignmentNoteId": 3198,
+    "Type": 1,
+    "CreatedDateUtc": "2023-11-09 13:16:13.417626"
+  },
+  {
+    "WriteOffId": 3118,
+    "ProductId": 154,
+    "Count": 4,
+    "PurchasePrice": "9.00",
+    "ConsignmentNoteId": 3152,
+    "Type": 1,
+    "CreatedDateUtc": "2023-11-16 06:47:12.632212"
+  },
+  {
+    "WriteOffId": 3119,
+    "ProductId": 1444,
+    "Count": 1,
+    "PurchasePrice": "659.00",
+    "ConsignmentNoteId": 2079,
+    "Type": 1,
+    "CreatedDateUtc": "2023-11-16 06:49:15.464393"
+  },
+  {
+    "WriteOffId": 3120,
+    "ProductId": 1527,
+    "Count": 4,
+    "PurchasePrice": "196.00",
+    "ConsignmentNoteId": 2147,
+    "Type": 1,
+    "CreatedDateUtc": "2023-11-16 06:53:05.585864"
+  },
+  {
+    "WriteOffId": 3121,
+    "ProductId": 55,
+    "Count": 1,
+    "PurchasePrice": "18400.00",
+    "ConsignmentNoteId": 1085,
+    "Type": 1,
+    "CreatedDateUtc": "2023-11-16 07:33:24.877659"
+  },
+  {
+    "WriteOffId": 3122,
+    "ProductId": 2522,
+    "Count": 2,
+    "PurchasePrice": "147.00",
+    "ConsignmentNoteId": 3148,
+    "Type": 1,
+    "CreatedDateUtc": "2023-11-16 07:40:02.030708"
+  },
+  {
+    "WriteOffId": 3123,
+    "ProductId": 62,
+    "Count": 3,
+    "PurchasePrice": "300.00",
+    "ConsignmentNoteId": 54,
+    "Type": 1,
+    "CreatedDateUtc": "2023-11-17 07:32:12.288587"
+  },
+  {
+    "WriteOffId": 3124,
+    "ProductId": 124,
+    "Count": 17,
+    "PurchasePrice": "300.00",
+    "ConsignmentNoteId": 86,
+    "Type": 1,
+    "CreatedDateUtc": "2023-11-20 10:10:51.526163"
+  },
+  {
+    "WriteOffId": 3125,
+    "ProductId": 3641,
+    "Count": 1,
+    "PurchasePrice": "9242.00",
+    "ConsignmentNoteId": 4295,
+    "Type": 1,
+    "CreatedDateUtc": "2023-11-21 14:22:08.467312"
+  },
+  {
+    "WriteOffId": 3126,
+    "ProductId": 1483,
+    "Count": 1,
+    "PurchasePrice": "10657.00",
+    "ConsignmentNoteId": 2098,
+    "Type": 1,
+    "CreatedDateUtc": "2023-12-02 10:49:53.161339"
+  },
+  {
+    "WriteOffId": 3127,
+    "ProductId": 128,
+    "Count": 2,
+    "PurchasePrice": "10341.00",
+    "ConsignmentNoteId": 1069,
+    "Type": 1,
+    "CreatedDateUtc": "2023-12-02 10:50:17.378413"
+  },
+  {
+    "WriteOffId": 3128,
+    "ProductId": 128,
+    "Count": 1,
+    "PurchasePrice": "10341.00",
+    "ConsignmentNoteId": 2098,
+    "Type": 1,
+    "CreatedDateUtc": "2023-12-02 10:50:17.379121"
+  },
+  {
+    "WriteOffId": 3129,
+    "ProductId": 3618,
+    "Count": 4,
+    "PurchasePrice": "1250.00",
+    "ConsignmentNoteId": 4279,
+    "Type": 1,
+    "CreatedDateUtc": "2023-12-06 08:43:13.612268"
+  },
+  {
+    "WriteOffId": 3130,
+    "ProductId": 3710,
+    "Count": 1,
+    "PurchasePrice": "19530.00",
+    "ConsignmentNoteId": 4375,
+    "Type": 1,
+    "CreatedDateUtc": "2023-12-15 11:48:31.945226"
+  },
+  {
+    "WriteOffId": 3131,
+    "ProductId": 169,
+    "Count": 2,
+    "PurchasePrice": "40.00",
+    "ConsignmentNoteId": 4271,
+    "Type": 1,
+    "CreatedDateUtc": "2023-12-20 11:37:00.606752"
+  },
+  {
+    "WriteOffId": 3132,
+    "ProductId": 3660,
+    "Count": 1,
+    "PurchasePrice": "9242.00",
+    "ConsignmentNoteId": 4324,
+    "Type": 1,
+    "CreatedDateUtc": "2023-12-25 07:16:23.141512"
+  },
+  {
+    "WriteOffId": 3133,
+    "ProductId": 103,
+    "Count": 1,
+    "PurchasePrice": "135.41",
+    "ConsignmentNoteId": 64,
+    "Type": 1,
+    "CreatedDateUtc": "2024-01-15 12:45:26.041003"
+  },
+  {
+    "WriteOffId": 3134,
+    "ProductId": 115,
+    "Count": 2,
+    "PurchasePrice": "3895.00",
+    "ConsignmentNoteId": 4396,
+    "Type": 1,
+    "CreatedDateUtc": "2024-01-16 15:13:42.027899"
+  },
+  {
+    "WriteOffId": 3135,
+    "ProductId": 115,
+    "Count": 1,
+    "PurchasePrice": "3700.00",
+    "ConsignmentNoteId": 4415,
+    "Type": 1,
+    "CreatedDateUtc": "2024-01-16 15:13:42.056259"
+  },
+  {
+    "WriteOffId": 3136,
+    "ProductId": 3618,
+    "Count": 1,
+    "PurchasePrice": "1200.00",
+    "ConsignmentNoteId": 4379,
+    "Type": 1,
+    "CreatedDateUtc": "2024-01-19 07:14:10.107669"
+  },
+  {
+    "WriteOffId": 3137,
+    "ProductId": 278,
+    "Count": 1,
+    "PurchasePrice": "2687.00",
+    "ConsignmentNoteId": 3225,
+    "Type": 1,
+    "CreatedDateUtc": "2024-01-20 08:29:32.592947"
+  },
+  {
+    "WriteOffId": 3138,
+    "ProductId": 154,
+    "Count": 2,
+    "PurchasePrice": "9.00",
+    "ConsignmentNoteId": 3154,
+    "Type": 1,
+    "CreatedDateUtc": "2024-01-25 13:58:01.545583"
+  },
+  {
+    "WriteOffId": 3139,
+    "ProductId": 154,
+    "Count": 48,
+    "PurchasePrice": "112.16",
+    "ConsignmentNoteId": 4435,
+    "Type": 1,
+    "CreatedDateUtc": "2024-01-25 13:58:01.577563"
+  },
+  {
+    "WriteOffId": 3140,
+    "ProductId": 3618,
+    "Count": 7,
+    "PurchasePrice": "1200.00",
+    "ConsignmentNoteId": 4379,
+    "Type": 1,
+    "CreatedDateUtc": "2024-01-26 13:41:43.677145"
+  },
+  {
+    "WriteOffId": 3141,
+    "ProductId": 3618,
+    "Count": 1,
+    "PurchasePrice": "1200.00",
+    "ConsignmentNoteId": 4379,
+    "Type": 1,
+    "CreatedDateUtc": "2024-02-02 07:43:03.700452"
+  },
+  {
+    "WriteOffId": 3142,
+    "ProductId": 3618,
+    "Count": 5,
+    "PurchasePrice": "1200.00",
+    "ConsignmentNoteId": 4379,
+    "Type": 1,
+    "CreatedDateUtc": "2024-02-07 07:56:03.485410"
+  },
+  {
+    "WriteOffId": 3143,
+    "ProductId": 3751,
+    "Count": 48,
+    "PurchasePrice": "336.47",
+    "ConsignmentNoteId": 4435,
+    "Type": 1,
+    "CreatedDateUtc": "2024-02-07 09:16:57.253176"
+  },
+  {
+    "WriteOffId": 3144,
+    "ProductId": 3751,
+    "Count": 2,
+    "PurchasePrice": "0.00",
+    "ConsignmentNoteId": 4443,
+    "Type": 1,
+    "CreatedDateUtc": "2024-02-07 09:16:57.295698"
+  },
+  {
+    "WriteOffId": 3145,
+    "ProductId": 3751,
+    "Count": 1,
+    "PurchasePrice": "0.00",
+    "ConsignmentNoteId": 4445,
+    "Type": 1,
+    "CreatedDateUtc": "2024-02-07 09:16:57.296236"
+  },
+  {
+    "WriteOffId": 3146,
+    "ProductId": 2514,
+    "Count": 3,
+    "PurchasePrice": "154.00",
+    "ConsignmentNoteId": 3134,
+    "Type": 1,
+    "CreatedDateUtc": "2024-02-07 09:20:36.470700"
+  },
+  {
+    "WriteOffId": 3147,
+    "ProductId": 3618,
+    "Count": 1,
+    "PurchasePrice": "1200.00",
+    "ConsignmentNoteId": 4379,
+    "Type": 1,
+    "CreatedDateUtc": "2024-02-12 11:53:24.539808"
+  },
+  {
+    "WriteOffId": 3148,
+    "ProductId": 3765,
+    "Count": 5,
+    "PurchasePrice": "641.00",
+    "ConsignmentNoteId": 4431,
+    "Type": 1,
+    "CreatedDateUtc": "2024-02-12 12:52:35.034786"
+  },
+  {
+    "WriteOffId": 3149,
+    "ProductId": 3652,
+    "Count": 1,
+    "PurchasePrice": "323.00",
+    "ConsignmentNoteId": 4308,
+    "Type": 1,
+    "CreatedDateUtc": "2024-02-16 11:53:03.175847"
+  },
+  {
+    "WriteOffId": 3150,
+    "ProductId": 3796,
+    "Count": 1,
+    "PurchasePrice": "2877.00",
+    "ConsignmentNoteId": 4471,
+    "Type": 1,
+    "CreatedDateUtc": "2024-02-18 07:22:56.829583"
+  },
+  {
+    "WriteOffId": 3151,
+    "ProductId": 196,
+    "Count": 3,
+    "PurchasePrice": "180.00",
+    "ConsignmentNoteId": 4262,
+    "Type": 1,
+    "CreatedDateUtc": "2024-02-18 07:37:06.080551"
+  },
+  {
+    "WriteOffId": 3152,
+    "ProductId": 196,
+    "Count": 5,
+    "PurchasePrice": "456.00",
+    "ConsignmentNoteId": 4398,
+    "Type": 1,
+    "CreatedDateUtc": "2024-02-18 07:37:06.080964"
+  },
+  {
+    "WriteOffId": 3153,
+    "ProductId": 196,
+    "Count": 10,
+    "PurchasePrice": "616.87",
+    "ConsignmentNoteId": 4435,
+    "Type": 1,
+    "CreatedDateUtc": "2024-02-18 07:37:06.081186"
+  },
+  {
+    "WriteOffId": 3154,
+    "ProductId": 2608,
+    "Count": 16,
+    "PurchasePrice": "157.97",
+    "ConsignmentNoteId": 3264,
+    "Type": 1,
+    "CreatedDateUtc": "2024-02-20 07:04:04.962386"
+  },
+  {
+    "WriteOffId": 3155,
+    "ProductId": 2609,
+    "Count": 12,
+    "PurchasePrice": "303.80",
+    "ConsignmentNoteId": 3264,
+    "Type": 1,
+    "CreatedDateUtc": "2024-02-20 07:05:07.626829"
+  },
+  {
+    "WriteOffId": 3156,
+    "ProductId": 3751,
+    "Count": 1,
+    "PurchasePrice": "336.47",
+    "ConsignmentNoteId": 4435,
+    "Type": 1,
+    "CreatedDateUtc": "2024-02-20 10:23:11.513158"
+  },
+  {
+    "WriteOffId": 3157,
+    "ProductId": 63,
+    "Count": 1,
+    "PurchasePrice": "2450.00",
+    "ConsignmentNoteId": 3183,
+    "Type": 1,
+    "CreatedDateUtc": "2024-03-01 14:02:19.795169"
+  },
+  {
+    "WriteOffId": 3158,
+    "ProductId": 64,
+    "Count": 1,
+    "PurchasePrice": "2450.00",
+    "ConsignmentNoteId": 3183,
+    "Type": 1,
+    "CreatedDateUtc": "2024-03-01 14:03:31.959046"
+  },
+  {
+    "WriteOffId": 3159,
+    "ProductId": 3659,
+    "Count": 1,
+    "PurchasePrice": "32925.00",
+    "ConsignmentNoteId": 4322,
+    "Type": 1,
+    "CreatedDateUtc": "2024-03-02 09:40:31.686363"
+  },
+  {
+    "WriteOffId": 3160,
+    "ProductId": 3795,
+    "Count": 1,
+    "PurchasePrice": "655.00",
+    "ConsignmentNoteId": 4481,
+    "Type": 1,
+    "CreatedDateUtc": "2024-03-15 10:12:04.321537"
+  },
+  {
+    "WriteOffId": 3161,
+    "ProductId": 3795,
+    "Count": 1,
+    "PurchasePrice": "681.00",
+    "ConsignmentNoteId": 4514,
+    "Type": 1,
+    "CreatedDateUtc": "2024-03-21 12:00:42.630992"
+  },
+  {
+    "WriteOffId": 3162,
+    "ProductId": 3795,
+    "Count": 1,
+    "PurchasePrice": "694.00",
+    "ConsignmentNoteId": 4518,
+    "Type": 1,
+    "CreatedDateUtc": "2024-03-22 06:35:33.817872"
+  },
+  {
+    "WriteOffId": 3163,
+    "ProductId": 3669,
+    "Count": 1,
+    "PurchasePrice": "2200.00",
+    "ConsignmentNoteId": 4508,
+    "Type": 1,
+    "CreatedDateUtc": "2024-03-27 07:11:59.078552"
+  },
+  {
+    "WriteOffId": 3164,
+    "ProductId": 2614,
+    "Count": 1,
+    "PurchasePrice": "133.67",
+    "ConsignmentNoteId": 3264,
+    "Type": 1,
+    "CreatedDateUtc": "2024-03-28 13:34:44.790825"
+  },
+  {
+    "WriteOffId": 3165,
+    "ProductId": 123,
+    "Count": 1,
+    "PurchasePrice": "7220.00",
+    "ConsignmentNoteId": 4493,
+    "Type": 1,
+    "CreatedDateUtc": "2024-03-30 08:18:45.974150"
+  },
+  {
+    "WriteOffId": 3166,
+    "ProductId": 3683,
+    "Count": 1,
+    "PurchasePrice": "1200.00",
+    "ConsignmentNoteId": 4425,
+    "Type": 1,
+    "CreatedDateUtc": "2024-04-04 13:51:15.465012"
+  },
+  {
+    "WriteOffId": 3167,
+    "ProductId": 1527,
+    "Count": 1,
+    "PurchasePrice": "196.00",
+    "ConsignmentNoteId": 2147,
+    "Type": 1,
+    "CreatedDateUtc": "2024-04-09 12:48:46.372644"
+  },
+  {
+    "WriteOffId": 3168,
+    "ProductId": 3701,
+    "Count": 1,
+    "PurchasePrice": "198.00",
+    "ConsignmentNoteId": 4357,
+    "Type": 1,
+    "CreatedDateUtc": "2024-04-10 13:18:49.914778"
+  },
+  {
+    "WriteOffId": 3169,
+    "ProductId": 119,
+    "Count": 1,
+    "PurchasePrice": "3454.96",
+    "ConsignmentNoteId": 81,
+    "Type": 1,
+    "CreatedDateUtc": "2024-04-11 08:36:21.948340"
+  },
+  {
+    "WriteOffId": 3170,
+    "ProductId": 120,
+    "Count": 2,
+    "PurchasePrice": "2591.22",
+    "ConsignmentNoteId": 82,
+    "Type": 1,
+    "CreatedDateUtc": "2024-04-25 14:10:33.796744"
+  },
+  {
+    "WriteOffId": 3171,
+    "ProductId": 1523,
+    "Count": 1,
+    "PurchasePrice": "99.00",
+    "ConsignmentNoteId": 4357,
+    "Type": 1,
+    "CreatedDateUtc": "2024-05-04 06:25:53.763121"
+  },
+  {
+    "WriteOffId": 3172,
+    "ProductId": 3859,
+    "Count": 2,
+    "PurchasePrice": "216.00",
+    "ConsignmentNoteId": 4555,
+    "Type": 1,
+    "CreatedDateUtc": "2024-05-04 06:27:38.683959"
+  },
+  {
+    "WriteOffId": 3173,
+    "ProductId": 126,
+    "Count": 1,
+    "PurchasePrice": "461.09",
+    "ConsignmentNoteId": 4516,
+    "Type": 1,
+    "CreatedDateUtc": "2024-05-14 11:42:34.148840"
+  },
+  {
+    "WriteOffId": 3174,
+    "ProductId": 249,
+    "Count": 2,
+    "PurchasePrice": "50.00",
+    "ConsignmentNoteId": 2109,
+    "Type": 1,
+    "CreatedDateUtc": "2024-05-15 12:23:43.269782"
+  },
+  {
+    "WriteOffId": 3175,
+    "ProductId": 436,
+    "Count": 12,
+    "PurchasePrice": "49.00",
+    "ConsignmentNoteId": 1078,
+    "Type": 1,
+    "CreatedDateUtc": "2024-05-17 13:36:57.825900"
+  },
+  {
+    "WriteOffId": 3176,
+    "ProductId": 2608,
+    "Count": 1,
+    "PurchasePrice": "157.97",
+    "ConsignmentNoteId": 4559,
+    "Type": 1,
+    "CreatedDateUtc": "2024-05-17 13:38:33.627202"
+  },
+  {
+    "WriteOffId": 3177,
+    "ProductId": 3843,
+    "Count": 1,
+    "PurchasePrice": "0.00",
+    "ConsignmentNoteId": 4534,
+    "Type": 1,
+    "CreatedDateUtc": "2024-05-23 06:19:08.809669"
+  },
+  {
+    "WriteOffId": 3178,
+    "ProductId": 3754,
+    "Count": 1,
+    "PurchasePrice": "5774.00",
+    "ConsignmentNoteId": 4490,
+    "Type": 1,
+    "CreatedDateUtc": "2024-05-29 07:37:12.088208"
+  },
+  {
+    "WriteOffId": 3179,
+    "ProductId": 260,
+    "Count": 1,
+    "PurchasePrice": "950.00",
+    "ConsignmentNoteId": 4438,
+    "Type": 1,
+    "CreatedDateUtc": "2024-05-31 12:54:26.723763"
+  },
+  {
+    "WriteOffId": 3180,
+    "ProductId": 1477,
+    "Count": 1,
+    "PurchasePrice": "12000.00",
+    "ConsignmentNoteId": 4531,
+    "Type": 1,
+    "CreatedDateUtc": "2024-06-18 13:26:38.885811"
+  },
+  {
+    "WriteOffId": 4180,
+    "ProductId": 115,
+    "Count": 1,
+    "PurchasePrice": "2995.00",
+    "ConsignmentNoteId": 4562,
+    "Type": 1,
+    "CreatedDateUtc": "2024-07-26 11:27:00.785480"
+  },
+  {
+    "WriteOffId": 4181,
+    "ProductId": 1436,
+    "Count": 2,
+    "PurchasePrice": "1245.00",
+    "ConsignmentNoteId": 2078,
+    "Type": 1,
+    "CreatedDateUtc": "2024-07-30 08:57:04.913482"
+  },
+  {
+    "WriteOffId": 5180,
+    "ProductId": 3842,
+    "Count": 1,
+    "PurchasePrice": "500.00",
+    "ConsignmentNoteId": 4531,
+    "Type": 1,
+    "CreatedDateUtc": "2024-08-01 09:18:45.825439"
+  },
+  {
+    "WriteOffId": 5181,
+    "ProductId": 50,
+    "Count": 1,
+    "PurchasePrice": "17800.00",
+    "ConsignmentNoteId": 4412,
+    "Type": 1,
+    "CreatedDateUtc": "2024-08-02 14:48:10.455653"
+  },
+  {
+    "WriteOffId": 5182,
+    "ProductId": 228,
+    "Count": 1,
+    "PurchasePrice": "283.00",
+    "ConsignmentNoteId": 2116,
+    "Type": 1,
+    "CreatedDateUtc": "2024-08-13 11:26:26.989028"
+  },
+  {
+    "WriteOffId": 5183,
+    "ProductId": 3623,
+    "Count": 1,
+    "PurchasePrice": "1300.00",
+    "ConsignmentNoteId": 4265,
+    "Type": 1,
+    "CreatedDateUtc": "2024-08-13 12:57:48.152756"
+  },
+  {
+    "WriteOffId": 5184,
+    "ProductId": 377,
+    "Count": 1,
+    "PurchasePrice": "73.00",
+    "ConsignmentNoteId": 2153,
+    "Type": 1,
+    "CreatedDateUtc": "2024-08-27 11:19:38.282391"
+  },
+  {
+    "WriteOffId": 5185,
+    "ProductId": 1449,
+    "Count": 1,
+    "PurchasePrice": "403.00",
+    "ConsignmentNoteId": 5600,
+    "Type": 1,
+    "CreatedDateUtc": "2024-09-09 13:11:52.293096"
+  },
+  {
+    "WriteOffId": 5186,
+    "ProductId": 3778,
+    "Count": 1,
+    "PurchasePrice": "104.68",
+    "ConsignmentNoteId": 4435,
+    "Type": 1,
+    "CreatedDateUtc": "2024-09-09 13:38:48.287340"
+  },
+  {
+    "WriteOffId": 5187,
+    "ProductId": 160,
+    "Count": 5,
+    "PurchasePrice": "302.68",
+    "ConsignmentNoteId": 4275,
+    "Type": 1,
+    "CreatedDateUtc": "2024-10-02 09:13:19.429365"
+  },
+  {
+    "WriteOffId": 6187,
+    "ProductId": 1533,
+    "Count": 1,
+    "PurchasePrice": "73.00",
+    "ConsignmentNoteId": 2151,
+    "Type": 1,
+    "CreatedDateUtc": "2024-10-09 08:55:28.579456"
+  },
+  {
+    "WriteOffId": 6188,
+    "ProductId": 68,
+    "Count": 1,
+    "PurchasePrice": "2150.00",
+    "ConsignmentNoteId": 6633,
+    "Type": 1,
+    "CreatedDateUtc": "2024-10-10 10:58:37.097564"
+  },
+  {
+    "WriteOffId": 6189,
+    "ProductId": 371,
+    "Count": 1,
+    "PurchasePrice": "32.00",
+    "ConsignmentNoteId": 4300,
+    "Type": 1,
+    "CreatedDateUtc": "2024-10-16 13:13:48.955429"
+  },
+  {
+    "WriteOffId": 6190,
+    "ProductId": 3771,
+    "Count": 2,
+    "PurchasePrice": "74.77",
+    "ConsignmentNoteId": 4435,
+    "Type": 1,
+    "CreatedDateUtc": "2024-10-16 13:21:35.799535"
+  },
+  {
+    "WriteOffId": 6191,
+    "ProductId": 3609,
+    "Count": 1,
+    "PurchasePrice": "180.00",
+    "ConsignmentNoteId": 4262,
+    "Type": 1,
+    "CreatedDateUtc": "2024-10-19 06:03:33.602004"
+  },
+  {
+    "WriteOffId": 6192,
+    "ProductId": 423,
+    "Count": 3,
+    "PurchasePrice": "30.00",
+    "ConsignmentNoteId": 4410,
+    "Type": 1,
+    "CreatedDateUtc": "2024-11-22 07:49:02.069590"
+  },
+  {
+    "WriteOffId": 6193,
+    "ProductId": 3618,
+    "Count": 1,
+    "PurchasePrice": "1200.00",
+    "ConsignmentNoteId": 4379,
+    "Type": 1,
+    "CreatedDateUtc": "2024-12-16 13:23:07.290731"
+  },
+  {
+    "WriteOffId": 6194,
+    "ProductId": 3863,
+    "Count": 11,
+    "PurchasePrice": "280.00",
+    "ConsignmentNoteId": 4575,
+    "Type": 1,
+    "CreatedDateUtc": "2024-12-27 09:29:44.484651"
+  },
+  {
+    "WriteOffId": 6195,
+    "ProductId": 105,
+    "Count": 2,
+    "PurchasePrice": "117.35",
+    "ConsignmentNoteId": 4460,
+    "Type": 1,
+    "CreatedDateUtc": "2025-02-03 13:16:07.167438"
+  },
+  {
+    "WriteOffId": 6196,
+    "ProductId": 95,
+    "Count": 1,
+    "PurchasePrice": "91.81",
+    "ConsignmentNoteId": 65,
+    "Type": 1,
+    "CreatedDateUtc": "2025-02-03 13:17:03.335081"
+  },
+  {
+    "WriteOffId": 6197,
+    "ProductId": 3703,
+    "Count": 1,
+    "PurchasePrice": "315.00",
+    "ConsignmentNoteId": 7641,
+    "Type": 1,
+    "CreatedDateUtc": "2025-02-03 13:19:48.184667"
+  },
+  {
+    "WriteOffId": 6198,
+    "ProductId": 102,
+    "Count": 1,
+    "PurchasePrice": "147.40",
+    "ConsignmentNoteId": 64,
+    "Type": 1,
+    "CreatedDateUtc": "2025-02-03 13:20:10.151903"
+  },
+  {
+    "WriteOffId": 6199,
+    "ProductId": 3845,
+    "Count": 1,
+    "PurchasePrice": "130.00",
+    "ConsignmentNoteId": 7667,
+    "Type": 1,
+    "CreatedDateUtc": "2025-02-03 13:20:38.351986"
+  },
+  {
+    "WriteOffId": 6200,
+    "ProductId": 97,
+    "Count": 1,
+    "PurchasePrice": "260.00",
+    "ConsignmentNoteId": 7641,
+    "Type": 1,
+    "CreatedDateUtc": "2025-02-03 13:29:03.949077"
+  },
+  {
+    "WriteOffId": 6201,
+    "ProductId": 104,
+    "Count": 1,
+    "PurchasePrice": "200.00",
+    "ConsignmentNoteId": 4591,
+    "Type": 1,
+    "CreatedDateUtc": "2025-02-03 13:29:16.528513"
+  },
+  {
+    "WriteOffId": 6202,
+    "ProductId": 2551,
+    "Count": 1,
+    "PurchasePrice": "70.00",
+    "ConsignmentNoteId": 3183,
+    "Type": 1,
+    "CreatedDateUtc": "2025-02-17 08:34:27.001645"
+  },
+  {
+    "WriteOffId": 6203,
+    "ProductId": 6945,
+    "Count": 1,
+    "PurchasePrice": "2300.00",
+    "ConsignmentNoteId": 7734,
+    "Type": 1,
+    "CreatedDateUtc": "2025-02-26 09:43:42.546772"
+  },
+  {
+    "WriteOffId": 6204,
+    "ProductId": 66,
+    "Count": 1,
+    "PurchasePrice": "2400.00",
+    "ConsignmentNoteId": 7734,
+    "Type": 1,
+    "CreatedDateUtc": "2025-03-24 07:05:46.529758"
+  },
+  {
+    "WriteOffId": 6205,
+    "ProductId": 3863,
+    "Count": 1,
+    "PurchasePrice": "280.00",
+    "ConsignmentNoteId": 4575,
+    "Type": 1,
+    "CreatedDateUtc": "2025-04-23 09:19:25.095021"
+  },
+  {
+    "WriteOffId": 6206,
+    "ProductId": 116,
+    "Count": 11,
+    "PurchasePrice": "2380.00",
+    "ConsignmentNoteId": 77,
+    "Type": 1,
+    "CreatedDateUtc": "2025-04-24 11:18:18.140500"
+  },
+  {
+    "WriteOffId": 6207,
+    "ProductId": 181,
+    "Count": 1,
+    "PurchasePrice": "43.00",
+    "ConsignmentNoteId": 4375,
+    "Type": 1,
+    "CreatedDateUtc": "2025-04-25 09:16:32.034152"
+  },
+  {
+    "WriteOffId": 6208,
+    "ProductId": 2522,
+    "Count": 1,
+    "PurchasePrice": "49.00",
+    "ConsignmentNoteId": 7639,
+    "Type": 1,
+    "CreatedDateUtc": "2025-05-08 09:53:05.957057"
+  },
+  {
+    "WriteOffId": 6209,
+    "ProductId": 1533,
+    "Count": 1,
+    "PurchasePrice": "378.00",
+    "ConsignmentNoteId": 7735,
+    "Type": 1,
+    "CreatedDateUtc": "2025-05-14 13:18:50.960840"
+  },
+  {
+    "WriteOffId": 6210,
+    "ProductId": 121,
+    "Count": 1,
+    "PurchasePrice": "6194.00",
+    "ConsignmentNoteId": 4493,
+    "Type": 1,
+    "CreatedDateUtc": "2025-05-16 10:48:27.776944"
+  },
+  {
+    "WriteOffId": 6211,
+    "ProductId": 121,
+    "Count": 1,
+    "PurchasePrice": "6194.00",
+    "ConsignmentNoteId": 7772,
+    "Type": 1,
+    "CreatedDateUtc": "2025-05-30 10:35:40.602098"
+  },
+  {
+    "WriteOffId": 7209,
+    "ProductId": 1444,
+    "Count": 1,
+    "PurchasePrice": "659.00",
+    "ConsignmentNoteId": 2079,
+    "Type": 1,
+    "CreatedDateUtc": "2025-07-07 06:04:50.559803"
+  },
+  {
+    "WriteOffId": 7210,
+    "ProductId": 57,
+    "Count": 1,
+    "PurchasePrice": "27800.00",
+    "ConsignmentNoteId": 9783,
+    "Type": 1,
+    "CreatedDateUtc": "2025-08-04 06:18:56.538933"
+  },
+  {
+    "WriteOffId": 7211,
+    "ProductId": 53,
+    "Count": 1,
+    "PurchasePrice": "5450.00",
+    "ConsignmentNoteId": 9783,
+    "Type": 1,
+    "CreatedDateUtc": "2025-08-04 06:20:14.212048"
+  },
+  {
+    "WriteOffId": 7212,
+    "ProductId": 28,
+    "Count": 1,
+    "PurchasePrice": "68500.00",
+    "ConsignmentNoteId": 9783,
+    "Type": 1,
+    "CreatedDateUtc": "2025-08-04 06:21:27.706710"
+  },
+  {
+    "WriteOffId": 7213,
+    "ProductId": 3670,
+    "Count": 4,
+    "PurchasePrice": "2000.00",
+    "ConsignmentNoteId": 9783,
+    "Type": 1,
+    "CreatedDateUtc": "2025-08-04 06:22:46.289024"
+  },
+  {
+    "WriteOffId": 8210,
+    "ProductId": 2612,
+    "Count": 46,
+    "PurchasePrice": "194.40",
+    "ConsignmentNoteId": 3264,
+    "Type": 1,
+    "CreatedDateUtc": "2025-09-02 12:27:08.641536"
+  },
+  {
+    "WriteOffId": 8211,
+    "ProductId": 2612,
+    "Count": 54,
+    "PurchasePrice": "156.00",
+    "ConsignmentNoteId": 12779,
+    "Type": 1,
+    "CreatedDateUtc": "2025-09-02 12:27:08.663782"
+  },
+  {
+    "WriteOffId": 8212,
+    "ProductId": 101,
+    "Count": 1,
+    "PurchasePrice": "136.03",
+    "ConsignmentNoteId": 64,
+    "Type": 1,
+    "CreatedDateUtc": "2025-09-04 07:40:53.608841"
+  },
+  {
+    "WriteOffId": 8213,
+    "ProductId": 110,
+    "Count": 2,
+    "PurchasePrice": "250.00",
+    "ConsignmentNoteId": 4586,
+    "Type": 1,
+    "CreatedDateUtc": "2025-10-02 06:21:36.718893"
+  },
+  {
+    "WriteOffId": 8214,
+    "ProductId": 3618,
+    "Count": 3,
+    "PurchasePrice": "1200.00",
+    "ConsignmentNoteId": 4379,
+    "Type": 1,
+    "CreatedDateUtc": "2025-10-08 10:46:19.395464"
+  },
+  {
+    "WriteOffId": 8215,
+    "ProductId": 75,
+    "Count": 1,
+    "PurchasePrice": "34425.00",
+    "ConsignmentNoteId": 62,
+    "Type": 1,
+    "CreatedDateUtc": "2025-10-10 11:44:14.940939"
+  },
+  {
+    "WriteOffId": 8216,
+    "ProductId": 1522,
+    "Count": 3,
+    "PurchasePrice": "295.00",
+    "ConsignmentNoteId": 4434,
+    "Type": 1,
+    "CreatedDateUtc": "2025-10-24 08:42:10.096632"
+  },
+  {
+    "WriteOffId": 8217,
+    "ProductId": 1535,
+    "Count": 1,
+    "PurchasePrice": "48743.00",
+    "ConsignmentNoteId": 2156,
+    "Type": 1,
+    "CreatedDateUtc": "2025-11-26 11:40:59.940518"
+  }
+]

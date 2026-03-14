@@ -1,0 +1,699 @@
+{
+  "dbo.__EFMigrationsHistory": {
+    "schema": "dbo",
+    "table": "__EFMigrationsHistory",
+    "columns": [
+      {
+        "name": "MigrationId",
+        "type": "nvarchar",
+        "length": 150,
+        "nullable": false,
+        "default": null,
+        "primary_key": true
+      },
+      {
+        "name": "ProductVersion",
+        "type": "nvarchar",
+        "length": 32,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      }
+    ],
+    "row_count": 25
+  },
+  "dbo.ConsignmentNote": {
+    "schema": "dbo",
+    "table": "ConsignmentNote",
+    "columns": [
+      {
+        "name": "ConsignmentNoteId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": true
+      },
+      {
+        "name": "SupplierId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "CreatedDateUtc",
+        "type": "datetime2",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "IsOwnerBalance",
+        "type": "bit",
+        "length": null,
+        "nullable": false,
+        "default": "(CONVERT([bit],(0)))",
+        "primary_key": false
+      }
+    ],
+    "row_count": 976
+  },
+  "dbo.ConsignmentNoteProduct": {
+    "schema": "dbo",
+    "table": "ConsignmentNoteProduct",
+    "columns": [
+      {
+        "name": "ConsignmentNoteProductId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": true
+      },
+      {
+        "name": "ConsignmentNoteId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "ProductId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "PurchasePrice",
+        "type": "decimal",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "Count",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "StartLocationId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "SoldCount",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": "((0))",
+        "primary_key": false
+      },
+      {
+        "name": "ReceivedDateUtc",
+        "type": "datetime2",
+        "length": null,
+        "nullable": false,
+        "default": "(getdate())",
+        "primary_key": false
+      }
+    ],
+    "row_count": 1973
+  },
+  "dbo.Location": {
+    "schema": "dbo",
+    "table": "Location",
+    "columns": [
+      {
+        "name": "LocationId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": true
+      },
+      {
+        "name": "Name",
+        "type": "nvarchar",
+        "length": 100,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "Type",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      }
+    ],
+    "row_count": 9
+  },
+  "dbo.Manufacturer": {
+    "schema": "dbo",
+    "table": "Manufacturer",
+    "columns": [
+      {
+        "name": "ManufacturerId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": true
+      },
+      {
+        "name": "Name",
+        "type": "nvarchar",
+        "length": 100,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      }
+    ],
+    "row_count": 64
+  },
+  "dbo.Order": {
+    "schema": "dbo",
+    "table": "Order",
+    "columns": [
+      {
+        "name": "OrderId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": true
+      },
+      {
+        "name": "Status",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "CreatedDateUtc",
+        "type": "datetime2",
+        "length": null,
+        "nullable": false,
+        "default": "(getutcdate())",
+        "primary_key": false
+      },
+      {
+        "name": "OutletId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "Username",
+        "type": "nvarchar",
+        "length": 100,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "Comment",
+        "type": "nvarchar",
+        "length": -1,
+        "nullable": true,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "PaymentType",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": "((0))",
+        "primary_key": false
+      },
+      {
+        "name": "LoyaltyCardNumber",
+        "type": "nvarchar",
+        "length": -1,
+        "nullable": true,
+        "default": null,
+        "primary_key": false
+      }
+    ],
+    "row_count": 5173
+  },
+  "dbo.OrderProduct": {
+    "schema": "dbo",
+    "table": "OrderProduct",
+    "columns": [
+      {
+        "name": "OrderProductId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": true
+      },
+      {
+        "name": "OrderId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "ProductId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "PurchasePrice",
+        "type": "decimal",
+        "length": null,
+        "nullable": false,
+        "default": "((0.0))",
+        "primary_key": false
+      },
+      {
+        "name": "Price",
+        "type": "decimal",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "Count",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "ConsignmentNoteId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": "((0))",
+        "primary_key": false
+      },
+      {
+        "name": "RefundCount",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": "((0))",
+        "primary_key": false
+      }
+    ],
+    "row_count": 6259
+  },
+  "dbo.Outlet": {
+    "schema": "dbo",
+    "table": "Outlet",
+    "columns": [
+      {
+        "name": "OutletId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": true
+      },
+      {
+        "name": "Name",
+        "type": "nvarchar",
+        "length": 100,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "Type",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      }
+    ],
+    "row_count": 3
+  },
+  "dbo.Product": {
+    "schema": "dbo",
+    "table": "Product",
+    "columns": [
+      {
+        "name": "ProductId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": true
+      },
+      {
+        "name": "VendorCode",
+        "type": "nvarchar",
+        "length": 100,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "Name",
+        "type": "nvarchar",
+        "length": 1000,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "ManufacturerId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "CategoryId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "TypeId",
+        "type": "int",
+        "length": null,
+        "nullable": true,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "PriceType",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "PriceTypeValue",
+        "type": "decimal",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "CurrencyCode",
+        "type": "nvarchar",
+        "length": -1,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "Description",
+        "type": "nvarchar",
+        "length": -1,
+        "nullable": true,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "MinStock",
+        "type": "int",
+        "length": null,
+        "nullable": true,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "IsArchive",
+        "type": "bit",
+        "length": null,
+        "nullable": false,
+        "default": "(CONVERT([bit],(0)))",
+        "primary_key": false
+      },
+      {
+        "name": "ManufacturerBarcodes",
+        "type": "nvarchar",
+        "length": 1000,
+        "nullable": true,
+        "default": null,
+        "primary_key": false
+      }
+    ],
+    "row_count": 1102
+  },
+  "dbo.ProductCategory": {
+    "schema": "dbo",
+    "table": "ProductCategory",
+    "columns": [
+      {
+        "name": "ProductCategoryId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": true
+      },
+      {
+        "name": "Name",
+        "type": "nvarchar",
+        "length": 100,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      }
+    ],
+    "row_count": 13
+  },
+  "dbo.ProductLocation": {
+    "schema": "dbo",
+    "table": "ProductLocation",
+    "columns": [
+      {
+        "name": "ProductLocationId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": true
+      },
+      {
+        "name": "ProductId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "LocationId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "Count",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": "((0))",
+        "primary_key": false
+      },
+      {
+        "name": "StorageCell",
+        "type": "nvarchar",
+        "length": -1,
+        "nullable": true,
+        "default": null,
+        "primary_key": false
+      }
+    ],
+    "row_count": 1080
+  },
+  "dbo.ProductType": {
+    "schema": "dbo",
+    "table": "ProductType",
+    "columns": [
+      {
+        "name": "ProductTypeId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": true
+      },
+      {
+        "name": "Name",
+        "type": "nvarchar",
+        "length": 100,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      }
+    ],
+    "row_count": 23
+  },
+  "dbo.Supplier": {
+    "schema": "dbo",
+    "table": "Supplier",
+    "columns": [
+      {
+        "name": "SupplierId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": true
+      },
+      {
+        "name": "Name",
+        "type": "nvarchar",
+        "length": 100,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      }
+    ],
+    "row_count": 18
+  },
+  "dbo.UserActivityLog": {
+    "schema": "dbo",
+    "table": "UserActivityLog",
+    "columns": [
+      {
+        "name": "UserActivityLogId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": true
+      },
+      {
+        "name": "Username",
+        "type": "nvarchar",
+        "length": -1,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "Operation",
+        "type": "nvarchar",
+        "length": -1,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "CreatedDateUtc",
+        "type": "datetime2",
+        "length": null,
+        "nullable": false,
+        "default": "(getutcdate())",
+        "primary_key": false
+      },
+      {
+        "name": "Data",
+        "type": "nvarchar",
+        "length": -1,
+        "nullable": true,
+        "default": null,
+        "primary_key": false
+      }
+    ],
+    "row_count": 10192
+  },
+  "dbo.WriteOff": {
+    "schema": "dbo",
+    "table": "WriteOff",
+    "columns": [
+      {
+        "name": "WriteOffId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": true
+      },
+      {
+        "name": "ProductId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "Count",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "PurchasePrice",
+        "type": "decimal",
+        "length": null,
+        "nullable": false,
+        "default": "((0.0))",
+        "primary_key": false
+      },
+      {
+        "name": "ConsignmentNoteId",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "Type",
+        "type": "int",
+        "length": null,
+        "nullable": false,
+        "default": null,
+        "primary_key": false
+      },
+      {
+        "name": "CreatedDateUtc",
+        "type": "datetime2",
+        "length": null,
+        "nullable": false,
+        "default": "(getutcdate())",
+        "primary_key": false
+      }
+    ],
+    "row_count": 246
+  }
+}

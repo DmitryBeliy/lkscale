@@ -226,17 +226,28 @@ class DataMigrationService {
   }
 
   private async loadJsonFile<T>(filename: string): Promise<T[]> {
-    // Migration only works in Node.js environment, not in browser/React Native
-    if (!this.isNodeEnvironment()) {
-      safeLogger.warn(`Cannot load JSON files in browser/React Native environment. File: ${filename}`);
-      return [];
-    }
-
     try {
-      // Dynamic require only works in Node.js environment
-      // Use eval to prevent bundlers from trying to parse this
-      const data = eval(`require('@/../docs/base/extracted_data/${filename}')`);
-      return data as T[];
+      // Try to fetch from HTTP first (for web/browser environment)
+      if (typeof fetch !== 'undefined') {
+        try {
+          const response = await fetch(`/docs/base/extracted_data/${filename}`);
+          if (response.ok) {
+            const data = await response.json();
+            return data as T[];
+          }
+        } catch (fetchError) {
+          // Fetch failed, try Node.js require as fallback
+        }
+      }
+
+      // Fall back to Node.js require (for desktop environment)
+      if (this.isNodeEnvironment()) {
+        const data = eval(`require('@/../docs/base/extracted_data/${filename}')`);
+        return data as T[];
+      }
+
+      safeLogger.warn(`Cannot load JSON file: ${filename}. Neither fetch nor Node.js require available.`);
+      return [];
     } catch (error) {
       safeLogger.error(`Failed to load ${filename}:`, error);
       return [];

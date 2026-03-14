@@ -1,0 +1,94 @@
+[
+  {
+    "ProductTypeId": 1,
+    "Name": "Вентилятор"
+  },
+  {
+    "ProductTypeId": 2,
+    "Name": "Газовый клапан"
+  },
+  {
+    "ProductTypeId": 3,
+    "Name": "Теплообменники"
+  },
+  {
+    "ProductTypeId": 4,
+    "Name": "Плата"
+  },
+  {
+    "ProductTypeId": 5,
+    "Name": "Насос"
+  },
+  {
+    "ProductTypeId": 6,
+    "Name": "Гидравлическая группа"
+  },
+  {
+    "ProductTypeId": 7,
+    "Name": "Датчик"
+  },
+  {
+    "ProductTypeId": 8,
+    "Name": "Датчик температуры"
+  },
+  {
+    "ProductTypeId": 9,
+    "Name": "Датчик протока"
+  },
+  {
+    "ProductTypeId": 10,
+    "Name": "Пневмореле"
+  },
+  {
+    "ProductTypeId": 11,
+    "Name": "Прессостаты"
+  },
+  {
+    "ProductTypeId": 12,
+    "Name": "Монометр"
+  },
+  {
+    "ProductTypeId": 13,
+    "Name": "Анод"
+  },
+  {
+    "ProductTypeId": 14,
+    "Name": "Расширительный бак"
+  },
+  {
+    "ProductTypeId": 15,
+    "Name": "Электроды"
+  },
+  {
+    "ProductTypeId": 16,
+    "Name": "Трехходовой мотор"
+  },
+  {
+    "ProductTypeId": 17,
+    "Name": "Трехходовой клапан"
+  },
+  {
+    "ProductTypeId": 18,
+    "Name": "Кран наполнения"
+  },
+  {
+    "ProductTypeId": 19,
+    "Name": "Сбросной клапан"
+  },
+  {
+    "ProductTypeId": 20,
+    "Name": "Горелка"
+  },
+  {
+    "ProductTypeId": 21,
+    "Name": "Устройство розжига"
+  },
+  {
+    "ProductTypeId": 22,
+    "Name": "Термоизоляция"
+  },
+  {
+    "ProductTypeId": 23,
+    "Name": "Кольца, прокладки"
+  }
+]

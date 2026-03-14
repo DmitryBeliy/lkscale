@@ -52,6 +52,8 @@ interface MigrationState {
   orders: IdMap;
   purchaseOrders: IdMap;
   customers: IdMap;
+  productNames: Map<number, string>;
+  productSkus: Map<number, string>;
 }
 
 export interface MigrationStats {
@@ -195,6 +197,8 @@ class DataMigrationService {
       orders: new Map(),
       purchaseOrders: new Map(),
       customers: new Map(),
+      productNames: new Map(),
+      productSkus: new Map(),
     };
     this.stats = this.getInitialStats();
     this.userId = null;
@@ -305,6 +309,44 @@ class DataMigrationService {
       'EditWriteOff': 'stock_adjusted',
     };
     return mapping[oldOperation] || 'other';
+  }
+
+  /**
+   * Parse customer name and phone from username field
+   * Handles formats: "Name (Phone)", "Name", "+79991234567"
+   */
+  private parseCustomerFromUsername(username: string): { name?: string; phone?: string } {
+    if (!username || username.trim() === '') {
+      return {};
+    }
+
+    const trimmed = username.trim();
+
+    // Handle format: "Name (Phone)"
+    const match = trimmed.match(/^(.+?)\s*\((.+?)\)$/);
+    if (match) {
+      return {
+        name: match[1].trim(),
+        phone: match[2].trim(),
+      };
+    }
+
+    // Check if it's just a phone number
+    const cleanedPhone = trimmed.replace(/\s/g, '');
+    if (/^[\+\d\s\-\(\)]{10,}$/.test(cleanedPhone) && /\d{10,}/.test(cleanedPhone)) {
+      return { phone: trimmed };
+    }
+
+    // Assume it's just a name
+    return { name: trimmed };
+  }
+
+  private getProductNameByLegacyId(legacyId: number): string | null {
+    return this.state.productNames.get(legacyId) || null;
+  }
+
+  private getProductSkuByLegacyId(legacyId: number): string | null {
+    return this.state.productSkus.get(legacyId) || null;
   }
 
   // ==================== MANUFACTURERS ====================
@@ -1000,6 +1042,8 @@ class DataMigrationService {
       orders: new Map(),
       purchaseOrders: new Map(),
       customers: new Map(),
+      productNames: new Map(),
+      productSkus: new Map(),
     };
     this.stats = this.getInitialStats();
 

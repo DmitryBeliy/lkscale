@@ -1,0 +1,54 @@
+[
+  {
+    "ProductCategoryId": 1,
+    "Name": "Настенные газовые котлы"
+  },
+  {
+    "ProductCategoryId": 2,
+    "Name": "Напольные газовые котлы"
+  },
+  {
+    "ProductCategoryId": 3,
+    "Name": "Электрические котлы"
+  },
+  {
+    "ProductCategoryId": 4,
+    "Name": "Газовые колонки"
+  },
+  {
+    "ProductCategoryId": 5,
+    "Name": "Счетчики"
+  },
+  {
+    "ProductCategoryId": 6,
+    "Name": "Бойлеры"
+  },
+  {
+    "ProductCategoryId": 7,
+    "Name": "Электрические водонагреватели"
+  },
+  {
+    "ProductCategoryId": 8,
+    "Name": "Радиаторы"
+  },
+  {
+    "ProductCategoryId": 9,
+    "Name": "Запасные части"
+  },
+  {
+    "ProductCategoryId": 10,
+    "Name": "Комплектующие для монтажа"
+  },
+  {
+    "ProductCategoryId": 11,
+    "Name": "Полипропилен"
+  },
+  {
+    "ProductCategoryId": 12,
+    "Name": "Газовые плиты"
+  },
+  {
+    "ProductCategoryId": 13,
+    "Name": "Без категории"
+  }
+]

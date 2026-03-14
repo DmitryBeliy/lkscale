@@ -75,7 +75,7 @@ const Tooltip: React.FC<TooltipProps> = ({
   useEffect(() => {
     scale.value = withSpring(1, { damping: 12, stiffness: 100 });
     opacity.value = withTiming(1, { duration: 300 });
-  }, []);
+  }, [scale, opacity]);
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value }],
@@ -234,7 +234,7 @@ export const GuidedTour: React.FC<GuidedTourProps> = ({
       overlayOpacity.value = withTiming(0, { duration: 200 });
       spotlightScale.value = 0;
     }
-  }, [visible]);
+  }, [visible, overlayOpacity, spotlightScale]);
 
   const overlayAnimatedStyle = useAnimatedStyle(() => ({
     opacity: overlayOpacity.value,

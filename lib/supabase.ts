@@ -1,15 +1,16 @@
 import 'react-native-url-polyfill/auto';
-import { createClient, SupabaseClient, RealtimeChannel } from '@supabase/supabase-js';
+import { createClient, RealtimeChannel } from '@supabase/supabase-js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AppState, AppStateStatus } from 'react-native';
 import NetInfo, { NetInfoState } from '@react-native-community/netinfo';
 import { Database } from '@/types/database';
+import { logger } from '@/lib/logger';
 
 const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY!;
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.error('Missing Supabase environment variables');
+  logger.error('Missing Supabase environment variables');
 }
 
 // Create Supabase client
@@ -72,7 +73,7 @@ const checkSupabaseConnection = async (): Promise<boolean> => {
     isConnectedToSupabase = !error || error.code === 'PGRST116'; // PGRST116 = no rows returned
     notifyConnectionListeners();
     return isConnectedToSupabase;
-  } catch (error) {
+  } catch (err) {
     isConnectedToSupabase = false;
     notifyConnectionListeners();
     return false;

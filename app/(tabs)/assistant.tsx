@@ -24,6 +24,7 @@ import { getLiveAnalytics, LiveAnalyticsData } from '@/lib/supabaseDataService';
 import { getCurrentUserId } from '@/store/authStore';
 import { getConnectionStatus } from '@/lib/supabase';
 import { getStoreSettingsState } from '@/services/storeSettingsService';
+import { logger } from '@/lib/logger';
 import {
   findDeadStock,
   calculateProjectedTaxes,
@@ -166,7 +167,7 @@ export default function AssistantScreen() {
         const filtered = prev.filter((m) => !m.isLoading);
         return [...filtered, errorMessage];
       });
-      console.error('AI Error:', error);
+      logger.error('AI Error:', error);
     },
   });
 
@@ -337,7 +338,7 @@ ${liveData.lowStockAlerts.map((p, i) => `${i + 1}. ${p.name}
    - Прогноз: ${p.daysUntilStockout !== null ? `~${p.daysUntilStockout} дней до окончания` : 'нет данных о продажах'}`).join('\n\n')}
 
 ## Дополнительно из общих данных:
-${data.lowStockProducts?.filter((p: any) => !liveData.lowStockAlerts.find(l => l.name === p.name)).map((p: any) => `- ${p.name}: ${p.stock}/${p.minStock} шт., маржа ${p.margin}%`).join('\n') || 'Все позиции учтены выше'}
+${data.lowStockProducts?.filter((p: any) => !liveData.lowStockAlerts?.some((l: any) => l.name === p.name)).map((p: any) => `- ${p.name}: ${p.stock}/${p.minStock} шт., маржа ${p.margin}%`).join('\n') || 'Все позиции учтены выше'}
 
 Create an urgent report:
 1. 🔴 Critical Items (need immediate restock)
@@ -588,7 +589,7 @@ Create a weekly digest with:
           liveData = await getLiveAnalytics(period, products);
         }
       } catch (error) {
-        console.error('Error fetching live analytics:', error);
+        logger.error('Error fetching live analytics:', error);
       }
     }
 
@@ -610,7 +611,7 @@ Create a weekly digest with:
     try {
       await Share.share({ message: content });
     } catch (error) {
-      console.error('Share error:', error);
+      logger.error('Share error:', error);
     }
   };
 

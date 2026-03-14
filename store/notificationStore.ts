@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Notification, NotificationType } from '@/types';
+import { logger } from '@/lib/logger';
 
 const NOTIFICATIONS_CACHE_KEY = '@lkscale_notifications';
 const UNREAD_COUNT_KEY = '@lkscale_unread_count';
@@ -124,7 +125,7 @@ export const loadNotifications = async () => {
       await cacheNotifications();
     }
   } catch (error) {
-    console.error('Error loading notifications:', error);
+    logger.error('Error loading notifications:', error);
     setNotificationState({
       notifications: mockNotifications,
       unreadCount: mockNotifications.filter((n) => !n.isRead).length,
@@ -141,7 +142,7 @@ const cacheNotifications = async () => {
       AsyncStorage.setItem(UNREAD_COUNT_KEY, notificationState.unreadCount.toString()),
     ]);
   } catch (error) {
-    console.error('Error caching notifications:', error);
+    logger.error('Error caching notifications:', error);
   }
 };
 

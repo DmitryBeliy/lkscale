@@ -1,0 +1,7 @@
+# Migrations directory
+# Store your database migrations here
+# Format: YYYYMMDDHHMMSS_description.sql
+#
+# Example:
+# 20240307180000_add_inventory_alerts.sql
+# 20240307190000_create_reports_table.sql

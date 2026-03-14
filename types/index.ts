@@ -795,3 +795,154 @@ export const TIER_THRESHOLDS: Record<CustomerTier, number> = {
 
 // Points earning rate (percentage of purchase)
 export const POINTS_EARNING_RATE = 5; // 5% of purchase value
+
+// ============================================
+// NEW ERP TABLES
+// ============================================
+
+// Manufacturer Types
+export interface Manufacturer {
+  id: string;
+  name: string;
+  description?: string;
+  website?: string;
+  logoUrl?: string;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt?: string;
+}
+
+// Location Types (Warehouses/Stores)
+export interface Location {
+  id: string;
+  userId?: string;
+  name: string;
+  type?: 'warehouse' | 'store' | 'office' | 'other';
+  address?: string;
+  phone?: string;
+  managerId?: string;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt?: string;
+}
+
+// Outlet Types (Sales points)
+export interface Outlet {
+  id: string;
+  userId?: string;
+  locationId?: string;
+  name: string;
+  code?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt?: string;
+  // Joined fields
+  location?: Location;
+}
+
+// Consignment Note Types (Приходные накладные)
+export type ConsignmentNoteStatus = 'draft' | 'pending' | 'received' | 'cancelled';
+
+export interface ConsignmentNote {
+  id: string;
+  userId?: string;
+  supplierId?: string;
+  locationId?: string;
+  noteNumber: string;
+  status: ConsignmentNoteStatus;
+  totalAmount: number;
+  totalItems: number;
+  notes?: string;
+  documentDate?: string;
+  receivedDate?: string;
+  createdAt: string;
+  updatedAt?: string;
+  // Joined fields
+  supplier?: Supplier;
+  location?: Location;
+  items: ConsignmentNoteProduct[];
+}
+
+export interface ConsignmentNoteProduct {
+  id: string;
+  consignmentNoteId: string;
+  productId?: string;
+  productName: string;
+  productSku?: string;
+  quantity: number;
+  unitCost: number;
+  totalCost: number;
+  createdAt: string;
+  // Joined fields
+  product?: Product;
+}
+
+// Product Location (Stock by location)
+export interface ProductLocation {
+  id: string;
+  productId?: string;
+  locationId?: string;
+  quantity: number;
+  minQuantity?: number;
+  maxQuantity?: number;
+  shelfLocation?: string;
+  binLocation?: string;
+  createdAt: string;
+  updatedAt?: string;
+  // Joined fields
+  product?: Product;
+  location?: Location;
+}
+
+// Write-off Types (Списания)
+export type WriteOffType = 'damage' | 'expired' | 'theft' | 'loss' | 'other';
+
+export interface WriteOff {
+  id: string;
+  userId?: string;
+  productId?: string;
+  locationId?: string;
+  quantity: number;
+  reason?: string;
+  writeOffType: WriteOffType;
+  unitCost?: number;
+  totalCost?: number;
+  notes?: string;
+  documentNumber?: string;
+  createdAt: string;
+  updatedAt?: string;
+  // Joined fields
+  product?: Product;
+  location?: Location;
+}
+
+// User Activity Log Types
+export type UserActivityActionType =
+  | 'login'
+  | 'logout'
+  | 'create'
+  | 'update'
+  | 'delete'
+  | 'view'
+  | 'export'
+  | 'import'
+  | 'print'
+  | 'other';
+
+export interface UserActivityLog {
+  id: string;
+  userId?: string;
+  actionType: UserActivityActionType;
+  entityType?: string;
+  entityId?: string;
+  description?: string;
+  metadata?: Record<string, unknown>;
+  ipAddress?: string;
+  userAgent?: string;
+  createdAt: string;
+  // Joined fields
+  user?: User;
+}

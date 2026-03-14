@@ -1,7 +1,8 @@
 import * as Sharing from 'expo-sharing';
 import { File, Paths } from 'expo-file-system';
 import { Order, Product, InvoiceData, StockReport, StockReportItem, StoreSettings } from '@/types';
-import { getStoreSettingsState, formatWithCurrency, calculateTax } from './storeSettingsService';
+import { getStoreSettingsState, calculateTax } from './storeSettingsService';
+import { logger } from '@/lib/logger';
 
 // Generate Invoice Data from Order
 export const generateInvoiceData = (
@@ -312,7 +313,7 @@ export const shareInvoice = async (order: Order): Promise<boolean> => {
     }
     return false;
   } catch (error) {
-    console.error('Error sharing invoice:', error);
+    logger.error('Error sharing invoice:', error);
     return false;
   }
 };
@@ -337,7 +338,7 @@ export const shareStockReport = async (products: Product[]): Promise<boolean> =>
     }
     return false;
   } catch (error) {
-    console.error('Error sharing stock report:', error);
+    logger.error('Error sharing stock report:', error);
     return false;
   }
 };

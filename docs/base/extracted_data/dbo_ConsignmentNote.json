@@ -1,0 +1,5858 @@
+[
+  {
+    "ConsignmentNoteId": 1,
+    "SupplierId": 6,
+    "CreatedDateUtc": "2022-11-07 14:42:20.905030",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2022-12-05 09:08:55.223895",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-02-01 07:42:57.173906",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 5,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-02-13 07:41:43.706413",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-02-13 14:50:29.081022",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2023-04-05 12:08:23.108505",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 8,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2023-04-05 12:13:50.262223",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 9,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-04-07 10:39:15.857045",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 10,
+    "SupplierId": 1,
+    "CreatedDateUtc": "2023-04-09 07:39:41.018580",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 11,
+    "SupplierId": 1,
+    "CreatedDateUtc": "2023-04-09 07:43:28.930265",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 12,
+    "SupplierId": 1,
+    "CreatedDateUtc": "2023-04-09 07:44:28.608691",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 13,
+    "SupplierId": 1,
+    "CreatedDateUtc": "2023-04-09 07:45:06.905687",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-04-09 08:02:47.751252",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 15,
+    "SupplierId": 1,
+    "CreatedDateUtc": "2023-04-09 08:07:25.431546",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 16,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-04-09 08:15:59.487251",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 17,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-04-09 08:20:07.017566",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 18,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-04-09 08:21:17.448362",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 19,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-04-09 08:26:12.091769",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 20,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-04-09 08:30:37.599746",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 21,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-04-09 08:37:21.455670",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 22,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-04-28 14:03:44.855332",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 23,
+    "SupplierId": 1,
+    "CreatedDateUtc": "2023-04-28 14:27:38.190733",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 24,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-05-02 08:26:24.270305",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 25,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-05 10:08:34.416112",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 26,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-05 12:51:00.926625",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 27,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-05 12:55:11.681433",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 28,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-05-11 07:08:51.017446",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 29,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-11 08:07:35.793603",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 30,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-11 08:23:26.995691",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 31,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-11 08:23:52.252555",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 32,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-11 08:30:00.566682",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 33,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-11 08:33:42.936319",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 34,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-11 08:36:50.136202",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 35,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-11 08:41:46.855654",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 36,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-11 08:55:56.941917",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 37,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-11 09:00:08.077095",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 38,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-11 09:10:08.286352",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 39,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-11 09:13:03.497023",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 40,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-11 09:35:52.884147",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 41,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-11 10:20:59.829033",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 42,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-11 10:25:11.816268",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 43,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-11 10:28:26.746586",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 44,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-11 10:34:00.376490",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 45,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-11 10:40:07.817625",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 46,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-11 10:50:27.921036",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 47,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2023-05-12 15:05:03.658162",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 48,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-05-14 09:05:30.101205",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 49,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-05-14 12:00:23.888741",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 50,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-05-18 06:42:59.241829",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 51,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2023-05-20 10:23:12.360711",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 52,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-05-20 10:49:08.846529",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 53,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2023-05-26 12:31:55.983797",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 54,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-05-26 15:19:12.307119",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 55,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-05-27 08:36:16.806991",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 56,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-05-27 08:45:53.955502",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 57,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2023-06-02 08:27:11.098160",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 58,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2023-06-02 11:39:12.595987",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 59,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-06-03 06:41:42.242882",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 60,
+    "SupplierId": 1,
+    "CreatedDateUtc": "2023-06-03 07:44:11.592142",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 61,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-06-03 07:45:05.976356",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 62,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-06-03 07:57:07.085837",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 63,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2023-06-03 08:54:51.025890",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 64,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-06-04 10:06:32.074883",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 65,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-06-04 10:22:21.765074",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 66,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-06-04 10:31:18.134363",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 67,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-06-04 10:55:24.449866",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 68,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-06-04 11:03:40.300827",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 69,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-06-04 11:16:47.318064",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 70,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-06-04 11:29:00.707598",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 71,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-06-04 11:54:44.900406",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 72,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-06-04 15:34:31.033907",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 73,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-06-04 15:51:41.012111",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 74,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-06-04 16:02:27.204311",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 75,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-06-04 16:22:46.387869",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 76,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-06-04 16:23:16.545771",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 77,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-06-05 09:58:58.719133",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 78,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2023-06-05 10:07:09.810812",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 79,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2023-06-05 10:15:22.044628",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 80,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-06-05 11:34:25.477904",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 81,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-06-05 11:39:08.948757",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 82,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-06-05 11:42:08.562624",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 83,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-06-05 12:15:03.860494",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 84,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-06-05 12:34:21.209528",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 85,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-06-05 12:50:42.064232",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 86,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-06-05 15:52:41.662820",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 87,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-06-06 10:37:35.991239",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 88,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-06-07 06:34:11.352062",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 89,
+    "SupplierId": 6,
+    "CreatedDateUtc": "2023-06-17 10:09:27.328684",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 1069,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-06-20 14:05:55.787090",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 1070,
+    "SupplierId": 1,
+    "CreatedDateUtc": "2023-06-23 08:20:09.054713",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 1071,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-07-02 22:36:32.175352",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 1072,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-07-04 06:47:53.976785",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 1073,
+    "SupplierId": 16,
+    "CreatedDateUtc": "2023-07-08 10:11:45.865439",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 1074,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2023-07-10 15:02:23.791746",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 1075,
+    "SupplierId": 8,
+    "CreatedDateUtc": "2023-07-10 15:10:11.148252",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 1076,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-07-12 16:44:04.329410",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 1077,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2023-07-14 11:21:46.181575",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 1078,
+    "SupplierId": 16,
+    "CreatedDateUtc": "2023-07-17 09:07:35.580894",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 1079,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-07-17 09:09:07.607441",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 1080,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-07-17 09:36:27.457863",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 1081,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-07-17 09:36:51.542653",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 1082,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-07-18 07:50:12.246104",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 1083,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-07-19 08:41:16.070002",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 1084,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-07-19 09:44:30.402890",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 1085,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-07-20 11:27:46.492741",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 1086,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-07-20 11:41:42.034680",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 1087,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-07-23 07:39:17.139581",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 1088,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-07-23 08:03:07.881041",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2078,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-07-24 07:18:01.008864",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2079,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-07-28 07:09:00.828929",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2080,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-08-01 07:27:16.834369",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2081,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-08-01 07:52:22.334184",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2082,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-08-01 07:55:58.980459",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2083,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-08-01 08:01:39.797400",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2084,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-08-03 14:14:10.685342",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2085,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-08-08 10:03:50.283368",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2086,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-08-08 10:21:53.662509",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2087,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-08-08 11:20:07.516493",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2088,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-08-08 12:20:47.149680",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2089,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-08-09 11:17:34.047400",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2090,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-08-11 09:14:18.125892",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2091,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-08-11 13:43:50.261266",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2092,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-14 11:34:34.688771",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2093,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-14 12:13:41.294732",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2094,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-14 12:36:02.073798",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2095,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-08-16 07:23:34.848312",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2096,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-16 09:59:36.323124",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2097,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-17 07:27:06.745037",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2098,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-08-17 12:07:04.971123",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2099,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-18 08:45:18.584276",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2100,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-08-18 12:16:11.992000",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2101,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-08-21 14:48:59.122995",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2102,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-08-22 07:17:52.054434",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2103,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-08-22 07:23:46.646472",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2104,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-22 07:24:48.880497",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2105,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-22 08:23:05.464287",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2106,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-22 12:21:29.348844",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2107,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-08-23 06:10:39.975273",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2108,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-23 09:43:11.034746",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2109,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-23 09:53:58.455646",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2110,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-24 07:40:46.341928",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2111,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-24 07:50:41.462773",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2112,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-24 08:32:30.687821",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2113,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-24 08:57:22.854329",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2114,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-24 09:07:48.059947",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2115,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-24 09:56:59.633235",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2116,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-24 10:07:15.074408",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2117,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-24 11:50:32.770953",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2118,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-25 07:41:17.705230",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2119,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-25 07:57:40.561083",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2120,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-25 12:28:16.222704",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2121,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-25 12:33:29.054380",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2122,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-25 13:06:11.097659",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2123,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-25 13:13:13.358449",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2124,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-08-26 07:22:37.815415",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2125,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-26 08:03:05.661030",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2126,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-26 08:16:32.461591",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2127,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-26 09:09:09.786942",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2128,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-26 10:48:24.578587",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2129,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-08-28 08:58:51.068990",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2130,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-08-28 11:37:26.974816",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2131,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-08-29 07:13:39.195543",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2132,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-08-29 07:52:13.567754",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2133,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-30 11:25:50.982562",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2134,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-30 11:37:30.184337",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2135,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-30 11:42:37.369375",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2136,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-30 12:05:48.827663",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2137,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-30 12:32:54.507570",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2138,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-30 12:51:16.278369",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2139,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-31 06:58:43.244863",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2140,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-08-31 06:59:07.584155",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2141,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-08-31 07:29:49.599573",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2142,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-31 08:02:56.427201",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2143,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-31 11:04:44.867620",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2144,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-31 11:10:51.243324",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2145,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-31 11:18:24.968294",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2146,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-31 11:26:26.569274",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2147,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-31 11:37:00.246866",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2148,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-31 11:46:28.624287",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2149,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-08-31 12:29:14.098743",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2150,
+    "SupplierId": 12,
+    "CreatedDateUtc": "2023-08-31 14:09:58.073639",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2151,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-01 07:31:09.968730",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2152,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-02 06:28:53.249407",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2153,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-04 06:36:40.781949",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2154,
+    "SupplierId": 11,
+    "CreatedDateUtc": "2023-09-05 06:35:50.035390",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2155,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-05 06:39:52.958471",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2156,
+    "SupplierId": 11,
+    "CreatedDateUtc": "2023-09-05 06:52:48.678104",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2157,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-05 07:08:14.926401",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2158,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-05 11:11:17.517599",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2159,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-05 12:54:43.394162",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2160,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-05 13:14:05.351996",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 2161,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-06 06:14:00.512284",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3129,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-07 14:27:27.207139",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3130,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-08 08:46:30.294018",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3131,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-08 09:26:02.539985",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3132,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-09-08 11:36:31.715545",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3133,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-08 13:19:35.168773",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3134,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-08 13:29:07.738599",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3135,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-08 13:34:04.313623",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3136,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-08 14:02:12.364132",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3137,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-09-08 14:33:38.276615",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3138,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-08 14:38:36.389632",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3139,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-09 07:18:27.761790",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3140,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-09 09:37:58.885321",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3141,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-09 09:38:49.299812",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3142,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-10 09:47:44.299401",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3143,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-11 06:28:46.138432",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3144,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-11 07:24:15.087706",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3145,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-11 07:37:48.484609",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3146,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-11 07:55:15.607752",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3147,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-11 09:54:43.091346",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3148,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-11 09:57:02.038816",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3149,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-12 06:44:34.695038",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3150,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-12 11:28:05.507445",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3151,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-09-13 07:44:30.617753",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3152,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-13 09:17:56.688997",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3153,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-09-13 09:19:28.965274",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3154,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-13 09:21:15.919968",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3155,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-13 11:44:42.213882",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3156,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-14 09:13:00.130356",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3157,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-09-14 12:51:39.420447",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3158,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-14 13:26:09.619389",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3159,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-15 08:10:30.921453",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3160,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-09-15 09:58:34.125030",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3161,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-09-15 10:01:18.233772",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3162,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-15 10:53:52.134120",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3163,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-15 11:00:48.406715",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3164,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-09-15 11:36:18.573773",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3165,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-09-15 17:05:35.344665",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3166,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-16 08:31:55.877357",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3167,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-18 07:06:43.762640",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3168,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-09-18 09:27:24.388493",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3169,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-09-18 12:41:24.909049",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3170,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-09-18 12:46:32.161239",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3171,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-09-18 13:11:05.989380",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3172,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-19 06:41:47.490320",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3173,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2023-09-19 06:44:25.044810",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3174,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-21 11:48:44.428912",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3175,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-22 06:37:57.662422",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3176,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-22 11:05:33.489954",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3177,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-22 11:09:28.623492",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3178,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-22 12:07:46.400958",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3179,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-09-23 07:40:34.680660",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3180,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-09-23 08:14:34.569607",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3181,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-09-24 06:47:02.649404",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3182,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-09-24 07:47:27.243668",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3183,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-24 10:08:45.972632",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3184,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2023-09-25 06:42:13.751750",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3185,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-09-25 13:20:46.239728",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3186,
+    "SupplierId": 6,
+    "CreatedDateUtc": "2023-09-26 07:49:58.275864",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3187,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-26 07:54:13.485673",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3188,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-26 07:59:44.470644",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3189,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-26 08:55:49.270173",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3190,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-26 10:17:33.095356",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3191,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-26 11:27:31.185716",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3192,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-26 13:03:21.472566",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3193,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-09-26 13:25:07.940789",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3194,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-26 15:21:20.147881",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3195,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-09-27 07:50:35.434577",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3196,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-09-28 06:39:32.256463",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3197,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-09-28 08:22:34.777830",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3198,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-09-29 13:30:26.862585",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3199,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2023-10-01 09:46:30.573199",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3200,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-10-02 09:25:45.505734",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3201,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-02 13:36:03.309718",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3202,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-05 07:55:27.576206",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3203,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-10-05 07:58:25.358250",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3204,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-05 08:04:13.996396",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3205,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-05 11:20:04.026346",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3206,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-05 11:37:40.144608",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3207,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2023-10-05 11:41:26.405636",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3208,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-05 12:13:20.987983",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3209,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-06 09:18:20.122714",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3210,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-06 09:23:25.511096",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3211,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-06 14:41:11.064199",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3212,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-07 09:22:11.075427",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3213,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-08 10:15:40.879079",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3214,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-08 10:32:33.312903",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3215,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-10-09 10:28:33.771504",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3216,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-10-09 10:30:44.783785",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3217,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-10-09 10:34:50.435368",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3218,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-10-10 08:57:33.943447",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3219,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-11 06:25:37.534549",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3220,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-11 06:37:58.352899",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3221,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-11 06:44:17.029196",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3222,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-10-11 14:18:56.909903",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3223,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-11 14:20:32.178864",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3224,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-12 06:22:04.894018",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3225,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-12 06:48:18.200662",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3226,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-10-12 10:59:55.300135",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3227,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-10-12 12:16:35.955358",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3228,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-10-12 12:20:56.584606",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3229,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-12 12:28:49.271132",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3230,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-10-12 13:08:56.480131",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3231,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-10-12 14:43:42.253636",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3232,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-10-13 07:18:51.117615",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3233,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-13 13:28:37.635239",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3234,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-10-14 09:03:19.511203",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3235,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-14 10:47:13.038489",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3236,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-14 11:04:26.123288",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3237,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-16 06:51:09.334586",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3238,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-16 06:53:23.341397",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3239,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-16 07:04:45.706400",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3240,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-16 08:03:08.800413",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3241,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-16 08:07:35.354661",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3242,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-16 10:34:25.590300",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3243,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-16 13:39:46.026540",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3244,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-16 13:43:10.246362",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3245,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-16 13:49:29.204055",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3246,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-16 13:55:18.268460",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3247,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-16 13:56:19.377995",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3248,
+    "SupplierId": 13,
+    "CreatedDateUtc": "2023-10-17 12:54:58.179910",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3249,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-17 12:55:42.624034",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3250,
+    "SupplierId": 13,
+    "CreatedDateUtc": "2023-10-17 13:04:33.123731",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3251,
+    "SupplierId": 13,
+    "CreatedDateUtc": "2023-10-17 13:12:50.176393",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3252,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-17 13:16:31.232384",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3253,
+    "SupplierId": 12,
+    "CreatedDateUtc": "2023-10-18 09:35:42.783668",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3254,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-10-18 09:41:58.195881",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3255,
+    "SupplierId": 12,
+    "CreatedDateUtc": "2023-10-19 06:44:21.007755",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3256,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-10-20 08:09:55.279162",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3257,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-10-20 09:36:28.972648",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3258,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-20 11:16:26.111392",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3259,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-20 12:52:47.181680",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3260,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-20 13:01:41.215226",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3261,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-10-21 10:01:48.760286",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3262,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-10-22 06:30:09.053230",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3263,
+    "SupplierId": 11,
+    "CreatedDateUtc": "2023-10-22 06:40:19.225958",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3264,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-22 10:31:09.153952",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3265,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-24 13:08:30.799710",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3266,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-25 06:17:50.403034",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3267,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-25 09:07:06.015504",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3268,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-25 11:49:28.870911",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3269,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-25 11:51:40.474061",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3270,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-25 12:13:45.282499",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3271,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-10-25 12:18:42.944770",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3272,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-10-25 12:19:07.988792",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3273,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-10-25 12:43:54.015001",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3274,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-25 14:36:54.617776",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3275,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-26 07:53:58.085505",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3276,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-26 08:10:08.676064",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3277,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-10-27 07:10:48.370994",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3278,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-10-27 07:15:47.370986",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3279,
+    "SupplierId": 13,
+    "CreatedDateUtc": "2023-10-27 07:30:56.379233",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3280,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-27 07:46:01.238450",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3281,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-27 12:29:53.540668",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3282,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-10-27 13:49:43.021332",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3283,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-10-28 06:27:29.294599",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3284,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-10-28 07:15:15.890601",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3285,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-10-29 08:55:34.226874",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3286,
+    "SupplierId": 13,
+    "CreatedDateUtc": "2023-10-29 09:00:14.020319",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3287,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-10-29 09:02:21.619093",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3288,
+    "SupplierId": 15,
+    "CreatedDateUtc": "2023-10-29 09:07:50.916705",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3289,
+    "SupplierId": 13,
+    "CreatedDateUtc": "2023-10-29 09:14:32.530614",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3290,
+    "SupplierId": 13,
+    "CreatedDateUtc": "2023-10-30 07:41:02.133034",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3291,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-30 07:44:22.650408",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3292,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-10-30 11:24:48.966946",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 3293,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-10-30 13:51:57.254760",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4256,
+    "SupplierId": 11,
+    "CreatedDateUtc": "2023-10-31 12:35:38.993733",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4257,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-10-31 13:50:05.489360",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4258,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-10-31 13:59:29.247449",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4259,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-10-31 14:09:40.277299",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4260,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-01 08:26:30.655835",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4261,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-01 11:57:56.080713",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4262,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-02 09:38:03.583960",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4263,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-02 13:44:29.048425",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4264,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-02 13:48:00.453439",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4265,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-03 11:09:44.457429",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4266,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-11-03 11:19:22.095630",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4267,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-03 12:36:58.997111",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4268,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-11-04 08:19:22.481027",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4269,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-11-05 06:58:58.460070",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4270,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-11-06 08:07:48.958508",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4271,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-06 08:34:11.274205",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4272,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-11-06 10:27:18.184433",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4273,
+    "SupplierId": 13,
+    "CreatedDateUtc": "2023-11-06 10:54:24.453211",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4274,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-11-07 11:01:32.515260",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4275,
+    "SupplierId": 11,
+    "CreatedDateUtc": "2023-11-09 07:33:15.803404",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4276,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-11-09 08:50:48.655001",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4277,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-09 09:46:49.759713",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4278,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-11-09 11:43:15.852431",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4279,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-09 11:45:02.734651",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4280,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-09 12:09:49.890542",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4281,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-09 13:11:35.576744",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4282,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-11 06:49:39.775098",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4283,
+    "SupplierId": 13,
+    "CreatedDateUtc": "2023-11-12 10:18:40.040821",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4284,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-13 09:32:29.409512",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4285,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2023-11-13 09:58:49.358441",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4286,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-14 06:09:42.753780",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4287,
+    "SupplierId": 11,
+    "CreatedDateUtc": "2023-11-14 07:07:32.768848",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4288,
+    "SupplierId": 13,
+    "CreatedDateUtc": "2023-11-14 07:11:33.483108",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4289,
+    "SupplierId": 13,
+    "CreatedDateUtc": "2023-11-14 07:15:03.900376",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4290,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-14 08:23:23.149753",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4291,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-11-14 08:29:28.864502",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4292,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-11-14 08:45:09.676400",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4293,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-11-15 05:45:59.201931",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4294,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-15 06:56:36.285063",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4295,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-11-15 11:54:44.160800",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4296,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-11-15 13:08:22.372991",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4297,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-11-15 13:42:34.074210",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4298,
+    "SupplierId": 13,
+    "CreatedDateUtc": "2023-11-15 13:44:56.275343",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4299,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-16 07:35:43.773669",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4300,
+    "SupplierId": 16,
+    "CreatedDateUtc": "2023-11-16 07:41:19.566771",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4301,
+    "SupplierId": 16,
+    "CreatedDateUtc": "2023-11-16 08:28:51.998952",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4302,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-16 08:47:39.526380",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4303,
+    "SupplierId": 16,
+    "CreatedDateUtc": "2023-11-16 12:08:49.926362",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4304,
+    "SupplierId": 1,
+    "CreatedDateUtc": "2023-11-16 12:26:12.552472",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4305,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-16 12:56:57.009200",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4306,
+    "SupplierId": 11,
+    "CreatedDateUtc": "2023-11-16 12:59:54.573057",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4307,
+    "SupplierId": 16,
+    "CreatedDateUtc": "2023-11-16 13:42:47.647244",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4308,
+    "SupplierId": 16,
+    "CreatedDateUtc": "2023-11-16 13:53:24.934563",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4309,
+    "SupplierId": 16,
+    "CreatedDateUtc": "2023-11-17 07:06:27.137874",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4310,
+    "SupplierId": 8,
+    "CreatedDateUtc": "2023-11-17 07:20:24.639101",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4311,
+    "SupplierId": 16,
+    "CreatedDateUtc": "2023-11-17 07:29:31.944021",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4312,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-11-17 07:44:26.709634",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4313,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-17 12:36:44.279851",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4314,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2023-11-17 13:02:24.473056",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4315,
+    "SupplierId": 13,
+    "CreatedDateUtc": "2023-11-18 06:11:05.638963",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4316,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-18 06:15:51.172963",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4317,
+    "SupplierId": 13,
+    "CreatedDateUtc": "2023-11-18 06:34:58.502234",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4318,
+    "SupplierId": 6,
+    "CreatedDateUtc": "2023-11-18 09:52:40.515880",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4319,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-20 09:42:40.741819",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4320,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-11-20 11:49:57.567574",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4321,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-11-20 11:50:28.864450",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4322,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-20 12:16:24.028352",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4323,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-20 13:12:10.321111",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4324,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-11-21 14:23:34.270695",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4325,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-23 12:43:15.676674",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4326,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2023-11-25 06:04:46.048583",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4327,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-26 06:30:15.741989",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4328,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-11-27 06:16:55.214388",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4329,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-28 08:24:51.442248",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4330,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-11-28 14:02:47.066039",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4331,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-11-29 14:14:01.691838",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4332,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-11-30 08:51:50.648745",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4333,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-11-30 12:37:18.413329",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4334,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-12-01 13:31:28.402565",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4335,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-01 13:33:22.752493",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4336,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-01 14:49:28.755502",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4337,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-02 07:29:36.508338",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4338,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2023-12-02 07:55:06.736392",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4339,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-12-02 10:48:37.894556",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4340,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-12-02 10:49:30.042378",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4341,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-12-03 07:00:37.855242",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4342,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-03 08:00:39.518601",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4343,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-12-03 09:03:43.784080",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4344,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-03 11:46:03.001195",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4345,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-12-04 09:31:27.944470",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4346,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-12-04 09:44:27.818105",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4347,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-04 15:37:59.107295",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4348,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-12-05 07:00:41.451948",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4349,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-12-05 08:18:40.655662",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4350,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-05 08:22:48.424597",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4351,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-12-06 07:35:30.648334",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4352,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-06 07:50:58.831804",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4353,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-12-06 08:42:45.323446",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4354,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-06 10:40:09.022934",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4355,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-07 10:46:16.034968",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4356,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2023-12-07 13:40:11.184155",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4357,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-07 14:56:14.152665",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4358,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-08 12:48:37.190721",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4359,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-08 13:57:41.644922",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4360,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-12-09 10:45:04.198231",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4361,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-12-09 10:47:17.047330",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4362,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-12-09 12:31:07.786336",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4363,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-10 11:57:32.244338",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4364,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-10 12:54:47.210201",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4365,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-12-10 14:11:02.075001",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4366,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-11 12:32:25.563606",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4367,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-11 13:00:01.514705",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4368,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-12-11 13:29:03.048829",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4369,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-12-12 09:28:08.464042",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4370,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-12 11:09:38.128917",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4371,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-12-13 14:16:11.522579",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4372,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-12-14 07:16:32.431401",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4373,
+    "SupplierId": 16,
+    "CreatedDateUtc": "2023-12-14 12:27:43.624263",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4374,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-14 14:48:44.815621",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4375,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-15 09:00:25.874878",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4376,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-12-15 11:53:01.143836",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4377,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-15 12:48:05.816411",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4378,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-16 07:04:19.316492",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4379,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-17 07:25:22.978168",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4380,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-12-20 09:17:54.755587",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4381,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-21 13:31:41.586497",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4382,
+    "SupplierId": 11,
+    "CreatedDateUtc": "2023-12-21 14:09:06.603651",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4383,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-22 11:26:08.270218",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4384,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-24 12:53:18.121816",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4385,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-12-26 07:03:43.380524",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4386,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-26 09:28:43.590093",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4387,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2023-12-26 12:34:16.963958",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4388,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-27 07:36:05.520227",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4389,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-27 08:18:10.939448",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4390,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2023-12-27 08:18:57.995005",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4391,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2023-12-27 12:36:59.606412",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4392,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2023-12-28 06:18:39.250093",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4393,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-28 10:54:00.008903",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4394,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-12-28 11:27:06.679861",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4395,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2023-12-29 07:59:20.462516",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4396,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-29 11:56:02.347748",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4397,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-30 06:48:25.931216",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4398,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2023-12-30 07:40:44.375267",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4399,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-04 11:39:53.618397",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4400,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2024-01-05 06:26:23.474152",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4401,
+    "SupplierId": 1,
+    "CreatedDateUtc": "2024-01-06 09:30:57.119376",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4402,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2024-01-08 06:46:34.814133",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4403,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2024-01-08 07:34:32.722806",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4404,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-09 09:35:24.673127",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4405,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-09 14:17:45.946765",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4406,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-01-10 06:32:48.286438",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4407,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-11 08:51:45.155838",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4408,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-11 10:39:47.005560",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4409,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-11 11:14:18.810012",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4410,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-12 06:45:09.478769",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4411,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-15 06:15:49.566304",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4412,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-15 10:11:04.676994",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4413,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-15 10:22:49.122729",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4414,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-15 13:45:19.136361",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4415,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-16 12:02:50.311060",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4416,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-16 12:23:48.479806",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4417,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-01-16 12:43:54.413157",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4418,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-17 10:05:12.259399",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4419,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2024-01-17 10:19:37.818011",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4420,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-01-18 08:51:43.046516",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4421,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-01-18 08:52:58.331910",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4422,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-18 10:01:38.902722",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4423,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-18 11:06:02.478199",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4424,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-18 13:31:55.639402",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4425,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-01-19 07:24:48.901531",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4426,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-19 14:46:13.619554",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4427,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2024-01-19 18:14:31.909194",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4428,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-01-20 08:30:44.260537",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4429,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-20 11:06:33.001256",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4430,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-22 12:37:55.052081",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4431,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-01-23 13:37:11.701563",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4432,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2024-01-24 11:10:40.083047",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4433,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-24 14:15:46.821559",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4434,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2024-01-25 12:52:25.817985",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4435,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-25 13:53:08.210961",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4436,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-25 14:00:10.042403",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4437,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-01-26 13:48:01.697644",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4438,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-26 14:04:30.127544",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4439,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-27 08:07:32.110086",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4440,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-01-29 06:34:56.510809",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4441,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-01-29 09:02:16.173765",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4442,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-01-29 09:50:07.111718",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4443,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-01-29 13:29:41.066328",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4444,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-02 07:40:10.342302",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4445,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-02-02 07:46:12.386931",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4446,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-03 07:36:47.666530",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4447,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-04 11:02:35.780747",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4448,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-04 12:44:02.931619",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4449,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-05 09:40:09.114526",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4450,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-02-05 11:03:04.241186",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4451,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2024-02-06 07:26:41.396157",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4452,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-06 08:41:14.951489",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4453,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-07 06:36:57.738487",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4454,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-07 07:55:27.714065",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4455,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2024-02-07 09:22:04.268278",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4456,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-02-07 09:22:48.090608",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4457,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-07 09:24:26.569360",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4458,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-02-08 06:31:34.660171",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4459,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-02-08 06:32:31.300744",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4460,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-08 08:00:02.637131",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4461,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-09 14:02:23.570762",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4462,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-09 14:11:37.886276",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4463,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-02-12 11:58:23.770398",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4464,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-12 12:36:04.957400",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4465,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-12 12:42:17.463067",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4466,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-02-12 12:51:20.760455",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4467,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-12 12:54:41.423319",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4468,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-02-13 13:33:22.420756",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4469,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2024-02-14 14:20:11.693743",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4470,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-02-15 08:41:11.770007",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4471,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-02-15 08:41:55.139800",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4472,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-02-16 06:21:20.766633",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4473,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-16 06:22:32.761696",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4474,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-16 07:03:19.992549",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4475,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-16 10:52:34.156518",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4476,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-16 11:51:48.677719",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4477,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-16 11:54:07.888532",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4478,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-16 12:54:20.646036",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4479,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-16 14:51:04.404288",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4480,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-18 07:39:49.639850",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4481,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-02-18 10:08:32.131678",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4482,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-19 10:42:21.810353",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4483,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-20 10:27:10.900915",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4484,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-02-20 10:32:15.003692",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4485,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-21 08:25:57.697527",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4486,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-22 06:20:53.217627",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4487,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-22 11:37:10.423538",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4488,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-22 12:52:21.420408",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4489,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-23 11:20:41.375905",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4490,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-02-23 11:34:01.841114",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4491,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-25 12:20:29.558633",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4492,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-02-28 07:39:25.955176",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4493,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2024-02-29 11:58:39.321226",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4494,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-03-01 12:15:51.287892",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4495,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-03-01 12:20:36.808517",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4496,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-03-01 13:32:24.651985",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4497,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-03-01 14:30:23.586243",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4498,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-03-02 12:52:04.431011",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4499,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-03-03 09:26:50.998810",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4500,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-03-04 07:17:25.805998",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4501,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2024-03-05 12:34:42.598870",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4502,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-03-07 06:43:36.960012",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4503,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-03-07 14:02:40.962876",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4504,
+    "SupplierId": 6,
+    "CreatedDateUtc": "2024-03-08 08:17:50.124809",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4505,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-03-11 08:47:25.986977",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4506,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-03-12 09:55:12.511162",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4507,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-03-13 07:04:15.218074",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4508,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-03-15 08:21:00.441906",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4509,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-03-15 08:48:59.666515",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4510,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-03-15 09:34:21.255227",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4511,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-03-18 06:46:33.473230",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4512,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2024-03-18 07:16:21.689106",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4513,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-03-18 11:00:24.169734",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4514,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-03-18 14:02:03.329392",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4515,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-03-19 09:16:06.581505",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4516,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2024-03-19 12:29:25.130034",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4517,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-03-21 07:02:29.764296",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4518,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-03-21 13:02:16.474471",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4519,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-03-22 08:59:09.741656",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4520,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2024-03-22 09:19:45.356236",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4521,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-03-22 10:55:29.411512",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4522,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-03-22 11:38:39.067496",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4523,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-03-23 06:05:35.302404",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4524,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-03-24 10:23:47.729664",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4525,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-03-25 09:28:51.492495",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4526,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-03-26 09:32:24.928224",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4527,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-03-27 07:16:43.082787",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4528,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-03-28 14:55:12.326365",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4529,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-03-29 11:22:20.889486",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4530,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2024-03-30 08:01:36.836566",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4531,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-03-30 08:16:12.795110",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4532,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-03-30 08:19:41.482046",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4533,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-03-31 09:56:35.492692",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4534,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-03-31 11:02:22.952952",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4535,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-04-01 07:08:07.750854",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4536,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2024-04-02 11:28:18.494956",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4537,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-04-03 11:07:00.437502",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4538,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-04-03 11:52:56.529464",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4539,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-04-08 11:19:31.731386",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4540,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-04-09 12:55:22.521649",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4541,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-04-11 08:36:27.685895",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4542,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-04-12 11:24:57.522013",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4543,
+    "SupplierId": 11,
+    "CreatedDateUtc": "2024-04-17 11:13:06.529971",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4544,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-04-18 09:06:13.523084",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4545,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-04-18 09:12:30.989040",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4546,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-04-19 07:44:51.430270",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4547,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-04-23 07:12:29.271861",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4548,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-04-23 08:36:10.491587",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4549,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-04-26 14:17:24.649991",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4550,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-04-27 06:14:39.357980",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4551,
+    "SupplierId": 6,
+    "CreatedDateUtc": "2024-04-27 06:17:10.114365",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4552,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-04-29 09:39:59.343740",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4553,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-05-02 06:06:55.024412",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4554,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-05-02 09:18:30.035136",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4555,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-05-03 09:49:33.963399",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4556,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-05-04 06:26:43.951620",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4557,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-05-04 06:28:55.903828",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4558,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-05-07 09:57:34.532083",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4559,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-05-08 06:26:26.182259",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4560,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-05-08 12:48:49.050033",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4561,
+    "SupplierId": 6,
+    "CreatedDateUtc": "2024-05-12 09:40:37.120743",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4562,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-05-14 11:34:45.205930",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4563,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-05-14 12:45:53.655299",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4564,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-05-15 11:32:13.895533",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4565,
+    "SupplierId": 12,
+    "CreatedDateUtc": "2024-05-16 08:05:38.830073",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4566,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-05-16 14:32:16.454321",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4567,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-05-18 08:29:14.992145",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4568,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-05-19 10:34:42.296075",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4569,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-05-20 06:11:12.245841",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4570,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-05-20 11:57:59.930377",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4571,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-05-20 12:49:28.784388",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4572,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2024-05-22 14:07:19.570776",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4573,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-05-22 14:30:15.664157",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4574,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-05-23 06:20:00.250071",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4575,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-05-23 07:05:09.055949",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4576,
+    "SupplierId": 6,
+    "CreatedDateUtc": "2024-05-23 11:58:29.044031",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4577,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-05-24 09:48:35.509165",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4578,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2024-05-27 07:10:44.788195",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4579,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-05-29 07:41:56.139734",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4580,
+    "SupplierId": 6,
+    "CreatedDateUtc": "2024-05-29 11:48:47.684891",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4581,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2024-05-29 11:53:08.039509",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4582,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-05-29 13:15:29.817496",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4583,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-05-29 14:44:50.134431",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4584,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-05-30 06:41:32.714980",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4585,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2024-06-02 10:15:58.381850",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4586,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-06-03 08:17:10.828092",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4587,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-06-04 12:57:08.697031",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4588,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-06-05 08:44:53.380254",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4589,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-06-06 13:25:27.761485",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4590,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-06-07 06:43:46.645027",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4591,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-06-07 10:01:35.064579",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4592,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-06-08 08:55:04.758237",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4593,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-06-17 07:36:41.546416",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4594,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-06-18 08:36:32.004350",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4595,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-06-18 10:49:07.135470",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4596,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-06-18 13:44:19.953407",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4597,
+    "SupplierId": 6,
+    "CreatedDateUtc": "2024-06-19 10:38:46.019218",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 4598,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2024-06-20 08:53:00.924638",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 5593,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-06-26 09:00:44.426642",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 5594,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2024-07-01 13:50:35.976683",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 5595,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-07-02 07:35:02.511981",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 5596,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-07-02 08:23:31.703286",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 5597,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-07-04 06:37:39.492117",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 5598,
+    "SupplierId": 12,
+    "CreatedDateUtc": "2024-07-04 12:23:37.466269",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 5599,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-07-09 08:45:53.765740",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 5600,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-07-11 07:10:02.676044",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 5601,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-07-12 07:22:23.328661",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 5602,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-07-13 09:47:12.351087",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 5603,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-07-16 07:18:08.321630",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 5604,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-07-19 12:10:22.639723",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 5605,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-07-19 13:15:54.489875",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 5606,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-07-22 08:28:24.420143",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 5607,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2024-07-22 11:58:10.727908",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 5608,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-07-22 12:01:58.240535",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 5609,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-07-25 12:10:24.638378",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 5610,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-07-26 11:25:44.527020",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 5611,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-07-26 12:17:24.745409",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 5612,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-07-26 12:37:49.987326",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6593,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-08-01 12:23:32.790399",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6594,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2024-08-02 09:01:38.519646",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6595,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-08-02 14:52:20.593764",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6596,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-08-03 09:43:30.493438",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6597,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-08-07 13:27:01.599512",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6598,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-08-07 13:28:05.441494",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6599,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-08-09 07:28:39.995971",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6600,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-08-11 10:09:47.431224",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6601,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-08-12 06:07:06.955383",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6602,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-08-16 13:04:30.832331",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6603,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-08-17 08:27:11.513677",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6604,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-08-17 08:50:25.912570",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6605,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-08-22 13:05:05.119124",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6606,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-08-23 06:48:13.530158",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6607,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-08-23 08:56:19.004450",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6608,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-08-23 11:06:51.017221",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6609,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-08-24 06:02:34.917927",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6610,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-08-24 06:07:44.860943",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6611,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-08-27 08:04:00.466470",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6612,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-08-29 09:27:38.694596",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6613,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-08-29 09:31:37.686302",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6614,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-09-03 08:08:32.151320",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6615,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-09-03 09:11:38.420862",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6616,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-09-05 11:27:51.217963",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6617,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2024-09-09 06:39:20.506531",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6618,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-09-10 07:47:28.988199",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6619,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-09-12 07:45:49.366528",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6620,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-09-14 06:16:10.350110",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6621,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2024-09-16 06:13:10.029285",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6622,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-09-17 08:04:37.135246",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6623,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-09-17 10:36:33.592682",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6624,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-09-20 08:23:25.411626",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6625,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-09-21 06:23:42.892744",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6626,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-09-24 07:34:21.975604",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6627,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-09-26 06:18:14.901844",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6628,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-09-26 11:25:01.052757",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6629,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2024-09-27 11:14:26.241558",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6630,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-09-27 11:20:00.836415",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6631,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-09-27 12:58:38.705427",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6632,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-09-27 14:21:40.232038",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6633,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-09-30 08:21:28.341277",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6634,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-09-30 11:43:59.469265",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6635,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-10-01 06:48:49.079469",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 6636,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-10-01 10:48:05.672781",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7626,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-10-08 06:52:53.370153",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7627,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-10-08 08:17:24.841707",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7628,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-10-08 11:59:04.126617",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7629,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-10-09 11:22:06.629866",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7630,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-10-09 14:50:02.544055",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7631,
+    "SupplierId": 11,
+    "CreatedDateUtc": "2024-10-10 11:43:45.221476",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7632,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-10-14 07:13:57.313570",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7633,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-10-14 07:19:42.403424",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7634,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-10-14 13:58:16.836796",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7635,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-10-15 06:54:01.066506",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7636,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-10-15 08:35:45.069438",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7637,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-10-16 09:08:35.784157",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7638,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-10-16 09:11:03.133894",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7639,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-10-16 14:13:12.513201",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7640,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-10-19 08:56:29.203861",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7641,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-10-22 07:10:38.429425",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7642,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-10-22 12:00:57.394728",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7643,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-10-24 07:32:49.404558",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7644,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-10-24 09:48:04.932811",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7645,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-10-24 12:38:49.276755",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7646,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-10-29 06:20:33.729120",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7647,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-10-30 14:38:13.114212",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7648,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-10-30 14:41:14.134006",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7649,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-11-01 12:32:55.568001",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7650,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-11-02 07:43:00.504157",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7651,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-11-05 06:25:37.951586",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7652,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-11-05 06:35:05.702635",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7653,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-11-05 09:14:04.596543",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7654,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-11-06 10:44:03.327513",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7655,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-11-07 13:00:51.578173",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7656,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-11-08 07:40:46.860897",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7657,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-11-09 06:12:47.501773",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7658,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-11-09 08:56:48.335009",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7659,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-11-12 13:38:21.362093",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7660,
+    "SupplierId": 2,
+    "CreatedDateUtc": "2024-11-13 08:16:51.035867",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7661,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-11-18 08:11:25.215203",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7662,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-11-20 10:48:54.240425",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7663,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-11-20 10:50:25.623071",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7664,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-11-20 12:46:42.822036",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7665,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-11-22 07:54:11.242655",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7666,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-11-25 06:46:05.135869",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7667,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-11-27 09:23:35.107169",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7668,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-11-27 10:57:41.435387",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7669,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-12-02 10:45:30.282515",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7670,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-12-05 12:50:10.137341",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7671,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-12-06 09:37:42.523703",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7672,
+    "SupplierId": 11,
+    "CreatedDateUtc": "2024-12-10 08:35:43.891917",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7673,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-12-10 09:01:03.413262",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7674,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-12-10 09:08:01.740182",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7675,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-12-11 07:52:44.796040",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7676,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-12-13 07:54:52.041115",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7677,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-12-13 08:05:47.103448",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7678,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2024-12-13 11:18:20.254091",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7679,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-12-16 06:51:15.444782",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7680,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-12-18 07:16:36.031882",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7681,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2024-12-20 08:33:17.102698",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7682,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-12-21 10:37:57.100824",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7683,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-12-24 08:07:27.149999",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7684,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-12-25 10:29:54.627886",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7685,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-12-26 10:48:31.184287",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7686,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2024-12-27 09:31:00.368887",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7687,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2024-12-30 10:05:27.988708",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7688,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2024-12-30 10:17:53.148857",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7689,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-01-06 07:59:18.903800",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7690,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-01-06 08:14:43.876018",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7691,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-01-11 09:43:08.247701",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7692,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-01-17 14:02:50.233049",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7693,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-01-17 14:04:15.328630",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7694,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-01-18 08:50:14.507450",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7695,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-01-18 10:54:13.902775",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7696,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-01-20 10:24:33.601368",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7697,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-01-20 10:31:56.999221",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7698,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-01-21 10:00:26.136404",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7699,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-01-21 10:06:13.552212",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7700,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-01-21 10:21:17.167312",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7701,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-01-21 11:11:57.351053",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7702,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-01-22 12:38:25.861619",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7703,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-01-22 12:48:24.118162",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7704,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-01-23 09:42:17.838029",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7705,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-01-23 11:22:43.392825",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7706,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-01-24 09:58:38.278758",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7707,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2025-01-24 12:31:06.151325",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7708,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-01-25 08:38:17.001211",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7709,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-01-25 08:45:53.069164",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7710,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-01-28 10:01:51.651090",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7711,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-01-30 06:21:15.266083",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7712,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-01-30 08:21:47.857908",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7713,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-01-30 09:35:59.293964",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7714,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-01-30 11:17:58.565459",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7715,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-02-01 06:06:01.100063",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7716,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-02-03 08:30:14.973101",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7717,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-02-03 12:05:40.875659",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7718,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-02-03 13:18:03.843221",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7719,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-02-03 13:19:06.957694",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7720,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-02-06 09:18:03.727544",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7721,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-02-06 11:36:51.325800",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7722,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-02-08 08:51:14.309222",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7723,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-02-08 08:55:50.298939",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7724,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-02-10 08:23:59.731497",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7725,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-02-11 09:51:22.543719",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7726,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-02-11 09:56:32.106225",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7727,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-02-12 10:37:44.023071",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7728,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-02-13 09:16:26.369231",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7729,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2025-02-15 06:42:28.543332",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7730,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-02-15 09:52:59.549971",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7731,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-02-15 09:53:14.070560",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7732,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-02-15 09:56:59.144989",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7733,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-02-17 10:50:36.147968",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7734,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-02-18 09:37:14.591762",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7735,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-02-21 11:25:41.891800",
+    "IsOwnerBalance": false
+  },
+  {
+    "ConsignmentNoteId": 7736,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-02-24 13:00:40.770310",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7737,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-03-03 06:13:03.510860",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7738,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-03-04 08:21:15.833226",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7739,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-03-05 11:54:22.948546",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7740,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-03-05 12:31:03.727965",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7741,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-03-06 06:34:06.723455",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7742,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-03-07 10:49:21.606008",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7743,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-03-10 07:00:17.900695",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7744,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-03-11 10:56:18.797550",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7745,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-03-13 07:53:35.946576",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7746,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-03-13 11:10:03.646379",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7747,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-03-13 11:19:47.698051",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7748,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-03-15 09:22:18.973311",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7749,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-03-24 10:41:19.521949",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7750,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-03-25 06:49:20.430584",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7751,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-03-25 10:27:54.561288",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7752,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2025-03-27 08:47:42.286646",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7753,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-03-28 10:30:46.630198",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7754,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-03-28 11:50:41.070091",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7755,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-03-28 11:54:24.142252",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7756,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-03-31 06:34:43.946881",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7757,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-03-31 11:06:53.468140",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7758,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2025-04-03 06:13:15.301209",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7759,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-04-03 12:22:59.804585",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7760,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-04-10 11:34:03.685937",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7761,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-04-15 11:48:19.933406",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7762,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2025-04-15 12:06:42.885566",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7763,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-04-21 11:07:03.393248",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7764,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-04-22 06:21:47.685718",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7765,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-04-23 08:52:04.864378",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7766,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-04-23 09:20:44.044312",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7767,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-04-24 06:11:28.796804",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7768,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-04-24 11:26:18.965006",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7769,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-04-29 08:34:01.158948",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7770,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-05-14 08:57:39.474993",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7771,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-05-14 13:17:38.286349",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7772,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-05-15 06:20:28.802275",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7773,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2025-05-15 06:23:03.399973",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7774,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-05-16 07:54:57.037390",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7775,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2025-05-16 10:48:51.660816",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7776,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-05-19 12:13:59.425691",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7777,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-05-22 10:59:57.351693",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7778,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-05-22 11:05:17.803283",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7779,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-05-23 10:36:35.956422",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7780,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2025-05-30 08:59:47.663654",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7781,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2025-05-31 10:09:54.225806",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 7782,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-06-02 10:39:57.160781",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 8770,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-06-24 06:34:45.154672",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 8771,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-06-25 10:55:53.692570",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 8772,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-06-26 08:09:23.174466",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 8773,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2025-06-27 12:12:06.511003",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 8774,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-06-30 10:59:54.616646",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 8775,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-07-01 13:13:16.410433",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 8776,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-07-02 10:50:57.939959",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 8777,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-07-03 09:08:32.512506",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 8778,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-07-03 09:09:33.767288",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 8779,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-07-09 09:05:18.906845",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 9779,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-07-15 06:04:46.562798",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 9780,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-07-17 11:09:29.070911",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 9781,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-07-18 08:59:37.896957",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 9782,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-07-24 12:44:00.501444",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 9783,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-08-01 13:04:21.264739",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 9784,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-08-04 06:14:46.610025",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 10779,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-08-07 12:21:32.521285",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 10780,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-08-08 10:53:01.127157",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 10781,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-08-19 08:45:01.619024",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 11779,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-08-27 09:01:22.715693",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 11780,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-08-29 09:33:06.805087",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 12779,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2025-09-02 12:10:29.746876",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 12780,
+    "SupplierId": 17,
+    "CreatedDateUtc": "2025-09-02 12:29:38.092724",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 12781,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-09-04 10:24:04.111771",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 12782,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-09-05 07:43:53.795196",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 12783,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-09-05 07:45:26.903545",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 12784,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-09-08 06:33:28.916071",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 13784,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-09-15 06:31:10.736998",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 13785,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-09-15 12:37:25.652620",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 13786,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-09-17 11:19:01.327776",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 13787,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-09-17 14:01:39.051619",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14784,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2025-09-26 07:35:35.047654",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14785,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-09-26 13:19:57.401098",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14786,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-09-29 10:26:58.108232",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14787,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-09-29 10:29:04.765588",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14788,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-10-08 08:11:14.401070",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14789,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-10-08 08:12:55.980151",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14790,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-10-08 10:44:26.338539",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14791,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-10-08 10:48:15.170731",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14792,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-10-09 12:39:05.832397",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14793,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-10-22 10:34:00.909540",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14794,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2025-10-25 06:58:30.942287",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14795,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-10-27 12:40:07.535912",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14796,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-11-05 13:39:16.043309",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14797,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-11-05 13:49:12.693912",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14798,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-11-06 09:39:41.263322",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14799,
+    "SupplierId": 5,
+    "CreatedDateUtc": "2025-11-11 06:39:53.016439",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14800,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-11-13 08:42:10.237260",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14801,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-11-13 10:01:45.852867",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14802,
+    "SupplierId": 4,
+    "CreatedDateUtc": "2025-11-14 14:13:58.513365",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14803,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-11-17 12:08:16.775780",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14804,
+    "SupplierId": 14,
+    "CreatedDateUtc": "2025-11-20 13:11:14.939202",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14805,
+    "SupplierId": 18,
+    "CreatedDateUtc": "2025-11-24 06:44:44.604312",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14806,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2025-11-25 07:14:50.306440",
+    "IsOwnerBalance": true
+  },
+  {
+    "ConsignmentNoteId": 14807,
+    "SupplierId": 7,
+    "CreatedDateUtc": "2025-11-29 08:41:11.730194",
+    "IsOwnerBalance": true
+  }
+]

@@ -17,6 +17,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useLocalization } from '@/localization';
 import { Card, Button } from '@/components/ui';
+import { logger } from '@/lib/logger';
 
 const REGIONAL_SETTINGS_KEY = '@lkscale_regional_settings';
 
@@ -141,7 +142,7 @@ export default function RegionalSettingsScreen() {
         setSettings(JSON.parse(saved));
       }
     } catch (error) {
-      console.error('Error loading regional settings:', error);
+      logger.error('Error loading regional settings:', error);
     } finally {
       setIsLoading(false);
     }
@@ -153,7 +154,7 @@ export default function RegionalSettingsScreen() {
       setSettings(newSettings);
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     } catch (error) {
-      console.error('Error saving regional settings:', error);
+      logger.error('Error saving regional settings:', error);
     }
   };
 

@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { supabase } from '@/lib/supabase';
 import { User, AuthState } from '@/types';
+import { logger } from '@/lib/logger';
 
 const AUTH_STORAGE_KEY = '@lkscale_auth';
 const REMEMBER_ME_KEY = '@lkscale_remember';
@@ -67,7 +68,7 @@ const convertSupabaseUser = async (supabaseUser: { id: string; email?: string | 
       createdAt: profile.created_at || new Date().toISOString(),
     };
   } catch (error) {
-    console.error('Error fetching user profile:', error);
+    logger.error('Error fetching user profile:', error);
     return {
       id: supabaseUser.id,
       email: supabaseUser.email || '',
@@ -87,7 +88,7 @@ export const initializeAuth = async () => {
     const { data: { session }, error } = await supabase.auth.getSession();
 
     if (error) {
-      console.error('Error getting session:', error);
+      logger.error('Error getting session:', error);
       setAuthState({ isLoading: false, isAuthenticated: false, user: null });
       return;
     }
@@ -131,7 +132,7 @@ export const initializeAuth = async () => {
       }
     });
   } catch (error) {
-    console.error('Error initializing auth:', error);
+    logger.error('Error initializing auth:', error);
     setAuthState({ isLoading: false, isAuthenticated: false });
   }
 };
@@ -169,7 +170,7 @@ export const login = async (
     setAuthState({ isLoading: false });
     return { success: false, error: 'Не удалось войти' };
   } catch (error) {
-    console.error('Login error:', error);
+    logger.error('Login error:', error);
     setAuthState({ isLoading: false });
     return { success: false, error: 'Ошибка входа. Попробуйте снова.' };
   }
@@ -190,7 +191,7 @@ export const logout = async () => {
       rememberMe: false,
     });
   } catch (error) {
-    console.error('Logout error:', error);
+    logger.error('Logout error:', error);
   }
 };
 

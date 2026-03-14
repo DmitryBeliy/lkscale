@@ -13,6 +13,7 @@ import * as ExpoImagePicker from 'expo-image-picker';
 import * as Haptics from 'expo-haptics';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 import { colors, spacing, typography, borderRadius, shadows } from '@/constants/theme';
+import { logger } from '@/lib/logger';
 
 interface ImagePickerProps {
   currentImage?: string;
@@ -80,7 +81,7 @@ export const ImagePicker: React.FC<ImagePickerProps> = ({
         await onImageSelected(asset.uri, asset.base64 || '');
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
       } catch (error) {
-        console.error('Error uploading image:', error);
+        logger.error('Error uploading image:', error);
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
         Alert.alert('Ошибка', 'Не удалось загрузить изображение');
         setLocalImage(currentImage);
@@ -121,7 +122,7 @@ export const ImagePicker: React.FC<ImagePickerProps> = ({
         await onImageSelected(asset.uri, asset.base64 || '');
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
       } catch (error) {
-        console.error('Error uploading image:', error);
+        logger.error('Error uploading image:', error);
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
         Alert.alert('Ошибка', 'Не удалось загрузить изображение');
         setLocalImage(currentImage);

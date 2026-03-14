@@ -161,7 +161,7 @@ const AnimatedIcon: React.FC<{ icon: keyof typeof Ionicons.glyphMap; color: stri
       -1,
       true
     );
-  }, []);
+  }, [scale, rotation]);
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [

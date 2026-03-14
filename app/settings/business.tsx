@@ -18,6 +18,7 @@ import Animated, { FadeInDown, FadeIn } from 'react-native-reanimated';
 import { LinearGradient } from 'expo-linear-gradient';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTheme } from '@/contexts/ThemeContext';
+import { logger } from '@/lib/logger';
 import { useLocalization } from '@/localization';
 import { Card, Button } from '@/components/ui';
 
@@ -122,11 +123,11 @@ export default function BusinessProfileScreen() {
       if (savedLogo) setLogoUri(savedLogo);
       if (savedInfo) setBusinessInfo(JSON.parse(savedInfo));
     } catch (error) {
-      console.error('Error loading business data:', error);
+      logger.error('Error loading business data:', error);
     }
   };
 
-  const requestPermissions = async () => {
+  const requestPermissions = useCallback(async () => {
     const { status: cameraStatus } = await ImagePicker.requestCameraPermissionsAsync();
     const { status: mediaStatus } = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
@@ -140,7 +141,7 @@ export default function BusinessProfileScreen() {
       return false;
     }
     return true;
-  };
+  }, [language]);
 
   const pickImage = useCallback(async (source: 'camera' | 'library') => {
     const hasPermissions = await requestPermissions();
@@ -174,7 +175,7 @@ export default function BusinessProfileScreen() {
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
       }
     } catch (error) {
-      console.error('Error picking image:', error);
+      logger.error('Error picking image:', error);
       Alert.alert(
         language === 'ru' ? 'Ошибка' : 'Error',
         language === 'ru' ? 'Не удалось загрузить изображение' : 'Failed to load image'
@@ -227,7 +228,7 @@ export default function BusinessProfileScreen() {
 
       setTimeout(() => setIsSaved(false), 2000);
     } catch (error) {
-      console.error('Error saving business info:', error);
+      logger.error('Error saving business info:', error);
       Alert.alert(
         language === 'ru' ? 'Ошибка' : 'Error',
         language === 'ru' ? 'Не удалось сохранить данные' : 'Failed to save data'

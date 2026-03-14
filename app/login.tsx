@@ -8,7 +8,6 @@ import {
   ScrollView,
   Pressable,
   Alert,
-  ActivityIndicator,
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { router, useLocalSearchParams } from 'expo-router';
@@ -24,7 +23,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { useAuth } from '@fastshot/auth';
+import { useAuth } from '@/contexts/AuthContext';
 import { Input, Button } from '@/components/ui';
 import { colors, spacing, typography, borderRadius, shadows } from '@/constants/theme';
 
@@ -37,6 +36,7 @@ export default function LoginScreen() {
     signInWithEmail,
     signUpWithEmail,
     resetPassword,
+    signOut,
     isLoading,
     error,
     clearError,
@@ -358,8 +358,10 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     flexGrow: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     padding: spacing.lg,
+    paddingTop: spacing.xl * 2,
+    minHeight: '100vh',
   },
   header: {
     alignItems: 'center',

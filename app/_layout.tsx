@@ -4,13 +4,14 @@ import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { AuthProvider } from '@fastshot/auth';
+import { AuthProvider } from '@/contexts/AuthContext';
 import { LocalizationProvider } from '@/localization';
 import { ThemeProvider, useTheme } from '@/contexts/ThemeContext';
 import { OnboardingProvider } from '@/contexts/OnboardingContext';
-import { supabase, initConnectionMonitor } from '@/lib/supabase';
+import { initConnectionMonitor } from '@/lib/supabase';
 import { loadCachedData } from '@/store/dataStore';
 import { loadNotifications } from '@/store/notificationStore';
+import { logger } from '@/lib/logger';
 
 // Prevent auto-hiding splash screen
 SplashScreen.preventAutoHideAsync();
@@ -206,7 +207,7 @@ export default function RootLayout() {
           loadNotifications(),
         ]);
       } catch (error) {
-        console.error('Error during app initialization:', error);
+        logger.error('Error during app initialization:', error);
       } finally {
         setIsReady(true);
         await SplashScreen.hideAsync();
@@ -224,13 +225,7 @@ export default function RootLayout() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
         <ThemeProvider>
-          <AuthProvider
-            supabaseClient={supabase}
-            routes={{
-              login: '/login',
-              afterLogin: '/(tabs)',
-            }}
-          >
+          <AuthProvider>
             <LocalizationProvider>
               <OnboardingProvider>
                 <RootLayoutContent />

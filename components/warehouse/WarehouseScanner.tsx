@@ -13,6 +13,7 @@ import { CameraView, useCameraPermissions, BarcodeScanningResult } from 'expo-ca
 import { Audio } from 'expo-av';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
+import { logger } from '@/lib/logger';
 import Animated, {
   FadeIn,
   FadeOut,
@@ -78,7 +79,7 @@ export const WarehouseScanner: React.FC<WarehouseScannerProps> = ({
         );
         soundRef.current = sound;
       } catch (error) {
-        console.log('Could not load beep sound:', error);
+        logger.debug('Could not load beep sound:', error);
       }
     };
     loadSound();
@@ -98,7 +99,7 @@ export const WarehouseScanner: React.FC<WarehouseScannerProps> = ({
         await soundRef.current.playAsync();
       }
     } catch (error) {
-      console.log('Could not play beep:', error);
+      logger.debug('Could not play beep:', error);
     }
   };
 

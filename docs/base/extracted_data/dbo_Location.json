@@ -1,0 +1,47 @@
+[
+  {
+    "LocationId": 1,
+    "Name": "Строителей 25",
+    "Type": 2
+  },
+  {
+    "LocationId": 2,
+    "Name": "Логинова 8",
+    "Type": 1
+  },
+  {
+    "LocationId": 3,
+    "Name": "Советский Юра",
+    "Type": 3
+  },
+  {
+    "LocationId": 4,
+    "Name": "Сернур Антей",
+    "Type": 3
+  },
+  {
+    "LocationId": 6,
+    "Name": "Склад V&D",
+    "Type": 1
+  },
+  {
+    "LocationId": 7,
+    "Name": "Granta",
+    "Type": 1
+  },
+  {
+    "LocationId": 8,
+    "Name": "Йывана Кырля 44",
+    "Type": 1
+  },
+  {
+    "LocationId": 9,
+    "Name": "Ямбых",
+    "Type": 1
+  },
+  {
+    "LocationId": 10,
+    "Name": "Малышев",
+    "Type": 1
+  }
+]

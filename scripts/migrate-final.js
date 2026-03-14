@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Supabase Migration: Parse SQL and Load via REST API with UUID generation
+ * Supabase Migration Final - with column fixes for order_items
  */
 
 const { createClient } = require('@supabase/supabase-js');
@@ -8,7 +8,6 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
-// Configuration
 const SUPABASE_URL = 'https://onnncepenxxxfprqaodu.supabase.co';
 const SUPABASE_SERVICE_ROLE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ubm5jZXBlbnh4eGZwcnFhb2R1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MjQ4MTk4NywiZXhwIjoyMDg4MDU3OTg3fQ.z0vhXCfPqFmN13kA0bJYu1xDBMQVxzk7hWNZUe_Ly7I';
 const MIGRATIONS_DIR = path.join(__dirname, '..', 'supabase', 'migrations', 'ready');
@@ -21,9 +20,16 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
 });
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-const generateUUID = () => crypto.randomUUID();
 
-// Parse SQL INSERT statements and convert to objects
+function generateUUID() {
+  return crypto.randomUUID();
+}
+
+// Columns to skip for each table
+const skipColumns = {
+  order_items: ['cost_price', 'notes']
+};
+
 function parseInsertStatements(sql) {
   const results = [];
   const lines = sql.split('\n');
@@ -35,7 +41,6 @@ function parseInsertStatements(sql) {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
 
-    // Detect INSERT INTO statement
     const insertMatch = line.match(/INSERT INTO\s+(\w+)\s*\(([^)]+)\)/i);
     if (insertMatch) {
       tableName = insertMatch[1];
@@ -45,73 +50,63 @@ function parseInsertStatements(sql) {
       continue;
     }
 
-    // Skip VALUES keyword
     if (inInsert && line.toUpperCase().startsWith('VALUES')) continue;
 
-    // Collect value rows
     if (inInsert && line.startsWith('(')) {
-      const cleanLine = line.replace(/,$/, '').replace(/;$/, '');
+      let processedLine = line.replace(/gen_random_uuid\(\)/gi, () => `'${generateUUID()}'`);
+      processedLine = processedLine.replace(/now\(\)/gi, () => `'${new Date().toISOString()}'`);
+      const cleanLine = processedLine.replace(/,$/, '').replace(/;$/, '');
 
-      // Parse values considering quoted strings
       const values = [];
       let current = '';
       let inString = false;
-      let parenDepth = 0;
 
       for (let j = 1; j < cleanLine.length - 1; j++) {
         const char = cleanLine[j];
 
-        if (char === "'" && cleanLine[j-1] !== '\\') {
-          inString = !inString;
-          current += char;
+        if (!inString && char === "'") {
+          inString = true;
           continue;
         }
 
-        if (!inString) {
-          if (char === '(') parenDepth++;
-          if (char === ')') parenDepth--;
-
-          if (char === ',' && parenDepth === 0) {
-            values.push(current.trim());
-            current = '';
+        if (inString && char === "'") {
+          if (cleanLine[j + 1] === "'") {
+            current += "'";
+            j++;
             continue;
           }
+          inString = false;
+          continue;
+        }
+
+        if (!inString && char === ',') {
+          values.push(current.trim());
+          current = '';
+          continue;
         }
 
         current += char;
       }
       values.push(current.trim());
 
-      // Create object
       const obj = {};
+      const colsToSkip = skipColumns[tableName] || [];
+
       columns.forEach((col, idx) => {
+        if (colsToSkip.includes(col)) return;
+
         let val = values[idx];
-
-        // Handle gen_random_uuid()
-        if (val && val.includes('gen_random_uuid()')) {
-          obj[col] = generateUUID();
-          return;
-        }
-
-        // Handle now()
-        if (val && val.toLowerCase() === 'now()') {
-          obj[col] = new Date().toISOString();
-          return;
-        }
-
         if (val === undefined || val === 'NULL' || val === 'null') {
           obj[col] = null;
         } else if (val?.toLowerCase() === 'true') {
           obj[col] = true;
         } else if (val?.toLowerCase() === 'false') {
           obj[col] = false;
-        } else if (!isNaN(val) && val !== '' && !val.startsWith("'")) {
+        } else if (!isNaN(val) && val !== '' && !val?.includes('-')) {
           obj[col] = Number(val);
         } else if (val?.startsWith("'") && val?.endsWith("'")) {
           obj[col] = val.slice(1, -1).replace(/''/g, "'");
-        } else if (val?.startsWith('"') && val?.endsWith('"')) {
-          obj[col] = val.slice(1, -1).replace(/""/g, '"');
-        } else if (val?.toLowerCase() === 'infinity' || val?.toLowerCase() === '-infinity') {
+        } else if (/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(val)) {
           obj[col] = val;
         } else {
           obj[col] = val;
@@ -120,7 +115,6 @@ function parseInsertStatements(sql) {
       currentValues.push(obj);
     }
 
-    // End of INSERT statement
     if (inInsert && (line.endsWith(';') || (line === '' && currentValues.length > 0))) {
       if (currentValues.length > 0) {
         results.push({ table: tableName, rows: currentValues });
@@ -137,12 +131,16 @@ function parseInsertStatements(sql) {
   return results;
 }
 
-// Batch insert via REST API with upsert
 async function batchInsert(table, rows, attempt = 1) {
   try {
+    const conflictColumn = table === 'products' ? 'sku' : 'id';
+
     const { data, error } = await supabase
       .from(table)
-      .upsert(rows, { onConflict: 'id', ignoreDuplicates: true })
+      .upsert(rows, {
+        onConflict: conflictColumn,
+        ignoreDuplicates: true
+      })
       .select();
 
     if (error) {
@@ -162,24 +160,18 @@ async function batchInsert(table, rows, attempt = 1) {
   }
 }
 
-// Execute SQL file
 async function executeSqlFile(filename) {
   const filepath = path.join(MIGRATIONS_DIR, filename);
   const sql = fs.readFileSync(filepath, 'utf8');
   const sizeKB = (Buffer.byteLength(sql, 'utf8') / 1024).toFixed(2);
 
-  console.log(`\n[${filename}] Size: ${sizeKB} KB`);
-
-  // Skip DDL-only files
-  if (!sql.toLowerCase().includes('insert into')) {
-    console.log(`  No INSERTs found - skipping DDL file`);
-    return { success: true, skipped: true };
-  }
+  console.log(`\n[${filename}]`);
+  console.log(`  Size: ${sizeKB} KB`);
 
   const inserts = parseInsertStatements(sql);
 
   if (inserts.length === 0) {
-    console.log(`  No valid INSERTs parsed`);
+    console.log(`  No INSERTs found`);
     return { success: true };
   }
 
@@ -197,20 +189,19 @@ async function executeSqlFile(filename) {
     console.log(`  Split into ${batches.length} batches`);
 
     for (let i = 0; i < batches.length; i++) {
-      process.stdout.write(`    Batch ${i + 1}/${batches.length}... `);
+      process.stdout.write(`  Batch ${i + 1}/${batches.length}... `);
       const result = await batchInsert(table, batches[i]);
 
       if (result.success) {
         console.log(`OK`);
-      } else if (result.needsSetup) {
-        console.log(`FAILED - Table ${table} does not exist!`);
-        return { success: false, needsSetup: true };
       } else {
         console.log(`FAILED: ${result.error}`);
         return { success: false };
       }
 
-      if (i < batches.length - 1) await sleep(100);
+      if (i < batches.length - 1) {
+        await sleep(100);
+      }
     }
   }
 
@@ -218,11 +209,10 @@ async function executeSqlFile(filename) {
   return { success: true };
 }
 
-// Verify migration results
 async function verifyMigration() {
-  console.log(`\n[Verifying results]`);
+  console.log(`\n[Verifying migration results]`);
 
-  const tables = ['categories', 'suppliers', 'products', 'orders', 'order_items', 'inventory_transactions'];
+  const tables = ['products', 'orders', 'order_items', 'inventory_transactions'];
 
   for (const table of tables) {
     try {
@@ -241,10 +231,9 @@ async function verifyMigration() {
   }
 }
 
-// Main migration function
 async function runMigration() {
   console.log('='.repeat(60));
-  console.log('Supabase Migration via REST API');
+  console.log('Supabase Migration Final');
   console.log('='.repeat(60));
 
   console.log('\n[Testing connection...]');
@@ -256,14 +245,7 @@ async function runMigration() {
     process.exit(1);
   }
 
-  // All migration files
   const migrationFiles = [
-    'part_001.sql',
-    'part_002.sql',
-    'part_003_part001.sql',
-    'part_003_part002.sql',
-    'part_004_part001.sql',
-    'part_004_part002.sql',
     'part_005_part001.sql',
     'part_005_part002.sql',
     'part_006_part001.sql',
@@ -275,7 +257,6 @@ async function runMigration() {
 
   for (const file of migrationFiles) {
     const result = await executeSqlFile(file);
-
     if (result.success) {
       successCount++;
     } else {

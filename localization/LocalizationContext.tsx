@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState, useCallback, ReactNode } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Language, translations, Translations } from './translations';
+import { logger } from '@/lib/logger';
 
 const LANGUAGE_STORAGE_KEY = '@lkscale_language';
 
@@ -34,7 +35,7 @@ export const LocalizationProvider: React.FC<LocalizationProviderProps> = ({ chil
         setLanguageState(saved);
       }
     } catch (error) {
-      console.error('Error loading language:', error);
+      logger.error('Error loading language:', error);
     } finally {
       setIsLoaded(true);
     }
@@ -45,7 +46,7 @@ export const LocalizationProvider: React.FC<LocalizationProviderProps> = ({ chil
       await AsyncStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
       setLanguageState(lang);
     } catch (error) {
-      console.error('Error saving language:', error);
+      logger.error('Error saving language:', error);
     }
   }, []);
 

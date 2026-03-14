@@ -29,6 +29,7 @@ import {
   getDataState,
   subscribeData,
   fetchData,
+  syncAll,
 } from '@/store/dataStore';
 import {
   getNotificationState,
@@ -133,7 +134,13 @@ export default function DashboardScreen() {
   const onRefresh = useCallback(async () => {
     setRefreshing(true);
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    await fetchData();
+    try {
+      // Try to use syncAll first for full data sync
+      await syncAll();
+    } catch {
+      // Fallback to fetchData if syncAll fails
+      await fetchData();
+    }
     setRefreshing(false);
   }, []);
 

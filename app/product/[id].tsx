@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import {
   View,
   Text,
@@ -41,16 +41,16 @@ export default function ProductDetailScreen() {
     stock: '',
   });
 
-  const loadProduct = () => {
+  const loadProduct = useCallback(() => {
     if (id) {
       const foundProduct = getProductWithVariants(id);
       setProduct(foundProduct || null);
     }
-  };
+  }, [id]);
 
   useEffect(() => {
     loadProduct();
-  }, [id]);
+  }, [loadProduct, id]);
 
   const handleBack = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);

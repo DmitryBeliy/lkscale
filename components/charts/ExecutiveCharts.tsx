@@ -16,8 +16,8 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Card } from '@/components/ui';
-import { SalesTrend, CategoryPerformance, ProfitMarginData } from '@/types/enterprise';
-import { ExpenseBreakdown } from '@/types/enterprise';
+import { SalesTrend, CategoryPerformance, ProfitMarginData , ExpenseBreakdown } from '@/types/enterprise';
+
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
@@ -64,7 +64,7 @@ export const SalesTrendChart: React.FC<LineChartProps> = ({
     };
   }, [data, chartWidth, chartHeight]);
 
-  const createPath = (pts: Array<{ x: number; y: number }>) => {
+  const createPath = (pts: { x: number; y: number }[]) => {
     if (pts.length === 0) return '';
     return pts.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ');
   };

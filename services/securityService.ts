@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { logger } from '@/lib/logger';
 
 // --- Interfaces ---
 
@@ -105,7 +106,7 @@ export async function getSecurityEvents(): Promise<SecurityEvent[]> {
     }
     return parsed as SecurityEvent[];
   } catch (error) {
-    console.error('[SecurityService] Failed to load security events:', error);
+    logger.error('[SecurityService] Failed to load security events:', error);
     return [];
   }
 }
@@ -125,7 +126,7 @@ export async function addSecurityEvent(
     const trimmed = events.slice(0, 500);
     await AsyncStorage.setItem(SECURITY_EVENTS_KEY, JSON.stringify(trimmed));
   } catch (error) {
-    console.error('[SecurityService] Failed to add security event:', error);
+    logger.error('[SecurityService] Failed to add security event:', error);
     throw new Error('Не удалось записать событие безопасности');
   }
 }
@@ -148,7 +149,7 @@ export async function getNotificationPreferences(): Promise<NotificationPreferen
       securityAlerts: { ...defaultNotificationPreferences.securityAlerts, ...parsed.securityAlerts },
     };
   } catch (error) {
-    console.error('[SecurityService] Failed to load notification preferences:', error);
+    logger.error('[SecurityService] Failed to load notification preferences:', error);
     return { ...defaultNotificationPreferences };
   }
 }
@@ -159,7 +160,7 @@ export async function saveNotificationPreferences(
   try {
     await AsyncStorage.setItem(NOTIFICATION_PREFS_KEY, JSON.stringify(prefs));
   } catch (error) {
-    console.error('[SecurityService] Failed to save notification preferences:', error);
+    logger.error('[SecurityService] Failed to save notification preferences:', error);
     throw new Error('Не удалось сохранить настройки уведомлений');
   }
 }
@@ -174,7 +175,7 @@ export async function getBiometricSettings(): Promise<BiometricSettings> {
     }
     return { ...defaultBiometricSettings, ...JSON.parse(raw) };
   } catch (error) {
-    console.error('[SecurityService] Failed to load biometric settings:', error);
+    logger.error('[SecurityService] Failed to load biometric settings:', error);
     return { ...defaultBiometricSettings };
   }
 }
@@ -183,7 +184,7 @@ export async function saveBiometricSettings(settings: BiometricSettings): Promis
   try {
     await AsyncStorage.setItem(BIOMETRIC_SETTINGS_KEY, JSON.stringify(settings));
   } catch (error) {
-    console.error('[SecurityService] Failed to save biometric settings:', error);
+    logger.error('[SecurityService] Failed to save biometric settings:', error);
     throw new Error('Не удалось сохранить настройки биометрии');
   }
 }

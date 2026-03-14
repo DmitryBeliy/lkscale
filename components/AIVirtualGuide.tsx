@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import {
   View,
   Text,
@@ -98,9 +98,9 @@ export function AIVirtualGuide({ visible, onClose, mode, onSetupComplete }: AIVi
   const [currentSetupStep, setCurrentSetupStep] = useState(0);
   const [setupAnswers, setSetupAnswers] = useState<Record<string, string>>({});
 
-  const welcomeMessages = WELCOME_MESSAGES[language] || WELCOME_MESSAGES.en;
-  const setupQuestions = SETUP_QUESTIONS[language] || SETUP_QUESTIONS.en;
-  const quickActions = QUICK_ACTIONS[language] || QUICK_ACTIONS.en;
+  const welcomeMessages = useMemo(() => WELCOME_MESSAGES[language] || WELCOME_MESSAGES.en, [language]);
+  const setupQuestions = useMemo(() => SETUP_QUESTIONS[language] || SETUP_QUESTIONS.en, [language]);
+  const quickActions = useMemo(() => QUICK_ACTIONS[language] || QUICK_ACTIONS.en, [language]);
 
   // Animation values
   const pulseScale = useSharedValue(1);
@@ -172,7 +172,7 @@ export function AIVirtualGuide({ visible, onClose, mode, onSetupComplete }: AIVi
       setCurrentSetupStep(0);
       setSetupAnswers({});
     }
-  }, [visible, mode]);
+  }, [visible, mode, welcomeMessages, pulseScale]);
 
   useEffect(() => {
     // Scroll to bottom when messages change

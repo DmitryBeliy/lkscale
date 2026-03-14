@@ -9,6 +9,7 @@ import type {
   PurchaseHistoryEntry,
   Product,
 } from '@/types';
+import { logger } from '@/lib/logger';
 
 // Helper to get current user ID
 const getCurrentUserId = async (): Promise<string | null> => {
@@ -31,7 +32,7 @@ export const getSuppliers = async (): Promise<Supplier[]> => {
     .order('name');
 
   if (error) {
-    console.error('Error fetching suppliers:', error);
+    logger.error('Error fetching suppliers:', error);
     return [];
   }
 
@@ -46,7 +47,7 @@ export const getSupplierById = async (id: string): Promise<Supplier | null> => {
     .single();
 
   if (error) {
-    console.error('Error fetching supplier:', error);
+    logger.error('Error fetching supplier:', error);
     return null;
   }
 
@@ -79,7 +80,7 @@ export const createSupplier = async (
     .single();
 
   if (error) {
-    console.error('Error creating supplier:', error);
+    logger.error('Error creating supplier:', error);
     return null;
   }
 
@@ -111,7 +112,7 @@ export const updateSupplier = async (
     .single();
 
   if (error) {
-    console.error('Error updating supplier:', error);
+    logger.error('Error updating supplier:', error);
     return null;
   }
 
@@ -125,7 +126,7 @@ export const deleteSupplier = async (id: string): Promise<boolean> => {
     .eq('id', id);
 
   if (error) {
-    console.error('Error deleting supplier:', error);
+    logger.error('Error deleting supplier:', error);
     return false;
   }
 
@@ -146,7 +147,7 @@ export const getProductSuppliers = async (productId: string): Promise<ProductSup
     .eq('product_id', productId);
 
   if (error) {
-    console.error('Error fetching product suppliers:', error);
+    logger.error('Error fetching product suppliers:', error);
     return [];
   }
 
@@ -183,7 +184,7 @@ export const linkProductToSupplier = async (
     });
 
   if (error) {
-    console.error('Error linking product to supplier:', error);
+    logger.error('Error linking product to supplier:', error);
     return false;
   }
 
@@ -201,7 +202,7 @@ export const unlinkProductFromSupplier = async (
     .eq('supplier_id', supplierId);
 
   if (error) {
-    console.error('Error unlinking product from supplier:', error);
+    logger.error('Error unlinking product from supplier:', error);
     return false;
   }
 
@@ -227,7 +228,7 @@ export const getPurchaseOrders = async (): Promise<PurchaseOrder[]> => {
     .order('created_at', { ascending: false });
 
   if (error) {
-    console.error('Error fetching purchase orders:', error);
+    logger.error('Error fetching purchase orders:', error);
     return [];
   }
 
@@ -246,7 +247,7 @@ export const getPurchaseOrderById = async (id: string): Promise<PurchaseOrder | 
     .single();
 
   if (error) {
-    console.error('Error fetching purchase order:', error);
+    logger.error('Error fetching purchase order:', error);
     return null;
   }
 
@@ -284,7 +285,7 @@ export const createPurchaseOrder = async (
     .single();
 
   if (orderError) {
-    console.error('Error creating purchase order:', orderError);
+    logger.error('Error creating purchase order:', orderError);
     return null;
   }
 
@@ -306,7 +307,7 @@ export const createPurchaseOrder = async (
       .insert(itemsToInsert);
 
     if (itemsError) {
-      console.error('Error creating purchase order items:', itemsError);
+      logger.error('Error creating purchase order items:', itemsError);
     }
   }
 
@@ -333,7 +334,7 @@ export const updatePurchaseOrderStatus = async (
     .eq('id', id);
 
   if (error) {
-    console.error('Error updating purchase order status:', error);
+    logger.error('Error updating purchase order status:', error);
     return false;
   }
 
@@ -357,7 +358,7 @@ export const receivePurchaseOrderItems = async (
       .single();
 
     if (itemError) {
-      console.error('Error updating item:', itemError);
+      logger.error('Error updating item:', itemError);
       continue;
     }
 
@@ -447,7 +448,7 @@ export const getStockAdjustments = async (
   const { data, error } = await query;
 
   if (error) {
-    console.error('Error fetching stock adjustments:', error);
+    logger.error('Error fetching stock adjustments:', error);
     return [];
   }
 
@@ -481,7 +482,7 @@ export const createStockAdjustment = async (
     .single();
 
   if (error) {
-    console.error('Error creating stock adjustment:', error);
+    logger.error('Error creating stock adjustment:', error);
     return null;
   }
 
@@ -496,7 +497,7 @@ export const createStockAdjustment = async (
       .eq('id', adjustment.productId);
 
     if (updateError) {
-      console.error('Error updating product stock:', updateError);
+      logger.error('Error updating product stock:', updateError);
     }
   }
 
@@ -525,7 +526,7 @@ export const getProductPurchaseHistory = async (
     .order('created_at', { ascending: false });
 
   if (error) {
-    console.error('Error fetching purchase history:', error);
+    logger.error('Error fetching purchase history:', error);
     return [];
   }
 
@@ -567,7 +568,7 @@ export const generateInternalBarcode = async (
     .eq('id', productId);
 
   if (error) {
-    console.error('Error generating internal barcode:', error);
+    logger.error('Error generating internal barcode:', error);
     return null;
   }
 
@@ -584,7 +585,7 @@ export const getProductByInternalBarcode = async (
     .single();
 
   if (error) {
-    console.error('Error fetching product by barcode:', error);
+    logger.error('Error fetching product by barcode:', error);
     return null;
   }
 

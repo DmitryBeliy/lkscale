@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NetInfo from '@react-native-community/netinfo';
-import { SyncStatus, SyncState, SyncConflict } from '@/types';
+import { SyncState, SyncConflict } from '@/types';
+import { logger } from '@/lib/logger';
 
 const SYNC_STATE_KEY = '@lkscale_sync_state';
 const PENDING_CHANGES_KEY = '@lkscale_pending_changes';
@@ -41,7 +42,7 @@ const cacheSyncState = async () => {
   try {
     await AsyncStorage.setItem(SYNC_STATE_KEY, JSON.stringify(syncState));
   } catch (error) {
-    console.error('Error caching sync state:', error);
+    logger.error('Error caching sync state:', error);
   }
 };
 
@@ -61,7 +62,7 @@ export const loadSyncState = async () => {
       setSyncState({ status: 'offline' });
     }
   } catch (error) {
-    console.error('Error loading sync state:', error);
+    logger.error('Error loading sync state:', error);
   }
 };
 
@@ -103,23 +104,23 @@ export const addPendingChange = async (
       status: syncState.status === 'synced' ? 'pending' : syncState.status,
     });
   } catch (error) {
-    console.error('Error adding pending change:', error);
+    logger.error('Error adding pending change:', error);
   }
 };
 
 // Get pending changes
-const getPendingChanges = async (): Promise<Array<{
+const getPendingChanges = async (): Promise<{
   id: string;
   entityType: string;
   entityId: string;
   data: Record<string, unknown>;
   timestamp: string;
-}>> => {
+}[]> => {
   try {
     const cached = await AsyncStorage.getItem(PENDING_CHANGES_KEY);
     return cached ? JSON.parse(cached) : [];
   } catch (error) {
-    console.error('Error getting pending changes:', error);
+    logger.error('Error getting pending changes:', error);
     return [];
   }
 };
@@ -174,7 +175,7 @@ export const performSync = async (): Promise<boolean> => {
 
     return true;
   } catch (error) {
-    console.error('Sync error:', error);
+    logger.error('Sync error:', error);
     setSyncState({ status: 'pending' });
     return false;
   }
@@ -192,10 +193,10 @@ export const resolveConflict = async (
     // Apply the chosen resolution
     if (resolution === 'local') {
       // Keep local changes - already in pending changes
-      console.log('Keeping local changes:', conflict.localData);
+      logger.info('Keeping local changes:', conflict.localData);
     } else {
       // Accept server changes
-      console.log('Accepting server changes:', conflict.serverData);
+      logger.info('Accepting server changes:', conflict.serverData);
       // In a real app, you would update the local data with server data
     }
 
@@ -212,7 +213,7 @@ export const resolveConflict = async (
       await performSync();
     }
   } catch (error) {
-    console.error('Error resolving conflict:', error);
+    logger.error('Error resolving conflict:', error);
   }
 };
 

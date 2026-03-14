@@ -1,0 +1,350 @@
+# ============================================
+# Lkscale ERP - Local Development Stack
+# ============================================
+# Includes: Supabase (PostgreSQL, GoTrue, PostgREST, Storage)
+#           Redis (for caching)
+#           MinIO (for S3-compatible storage testing)
+# ============================================
+
+version: '3.8'
+
+services:
+  # ============================================
+  # PostgreSQL Database
+  # ============================================
+  postgres:
+    image: supabase/postgres:15.1.0.147
+    container_name: lkscale-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: postgres
+      POSTGRES_PORT: 5432
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./supabase/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./supabase/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - lkscale-network
+
+  # ============================================
+  # Supabase Auth (GoTrue)
+  # ============================================
+  auth:
+    image: supabase/gotrue:v2.145.0
+    container_name: lkscale-auth
+    restart: unless-stopped
+    environment:
+      GOTRUE_API_HOST: 0.0.0.0
+      GOTRUE_API_PORT: 9999
+      GOTRUE_DB_DRIVER: postgres
+      GOTRUE_DB_DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD:-postgres}@postgres:5432/postgres?sslmode=disable
+      GOTRUE_SITE_URL: ${SITE_URL:-http://localhost:3000}
+      GOTRUE_URI_ALLOW_LIST: ${ADDITIONAL_REDIRECT_URLS:-}
+      GOTRUE_DISABLE_SIGNUP: ${DISABLE_SIGNUP:-false}
+      GOTRUE_JWT_SECRET: ${JWT_SECRET:-your-super-secret-jwt-token-with-at-least-32-characters}
+      GOTRUE_JWT_EXP: ${JWT_EXPIRY:-3600}
+      GOTRUE_JWT_DEFAULT_GROUP_NAME: authenticated
+      GOTRUE_EXTERNAL_EMAIL_ENABLED: ${ENABLE_EMAIL_SIGNUP:-true}
+      GOTRUE_MAILER_AUTOCONFIRM: ${ENABLE_EMAIL_AUTOCONFIRM:-true}
+      GOTRUE_SMTP_ADMIN_EMAIL: ${SMTP_ADMIN_EMAIL:-admin@example.com}
+      GOTRUE_SMTP_HOST: ${SMTP_HOST:-mail}
+      GOTRUE_SMTP_PORT: ${SMTP_PORT:-2500}
+      GOTRUE_SMTP_USER: ${SMTP_USER:-}
+      GOTRUE_SMTP_PASS: ${SMTP_PASS:-}
+      GOTRUE_SMTP_SENDER_NAME: ${SMTP_SENDER_NAME:-}
+      GOTRUE_MAILER_URLPATHS_INVITE: ${MAILER_URLPATHS_INVITE:-/auth/v1/verify}
+      GOTRUE_MAILER_URLPATHS_CONFIRMATION: ${MAILER_URLPATHS_CONFIRMATION:-/auth/v1/verify}
+      GOTRUE_MAILER_URLPATHS_RECOVERY: ${MAILER_URLPATHS_RECOVERY:-/auth/v1/verify}
+      GOTRUE_MAILER_URLPATHS_EMAIL_CHANGE: ${MAILER_URLPATHS_EMAIL_CHANGE:-/auth/v1/verify}
+      GOTRUE_EXTERNAL_PHONE_ENABLED: ${ENABLE_PHONE_SIGNUP:-false}
+      GOTRUE_SMS_AUTOCONFIRM: ${ENABLE_PHONE_AUTOCONFIRM:-true}
+    ports:
+      - "9999:9999"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - lkscale-network
+
+  # ============================================
+  # PostgREST (REST API)
+  # ============================================
+  rest:
+    image: postgrest/postgrest:v11.2.0
+    container_name: lkscale-rest
+    restart: unless-stopped
+    environment:
+      PGRST_DB_URI: postgres://authenticator:${POSTGRES_PASSWORD:-postgres}@postgres:5432/postgres?sslmode=disable
+      PGRST_DB_SCHEMAS: public
+      PGRST_DB_EXTRA_SEARCH_PATH: extensions
+      PGRST_DB_ANON_ROLE: anon
+      PGRST_JWT_SECRET: ${JWT_SECRET:-your-super-secret-jwt-token-with-at-least-32-characters}
+      PGRST_OPENAPI_SERVER_PROXY_URI: ${OPENAPI_SERVER_PROXY_URI:-http://localhost:3000}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+      - auth
+    networks:
+      - lkscale-network
+
+  # ============================================
+  # Realtime (WebSocket subscriptions)
+  # ============================================
+  realtime:
+    image: supabase/realtime:v2.25.50
+    container_name: lkscale-realtime
+    restart: unless-stopped
+    environment:
+      PORT: 4000
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      DB_NAME: postgres
+      DB_SSL: "false"
+      DB_AFTER_CONNECT_QUERY: 'SET search_path TO _realtime'
+      DB_ENC_KEY: ${DB_ENC_KEY:-supabaserealtime}
+      API_JWT_SECRET: ${JWT_SECRET:-your-super-secret-jwt-token-with-at-least-32-characters}
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE:-UpNVntn3cDxHJpq99YMc1T1AQgQpc8kfYTmnKi5f5l5Ez4MXf2mfo1cmDHlO}
+      ERL_AFLAGS: "-proto_dist inet_tcp"
+      DNS_NODES: "''"
+      RLIMIT_NOFILE: "10000"
+      SEED_SELF_HOST: "true"
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres
+    networks:
+      - lkscale-network
+
+  # ============================================
+  # Storage (S3-compatible storage)
+  # ============================================
+  storage:
+    image: supabase/storage-api:v0.46.5
+    container_name: lkscale-storage
+    restart: unless-stopped
+    environment:
+      ANON_KEY: ${ANON_KEY:-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZvbyIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzE1MTI3NDAwLCJleHAiOjE4NzI4ODM4MDB9.Z4w5rDkM5J5j5w5k5w5k5w5k5w5k5w5k5w5k5w5k5w}
+      SERVICE_KEY: ${SERVICE_ROLE_KEY:-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZvbyIsInJvbGUiOiJzZXJ2aWNlX3JvbGUiLCJpYXQiOjE3MTUxMjc0MDAsImV4cCI6MTg3Mjg4MzgwMH0.Z4w5rDkM5J5j5w5k5w5k5w5k5w5k5w5k5w5k5w5k5w}
+      POSTGREST_URL: http://rest:3000
+      PGRST_JWT_SECRET: ${JWT_SECRET:-your-super-secret-jwt-token-with-at-least-32-characters}
+      DATABASE_URL: postgres://supabase_storage_admin:${POSTGRES_PASSWORD:-postgres}@postgres:5432/postgres?sslmode=disable
+      FILE_SIZE_LIMIT: 52428800
+      STORAGE_BACKEND: s3
+      GLOBAL_S3_BUCKET: lkscale-storage
+      GLOBAL_S3_ENDPOINT: http://minio:9000
+      GLOBAL_S3_PROTOCOL: http
+      GLOBAL_S3_FORCE_PATH_STYLE: "true"
+      AWS_ACCESS_KEY_ID: ${MINIO_ROOT_USER:-minioadmin}
+      AWS_SECRET_ACCESS_KEY: ${MINIO_ROOT_PASSWORD:-minioadmin}
+      AWS_DEFAULT_REGION: us-east-1
+      UPLOAD_SIGNED_URL_EXPIRATION_SECONDS: 86400
+      TUS_URL_PATH: /upload/resumable
+      TUS_URL_EXPIRY_MS: 86400000
+      ENABLE_IMAGE_TRANSFORMATION: "true"
+      IMGPROXY_URL: http://imgproxy:8080
+      IMGPROXY_REQUEST_TIMEOUT_SECONDS: 15
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+      - rest
+      - minio
+      - imgproxy
+    networks:
+      - lkscale-network
+
+  # ============================================
+  # MinIO (S3-compatible storage backend)
+  # ============================================
+  minio:
+    image: minio/minio:latest
+    container_name: lkscale-minio
+    restart: unless-stopped
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - lkscale-network
+
+  # Create default buckets
+  minio-create-buckets:
+    image: minio/mc:latest
+    container_name: lkscale-minio-init
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint: >
+      /bin/sh -c "
+      /usr/bin/mc config host add local http://minio:9000 ${MINIO_ROOT_USER:-minioadmin} ${MINIO_ROOT_PASSWORD:-minioadmin};
+      /usr/bin/mc mb --ignore-existing local/lkscale-storage;
+      /usr/bin/mc anonymous set public local/lkscale-storage;
+      /usr/bin/mc mb --ignore-existing local/product-images;
+      /usr/bin/mc anonymous set public local/product-images;
+      /usr/bin/mc mb --ignore-existing local/company-logos;
+      /usr/bin/mc anonymous set public local/company-logos;
+      /usr/bin/mc mb --ignore-existing local/user-avatars;
+      /usr/bin/mc anonymous set public local/user-avatars;
+      /usr/bin/mc mb --ignore-existing local/documents;
+      /usr/bin/mc mb --ignore-existing local/exports;
+      exit 0;
+      "
+    networks:
+      - lkscale-network
+
+  # ============================================
+  # Imgproxy (Image processing)
+  # ============================================
+  imgproxy:
+    image: darthsim/imgproxy:v3.19
+    container_name: lkscale-imgproxy
+    restart: unless-stopped
+    environment:
+      IMGPROXY_BIND: ":8080"
+      IMGPROXY_USE_ETAG: "true"
+      IMGPROXY_ENABLE_WEBP_DETECTION: "true"
+      IMGPROXY_ENABLE_AVIF_DETECTION: "true"
+      IMGPROXY_MAX_SRC_RESOLUTION: 50
+      IMGPROXY_READ_TIMEOUT: 30
+      IMGPROXY_WRITE_TIMEOUT: 30
+    ports:
+      - "8080:8080"
+    networks:
+      - lkscale-network
+
+  # ============================================
+  # Redis (Caching & Sessions)
+  # ============================================
+  redis:
+    image: redis:7-alpine
+    container_name: lkscale-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    networks:
+      - lkscale-network
+
+  # ============================================
+  # pgAdmin (Database management UI)
+  # ============================================
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: lkscale-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@lkscale.local}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin}
+      PGADMIN_LISTEN_PORT: 5050
+    ports:
+      - "5050:5050"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    networks:
+      - lkscale-network
+
+  # ============================================
+  # MailHog (Email testing)
+  # ============================================
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: lkscale-mailhog
+    restart: unless-stopped
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - lkscale-network
+
+# ============================================
+# Volumes
+# ============================================
+volumes:
+  postgres_data:
+    driver: local
+  minio_data:
+    driver: local
+  redis_data:
+    driver: local
+  pgadmin_data:
+    driver: local
+
+# ============================================
+# Networks
+# ============================================
+networks:
+  lkscale-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+# ============================================
+# Usage Instructions
+# ============================================
+# 
+# Start all services:
+#   docker-compose up -d
+#
+# Start specific service:
+#   docker-compose up -d postgres
+#
+# View logs:
+#   docker-compose logs -f
+#
+# Stop all services:
+#   docker-compose down
+#
+# Stop and remove volumes (RESET ALL DATA):
+#   docker-compose down -v
+#
+# Access services:
+#   - PostgreSQL:   localhost:5432
+#   - PostgREST:    localhost:3000
+#   - Auth:         localhost:9999
+#   - Realtime:     localhost:4000
+#   - Storage:      localhost:5000
+#   - MinIO:        localhost:9000 (API), localhost:9001 (Console)
+#   - pgAdmin:      localhost:5050
+#   - MailHog:      localhost:8025 (Web UI)
+#   - Redis:        localhost:6379
+#
+# Default credentials:
+#   - PostgreSQL:   postgres / postgres
+#   - MinIO:        minioadmin / minioadmin
+#   - pgAdmin:      admin@lkscale.local / admin
+#
+# Environment variables:
+#   Create .env file with:
+#     POSTGRES_PASSWORD=your-secure-password
+#     JWT_SECRET=your-jwt-secret
+#     MINIO_ROOT_USER=minioadmin
+#     MINIO_ROOT_PASSWORD=minioadmin
+#
+# ============================================

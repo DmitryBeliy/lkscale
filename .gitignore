@@ -47,3 +47,5 @@ app-example
 .fastshot-logs/
 examples/
 CLAUDE.md
+
+.vercel

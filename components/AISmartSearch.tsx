@@ -20,6 +20,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useTextGeneration } from '@fastshot/ai';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useLocalization } from '@/localization';
+import { logger } from '@/lib/logger';
 
 // App navigation map for AI to reference
 const APP_SECTIONS = {
@@ -73,7 +74,7 @@ export const AISmartSearch: React.FC<AISmartSearchProps> = ({ visible, onClose }
       }
     },
     onError: (err) => {
-      console.error('AI Smart Search error:', err);
+      logger.error('AI Smart Search error:', err);
       setResponse(language === 'ru'
         ? 'Извините, произошла ошибка. Попробуйте ещё раз.'
         : 'Sorry, an error occurred. Please try again.');

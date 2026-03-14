@@ -2,6 +2,7 @@ import { supabase } from '@/lib/supabase';
 import { StoreSettings } from '@/types';
 import { getCurrentUserId } from '@/store/authStore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { logger } from '@/lib/logger';
 
 const STORE_SETTINGS_CACHE_KEY = '@lkscale_store_settings';
 
@@ -83,7 +84,7 @@ export const fetchStoreSettings = async (): Promise<StoreSettings | null> => {
         // No settings found, create default
         return await createStoreSettings();
       }
-      console.error('Error fetching store settings:', error);
+      logger.error('Error fetching store settings:', error);
       return await getCachedStoreSettings();
     }
 
@@ -91,7 +92,7 @@ export const fetchStoreSettings = async (): Promise<StoreSettings | null> => {
     await cacheStoreSettings(settings);
     return settings;
   } catch (error) {
-    console.error('Error fetching store settings:', error);
+    logger.error('Error fetching store settings:', error);
     return await getCachedStoreSettings();
   }
 };
@@ -141,7 +142,7 @@ export const updateStoreSettings = async (
       .single();
 
     if (error) {
-      console.error('Error updating store settings:', error);
+      logger.error('Error updating store settings:', error);
       return null;
     }
 
@@ -149,7 +150,7 @@ export const updateStoreSettings = async (
     await cacheStoreSettings(settings);
     return settings;
   } catch (error) {
-    console.error('Error updating store settings:', error);
+    logger.error('Error updating store settings:', error);
     return null;
   }
 };
@@ -177,7 +178,7 @@ export const uploadLogo = async (base64Data: string): Promise<string | null> => 
       });
 
     if (uploadError) {
-      console.error('Error uploading logo:', uploadError);
+      logger.error('Error uploading logo:', uploadError);
       return null;
     }
 
@@ -187,7 +188,7 @@ export const uploadLogo = async (base64Data: string): Promise<string | null> => 
 
     return urlData.publicUrl;
   } catch (error) {
-    console.error('Error uploading logo:', error);
+    logger.error('Error uploading logo:', error);
     return null;
   }
 };
@@ -197,7 +198,7 @@ const cacheStoreSettings = async (settings: StoreSettings): Promise<void> => {
   try {
     await AsyncStorage.setItem(STORE_SETTINGS_CACHE_KEY, JSON.stringify(settings));
   } catch (error) {
-    console.error('Error caching store settings:', error);
+    logger.error('Error caching store settings:', error);
   }
 };
 
@@ -209,7 +210,7 @@ const getCachedStoreSettings = async (): Promise<StoreSettings | null> => {
     }
     return null;
   } catch (error) {
-    console.error('Error getting cached store settings:', error);
+    logger.error('Error getting cached store settings:', error);
     return null;
   }
 };

@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { logger } from '@/lib/logger';
 
 const ONBOARDING_COMPLETE_KEY = '@lkscale_onboarding_complete';
 const DEMO_MODE_KEY = '@lkscale_demo_mode';
@@ -45,7 +46,7 @@ export const OnboardingProvider: React.FC<OnboardingProviderProps> = ({ children
       setIsDemoMode(demoMode === 'true');
       setHasCompletedGuidedTour(tourComplete === 'true');
     } catch (error) {
-      console.error('Error loading onboarding state:', error);
+      logger.error('Error loading onboarding state:', error);
     } finally {
       setIsLoading(false);
     }
@@ -56,7 +57,7 @@ export const OnboardingProvider: React.FC<OnboardingProviderProps> = ({ children
       await AsyncStorage.setItem(ONBOARDING_COMPLETE_KEY, 'true');
       setHasCompletedOnboarding(true);
     } catch (error) {
-      console.error('Error completing onboarding:', error);
+      logger.error('Error completing onboarding:', error);
     }
   };
 
@@ -66,7 +67,7 @@ export const OnboardingProvider: React.FC<OnboardingProviderProps> = ({ children
       await AsyncStorage.setItem(DEMO_MODE_KEY, String(newValue));
       setIsDemoMode(newValue);
     } catch (error) {
-      console.error('Error toggling demo mode:', error);
+      logger.error('Error toggling demo mode:', error);
     }
   };
 
@@ -75,7 +76,7 @@ export const OnboardingProvider: React.FC<OnboardingProviderProps> = ({ children
       await AsyncStorage.setItem(DEMO_MODE_KEY, String(enabled));
       setIsDemoMode(enabled);
     } catch (error) {
-      console.error('Error setting demo mode:', error);
+      logger.error('Error setting demo mode:', error);
     }
   };
 
@@ -84,7 +85,7 @@ export const OnboardingProvider: React.FC<OnboardingProviderProps> = ({ children
       await AsyncStorage.setItem(GUIDED_TOUR_COMPLETE_KEY, 'true');
       setHasCompletedGuidedTour(true);
     } catch (error) {
-      console.error('Error completing guided tour:', error);
+      logger.error('Error completing guided tour:', error);
     }
   };
 
@@ -97,7 +98,7 @@ export const OnboardingProvider: React.FC<OnboardingProviderProps> = ({ children
       setHasCompletedOnboarding(false);
       setHasCompletedGuidedTour(false);
     } catch (error) {
-      console.error('Error resetting onboarding:', error);
+      logger.error('Error resetting onboarding:', error);
     }
   };
 

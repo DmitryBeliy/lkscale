@@ -605,6 +605,435 @@ export type Database = {
           }
         ]
       }
+      manufacturers: {
+        Row: {
+          id: string
+          name: string
+          description: string | null
+          website: string | null
+          logo_url: string | null
+          is_active: boolean | null
+          created_at: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          id?: string
+          name: string
+          description?: string | null
+          website?: string | null
+          logo_url?: string | null
+          is_active?: boolean | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          id?: string
+          name?: string
+          description?: string | null
+          website?: string | null
+          logo_url?: string | null
+          is_active?: boolean | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      locations: {
+        Row: {
+          id: string
+          user_id: string | null
+          name: string
+          type: string | null
+          address: string | null
+          phone: string | null
+          manager_id: string | null
+          is_active: boolean | null
+          created_at: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          id?: string
+          user_id?: string | null
+          name: string
+          type?: string | null
+          address?: string | null
+          phone?: string | null
+          manager_id?: string | null
+          is_active?: boolean | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          id?: string
+          user_id?: string | null
+          name?: string
+          type?: string | null
+          address?: string | null
+          phone?: string | null
+          manager_id?: string | null
+          is_active?: boolean | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "locations_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      outlets: {
+        Row: {
+          id: string
+          user_id: string | null
+          location_id: string | null
+          name: string
+          code: string | null
+          address: string | null
+          phone: string | null
+          email: string | null
+          is_active: boolean | null
+          created_at: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          id?: string
+          user_id?: string | null
+          location_id?: string | null
+          name: string
+          code?: string | null
+          address?: string | null
+          phone?: string | null
+          email?: string | null
+          is_active?: boolean | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          id?: string
+          user_id?: string | null
+          location_id?: string | null
+          name?: string
+          code?: string | null
+          address?: string | null
+          phone?: string | null
+          email?: string | null
+          is_active?: boolean | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "outlets_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "outlets_location_id_fkey"
+            columns: ["location_id"]
+            isOneToOne: false
+            referencedRelation: "locations"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      consignment_notes: {
+        Row: {
+          id: string
+          user_id: string | null
+          supplier_id: string | null
+          location_id: string | null
+          note_number: string
+          status: string | null
+          total_amount: number | null
+          total_items: number | null
+          notes: string | null
+          document_date: string | null
+          received_date: string | null
+          created_at: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          id?: string
+          user_id?: string | null
+          supplier_id?: string | null
+          location_id?: string | null
+          note_number: string
+          status?: string | null
+          total_amount?: number | null
+          total_items?: number | null
+          notes?: string | null
+          document_date?: string | null
+          received_date?: string | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          id?: string
+          user_id?: string | null
+          supplier_id?: string | null
+          location_id?: string | null
+          note_number?: string
+          status?: string | null
+          total_amount?: number | null
+          total_items?: number | null
+          notes?: string | null
+          document_date?: string | null
+          received_date?: string | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "consignment_notes_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "consignment_notes_supplier_id_fkey"
+            columns: ["supplier_id"]
+            isOneToOne: false
+            referencedRelation: "suppliers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "consignment_notes_location_id_fkey"
+            columns: ["location_id"]
+            isOneToOne: false
+            referencedRelation: "locations"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      consignment_note_products: {
+        Row: {
+          id: string
+          consignment_note_id: string | null
+          product_id: string | null
+          product_name: string
+          product_sku: string | null
+          quantity: number
+          unit_cost: number
+          total_cost: number
+          created_at: string | null
+        }
+        Insert: {
+          id?: string
+          consignment_note_id?: string | null
+          product_id?: string | null
+          product_name: string
+          product_sku?: string | null
+          quantity: number
+          unit_cost: number
+          total_cost: number
+          created_at?: string | null
+        }
+        Update: {
+          id?: string
+          consignment_note_id?: string | null
+          product_id?: string | null
+          product_name?: string
+          product_sku?: string | null
+          quantity?: number
+          unit_cost?: number
+          total_cost?: number
+          created_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "consignment_note_products_consignment_note_id_fkey"
+            columns: ["consignment_note_id"]
+            isOneToOne: false
+            referencedRelation: "consignment_notes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "consignment_note_products_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      product_locations: {
+        Row: {
+          id: string
+          product_id: string | null
+          location_id: string | null
+          quantity: number | null
+          min_quantity: number | null
+          max_quantity: number | null
+          shelf_location: string | null
+          bin_location: string | null
+          created_at: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          id?: string
+          product_id?: string | null
+          location_id?: string | null
+          quantity?: number | null
+          min_quantity?: number | null
+          max_quantity?: number | null
+          shelf_location?: string | null
+          bin_location?: string | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          id?: string
+          product_id?: string | null
+          location_id?: string | null
+          quantity?: number | null
+          min_quantity?: number | null
+          max_quantity?: number | null
+          shelf_location?: string | null
+          bin_location?: string | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_locations_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "product_locations_location_id_fkey"
+            columns: ["location_id"]
+            isOneToOne: false
+            referencedRelation: "locations"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      write_offs: {
+        Row: {
+          id: string
+          user_id: string | null
+          product_id: string | null
+          location_id: string | null
+          quantity: number
+          reason: string | null
+          write_off_type: string | null
+          unit_cost: number | null
+          total_cost: number | null
+          notes: string | null
+          document_number: string | null
+          created_at: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          id?: string
+          user_id?: string | null
+          product_id?: string | null
+          location_id?: string | null
+          quantity: number
+          reason?: string | null
+          write_off_type?: string | null
+          unit_cost?: number | null
+          total_cost?: number | null
+          notes?: string | null
+          document_number?: string | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          id?: string
+          user_id?: string | null
+          product_id?: string | null
+          location_id?: string | null
+          quantity?: number
+          reason?: string | null
+          write_off_type?: string | null
+          unit_cost?: number | null
+          total_cost?: number | null
+          notes?: string | null
+          document_number?: string | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "write_offs_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "write_offs_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "write_offs_location_id_fkey"
+            columns: ["location_id"]
+            isOneToOne: false
+            referencedRelation: "locations"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      user_activity_logs: {
+        Row: {
+          id: string
+          user_id: string | null
+          action_type: string
+          entity_type: string | null
+          entity_id: string | null
+          description: string | null
+          metadata: Json | null
+          ip_address: string | null
+          user_agent: string | null
+          created_at: string | null
+        }
+        Insert: {
+          id?: string
+          user_id?: string | null
+          action_type: string
+          entity_type?: string | null
+          entity_id?: string | null
+          description?: string | null
+          metadata?: Json | null
+          ip_address?: string | null
+          user_agent?: string | null
+          created_at?: string | null
+        }
+        Update: {
+          id?: string
+          user_id?: string | null
+          action_type?: string
+          entity_type?: string | null
+          entity_id?: string | null
+          description?: string | null
+          metadata?: Json | null
+          ip_address?: string | null
+          user_agent?: string | null
+          created_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_activity_logs_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
     }
     Views: {
       [_ in never]: never

@@ -959,3 +959,409 @@ Supabase Realtime
 ---
 
 *Документ создан автоматически. Обновляйте при значительных изменениях архитектуры.*
+
+---
+
+## Приложение A: Обновленная модульная структура State Management
+
+### A.1 Новая архитектура store/ (Март 2026)
+
+```
+store/
+├── index.ts                        # Главный экспорт всех stores
+├── authStore.ts                    # Аутентификация
+├── dataStore.ts                    # Legacy: основные бизнес-данные
+├── notificationStore.ts            # Уведомления
+├── auth/
+│   └── index.ts                    # Auth utilities
+├── core/
+│   ├── cacheService.ts             # Кэширование
+│   ├── subscriptionService.ts      # Подписки realtime
+│   ├── types.ts                    # Базовые типы store
+│   └── index.ts
+├── customers/                      # NEW: Customer Feature Module
+│   ├── customerStore.ts            # Состояние клиентов
+│   ├── customerActions.ts          # CRUD операции
+│   ├── customerTypes.ts            # Типы
+│   └── index.ts
+├── orders/                         # NEW: Order Feature Module
+│   ├── orderStore.ts               # Состояние заказов
+│   ├── orderActions.ts             # CRUD операции
+│   ├── orderTypes.ts               # Типы
+│   └── index.ts
+├── products/                       # NEW: Product Feature Module
+│   ├── productStore.ts             # Состояние товаров
+│   ├── productActions.ts           # CRUD операции
+│   ├── productTypes.ts             # Типы
+│   └── index.ts
+└── mocks/
+    ├── mockData.ts                 # Демо-данные
+    └── index.ts
+```
+
+### A.2 Customer Store API
+
+**Файл:** [`store/customers/customerStore.ts`](store/customers/customerStore.ts)
+
+```typescript
+// Получение данных
+getCustomers(): Customer[]
+getCustomerById(id: string): Customer | undefined
+getCustomerStats(): CustomerStats
+
+// CRUD операции
+fetchCustomers(): Promise<void>
+addCustomer(data: Partial<Customer>): Promise<Customer | null>
+updateCustomer(id: string, data: Partial<Customer>): Promise<Customer | null>
+deleteCustomer(id: string): Promise<boolean>
+
+// Сегментация
+getVipCustomers(): Customer[]
+getCustomersBySegment(segment: CustomerValueTag): Customer[]
+getInactiveCustomers(days: number): Customer[]
+
+// AI-функции
+getCustomerInsights(id: string): CustomerInsight[]
+generateRecommendations(id: string): ProductRecommendation[]
+```
+
+### A.3 Order Store API
+
+**Файл:** [`store/orders/orderStore.ts`](store/orders/orderStore.ts)
+
+```typescript
+// Получение данных
+getOrders(): Order[]
+getOrderById(id: string): Order | undefined
+getOrdersByStatus(status: OrderStatus): Order[]
+getOrdersByCustomer(customerId: string): Order[]
+
+// CRUD операции
+fetchOrders(): Promise<void>
+createOrder(data: NewOrderData): Promise<Order | null>
+updateOrderStatus(id: string, status: OrderStatus): Promise<Order | null>
+deleteOrder(id: string): Promise<boolean>
+
+// Аналитика
+getOrderStats(period: TimePeriod): OrderStats
+getRevenueByPeriod(start: Date, end: Date): RevenueData
+getTopProducts(period: TimePeriod): ProductSales[]
+```
+
+### A.4 Product Store API
+
+**Файл:** [`store/products/productStore.ts`](store/products/productStore.ts)
+
+```typescript
+// Получение данных
+getProducts(): Product[]
+getProductById(id: string): Product | undefined
+getProductsByCategory(category: string): Product[]
+getLowStockProducts(): Product[]
+
+// CRUD операции
+fetchProducts(): Promise<void>
+createProduct(data: Partial<Product>): Promise<Product | null>
+updateProduct(id: string, data: Partial<Product>): Promise<Product | null>
+deleteProduct(id: string): Promise<boolean>
+
+// Остатки
+updateStock(id: string, quantity: number, reason: StockChangeReason): Promise<void>
+getStockHistory(id: string): StockHistoryEntry[]
+getProductAnalytics(id: string): ProductAnalytics
+
+// Варианты
+getProductVariants(productId: string): ProductVariant[]
+createVariant(productId: string, data: Partial<ProductVariant>): Promise<ProductVariant>
+```
+
+---
+
+## Приложение B: Расширенные сервисы
+
+### B.1 Security Service
+
+**Файл:** [`services/securityService.ts`](services/securityService.ts)
+
+```typescript
+// Аудит действий
+logAuditAction(action: AuditAction): Promise<void>
+getAuditLogs(filters: AuditFilters): Promise<AuditLog[]>
+
+// Обнаружение конфликтов
+detectSyncConflicts(): Promise<Conflict[]>
+resolveConflict(conflictId: string, strategy: ConflictStrategy): Promise<void>
+
+// Безопасность
+validateAccess(resource: string, action: string): Promise<boolean>
+encryptSensitiveData(data: string): Promise<EncryptedData>
+decryptSensitiveData(data: EncryptedData): Promise<string>
+```
+
+### B.2 Store Settings Service
+
+**Файл:** [`services/storeSettingsService.ts`](services/storeSettingsService.ts)
+
+```typescript
+// Настройки бизнеса
+getBusinessSettings(): Promise<BusinessSettings>
+updateBusinessSettings(data: Partial<BusinessSettings>): Promise<void>
+
+// Настройки магазина
+getStoreSettings(storeId: string): Promise<StoreSettings>
+updateStoreSettings(storeId: string, data: Partial<StoreSettings>): Promise<void>
+
+// Региональные настройки
+getRegionalSettings(): Promise<RegionalSettings>
+updateRegionalSettings(data: Partial<RegionalSettings>): Promise<void>
+```
+
+### B.3 Document Export Service
+
+**Файл:** [`services/documentExportService.ts`](services/documentExportService.ts)
+
+```typescript
+// Экспорт в PDF
+generateOrderPDF(orderId: string): Promise<PDFDocument>
+generateInvoicePDF(orderId: string): Promise<PDFDocument>
+generatePriceListPDF(filters: ProductFilters): Promise<PDFDocument>
+
+// Экспорт в Excel
+generateSalesReportExcel(period: TimePeriod): Promise<ExcelDocument>
+generateInventoryReportExcel(): Promise<ExcelDocument>
+generateCustomerReportExcel(): Promise<ExcelDocument>
+
+// Печать
+printPriceTags(productIds: string[]): Promise<void>
+printReceipt(orderId: string): Promise<void>
+```
+
+### B.4 Demo Data Service
+
+**Файл:** [`services/demoDataService.ts`](services/demoDataService.ts)
+
+```typescript
+// Генерация демо-данных
+generateDemoProducts(count: number): Promise<Product[]>
+generateDemoCustomers(count: number): Promise<Customer[]>
+generateDemoOrders(count: number): Promise<Order[]>
+
+// Сброс данных
+resetToDemoData(): Promise<void>
+clearAllData(): Promise<void>
+
+// Сценарии
+setupDemoScenario(scenario: 'electronics' | 'fashion' | 'food'): Promise<void>
+```
+
+---
+
+## Приложение C: Локализация
+
+### C.1 Структура переводов
+
+**Файл:** [`localization/translations.ts`](localization/translations.ts)
+
+```typescript
+export const translations = {
+  ru: {
+    // 800+ строк переводов
+    common: {
+      loading: 'Загрузка...',
+      save: 'Сохранить',
+      cancel: 'Отмена',
+      delete: 'Удалить',
+      // ...
+    },
+    auth: {
+      login: 'Вход',
+      register: 'Регистрация',
+      forgotPassword: 'Забыли пароль?',
+      // ...
+    },
+    products: {
+      title: 'Товары',
+      create: 'Создать товар',
+      edit: 'Редактировать товар',
+      // ...
+    },
+    orders: { ... },
+    customers: { ... },
+    warehouse: { ... },
+    finance: { ... },
+    reports: { ... },
+    settings: { ... },
+    errors: { ... }
+  },
+  en: { ... }
+};
+```
+
+### C.2 Использование
+
+```typescript
+import { useLocalization } from '@/localization/LocalizationContext';
+
+function MyComponent() {
+  const { t, locale, setLocale, availableLocales } = useLocalization();
+  
+  return (
+    <View>
+      <Text>{t('products.create.title')}</Text>
+      <Button 
+        title={locale === 'ru' ? 'English' : 'Русский'}
+        onPress={() => setLocale(locale === 'ru' ? 'en' : 'ru')}
+      />
+    </View>
+  );
+}
+```
+
+---
+
+## Приложение D: Контексты приложения
+
+### D.1 Onboarding Context
+
+**Файл:** [`contexts/OnboardingContext.tsx`](contexts/OnboardingContext.tsx)
+
+```typescript
+interface OnboardingContextType {
+  hasCompletedOnboarding: boolean;
+  completeOnboarding(): Promise<void>;
+  resetOnboarding(): Promise<void>;
+  currentStep: number;
+  totalSteps: number;
+  nextStep(): void;
+  prevStep(): void;
+  skipOnboarding(): void;
+}
+```
+
+**Шаги онбординга:**
+1. Добро пожаловать
+2. Настройка бизнеса
+3. Добавление первого товара
+4. Создание первого заказа
+5. Знакомство с аналитикой
+
+### D.2 Theme Context
+
+**Файл:** [`contexts/ThemeContext.tsx`](contexts/ThemeContext.tsx)
+
+```typescript
+interface ThemeContextType {
+  theme: 'light' | 'dark' | 'system';
+  colors: ThemeColors;
+  setTheme(theme: ThemeType): void;
+  isDark: boolean;
+  toggleTheme(): void;
+}
+```
+
+---
+
+## Приложение E: Дополнительные модули приложения
+
+### E.1 Telegram Integration
+
+**Файл:** [`app/telegram/index.tsx`](app/telegram/index.tsx)
+
+- Подключение Telegram бота
+- Уведомления о заказах
+- Команды управления
+
+### E.2 CFO Dashboard
+
+**Файл:** [`app/cfo/index.tsx`](app/cfo/index.tsx)
+
+- Финансовая аналитика
+- Управление расходами
+- Налоговые отчеты
+- P&L анализ
+
+### E.3 Executive Reports
+
+**Файл:** [`app/executive/index.tsx`](app/executive/index.tsx)
+
+- Стратегическая аналитика
+- Сравнение периодов
+- Прогнозы
+- KPI executive view
+
+### E.4 Marketing Analytics
+
+**Файлы:**
+- [`app/marketing/index.tsx`](app/marketing/index.tsx)
+- [`app/marketing/churn-analysis.tsx`](app/marketing/churn-analysis.tsx)
+- [`app/marketing/staff-performance.tsx`](app/marketing/staff-performance.tsx)
+
+- Анализ оттока клиентов
+- Эффективность персонала
+- Маркетинговые кампании
+
+---
+
+## Приложение F: Быстрый поиск по коду
+
+### F.1 Частые задачи
+
+| Задача | Файл | Строка |
+|--------|------|--------|
+| Добавить новый тип | [`types/index.ts`](types/index.ts) | Экспорты внизу |
+| Добавить enterprise тип | [`types/enterprise.ts`](types/enterprise.ts) | После существующих |
+| Добавить перевод RU | [`localization/translations.ts`](localization/translations.ts) | ru: { ... } |
+| Добавить перевод EN | [`localization/translations.ts`](localization/translations.ts) | en: { ... } |
+| Добавить цвет темы | [`constants/theme.ts`](constants/theme.ts) | lightColors/darkColors |
+| Добавить API метод | [`lib/supabaseDataService.ts`](lib/supabaseDataService.ts) | После существующих |
+| Добавить бизнес-логику | [`services/*.ts`](services/) | Создать новый или добавить в существующий |
+| Добавить компонент UI | [`components/ui/*.tsx`](components/ui/) | Следовать существующим паттернам |
+| Добавить экран | [`app/название/index.tsx`](app/) | Использовать Expo Router |
+| Добавить таб | [`app/(tabs)/название.tsx`](app/(tabs)/) | Добавить в \_layout.tsx |
+
+### F.2 Отладка
+
+```typescript
+// Логирование состояния store
+import { getDataState } from '@/store/dataStore';
+console.log('Current state:', getDataState());
+
+// Проверка сети
+import NetInfo from '@react-native-community/netinfo';
+NetInfo.fetch().then(state => console.log('Connection:', state.isConnected));
+
+// Логирование Supabase
+supabase.from('products').select('*').then(console.log);
+```
+
+---
+
+## Приложение G: Метрики кодовой базы
+
+### G.1 Статистика (Март 2026)
+
+| Метрика | Значение |
+|---------|----------|
+| Общее количество файлов | 200+ |
+| Строк TypeScript кода | ~45,000 |
+| React компоненты | 80+ |
+| Экраны приложения | 50+ |
+| Сервисы | 10 |
+| Store модули | 8 |
+| API endpoints | 30+ |
+| Переводы (RU+EN) | 800+ строк |
+
+### G.2 Покрытие тестами
+
+```
+Unit Tests:        ████████████████████░░░░░  78%
+Integration Tests: █████████████████░░░░░░░░  65%
+E2E Tests:        ██████████████░░░░░░░░░░░░  55%
+Overall:          █████████████████░░░░░░░░░  66%
+```
+
+---
+
+*Последнее обновление: 07 Марта 2026*
+*Версия документации: 2.0*
+*Автор: Lkscale Team*

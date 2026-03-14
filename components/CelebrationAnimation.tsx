@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useRef } from 'react';
 import { View, Text, StyleSheet, Dimensions, Modal, Pressable } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -44,9 +44,13 @@ const ConfettiPiece: React.FC<ConfettiPieceProps> = ({ index, color }) => {
   const opacity = useSharedValue(1);
   const scale = useSharedValue(1);
 
-  const startX = Math.random() * SCREEN_WIDTH;
-  const duration = 2000 + Math.random() * 1500;
-  const delay = Math.random() * 500;
+  const startXRef = useRef(Math.random() * SCREEN_WIDTH);
+  const durationRef = useRef(2000 + Math.random() * 1500);
+  const delayRef = useRef(Math.random() * 500);
+
+  const startX = startXRef.current;
+  const duration = durationRef.current;
+  const delay = delayRef.current;
 
   useEffect(() => {
     translateY.value = withDelay(
@@ -81,7 +85,7 @@ const ConfettiPiece: React.FC<ConfettiPieceProps> = ({ index, color }) => {
       delay + duration - 500,
       withTiming(0, { duration: 500 })
     );
-  }, []);
+  }, [translateY, translateX, rotate, opacity, delay, duration]);
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [
@@ -133,7 +137,7 @@ const StarBurst: React.FC<{ delay: number }> = ({ delay }) => {
       delay,
       withTiming(360, { duration: 2000, easing: Easing.linear })
     );
-  }, []);
+  }, [scale, opacity, rotation, delay]);
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [
@@ -193,7 +197,7 @@ export const CelebrationAnimation: React.FC<CelebrationAnimationProps> = ({
       textOpacity.value = 0;
       buttonScale.value = 0;
     }
-  }, [visible]);
+  }, [visible, triggerHaptics, containerOpacity, containerScale, iconScale, textOpacity, buttonScale]);
 
   const containerAnimatedStyle = useAnimatedStyle(() => ({
     opacity: containerOpacity.value,
@@ -344,7 +348,7 @@ export const SuccessFlash: React.FC<SuccessFlashProps> = ({ visible, message }) 
         withDelay(800, withTiming(0.8, { duration: 300 }))
       );
     }
-  }, [visible]);
+  }, [visible, opacity, scale]);
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value }],

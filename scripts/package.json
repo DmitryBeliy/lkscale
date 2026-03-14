@@ -1,0 +1,17 @@
+{
+  "name": "lkscale-migration",
+  "version": "1.0.0",
+  "description": "Data migration script for Lkscale ERP",
+  "scripts": {
+    "migrate": "node scripts/run-migration.js",
+    "migrate:dry-run": "node scripts/run-migration.js --dry-run"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -77,7 +77,7 @@ export interface StorePerformance {
   expenses: number;
   averageOrderValue: number;
   growth: number;
-  topProducts: Array<{ name: string; sold: number; revenue: number }>;
+  topProducts: { name: string; sold: number; revenue: number }[];
 }
 
 // ============== FINANCIAL & EXPENSE TRACKING ==============

@@ -12,6 +12,7 @@ import {
   typography,
   chartPalette,
 } from '@/constants/theme';
+import { logger } from '@/lib/logger';
 
 const THEME_STORAGE_KEY = '@maggaz12_theme_mode';
 
@@ -63,7 +64,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
         setModeState(saved as ThemeMode);
       }
     } catch (error) {
-      console.error('Error loading theme:', error);
+      logger.error('Error loading theme:', error);
     } finally {
       setIsLoaded(true);
     }
@@ -74,7 +75,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       await AsyncStorage.setItem(THEME_STORAGE_KEY, newMode);
       setModeState(newMode);
     } catch (error) {
-      console.error('Error saving theme:', error);
+      logger.error('Error saving theme:', error);
     }
   }, []);
 

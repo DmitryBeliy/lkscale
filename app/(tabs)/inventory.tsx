@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import {
   View,
   Text,
@@ -45,7 +45,6 @@ export default function InventoryScreen() {
   const insets = useSafeAreaInsets();
   const { t, formatCurrency, language } = useLocalization();
   const [products, setProducts] = useState<Product[]>([]);
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [lowStockCount, setLowStockCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -81,12 +80,13 @@ export default function InventoryScreen() {
     return () => unsub();
   }, []);
 
-  useEffect(() => {
+  // Используем useMemo вместо useEffect для фильтрации (избегаем лишних ререндеров)
+  const filteredProducts = useMemo(() => {
     let filtered = searchProducts(searchQuery, activeCategory);
     if (showLowStockOnly) {
       filtered = filtered.filter((p) => p.stock <= p.minStock);
     }
-    setFilteredProducts(filtered);
+    return filtered;
   }, [products, searchQuery, activeCategory, showLowStockOnly]);
 
   const onRefresh = useCallback(async () => {

@@ -1,0 +1,258 @@
+[
+  {
+    "ManufacturerId": 1,
+    "Name": "Baxi"
+  },
+  {
+    "ManufacturerId": 2,
+    "Name": "Vaillant"
+  },
+  {
+    "ManufacturerId": 3,
+    "Name": "Buderus"
+  },
+  {
+    "ManufacturerId": 4,
+    "Name": "Ariston"
+  },
+  {
+    "ManufacturerId": 5,
+    "Name": "Эван"
+  },
+  {
+    "ManufacturerId": 6,
+    "Name": "Superflame"
+  },
+  {
+    "ManufacturerId": 7,
+    "Name": "Bosch"
+  },
+  {
+    "ManufacturerId": 8,
+    "Name": "Термекс"
+  },
+  {
+    "ManufacturerId": 9,
+    "Name": "SUPERLUX"
+  },
+  {
+    "ManufacturerId": 10,
+    "Name": "Protherm"
+  },
+  {
+    "ManufacturerId": 11,
+    "Name": "ELSTER"
+  },
+  {
+    "ManufacturerId": 12,
+    "Name": "Газдевайс"
+  },
+  {
+    "ManufacturerId": 13,
+    "Name": "Гранд"
+  },
+  {
+    "ManufacturerId": 14,
+    "Name": "BaltGaz"
+  },
+  {
+    "ManufacturerId": 15,
+    "Name": "Бетар"
+  },
+  {
+    "ManufacturerId": 16,
+    "Name": "Neva Lux"
+  },
+  {
+    "ManufacturerId": 17,
+    "Name": "Теплотех"
+  },
+  {
+    "ManufacturerId": 18,
+    "Name": "Siberia"
+  },
+  {
+    "ManufacturerId": 19,
+    "Name": "Лемакс"
+  },
+  {
+    "ManufacturerId": 20,
+    "Name": "Бастион"
+  },
+  {
+    "ManufacturerId": 21,
+    "Name": "МЕТЕР"
+  },
+  {
+    "ManufacturerId": 22,
+    "Name": "Очаг"
+  },
+  {
+    "ManufacturerId": 23,
+    "Name": "Lammin"
+  },
+  {
+    "ManufacturerId": 24,
+    "Name": "Immergas"
+  },
+  {
+    "ManufacturerId": 25,
+    "Name": "Navien"
+  },
+  {
+    "ManufacturerId": 26,
+    "Name": "ЦИТ"
+  },
+  {
+    "ManufacturerId": 27,
+    "Name": "Элехант"
+  },
+  {
+    "ManufacturerId": 28,
+    "Name": "WESTER"
+  },
+  {
+    "ManufacturerId": 29,
+    "Name": "Регион СТ"
+  },
+  {
+    "ManufacturerId": 30,
+    "Name": "Джилекс"
+  },
+  {
+    "ManufacturerId": 31,
+    "Name": "Electrolux"
+  },
+  {
+    "ManufacturerId": 32,
+    "Name": "LENZ"
+  },
+  {
+    "ManufacturerId": 33,
+    "Name": "WERT"
+  },
+  {
+    "ManufacturerId": 34,
+    "Name": "ВДГО"
+  },
+  {
+    "ManufacturerId": 35,
+    "Name": "WATTSON"
+  },
+  {
+    "ManufacturerId": 36,
+    "Name": "Royal Thermo"
+  },
+  {
+    "ManufacturerId": 37,
+    "Name": "ZANUSSI"
+  },
+  {
+    "ManufacturerId": 38,
+    "Name": "УТДК"
+  },
+  {
+    "ManufacturerId": 39,
+    "Name": "RGA"
+  },
+  {
+    "ManufacturerId": 40,
+    "Name": "Omron"
+  },
+  {
+    "ManufacturerId": 41,
+    "Name": "Tourist"
+  },
+  {
+    "ManufacturerId": 42,
+    "Name": "Vilterm"
+  },
+  {
+    "ManufacturerId": 43,
+    "Name": "Штиль"
+  },
+  {
+    "ManufacturerId": 44,
+    "Name": "Ballu"
+  },
+  {
+    "ManufacturerId": 45,
+    "Name": "IMIT"
+  },
+  {
+    "ManufacturerId": 46,
+    "Name": "GEFFEN"
+  },
+  {
+    "ManufacturerId": 47,
+    "Name": "Ямполь (ЯПЗ)"
+  },
+  {
+    "ManufacturerId": 48,
+    "Name": "MIZUDO"
+  },
+  {
+    "ManufacturerId": 49,
+    "Name": "VARGAZ"
+  },
+  {
+    "ManufacturerId": 50,
+    "Name": "ARTU"
+  },
+  {
+    "ManufacturerId": 51,
+    "Name": "Federica Bugatti"
+  },
+  {
+    "ManufacturerId": 52,
+    "Name": "Fondital"
+  },
+  {
+    "ManufacturerId": 53,
+    "Name": "De Dietrich"
+  },
+  {
+    "ManufacturerId": 54,
+    "Name": "АСТИН"
+  },
+  {
+    "ManufacturerId": 55,
+    "Name": "MVI"
+  },
+  {
+    "ManufacturerId": 56,
+    "Name": "VALTEC"
+  },
+  {
+    "ManufacturerId": 57,
+    "Name": "WATTS"
+  },
+  {
+    "ManufacturerId": 58,
+    "Name": "РОСМА"
+  },
+  {
+    "ManufacturerId": 59,
+    "Name": "WILO"
+  },
+  {
+    "ManufacturerId": 60,
+    "Name": "GRUNDFOS"
+  },
+  {
+    "ManufacturerId": 61,
+    "Name": "Ferroli"
+  },
+  {
+    "ManufacturerId": 62,
+    "Name": "Viessmann"
+  },
+  {
+    "ManufacturerId": 63,
+    "Name": "Gefest"
+  },
+  {
+    "ManufacturerId": 64,
+    "Name": "Без производителя"
+  }
+]

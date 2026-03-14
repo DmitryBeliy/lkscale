@@ -26,6 +26,7 @@ import {
   getStorePerformance,
   getConsolidatedReport,
 } from '@/services/enterpriseService';
+import { logger } from '@/lib/logger';
 
 type ReportType = 'sales' | 'financial' | 'inventory' | 'consolidated';
 type ExportFormat = 'pdf' | 'excel' | 'csv';
@@ -376,7 +377,7 @@ export default function ReportsScreen() {
 
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     } catch (error) {
-      console.error('Export error:', error);
+      logger.error('Export error:', error);
       Alert.alert(t.common.error, 'Не удалось экспортировать отчёт');
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
     } finally {

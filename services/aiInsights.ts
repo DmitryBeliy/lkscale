@@ -2,6 +2,10 @@ import { generateText } from '@fastshot/ai';
 import { KPIData, Order, Product, AIInsight } from '@/types';
 import { findDeadStock, calculateProjectedTaxes, generateWeeklyComparison } from './analyticsService';
 import { getStoreSettingsState } from './storeSettingsService';
+import { logger } from '@/lib/logger';
+
+// Hook for using AI insights in components
+import { useState, useCallback } from 'react';
 
 interface BusinessData {
   kpi: KPIData | null;
@@ -104,7 +108,7 @@ Focus on:
 
     return getDefaultInsights();
   } catch (error) {
-    console.error('AI Insights generation error:', error);
+    logger.error('AI Insights generation error:', error);
     return getDefaultInsights();
   }
 };
@@ -129,9 +133,6 @@ const getDefaultInsights = (): AIInsight[] => [
     action: 'Перейти на склад',
   },
 ];
-
-// Hook for using AI insights in components
-import { useState, useCallback } from 'react';
 
 interface UseAIInsightsResult {
   insights: AIInsight[];

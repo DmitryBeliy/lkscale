@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NetInfo from '@react-native-community/netinfo';
+import { logger } from '@/lib/logger';
 
 // ============================================
 // TYPES
@@ -60,6 +61,9 @@ const CONFLICT_RESOLUTIONS_KEY = '@lkscale_conflict_resolutions';
 const MAX_RETRIES = 3;
 const BASE_BACKOFF_MS = 1000;
 
+// Queue processing lock to prevent race conditions
+let isProcessingQueue = false;
+
 // ============================================
 // INTERNAL HELPERS
 // ============================================
@@ -84,7 +88,7 @@ const readQueue = async (): Promise<OfflineOperation[]> => {
     if (!Array.isArray(parsed)) return [];
     return parsed as OfflineOperation[];
   } catch (error) {
-    console.error('[OfflineService] Error reading queue:', error);
+    logger.error('[OfflineService] Error reading queue:', error);
     return [];
   }
 };
@@ -96,7 +100,7 @@ const writeQueue = async (queue: OfflineOperation[]): Promise<void> => {
   try {
     await AsyncStorage.setItem(OFFLINE_QUEUE_KEY, JSON.stringify(queue));
   } catch (error) {
-    console.error('[OfflineService] Error writing queue:', error);
+    logger.error('[OfflineService] Error writing queue:', error);
     throw new Error('Failed to persist offline queue');
   }
 };
@@ -163,7 +167,7 @@ export const isOnline = async (): Promise<boolean> => {
     const netInfo = await NetInfo.fetch();
     return netInfo.isConnected === true;
   } catch (error) {
-    console.error('[OfflineService] Error checking network status:', error);
+    logger.error('[OfflineService] Error checking network status:', error);
     return false;
   }
 };
@@ -216,12 +220,20 @@ export const getQueueLength = async (): Promise<number> => {
  * Uses exponential backoff for retries and detects conflicts.
  */
 export const processQueue = async (): Promise<ProcessQueueResult> => {
+  // Prevent concurrent queue processing
+  if (isProcessingQueue) {
+    return { success: 0, failed: 0, conflicts: 0 };
+  }
+
   const online = await isOnline();
   if (!online) {
     return { success: 0, failed: 0, conflicts: 0 };
   }
 
-  const queue = await readQueue();
+  isProcessingQueue = true;
+
+  try {
+    const queue = await readQueue();
   const result: ProcessQueueResult = {
     success: 0,
     failed: 0,
@@ -288,7 +300,7 @@ export const processQueue = async (): Promise<ProcessQueueResult> => {
           break;
       }
     } catch (error) {
-      console.error(
+      logger.error(
         `[OfflineService] Unexpected error processing operation ${operation.id}:`,
         error
       );
@@ -310,7 +322,10 @@ export const processQueue = async (): Promise<ProcessQueueResult> => {
   const cleaned = queue.filter((op) => op.status !== 'completed');
   await writeQueue(cleaned);
 
-  return result;
+    return result;
+  } finally {
+    isProcessingQueue = false;
+  }
 };
 
 /**
@@ -321,7 +336,7 @@ export const removeOperation = async (id: string): Promise<void> => {
   const filtered = queue.filter((op) => op.id !== id);
 
   if (filtered.length === queue.length) {
-    console.warn(`[OfflineService] Operation ${id} not found in queue`);
+    logger.warn(`[OfflineService] Operation ${id} not found in queue`);
   }
 
   await writeQueue(filtered);
@@ -334,7 +349,7 @@ export const clearQueue = async (): Promise<void> => {
   try {
     await AsyncStorage.removeItem(OFFLINE_QUEUE_KEY);
   } catch (error) {
-    console.error('[OfflineService] Error clearing queue:', error);
+    logger.error('[OfflineService] Error clearing queue:', error);
     throw new Error('Failed to clear offline queue');
   }
 };

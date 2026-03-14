@@ -20,6 +20,7 @@ import {
   performSync,
 } from '@/store/syncStore';
 import { SyncStatus } from '@/types';
+import { logger } from '@/lib/logger';
 
 const AnimatedIonicons = Animated.createAnimatedComponent(Ionicons);
 
@@ -96,7 +97,7 @@ export const OfflineBanner: React.FC = () => {
       await performSync();
     } catch (error) {
       // performSync handles errors internally; this is a safety net
-      console.error('OfflineBanner sync error:', error);
+      logger.error('OfflineBanner sync error:', error);
     } finally {
       setIsSyncing(false);
     }

@@ -1,0 +1,7562 @@
+[
+  {
+    "ProductLocationId": 1,
+    "ProductId": 1,
+    "LocationId": 2,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2,
+    "ProductId": 2,
+    "LocationId": 2,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3,
+    "ProductId": 3,
+    "LocationId": 2,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4,
+    "ProductId": 4,
+    "LocationId": 2,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 5,
+    "ProductId": 5,
+    "LocationId": 2,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6,
+    "ProductId": 6,
+    "LocationId": 2,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7,
+    "ProductId": 7,
+    "LocationId": 2,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 8,
+    "ProductId": 8,
+    "LocationId": 2,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 9,
+    "ProductId": 9,
+    "LocationId": 2,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 10,
+    "ProductId": 2,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 11,
+    "ProductId": 3,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 12,
+    "ProductId": 6,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 13,
+    "ProductId": 10,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "С"
+  },
+  {
+    "ProductLocationId": 14,
+    "ProductId": 11,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": "О4"
+  },
+  {
+    "ProductLocationId": 15,
+    "ProductId": 12,
+    "LocationId": 1,
+    "Count": 19,
+    "StorageCell": "Р4, за стеллажом."
+  },
+  {
+    "ProductLocationId": 16,
+    "ProductId": 13,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Д5"
+  },
+  {
+    "ProductLocationId": 17,
+    "ProductId": 15,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 18,
+    "ProductId": 16,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 19,
+    "ProductId": 17,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": "Д4"
+  },
+  {
+    "ProductLocationId": 20,
+    "ProductId": 19,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 21,
+    "ProductId": 20,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 22,
+    "ProductId": 18,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 23,
+    "ProductId": 21,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 24,
+    "ProductId": 22,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 25,
+    "ProductId": 23,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 26,
+    "ProductId": 24,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 27,
+    "ProductId": 25,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 28,
+    "ProductId": 26,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 29,
+    "ProductId": 27,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 30,
+    "ProductId": 28,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 31,
+    "ProductId": 29,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 32,
+    "ProductId": 30,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 33,
+    "ProductId": 31,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 34,
+    "ProductId": 32,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "T1"
+  },
+  {
+    "ProductLocationId": 35,
+    "ProductId": 33,
+    "LocationId": 1,
+    "Count": 100,
+    "StorageCell": "З5"
+  },
+  {
+    "ProductLocationId": 36,
+    "ProductId": 34,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "Р6, за стеллажом"
+  },
+  {
+    "ProductLocationId": 37,
+    "ProductId": 35,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "З3"
+  },
+  {
+    "ProductLocationId": 38,
+    "ProductId": 36,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "С"
+  },
+  {
+    "ProductLocationId": 39,
+    "ProductId": 37,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "С"
+  },
+  {
+    "ProductLocationId": 40,
+    "ProductId": 38,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "С"
+  },
+  {
+    "ProductLocationId": 41,
+    "ProductId": 39,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "С"
+  },
+  {
+    "ProductLocationId": 42,
+    "ProductId": 40,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "У7"
+  },
+  {
+    "ProductLocationId": 43,
+    "ProductId": 41,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Р2"
+  },
+  {
+    "ProductLocationId": 44,
+    "ProductId": 42,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Р2"
+  },
+  {
+    "ProductLocationId": 45,
+    "ProductId": 43,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Р1"
+  },
+  {
+    "ProductLocationId": 46,
+    "ProductId": 44,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Р2"
+  },
+  {
+    "ProductLocationId": 47,
+    "ProductId": 45,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "О3"
+  },
+  {
+    "ProductLocationId": 48,
+    "ProductId": 47,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "О3"
+  },
+  {
+    "ProductLocationId": 49,
+    "ProductId": 48,
+    "LocationId": 1,
+    "Count": 15,
+    "StorageCell": "О3"
+  },
+  {
+    "ProductLocationId": 50,
+    "ProductId": 49,
+    "LocationId": 1,
+    "Count": 6,
+    "StorageCell": "О3"
+  },
+  {
+    "ProductLocationId": 51,
+    "ProductId": 50,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "О3"
+  },
+  {
+    "ProductLocationId": 52,
+    "ProductId": 51,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "О2"
+  },
+  {
+    "ProductLocationId": 53,
+    "ProductId": 52,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "О2"
+  },
+  {
+    "ProductLocationId": 54,
+    "ProductId": 14,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 55,
+    "ProductId": 53,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 56,
+    "ProductId": 54,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Д3"
+  },
+  {
+    "ProductLocationId": 57,
+    "ProductId": 55,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 58,
+    "ProductId": 56,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 59,
+    "ProductId": 57,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 60,
+    "ProductId": 58,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 61,
+    "ProductId": 59,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Н4"
+  },
+  {
+    "ProductLocationId": 62,
+    "ProductId": 60,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Н4"
+  },
+  {
+    "ProductLocationId": 63,
+    "ProductId": 61,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 64,
+    "ProductId": 63,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": "Е1"
+  },
+  {
+    "ProductLocationId": 65,
+    "ProductId": 62,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 66,
+    "ProductId": 64,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е1"
+  },
+  {
+    "ProductLocationId": 67,
+    "ProductId": 67,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 68,
+    "ProductId": 5,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 69,
+    "ProductId": 69,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 70,
+    "ProductId": 70,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 71,
+    "ProductId": 71,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 72,
+    "ProductId": 72,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 73,
+    "ProductId": 73,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 74,
+    "ProductId": 74,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 75,
+    "ProductId": 75,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 76,
+    "ProductId": 76,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 77,
+    "ProductId": 105,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 78,
+    "ProductId": 104,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 79,
+    "ProductId": 102,
+    "LocationId": 1,
+    "Count": 15,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 80,
+    "ProductId": 101,
+    "LocationId": 1,
+    "Count": 25,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 81,
+    "ProductId": 103,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 82,
+    "ProductId": 100,
+    "LocationId": 1,
+    "Count": 6,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 83,
+    "ProductId": 97,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 84,
+    "ProductId": 96,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 85,
+    "ProductId": 94,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 86,
+    "ProductId": 95,
+    "LocationId": 1,
+    "Count": 30,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 87,
+    "ProductId": 93,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 88,
+    "ProductId": 98,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 89,
+    "ProductId": 99,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 90,
+    "ProductId": 79,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 91,
+    "ProductId": 77,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 92,
+    "ProductId": 89,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 93,
+    "ProductId": 90,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 94,
+    "ProductId": 91,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 95,
+    "ProductId": 92,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 96,
+    "ProductId": 78,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 97,
+    "ProductId": 83,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 98,
+    "ProductId": 86,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 99,
+    "ProductId": 84,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 100,
+    "ProductId": 85,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 101,
+    "ProductId": 81,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 102,
+    "ProductId": 80,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 103,
+    "ProductId": 82,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 104,
+    "ProductId": 87,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 105,
+    "ProductId": 88,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 106,
+    "ProductId": 108,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "Р5"
+  },
+  {
+    "ProductLocationId": 107,
+    "ProductId": 109,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 108,
+    "ProductId": 10,
+    "LocationId": 6,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 109,
+    "ProductId": 73,
+    "LocationId": 6,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 110,
+    "ProductId": 110,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "А на крюке"
+  },
+  {
+    "ProductLocationId": 111,
+    "ProductId": 111,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "О5"
+  },
+  {
+    "ProductLocationId": 112,
+    "ProductId": 112,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Е5"
+  },
+  {
+    "ProductLocationId": 113,
+    "ProductId": 113,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "О4"
+  },
+  {
+    "ProductLocationId": 114,
+    "ProductId": 114,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "О1"
+  },
+  {
+    "ProductLocationId": 115,
+    "ProductId": 28,
+    "LocationId": 6,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 116,
+    "ProductId": 107,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 117,
+    "ProductId": 115,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "Н1"
+  },
+  {
+    "ProductLocationId": 118,
+    "ProductId": 116,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Н3"
+  },
+  {
+    "ProductLocationId": 119,
+    "ProductId": 68,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Н2"
+  },
+  {
+    "ProductLocationId": 120,
+    "ProductId": 66,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Н2"
+  },
+  {
+    "ProductLocationId": 121,
+    "ProductId": 118,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Ю3"
+  },
+  {
+    "ProductLocationId": 122,
+    "ProductId": 118,
+    "LocationId": 6,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 123,
+    "ProductId": 119,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Ю3"
+  },
+  {
+    "ProductLocationId": 124,
+    "ProductId": 119,
+    "LocationId": 6,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 125,
+    "ProductId": 120,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Т7"
+  },
+  {
+    "ProductLocationId": 126,
+    "ProductId": 120,
+    "LocationId": 6,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 127,
+    "ProductId": 121,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Г1"
+  },
+  {
+    "ProductLocationId": 128,
+    "ProductId": 122,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Г1"
+  },
+  {
+    "ProductLocationId": 129,
+    "ProductId": 123,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Г1"
+  },
+  {
+    "ProductLocationId": 130,
+    "ProductId": 124,
+    "LocationId": 1,
+    "Count": 60,
+    "StorageCell": "Ф1"
+  },
+  {
+    "ProductLocationId": 131,
+    "ProductId": 124,
+    "LocationId": 6,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 132,
+    "ProductId": 125,
+    "LocationId": 1,
+    "Count": 9,
+    "StorageCell": "Ц5"
+  },
+  {
+    "ProductLocationId": 133,
+    "ProductId": 126,
+    "LocationId": 1,
+    "Count": 67,
+    "StorageCell": "П5"
+  },
+  {
+    "ProductLocationId": 1106,
+    "ProductId": 128,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 1107,
+    "ProductId": 129,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 1108,
+    "ProductId": 370,
+    "LocationId": 1,
+    "Count": 32,
+    "StorageCell": "А крючки + коробка Ю1"
+  },
+  {
+    "ProductLocationId": 1109,
+    "ProductId": 381,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 1110,
+    "ProductId": 435,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "А на крюке"
+  },
+  {
+    "ProductLocationId": 1111,
+    "ProductId": 436,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 1112,
+    "ProductId": 236,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И2"
+  },
+  {
+    "ProductLocationId": 1113,
+    "ProductId": 440,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 1114,
+    "ProductId": 441,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ж3"
+  },
+  {
+    "ProductLocationId": 1115,
+    "ProductId": 443,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "К2"
+  },
+  {
+    "ProductLocationId": 1116,
+    "ProductId": 444,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 1117,
+    "ProductId": 453,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Г4"
+  },
+  {
+    "ProductLocationId": 1118,
+    "ProductId": 454,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "У5"
+  },
+  {
+    "ProductLocationId": 2111,
+    "ProductId": 1436,
+    "LocationId": 1,
+    "Count": 70,
+    "StorageCell": "У7"
+  },
+  {
+    "ProductLocationId": 2112,
+    "ProductId": 1444,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ц2"
+  },
+  {
+    "ProductLocationId": 2113,
+    "ProductId": 1453,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2114,
+    "ProductId": 1454,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": "Е1"
+  },
+  {
+    "ProductLocationId": 2115,
+    "ProductId": 1455,
+    "LocationId": 1,
+    "Count": 38,
+    "StorageCell": "Ж4"
+  },
+  {
+    "ProductLocationId": 2116,
+    "ProductId": 1456,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И5"
+  },
+  {
+    "ProductLocationId": 2117,
+    "ProductId": 1445,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2118,
+    "ProductId": 1446,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2119,
+    "ProductId": 196,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е4 + Ц3"
+  },
+  {
+    "ProductLocationId": 2120,
+    "ProductId": 245,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2121,
+    "ProductId": 1459,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З3"
+  },
+  {
+    "ProductLocationId": 2122,
+    "ProductId": 310,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "Г3"
+  },
+  {
+    "ProductLocationId": 2123,
+    "ProductId": 1460,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2124,
+    "ProductId": 1461,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "Т8"
+  },
+  {
+    "ProductLocationId": 2125,
+    "ProductId": 1462,
+    "LocationId": 1,
+    "Count": 9,
+    "StorageCell": "У1"
+  },
+  {
+    "ProductLocationId": 2126,
+    "ProductId": 1463,
+    "LocationId": 1,
+    "Count": 25,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2127,
+    "ProductId": 1471,
+    "LocationId": 1,
+    "Count": 6,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 2128,
+    "ProductId": 1472,
+    "LocationId": 1,
+    "Count": 6,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 2129,
+    "ProductId": 1473,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З4"
+  },
+  {
+    "ProductLocationId": 2130,
+    "ProductId": 1474,
+    "LocationId": 1,
+    "Count": 26,
+    "StorageCell": "Х3"
+  },
+  {
+    "ProductLocationId": 2131,
+    "ProductId": 1475,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 2132,
+    "ProductId": 1476,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З2"
+  },
+  {
+    "ProductLocationId": 2133,
+    "ProductId": 1477,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И3"
+  },
+  {
+    "ProductLocationId": 2134,
+    "ProductId": 1479,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2135,
+    "ProductId": 1480,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З3"
+  },
+  {
+    "ProductLocationId": 2136,
+    "ProductId": 1470,
+    "LocationId": 1,
+    "Count": 40,
+    "StorageCell": "У5 2шт + 48 в коробках за стеллажем"
+  },
+  {
+    "ProductLocationId": 2137,
+    "ProductId": 1468,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "У4"
+  },
+  {
+    "ProductLocationId": 2138,
+    "ProductId": 1467,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "У6"
+  },
+  {
+    "ProductLocationId": 2139,
+    "ProductId": 1466,
+    "LocationId": 1,
+    "Count": 6,
+    "StorageCell": "У3"
+  },
+  {
+    "ProductLocationId": 2140,
+    "ProductId": 1465,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "У2"
+  },
+  {
+    "ProductLocationId": 2141,
+    "ProductId": 1483,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2142,
+    "ProductId": 1491,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": "Ю1"
+  },
+  {
+    "ProductLocationId": 2143,
+    "ProductId": 1490,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "Ю1"
+  },
+  {
+    "ProductLocationId": 2144,
+    "ProductId": 1494,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2145,
+    "ProductId": 1447,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2146,
+    "ProductId": 1497,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "Я"
+  },
+  {
+    "ProductLocationId": 2147,
+    "ProductId": 1496,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Ж3"
+  },
+  {
+    "ProductLocationId": 2148,
+    "ProductId": 1498,
+    "LocationId": 1,
+    "Count": 17,
+    "StorageCell": "Ц4"
+  },
+  {
+    "ProductLocationId": 2149,
+    "ProductId": 1495,
+    "LocationId": 1,
+    "Count": 76,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 2150,
+    "ProductId": 1499,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 2151,
+    "ProductId": 1500,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е2"
+  },
+  {
+    "ProductLocationId": 2152,
+    "ProductId": 249,
+    "LocationId": 1,
+    "Count": 15,
+    "StorageCell": "Е2"
+  },
+  {
+    "ProductLocationId": 2153,
+    "ProductId": 1501,
+    "LocationId": 1,
+    "Count": 12,
+    "StorageCell": "под окном"
+  },
+  {
+    "ProductLocationId": 2154,
+    "ProductId": 340,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 2155,
+    "ProductId": 345,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 2156,
+    "ProductId": 351,
+    "LocationId": 1,
+    "Count": 10,
+    "StorageCell": "Х3"
+  },
+  {
+    "ProductLocationId": 2157,
+    "ProductId": 346,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 2158,
+    "ProductId": 338,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 2159,
+    "ProductId": 347,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 2160,
+    "ProductId": 349,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 2161,
+    "ProductId": 343,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 2162,
+    "ProductId": 348,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 2163,
+    "ProductId": 246,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": "Ж2"
+  },
+  {
+    "ProductLocationId": 2164,
+    "ProductId": 228,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 2165,
+    "ProductId": 357,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 2166,
+    "ProductId": 227,
+    "LocationId": 1,
+    "Count": 9,
+    "StorageCell": "Е1"
+  },
+  {
+    "ProductLocationId": 2167,
+    "ProductId": 226,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "Е3"
+  },
+  {
+    "ProductLocationId": 2168,
+    "ProductId": 224,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 2169,
+    "ProductId": 221,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Е3"
+  },
+  {
+    "ProductLocationId": 2170,
+    "ProductId": 1502,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 2171,
+    "ProductId": 282,
+    "LocationId": 1,
+    "Count": 8,
+    "StorageCell": "Е3"
+  },
+  {
+    "ProductLocationId": 2172,
+    "ProductId": 222,
+    "LocationId": 1,
+    "Count": 69,
+    "StorageCell": "Е3"
+  },
+  {
+    "ProductLocationId": 2173,
+    "ProductId": 1503,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "под окном"
+  },
+  {
+    "ProductLocationId": 2174,
+    "ProductId": 267,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "И1"
+  },
+  {
+    "ProductLocationId": 2175,
+    "ProductId": 268,
+    "LocationId": 1,
+    "Count": 10,
+    "StorageCell": "И1"
+  },
+  {
+    "ProductLocationId": 2176,
+    "ProductId": 1437,
+    "LocationId": 1,
+    "Count": 34,
+    "StorageCell": "Ю1 крючки + 2шт З2"
+  },
+  {
+    "ProductLocationId": 2177,
+    "ProductId": 1504,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ю3"
+  },
+  {
+    "ProductLocationId": 2178,
+    "ProductId": 1505,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2179,
+    "ProductId": 1506,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2180,
+    "ProductId": 1507,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2181,
+    "ProductId": 206,
+    "LocationId": 1,
+    "Count": 58,
+    "StorageCell": "Ш"
+  },
+  {
+    "ProductLocationId": 2182,
+    "ProductId": 1508,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З3"
+  },
+  {
+    "ProductLocationId": 2183,
+    "ProductId": 1509,
+    "LocationId": 1,
+    "Count": 43,
+    "StorageCell": "Ф2"
+  },
+  {
+    "ProductLocationId": 2184,
+    "ProductId": 1510,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ф2"
+  },
+  {
+    "ProductLocationId": 2185,
+    "ProductId": 1512,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2186,
+    "ProductId": 1513,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Д3 за стабилизаторами"
+  },
+  {
+    "ProductLocationId": 2187,
+    "ProductId": 1515,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2188,
+    "ProductId": 1516,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2189,
+    "ProductId": 1517,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Ф2"
+  },
+  {
+    "ProductLocationId": 2190,
+    "ProductId": 272,
+    "LocationId": 1,
+    "Count": 10,
+    "StorageCell": "Ж3"
+  },
+  {
+    "ProductLocationId": 2191,
+    "ProductId": 1519,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2192,
+    "ProductId": 1520,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2193,
+    "ProductId": 439,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "П4"
+  },
+  {
+    "ProductLocationId": 2194,
+    "ProductId": 1523,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "под столом у 2 компа"
+  },
+  {
+    "ProductLocationId": 2195,
+    "ProductId": 1522,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "Ц1"
+  },
+  {
+    "ProductLocationId": 2196,
+    "ProductId": 1524,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Г2"
+  },
+  {
+    "ProductLocationId": 2197,
+    "ProductId": 1525,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "Ц2"
+  },
+  {
+    "ProductLocationId": 2198,
+    "ProductId": 438,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "П2"
+  },
+  {
+    "ProductLocationId": 2199,
+    "ProductId": 437,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "П2"
+  },
+  {
+    "ProductLocationId": 2200,
+    "ProductId": 1526,
+    "LocationId": 1,
+    "Count": 121,
+    "StorageCell": "Х3"
+  },
+  {
+    "ProductLocationId": 2201,
+    "ProductId": 1527,
+    "LocationId": 1,
+    "Count": 17,
+    "StorageCell": "Х3"
+  },
+  {
+    "ProductLocationId": 2202,
+    "ProductId": 1528,
+    "LocationId": 1,
+    "Count": 13,
+    "StorageCell": "Х3"
+  },
+  {
+    "ProductLocationId": 2203,
+    "ProductId": 1530,
+    "LocationId": 1,
+    "Count": 10,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 2204,
+    "ProductId": 1531,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2205,
+    "ProductId": 1533,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "В"
+  },
+  {
+    "ProductLocationId": 2206,
+    "ProductId": 377,
+    "LocationId": 1,
+    "Count": 20,
+    "StorageCell": "А на крюке"
+  },
+  {
+    "ProductLocationId": 2207,
+    "ProductId": 1534,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2208,
+    "ProductId": 1535,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 2209,
+    "ProductId": 1536,
+    "LocationId": 1,
+    "Count": 26,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 2210,
+    "ProductId": 1438,
+    "LocationId": 1,
+    "Count": 241,
+    "StorageCell": "Ю1 крючки"
+  },
+  {
+    "ProductLocationId": 2211,
+    "ProductId": 241,
+    "LocationId": 1,
+    "Count": 90,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 3185,
+    "ProductId": 2511,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3186,
+    "ProductId": 2512,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Т2"
+  },
+  {
+    "ProductLocationId": 3187,
+    "ProductId": 1457,
+    "LocationId": 1,
+    "Count": 39,
+    "StorageCell": "Ц3"
+  },
+  {
+    "ProductLocationId": 3188,
+    "ProductId": 2513,
+    "LocationId": 1,
+    "Count": 26,
+    "StorageCell": "Ф4"
+  },
+  {
+    "ProductLocationId": 3189,
+    "ProductId": 2514,
+    "LocationId": 1,
+    "Count": 29,
+    "StorageCell": "Ч3"
+  },
+  {
+    "ProductLocationId": 3190,
+    "ProductId": 2515,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 3191,
+    "ProductId": 166,
+    "LocationId": 1,
+    "Count": 8,
+    "StorageCell": "Ц5"
+  },
+  {
+    "ProductLocationId": 3192,
+    "ProductId": 271,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Ж1"
+  },
+  {
+    "ProductLocationId": 3193,
+    "ProductId": 365,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3194,
+    "ProductId": 295,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И5"
+  },
+  {
+    "ProductLocationId": 3195,
+    "ProductId": 2516,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З2"
+  },
+  {
+    "ProductLocationId": 3196,
+    "ProductId": 2519,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3197,
+    "ProductId": 2521,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Ж4"
+  },
+  {
+    "ProductLocationId": 3198,
+    "ProductId": 2520,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Ж4"
+  },
+  {
+    "ProductLocationId": 3199,
+    "ProductId": 371,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3200,
+    "ProductId": 369,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3201,
+    "ProductId": 2522,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3202,
+    "ProductId": 2524,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Е3 (коробка Вайланд)"
+  },
+  {
+    "ProductLocationId": 3203,
+    "ProductId": 154,
+    "LocationId": 1,
+    "Count": 245,
+    "StorageCell": "Ф4"
+  },
+  {
+    "ProductLocationId": 3204,
+    "ProductId": 2525,
+    "LocationId": 1,
+    "Count": 6,
+    "StorageCell": "А"
+  },
+  {
+    "ProductLocationId": 3205,
+    "ProductId": 2527,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "К3"
+  },
+  {
+    "ProductLocationId": 3206,
+    "ProductId": 2528,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3207,
+    "ProductId": 1493,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Г4"
+  },
+  {
+    "ProductLocationId": 3208,
+    "ProductId": 2529,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3209,
+    "ProductId": 2530,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3210,
+    "ProductId": 2531,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3211,
+    "ProductId": 2532,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3212,
+    "ProductId": 2533,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3213,
+    "ProductId": 2535,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 3214,
+    "ProductId": 2536,
+    "LocationId": 1,
+    "Count": 10,
+    "StorageCell": "З4"
+  },
+  {
+    "ProductLocationId": 3215,
+    "ProductId": 2537,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3216,
+    "ProductId": 2538,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": "И 3-4"
+  },
+  {
+    "ProductLocationId": 3217,
+    "ProductId": 2539,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е3"
+  },
+  {
+    "ProductLocationId": 3218,
+    "ProductId": 2540,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "К1"
+  },
+  {
+    "ProductLocationId": 3219,
+    "ProductId": 290,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3220,
+    "ProductId": 2542,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3221,
+    "ProductId": 1439,
+    "LocationId": 1,
+    "Count": 7,
+    "StorageCell": "Ю1 крючки"
+  },
+  {
+    "ProductLocationId": 3222,
+    "ProductId": 1492,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 3223,
+    "ProductId": 2543,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "под окном на стенде верхняя полка синий бокс"
+  },
+  {
+    "ProductLocationId": 3224,
+    "ProductId": 230,
+    "LocationId": 1,
+    "Count": 16,
+    "StorageCell": "Е3"
+  },
+  {
+    "ProductLocationId": 3225,
+    "ProductId": 2544,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Е3"
+  },
+  {
+    "ProductLocationId": 3226,
+    "ProductId": 2545,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "И1"
+  },
+  {
+    "ProductLocationId": 3227,
+    "ProductId": 2547,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ю3"
+  },
+  {
+    "ProductLocationId": 3228,
+    "ProductId": 2546,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "К1"
+  },
+  {
+    "ProductLocationId": 3229,
+    "ProductId": 2548,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "под окном верхний стеллаж на крючке"
+  },
+  {
+    "ProductLocationId": 3230,
+    "ProductId": 2549,
+    "LocationId": 1,
+    "Count": 23,
+    "StorageCell": "Ч1 коробка 1"
+  },
+  {
+    "ProductLocationId": 3231,
+    "ProductId": 2550,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "средний основной стеллаж красная коробка №1"
+  },
+  {
+    "ProductLocationId": 3232,
+    "ProductId": 2551,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "средний основной стеллаж красная коробка №1"
+  },
+  {
+    "ProductLocationId": 3233,
+    "ProductId": 2552,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "средний основной стеллаж красная коробка №1"
+  },
+  {
+    "ProductLocationId": 3234,
+    "ProductId": 2553,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": "под окном на крючке"
+  },
+  {
+    "ProductLocationId": 3235,
+    "ProductId": 2554,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "под окном на крючке"
+  },
+  {
+    "ProductLocationId": 3236,
+    "ProductId": 2557,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "средний основной стеллаж красная коробка №1"
+  },
+  {
+    "ProductLocationId": 3237,
+    "ProductId": 2558,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "средний основной стеллаж красная коробка №1"
+  },
+  {
+    "ProductLocationId": 3238,
+    "ProductId": 2559,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "средний основной стеллаж красная коробка №1"
+  },
+  {
+    "ProductLocationId": 3239,
+    "ProductId": 2560,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е1"
+  },
+  {
+    "ProductLocationId": 3240,
+    "ProductId": 2561,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ч1 коробка 1"
+  },
+  {
+    "ProductLocationId": 3241,
+    "ProductId": 2556,
+    "LocationId": 1,
+    "Count": 6,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3242,
+    "ProductId": 2555,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3243,
+    "ProductId": 2562,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Н2"
+  },
+  {
+    "ProductLocationId": 3244,
+    "ProductId": 2563,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3245,
+    "ProductId": 1449,
+    "LocationId": 1,
+    "Count": 217,
+    "StorageCell": "Ф3"
+  },
+  {
+    "ProductLocationId": 3246,
+    "ProductId": 2565,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Г2"
+  },
+  {
+    "ProductLocationId": 3247,
+    "ProductId": 2566,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Г2"
+  },
+  {
+    "ProductLocationId": 3248,
+    "ProductId": 2567,
+    "LocationId": 1,
+    "Count": 15,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3249,
+    "ProductId": 2568,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И5-6"
+  },
+  {
+    "ProductLocationId": 3250,
+    "ProductId": 280,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е3 (коробка вайланд)"
+  },
+  {
+    "ProductLocationId": 3251,
+    "ProductId": 2569,
+    "LocationId": 1,
+    "Count": 29,
+    "StorageCell": "Е3"
+  },
+  {
+    "ProductLocationId": 3252,
+    "ProductId": 1537,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "в ремкомплекте на крючках Ш"
+  },
+  {
+    "ProductLocationId": 3253,
+    "ProductId": 2570,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "С"
+  },
+  {
+    "ProductLocationId": 3254,
+    "ProductId": 275,
+    "LocationId": 1,
+    "Count": 24,
+    "StorageCell": "К2"
+  },
+  {
+    "ProductLocationId": 3255,
+    "ProductId": 276,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "К3"
+  },
+  {
+    "ProductLocationId": 3256,
+    "ProductId": 278,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "К3"
+  },
+  {
+    "ProductLocationId": 3257,
+    "ProductId": 2518,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "С"
+  },
+  {
+    "ProductLocationId": 3258,
+    "ProductId": 191,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Р1"
+  },
+  {
+    "ProductLocationId": 3259,
+    "ProductId": 199,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Р3"
+  },
+  {
+    "ProductLocationId": 3260,
+    "ProductId": 333,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "О4"
+  },
+  {
+    "ProductLocationId": 3261,
+    "ProductId": 2571,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "О3"
+  },
+  {
+    "ProductLocationId": 3262,
+    "ProductId": 46,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "О3"
+  },
+  {
+    "ProductLocationId": 3263,
+    "ProductId": 183,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "О5"
+  },
+  {
+    "ProductLocationId": 3264,
+    "ProductId": 184,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "О5"
+  },
+  {
+    "ProductLocationId": 3265,
+    "ProductId": 335,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "О4"
+  },
+  {
+    "ProductLocationId": 3266,
+    "ProductId": 334,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "О4"
+  },
+  {
+    "ProductLocationId": 3267,
+    "ProductId": 283,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "О4 куплен"
+  },
+  {
+    "ProductLocationId": 3268,
+    "ProductId": 336,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "О4"
+  },
+  {
+    "ProductLocationId": 3269,
+    "ProductId": 284,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "О4"
+  },
+  {
+    "ProductLocationId": 3270,
+    "ProductId": 337,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "О4"
+  },
+  {
+    "ProductLocationId": 3271,
+    "ProductId": 289,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "М1"
+  },
+  {
+    "ProductLocationId": 3272,
+    "ProductId": 286,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "M4"
+  },
+  {
+    "ProductLocationId": 3273,
+    "ProductId": 287,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "М5"
+  },
+  {
+    "ProductLocationId": 3274,
+    "ProductId": 117,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Н2"
+  },
+  {
+    "ProductLocationId": 3275,
+    "ProductId": 263,
+    "LocationId": 1,
+    "Count": 9,
+    "StorageCell": "Н3"
+  },
+  {
+    "ProductLocationId": 3276,
+    "ProductId": 285,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Д2"
+  },
+  {
+    "ProductLocationId": 3277,
+    "ProductId": 1451,
+    "LocationId": 1,
+    "Count": 11,
+    "StorageCell": "П1"
+  },
+  {
+    "ProductLocationId": 3278,
+    "ProductId": 239,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "И6"
+  },
+  {
+    "ProductLocationId": 3279,
+    "ProductId": 216,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И1"
+  },
+  {
+    "ProductLocationId": 3280,
+    "ProductId": 296,
+    "LocationId": 1,
+    "Count": 15,
+    "StorageCell": "А крючки"
+  },
+  {
+    "ProductLocationId": 3281,
+    "ProductId": 194,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И1"
+  },
+  {
+    "ProductLocationId": 3282,
+    "ProductId": 197,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "И2"
+  },
+  {
+    "ProductLocationId": 3283,
+    "ProductId": 195,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И2"
+  },
+  {
+    "ProductLocationId": 3284,
+    "ProductId": 237,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И3"
+  },
+  {
+    "ProductLocationId": 3285,
+    "ProductId": 2572,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Д1"
+  },
+  {
+    "ProductLocationId": 3286,
+    "ProductId": 2573,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Д1"
+  },
+  {
+    "ProductLocationId": 3287,
+    "ProductId": 292,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Л1"
+  },
+  {
+    "ProductLocationId": 3288,
+    "ProductId": 291,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Л1"
+  },
+  {
+    "ProductLocationId": 3289,
+    "ProductId": 307,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "П2"
+  },
+  {
+    "ProductLocationId": 3290,
+    "ProductId": 247,
+    "LocationId": 1,
+    "Count": 25,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 3291,
+    "ProductId": 178,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 3292,
+    "ProductId": 248,
+    "LocationId": 1,
+    "Count": 10,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 3293,
+    "ProductId": 179,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 3294,
+    "ProductId": 159,
+    "LocationId": 1,
+    "Count": 50,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 3295,
+    "ProductId": 134,
+    "LocationId": 1,
+    "Count": 104,
+    "StorageCell": "А крючки  + Е1"
+  },
+  {
+    "ProductLocationId": 3296,
+    "ProductId": 301,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 3297,
+    "ProductId": 363,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 3298,
+    "ProductId": 2574,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Л1"
+  },
+  {
+    "ProductLocationId": 3299,
+    "ProductId": 1511,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З5"
+  },
+  {
+    "ProductLocationId": 3300,
+    "ProductId": 2564,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И1"
+  },
+  {
+    "ProductLocationId": 3301,
+    "ProductId": 2575,
+    "LocationId": 1,
+    "Count": 39,
+    "StorageCell": "B"
+  },
+  {
+    "ProductLocationId": 3302,
+    "ProductId": 176,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "З2"
+  },
+  {
+    "ProductLocationId": 3303,
+    "ProductId": 232,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "З2"
+  },
+  {
+    "ProductLocationId": 3304,
+    "ProductId": 165,
+    "LocationId": 1,
+    "Count": 7,
+    "StorageCell": "З4"
+  },
+  {
+    "ProductLocationId": 3305,
+    "ProductId": 171,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 3306,
+    "ProductId": 172,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 3307,
+    "ProductId": 167,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З3"
+  },
+  {
+    "ProductLocationId": 3308,
+    "ProductId": 261,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З3"
+  },
+  {
+    "ProductLocationId": 3309,
+    "ProductId": 212,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ж5"
+  },
+  {
+    "ProductLocationId": 3310,
+    "ProductId": 162,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З4"
+  },
+  {
+    "ProductLocationId": 3311,
+    "ProductId": 258,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З4"
+  },
+  {
+    "ProductLocationId": 3312,
+    "ProductId": 164,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": "З4"
+  },
+  {
+    "ProductLocationId": 3313,
+    "ProductId": 163,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З4"
+  },
+  {
+    "ProductLocationId": 3314,
+    "ProductId": 149,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З4"
+  },
+  {
+    "ProductLocationId": 3315,
+    "ProductId": 160,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З4"
+  },
+  {
+    "ProductLocationId": 3316,
+    "ProductId": 186,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З4 коробка valtec"
+  },
+  {
+    "ProductLocationId": 3317,
+    "ProductId": 188,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З4 коробка valtec"
+  },
+  {
+    "ProductLocationId": 3318,
+    "ProductId": 189,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З4 коробка valtec"
+  },
+  {
+    "ProductLocationId": 3319,
+    "ProductId": 187,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З4 коробка valtec"
+  },
+  {
+    "ProductLocationId": 3320,
+    "ProductId": 185,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З4 коробка valtec"
+  },
+  {
+    "ProductLocationId": 3321,
+    "ProductId": 158,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З2"
+  },
+  {
+    "ProductLocationId": 3322,
+    "ProductId": 255,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З2"
+  },
+  {
+    "ProductLocationId": 3323,
+    "ProductId": 256,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З2"
+  },
+  {
+    "ProductLocationId": 3324,
+    "ProductId": 130,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З2"
+  },
+  {
+    "ProductLocationId": 3325,
+    "ProductId": 132,
+    "LocationId": 1,
+    "Count": 63,
+    "StorageCell": "З5"
+  },
+  {
+    "ProductLocationId": 3326,
+    "ProductId": 157,
+    "LocationId": 1,
+    "Count": 95,
+    "StorageCell": "З5"
+  },
+  {
+    "ProductLocationId": 3327,
+    "ProductId": 155,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З5"
+  },
+  {
+    "ProductLocationId": 3328,
+    "ProductId": 252,
+    "LocationId": 1,
+    "Count": 459,
+    "StorageCell": "З5"
+  },
+  {
+    "ProductLocationId": 3329,
+    "ProductId": 152,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "З5"
+  },
+  {
+    "ProductLocationId": 3330,
+    "ProductId": 151,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З5"
+  },
+  {
+    "ProductLocationId": 3331,
+    "ProductId": 254,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Ж1"
+  },
+  {
+    "ProductLocationId": 3332,
+    "ProductId": 153,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З5"
+  },
+  {
+    "ProductLocationId": 3333,
+    "ProductId": 131,
+    "LocationId": 1,
+    "Count": 110,
+    "StorageCell": "З5"
+  },
+  {
+    "ProductLocationId": 3334,
+    "ProductId": 251,
+    "LocationId": 1,
+    "Count": 8,
+    "StorageCell": "З5 + 25шт на полу карт коробка 4"
+  },
+  {
+    "ProductLocationId": 3335,
+    "ProductId": 181,
+    "LocationId": 1,
+    "Count": 10,
+    "StorageCell": "З5"
+  },
+  {
+    "ProductLocationId": 3336,
+    "ProductId": 253,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З5"
+  },
+  {
+    "ProductLocationId": 3337,
+    "ProductId": 133,
+    "LocationId": 1,
+    "Count": 984,
+    "StorageCell": "З5 + 80 шт на полу картон коробка 3"
+  },
+  {
+    "ProductLocationId": 3338,
+    "ProductId": 150,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "З5"
+  },
+  {
+    "ProductLocationId": 3339,
+    "ProductId": 169,
+    "LocationId": 1,
+    "Count": 25,
+    "StorageCell": "З5"
+  },
+  {
+    "ProductLocationId": 3340,
+    "ProductId": 306,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "О1"
+  },
+  {
+    "ProductLocationId": 3341,
+    "ProductId": 180,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Ж1"
+  },
+  {
+    "ProductLocationId": 3342,
+    "ProductId": 135,
+    "LocationId": 1,
+    "Count": 114,
+    "StorageCell": "Ж1 + 26шт на полу карт коробка 4"
+  },
+  {
+    "ProductLocationId": 3343,
+    "ProductId": 174,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Ж1"
+  },
+  {
+    "ProductLocationId": 3344,
+    "ProductId": 173,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Ж1"
+  },
+  {
+    "ProductLocationId": 3345,
+    "ProductId": 175,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ж1"
+  },
+  {
+    "ProductLocationId": 3346,
+    "ProductId": 168,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "Ж1 4шт на полу карт коробка 5"
+  },
+  {
+    "ProductLocationId": 3347,
+    "ProductId": 265,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ж3"
+  },
+  {
+    "ProductLocationId": 3348,
+    "ProductId": 2576,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ж3"
+  },
+  {
+    "ProductLocationId": 3349,
+    "ProductId": 214,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Ж5"
+  },
+  {
+    "ProductLocationId": 3350,
+    "ProductId": 2577,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Х3"
+  },
+  {
+    "ProductLocationId": 3351,
+    "ProductId": 210,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Ж5"
+  },
+  {
+    "ProductLocationId": 3352,
+    "ProductId": 213,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ж5"
+  },
+  {
+    "ProductLocationId": 3353,
+    "ProductId": 300,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Е4-1"
+  },
+  {
+    "ProductLocationId": 3354,
+    "ProductId": 299,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ж5"
+  },
+  {
+    "ProductLocationId": 3355,
+    "ProductId": 2578,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е3"
+  },
+  {
+    "ProductLocationId": 3356,
+    "ProductId": 266,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Е3"
+  },
+  {
+    "ProductLocationId": 3357,
+    "ProductId": 229,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е3"
+  },
+  {
+    "ProductLocationId": 3358,
+    "ProductId": 225,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Е3"
+  },
+  {
+    "ProductLocationId": 3359,
+    "ProductId": 218,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е3"
+  },
+  {
+    "ProductLocationId": 3360,
+    "ProductId": 220,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е3"
+  },
+  {
+    "ProductLocationId": 3361,
+    "ProductId": 217,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Е3"
+  },
+  {
+    "ProductLocationId": 3362,
+    "ProductId": 223,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е3"
+  },
+  {
+    "ProductLocationId": 3363,
+    "ProductId": 208,
+    "LocationId": 1,
+    "Count": 37,
+    "StorageCell": "Е3"
+  },
+  {
+    "ProductLocationId": 3364,
+    "ProductId": 203,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е5"
+  },
+  {
+    "ProductLocationId": 3365,
+    "ProductId": 204,
+    "LocationId": 1,
+    "Count": 25,
+    "StorageCell": "Е3"
+  },
+  {
+    "ProductLocationId": 3366,
+    "ProductId": 202,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 3367,
+    "ProductId": 200,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 3368,
+    "ProductId": 201,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 3369,
+    "ProductId": 207,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е3"
+  },
+  {
+    "ProductLocationId": 3370,
+    "ProductId": 341,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Х2"
+  },
+  {
+    "ProductLocationId": 3371,
+    "ProductId": 342,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Х2"
+  },
+  {
+    "ProductLocationId": 3372,
+    "ProductId": 339,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 3373,
+    "ProductId": 353,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 3374,
+    "ProductId": 344,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 3375,
+    "ProductId": 362,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 3376,
+    "ProductId": 361,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 3377,
+    "ProductId": 298,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 3378,
+    "ProductId": 364,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 3379,
+    "ProductId": 356,
+    "LocationId": 1,
+    "Count": 50,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 3380,
+    "ProductId": 358,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 3381,
+    "ProductId": 360,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 3382,
+    "ProductId": 303,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 3383,
+    "ProductId": 302,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 3384,
+    "ProductId": 332,
+    "LocationId": 1,
+    "Count": 8,
+    "StorageCell": "Е5"
+  },
+  {
+    "ProductLocationId": 3385,
+    "ProductId": 323,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е5"
+  },
+  {
+    "ProductLocationId": 3386,
+    "ProductId": 321,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Е5"
+  },
+  {
+    "ProductLocationId": 3387,
+    "ProductId": 324,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Е5"
+  },
+  {
+    "ProductLocationId": 3388,
+    "ProductId": 327,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Е5"
+  },
+  {
+    "ProductLocationId": 3389,
+    "ProductId": 322,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Е5"
+  },
+  {
+    "ProductLocationId": 3390,
+    "ProductId": 328,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Е5"
+  },
+  {
+    "ProductLocationId": 3391,
+    "ProductId": 325,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Е5"
+  },
+  {
+    "ProductLocationId": 3392,
+    "ProductId": 331,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Е5"
+  },
+  {
+    "ProductLocationId": 3393,
+    "ProductId": 330,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е5"
+  },
+  {
+    "ProductLocationId": 3394,
+    "ProductId": 329,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "Е5"
+  },
+  {
+    "ProductLocationId": 3395,
+    "ProductId": 260,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "на полу карт коробка 5"
+  },
+  {
+    "ProductLocationId": 3396,
+    "ProductId": 233,
+    "LocationId": 1,
+    "Count": 13,
+    "StorageCell": "4 шт на полу карт коробка 5"
+  },
+  {
+    "ProductLocationId": 3397,
+    "ProductId": 234,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "10 шт на полу в карт коробке 5"
+  },
+  {
+    "ProductLocationId": 3398,
+    "ProductId": 1486,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "6 шт на полу в карт коробке 5"
+  },
+  {
+    "ProductLocationId": 3399,
+    "ProductId": 1485,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "9 шт на полу в карт коробке 5"
+  },
+  {
+    "ProductLocationId": 3400,
+    "ProductId": 1482,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "У4"
+  },
+  {
+    "ProductLocationId": 3401,
+    "ProductId": 1469,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "У4"
+  },
+  {
+    "ProductLocationId": 3402,
+    "ProductId": 1478,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "У7"
+  },
+  {
+    "ProductLocationId": 3403,
+    "ProductId": 1481,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "У6"
+  },
+  {
+    "ProductLocationId": 3404,
+    "ProductId": 238,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "У5"
+  },
+  {
+    "ProductLocationId": 3405,
+    "ProductId": 2579,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Ж1"
+  },
+  {
+    "ProductLocationId": 3406,
+    "ProductId": 2580,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "К3"
+  },
+  {
+    "ProductLocationId": 3407,
+    "ProductId": 308,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ю2"
+  },
+  {
+    "ProductLocationId": 3408,
+    "ProductId": 156,
+    "LocationId": 1,
+    "Count": 97,
+    "StorageCell": "З5 +89шт на полу карт коробка 4"
+  },
+  {
+    "ProductLocationId": 3409,
+    "ProductId": 136,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ж1"
+  },
+  {
+    "ProductLocationId": 3410,
+    "ProductId": 138,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "Ж1"
+  },
+  {
+    "ProductLocationId": 3411,
+    "ProductId": 137,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Ж1 +8шт на полку карт коробка 4"
+  },
+  {
+    "ProductLocationId": 3412,
+    "ProductId": 2581,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3413,
+    "ProductId": 144,
+    "LocationId": 1,
+    "Count": 22,
+    "StorageCell": "на полу карт коробка 2"
+  },
+  {
+    "ProductLocationId": 3414,
+    "ProductId": 143,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "на полу карт коробка 1"
+  },
+  {
+    "ProductLocationId": 3415,
+    "ProductId": 142,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "на полу карт коробка 1"
+  },
+  {
+    "ProductLocationId": 3416,
+    "ProductId": 1487,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "на полу карт коробка 1"
+  },
+  {
+    "ProductLocationId": 3417,
+    "ProductId": 140,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "на полу карт коробка 1"
+  },
+  {
+    "ProductLocationId": 3418,
+    "ProductId": 145,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "на полу карт коробка 1"
+  },
+  {
+    "ProductLocationId": 3419,
+    "ProductId": 146,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "на полу карт коробка 1"
+  },
+  {
+    "ProductLocationId": 3420,
+    "ProductId": 147,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "на полу карт коробка 1"
+  },
+  {
+    "ProductLocationId": 3421,
+    "ProductId": 148,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "на полу карт коробка 1"
+  },
+  {
+    "ProductLocationId": 3422,
+    "ProductId": 141,
+    "LocationId": 1,
+    "Count": 366,
+    "StorageCell": "на полу карт коробка 1"
+  },
+  {
+    "ProductLocationId": 3423,
+    "ProductId": 2582,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "А на крюке"
+  },
+  {
+    "ProductLocationId": 3424,
+    "ProductId": 366,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "А на крюке"
+  },
+  {
+    "ProductLocationId": 3425,
+    "ProductId": 2583,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3426,
+    "ProductId": 2584,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "Ф2"
+  },
+  {
+    "ProductLocationId": 3427,
+    "ProductId": 422,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ч1 коробка 1"
+  },
+  {
+    "ProductLocationId": 3428,
+    "ProductId": 427,
+    "LocationId": 1,
+    "Count": 84,
+    "StorageCell": "Ч1 коробка 1"
+  },
+  {
+    "ProductLocationId": 3429,
+    "ProductId": 425,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ч1 коробка 1"
+  },
+  {
+    "ProductLocationId": 3430,
+    "ProductId": 426,
+    "LocationId": 1,
+    "Count": 54,
+    "StorageCell": "Ч1 коробка 1"
+  },
+  {
+    "ProductLocationId": 3431,
+    "ProductId": 452,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ч1 коробка 2"
+  },
+  {
+    "ProductLocationId": 3432,
+    "ProductId": 424,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ч1 коробка 2"
+  },
+  {
+    "ProductLocationId": 3433,
+    "ProductId": 421,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ч1 коробка 2"
+  },
+  {
+    "ProductLocationId": 3434,
+    "ProductId": 423,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": "Ч2 коробка 2"
+  },
+  {
+    "ProductLocationId": 3435,
+    "ProductId": 420,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ч2 коробка 2"
+  },
+  {
+    "ProductLocationId": 3436,
+    "ProductId": 428,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ч1 коробка 2"
+  },
+  {
+    "ProductLocationId": 3437,
+    "ProductId": 419,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ч1 коробка 2"
+  },
+  {
+    "ProductLocationId": 3438,
+    "ProductId": 1452,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3439,
+    "ProductId": 1521,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 3440,
+    "ProductId": 2585,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 3441,
+    "ProductId": 2586,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 3442,
+    "ProductId": 2587,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 3443,
+    "ProductId": 2541,
+    "LocationId": 1,
+    "Count": 26,
+    "StorageCell": "З4"
+  },
+  {
+    "ProductLocationId": 3444,
+    "ProductId": 2588,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "Ю3"
+  },
+  {
+    "ProductLocationId": 3445,
+    "ProductId": 2589,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "С1"
+  },
+  {
+    "ProductLocationId": 3446,
+    "ProductId": 2590,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И1"
+  },
+  {
+    "ProductLocationId": 3447,
+    "ProductId": 2591,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3448,
+    "ProductId": 2592,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3449,
+    "ProductId": 2593,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3450,
+    "ProductId": 2594,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "Ж3"
+  },
+  {
+    "ProductLocationId": 3451,
+    "ProductId": 2595,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3452,
+    "ProductId": 2596,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3453,
+    "ProductId": 2597,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 3454,
+    "ProductId": 2598,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3455,
+    "ProductId": 2599,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ж1"
+  },
+  {
+    "ProductLocationId": 3456,
+    "ProductId": 2600,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3457,
+    "ProductId": 2601,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3458,
+    "ProductId": 2602,
+    "LocationId": 1,
+    "Count": 22,
+    "StorageCell": "Б"
+  },
+  {
+    "ProductLocationId": 3459,
+    "ProductId": 2603,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З4"
+  },
+  {
+    "ProductLocationId": 3460,
+    "ProductId": 2604,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 3461,
+    "ProductId": 2605,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "C"
+  },
+  {
+    "ProductLocationId": 3462,
+    "ProductId": 2606,
+    "LocationId": 1,
+    "Count": 28,
+    "StorageCell": "З4 + коробка под стеллажем К"
+  },
+  {
+    "ProductLocationId": 3463,
+    "ProductId": 2607,
+    "LocationId": 1,
+    "Count": 776,
+    "StorageCell": "З5 + карт коробка 5 на полу"
+  },
+  {
+    "ProductLocationId": 3464,
+    "ProductId": 2608,
+    "LocationId": 1,
+    "Count": 87,
+    "StorageCell": "А"
+  },
+  {
+    "ProductLocationId": 3465,
+    "ProductId": 2609,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "А + в коробке под окном"
+  },
+  {
+    "ProductLocationId": 3466,
+    "ProductId": 2610,
+    "LocationId": 1,
+    "Count": 13,
+    "StorageCell": "Ч3 + 5шт за стелажем наверху рядом с вентами"
+  },
+  {
+    "ProductLocationId": 3467,
+    "ProductId": 2611,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Г2"
+  },
+  {
+    "ProductLocationId": 3468,
+    "ProductId": 2615,
+    "LocationId": 1,
+    "Count": 8,
+    "StorageCell": "П4"
+  },
+  {
+    "ProductLocationId": 3469,
+    "ProductId": 2616,
+    "LocationId": 1,
+    "Count": 7,
+    "StorageCell": "П2"
+  },
+  {
+    "ProductLocationId": 3470,
+    "ProductId": 2617,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "К3"
+  },
+  {
+    "ProductLocationId": 3471,
+    "ProductId": 2618,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 3472,
+    "ProductId": 2619,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Г4"
+  },
+  {
+    "ProductLocationId": 3473,
+    "ProductId": 2614,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3474,
+    "ProductId": 2613,
+    "LocationId": 1,
+    "Count": 110,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3475,
+    "ProductId": 2612,
+    "LocationId": 1,
+    "Count": 28,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3476,
+    "ProductId": 2620,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И6"
+  },
+  {
+    "ProductLocationId": 3477,
+    "ProductId": 2621,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3478,
+    "ProductId": 2622,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И2"
+  },
+  {
+    "ProductLocationId": 3479,
+    "ProductId": 1442,
+    "LocationId": 1,
+    "Count": 17,
+    "StorageCell": "Ю2 крючки"
+  },
+  {
+    "ProductLocationId": 3480,
+    "ProductId": 2623,
+    "LocationId": 1,
+    "Count": 9,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3481,
+    "ProductId": 2624,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3482,
+    "ProductId": 1440,
+    "LocationId": 1,
+    "Count": 14,
+    "StorageCell": "Ю3 крючки"
+  },
+  {
+    "ProductLocationId": 3483,
+    "ProductId": 1441,
+    "LocationId": 1,
+    "Count": 9,
+    "StorageCell": "Ю2 крючки"
+  },
+  {
+    "ProductLocationId": 3484,
+    "ProductId": 2625,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е3 (коробка вайланд)"
+  },
+  {
+    "ProductLocationId": 3485,
+    "ProductId": 447,
+    "LocationId": 1,
+    "Count": 68,
+    "StorageCell": "Х2"
+  },
+  {
+    "ProductLocationId": 3486,
+    "ProductId": 445,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Х2"
+  },
+  {
+    "ProductLocationId": 3487,
+    "ProductId": 448,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Х1"
+  },
+  {
+    "ProductLocationId": 3488,
+    "ProductId": 446,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Х1"
+  },
+  {
+    "ProductLocationId": 3489,
+    "ProductId": 2526,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Х1"
+  },
+  {
+    "ProductLocationId": 3490,
+    "ProductId": 2626,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Т6"
+  },
+  {
+    "ProductLocationId": 3491,
+    "ProductId": 2627,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З3"
+  },
+  {
+    "ProductLocationId": 3492,
+    "ProductId": 2628,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "T3"
+  },
+  {
+    "ProductLocationId": 3493,
+    "ProductId": 240,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ж4"
+  },
+  {
+    "ProductLocationId": 3494,
+    "ProductId": 2616,
+    "LocationId": 6,
+    "Count": 4,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 3495,
+    "ProductId": 2629,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И4"
+  },
+  {
+    "ProductLocationId": 4455,
+    "ProductId": 3599,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "А"
+  },
+  {
+    "ProductLocationId": 4456,
+    "ProductId": 3600,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "В"
+  },
+  {
+    "ProductLocationId": 4457,
+    "ProductId": 3601,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Д1"
+  },
+  {
+    "ProductLocationId": 4458,
+    "ProductId": 3602,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 4459,
+    "ProductId": 3603,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 4460,
+    "ProductId": 3604,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "И4"
+  },
+  {
+    "ProductLocationId": 4461,
+    "ProductId": 3605,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4462,
+    "ProductId": 3606,
+    "LocationId": 1,
+    "Count": 18,
+    "StorageCell": "Е2-3"
+  },
+  {
+    "ProductLocationId": 4463,
+    "ProductId": 3607,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Е3"
+  },
+  {
+    "ProductLocationId": 4464,
+    "ProductId": 3608,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 4465,
+    "ProductId": 3609,
+    "LocationId": 1,
+    "Count": 8,
+    "StorageCell": "З2"
+  },
+  {
+    "ProductLocationId": 4466,
+    "ProductId": 3610,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "И4"
+  },
+  {
+    "ProductLocationId": 4467,
+    "ProductId": 3611,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Т3"
+  },
+  {
+    "ProductLocationId": 4468,
+    "ProductId": 3612,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Ж1"
+  },
+  {
+    "ProductLocationId": 4469,
+    "ProductId": 3613,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Ж1"
+  },
+  {
+    "ProductLocationId": 4470,
+    "ProductId": 3614,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ж1"
+  },
+  {
+    "ProductLocationId": 4471,
+    "ProductId": 3615,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 4472,
+    "ProductId": 3619,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "на полу в коробке у стены"
+  },
+  {
+    "ProductLocationId": 4473,
+    "ProductId": 3616,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4474,
+    "ProductId": 3617,
+    "LocationId": 1,
+    "Count": 13,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4475,
+    "ProductId": 3620,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4476,
+    "ProductId": 3621,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4477,
+    "ProductId": 3622,
+    "LocationId": 1,
+    "Count": 8,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4478,
+    "ProductId": 3623,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4479,
+    "ProductId": 3624,
+    "LocationId": 1,
+    "Count": 86,
+    "StorageCell": "Х2"
+  },
+  {
+    "ProductLocationId": 4480,
+    "ProductId": 3625,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И6"
+  },
+  {
+    "ProductLocationId": 4481,
+    "ProductId": 3626,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Т5"
+  },
+  {
+    "ProductLocationId": 4482,
+    "ProductId": 259,
+    "LocationId": 1,
+    "Count": 9,
+    "StorageCell": "на полу карт. коробка 2"
+  },
+  {
+    "ProductLocationId": 4483,
+    "ProductId": 3627,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З4"
+  },
+  {
+    "ProductLocationId": 4484,
+    "ProductId": 3628,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 4485,
+    "ProductId": 3629,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Г4"
+  },
+  {
+    "ProductLocationId": 4486,
+    "ProductId": 3630,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З4"
+  },
+  {
+    "ProductLocationId": 4487,
+    "ProductId": 3631,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "З4"
+  },
+  {
+    "ProductLocationId": 4488,
+    "ProductId": 3632,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И1"
+  },
+  {
+    "ProductLocationId": 4489,
+    "ProductId": 3633,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4490,
+    "ProductId": 3635,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 4491,
+    "ProductId": 3634,
+    "LocationId": 1,
+    "Count": 17,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4492,
+    "ProductId": 3636,
+    "LocationId": 1,
+    "Count": 17,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 4493,
+    "ProductId": 3618,
+    "LocationId": 1,
+    "Count": 15,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4494,
+    "ProductId": 3637,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4495,
+    "ProductId": 3638,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "У4"
+  },
+  {
+    "ProductLocationId": 4496,
+    "ProductId": 2530,
+    "LocationId": 6,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4497,
+    "ProductId": 30,
+    "LocationId": 6,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4498,
+    "ProductId": 3639,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "У4"
+  },
+  {
+    "ProductLocationId": 4499,
+    "ProductId": 3640,
+    "LocationId": 1,
+    "Count": 10,
+    "StorageCell": "на полу карт коробка №6"
+  },
+  {
+    "ProductLocationId": 4500,
+    "ProductId": 3641,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "за стеллажем МНЕ04"
+  },
+  {
+    "ProductLocationId": 4501,
+    "ProductId": 3642,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "И4"
+  },
+  {
+    "ProductLocationId": 4502,
+    "ProductId": 3643,
+    "LocationId": 1,
+    "Count": 151,
+    "StorageCell": "в картонной коробке под полкой Э на полу + 1шт на крючках Ю2"
+  },
+  {
+    "ProductLocationId": 4503,
+    "ProductId": 3645,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": "А на крюках"
+  },
+  {
+    "ProductLocationId": 4504,
+    "ProductId": 3646,
+    "LocationId": 1,
+    "Count": 6,
+    "StorageCell": "А на крюках"
+  },
+  {
+    "ProductLocationId": 4505,
+    "ProductId": 317,
+    "LocationId": 1,
+    "Count": 7,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4506,
+    "ProductId": 3647,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "А"
+  },
+  {
+    "ProductLocationId": 4507,
+    "ProductId": 3648,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ш на крючке"
+  },
+  {
+    "ProductLocationId": 4508,
+    "ProductId": 3649,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4509,
+    "ProductId": 382,
+    "LocationId": 1,
+    "Count": 10,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4510,
+    "ProductId": 1448,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4511,
+    "ProductId": 3650,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "А на крючке"
+  },
+  {
+    "ProductLocationId": 4512,
+    "ProductId": 3652,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4513,
+    "ProductId": 3651,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4514,
+    "ProductId": 320,
+    "LocationId": 1,
+    "Count": 17,
+    "StorageCell": "крючок над полкой А"
+  },
+  {
+    "ProductLocationId": 4515,
+    "ProductId": 374,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4516,
+    "ProductId": 373,
+    "LocationId": 1,
+    "Count": 8,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4517,
+    "ProductId": 3653,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "А на крючке"
+  },
+  {
+    "ProductLocationId": 4518,
+    "ProductId": 243,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4519,
+    "ProductId": 3654,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Э"
+  },
+  {
+    "ProductLocationId": 4520,
+    "ProductId": 3655,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "окно"
+  },
+  {
+    "ProductLocationId": 4521,
+    "ProductId": 274,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И3"
+  },
+  {
+    "ProductLocationId": 4522,
+    "ProductId": 3656,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "на складе"
+  },
+  {
+    "ProductLocationId": 4523,
+    "ProductId": 3657,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "в карт коробке у чайника"
+  },
+  {
+    "ProductLocationId": 4524,
+    "ProductId": 2605,
+    "LocationId": 6,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4525,
+    "ProductId": 3658,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4526,
+    "ProductId": 3659,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4527,
+    "ProductId": 3660,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "сзади где шланги"
+  },
+  {
+    "ProductLocationId": 4528,
+    "ProductId": 3661,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4529,
+    "ProductId": 3662,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И1"
+  },
+  {
+    "ProductLocationId": 4530,
+    "ProductId": 3663,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4531,
+    "ProductId": 3664,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "под столом где печатают наклейки"
+  },
+  {
+    "ProductLocationId": 4532,
+    "ProductId": 1514,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ж1"
+  },
+  {
+    "ProductLocationId": 4533,
+    "ProductId": 3665,
+    "LocationId": 1,
+    "Count": 22,
+    "StorageCell": "А"
+  },
+  {
+    "ProductLocationId": 4534,
+    "ProductId": 3666,
+    "LocationId": 1,
+    "Count": 78,
+    "StorageCell": "А"
+  },
+  {
+    "ProductLocationId": 4535,
+    "ProductId": 3667,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4536,
+    "ProductId": 3668,
+    "LocationId": 1,
+    "Count": 12,
+    "StorageCell": "X1"
+  },
+  {
+    "ProductLocationId": 4537,
+    "ProductId": 3670,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Н2"
+  },
+  {
+    "ProductLocationId": 4538,
+    "ProductId": 3669,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Н2"
+  },
+  {
+    "ProductLocationId": 4539,
+    "ProductId": 3671,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4540,
+    "ProductId": 3672,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4541,
+    "ProductId": 3673,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4542,
+    "ProductId": 3674,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "У1"
+  },
+  {
+    "ProductLocationId": 4543,
+    "ProductId": 3675,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "У1"
+  },
+  {
+    "ProductLocationId": 4544,
+    "ProductId": 3676,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "У4"
+  },
+  {
+    "ProductLocationId": 4545,
+    "ProductId": 3677,
+    "LocationId": 1,
+    "Count": 10,
+    "StorageCell": "И1"
+  },
+  {
+    "ProductLocationId": 4546,
+    "ProductId": 3678,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Т3"
+  },
+  {
+    "ProductLocationId": 4547,
+    "ProductId": 3679,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4548,
+    "ProductId": 3680,
+    "LocationId": 1,
+    "Count": 79,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4549,
+    "ProductId": 3681,
+    "LocationId": 1,
+    "Count": 44,
+    "StorageCell": "У5 5шт + 45 в коробках за стеллажем"
+  },
+  {
+    "ProductLocationId": 4550,
+    "ProductId": 3682,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 4551,
+    "ProductId": 3683,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "T2"
+  },
+  {
+    "ProductLocationId": 4552,
+    "ProductId": 3684,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 4553,
+    "ProductId": 3685,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Х1"
+  },
+  {
+    "ProductLocationId": 4554,
+    "ProductId": 3686,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "{1"
+  },
+  {
+    "ProductLocationId": 4555,
+    "ProductId": 3687,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Х1"
+  },
+  {
+    "ProductLocationId": 4556,
+    "ProductId": 3688,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4557,
+    "ProductId": 3690,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "под столом"
+  },
+  {
+    "ProductLocationId": 4558,
+    "ProductId": 3691,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "под столом"
+  },
+  {
+    "ProductLocationId": 4559,
+    "ProductId": 3692,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "под столом"
+  },
+  {
+    "ProductLocationId": 4560,
+    "ProductId": 1518,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ю"
+  },
+  {
+    "ProductLocationId": 4561,
+    "ProductId": 3693,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ю"
+  },
+  {
+    "ProductLocationId": 4562,
+    "ProductId": 3694,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Э"
+  },
+  {
+    "ProductLocationId": 4563,
+    "ProductId": 3695,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Э"
+  },
+  {
+    "ProductLocationId": 4564,
+    "ProductId": 3696,
+    "LocationId": 1,
+    "Count": 9,
+    "StorageCell": "Э"
+  },
+  {
+    "ProductLocationId": 4565,
+    "ProductId": 3697,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Э"
+  },
+  {
+    "ProductLocationId": 4566,
+    "ProductId": 3703,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4567,
+    "ProductId": 3698,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4568,
+    "ProductId": 3699,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4569,
+    "ProductId": 3700,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4570,
+    "ProductId": 3701,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4571,
+    "ProductId": 3704,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4572,
+    "ProductId": 3702,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4573,
+    "ProductId": 3689,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4574,
+    "ProductId": 3705,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Х1"
+  },
+  {
+    "ProductLocationId": 4575,
+    "ProductId": 2606,
+    "LocationId": 6,
+    "Count": 5,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4576,
+    "ProductId": 3706,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4577,
+    "ProductId": 3707,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4578,
+    "ProductId": 3708,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 4579,
+    "ProductId": 3709,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Т8"
+  },
+  {
+    "ProductLocationId": 4580,
+    "ProductId": 319,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4581,
+    "ProductId": 3710,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "К1"
+  },
+  {
+    "ProductLocationId": 4582,
+    "ProductId": 3711,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Е3"
+  },
+  {
+    "ProductLocationId": 4583,
+    "ProductId": 3712,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "За стеллажами"
+  },
+  {
+    "ProductLocationId": 4584,
+    "ProductId": 3714,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4585,
+    "ProductId": 3713,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4586,
+    "ProductId": 3715,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4587,
+    "ProductId": 3717,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4588,
+    "ProductId": 3716,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4589,
+    "ProductId": 3718,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4590,
+    "ProductId": 3719,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4591,
+    "ProductId": 3720,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "А"
+  },
+  {
+    "ProductLocationId": 4592,
+    "ProductId": 3721,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4593,
+    "ProductId": 3722,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "А крючки"
+  },
+  {
+    "ProductLocationId": 4594,
+    "ProductId": 3723,
+    "LocationId": 1,
+    "Count": 24,
+    "StorageCell": "З5"
+  },
+  {
+    "ProductLocationId": 4595,
+    "ProductId": 3724,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "А"
+  },
+  {
+    "ProductLocationId": 4596,
+    "ProductId": 275,
+    "LocationId": 6,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4597,
+    "ProductId": 2608,
+    "LocationId": 6,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4598,
+    "ProductId": 2609,
+    "LocationId": 6,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4599,
+    "ProductId": 2618,
+    "LocationId": 6,
+    "Count": 10,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4600,
+    "ProductId": 2615,
+    "LocationId": 6,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4601,
+    "ProductId": 3725,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4602,
+    "ProductId": 3726,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "У3"
+  },
+  {
+    "ProductLocationId": 4603,
+    "ProductId": 3727,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "У4"
+  },
+  {
+    "ProductLocationId": 4604,
+    "ProductId": 3728,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ц4"
+  },
+  {
+    "ProductLocationId": 4605,
+    "ProductId": 3729,
+    "LocationId": 1,
+    "Count": 48,
+    "StorageCell": "Х3"
+  },
+  {
+    "ProductLocationId": 4606,
+    "ProductId": 3731,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "У4"
+  },
+  {
+    "ProductLocationId": 4607,
+    "ProductId": 3732,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "О5"
+  },
+  {
+    "ProductLocationId": 4608,
+    "ProductId": 3733,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ж5"
+  },
+  {
+    "ProductLocationId": 4609,
+    "ProductId": 3735,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4610,
+    "ProductId": 3736,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "С"
+  },
+  {
+    "ProductLocationId": 4611,
+    "ProductId": 3737,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "С"
+  },
+  {
+    "ProductLocationId": 4612,
+    "ProductId": 3738,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "A крючок"
+  },
+  {
+    "ProductLocationId": 4613,
+    "ProductId": 3739,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "X3"
+  },
+  {
+    "ProductLocationId": 4614,
+    "ProductId": 3741,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 4615,
+    "ProductId": 262,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4616,
+    "ProductId": 3743,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "К3"
+  },
+  {
+    "ProductLocationId": 4617,
+    "ProductId": 3744,
+    "LocationId": 1,
+    "Count": 14,
+    "StorageCell": "Ж3"
+  },
+  {
+    "ProductLocationId": 4618,
+    "ProductId": 3745,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 4619,
+    "ProductId": 3746,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4620,
+    "ProductId": 3747,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4621,
+    "ProductId": 3748,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4622,
+    "ProductId": 3749,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4623,
+    "ProductId": 3753,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "П5"
+  },
+  {
+    "ProductLocationId": 4624,
+    "ProductId": 3759,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": "Т1"
+  },
+  {
+    "ProductLocationId": 4625,
+    "ProductId": 3754,
+    "LocationId": 1,
+    "Count": 10,
+    "StorageCell": "Р1"
+  },
+  {
+    "ProductLocationId": 4626,
+    "ProductId": 3755,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "Т4"
+  },
+  {
+    "ProductLocationId": 4627,
+    "ProductId": 3756,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "И5"
+  },
+  {
+    "ProductLocationId": 4628,
+    "ProductId": 3757,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И5"
+  },
+  {
+    "ProductLocationId": 4629,
+    "ProductId": 3758,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И5"
+  },
+  {
+    "ProductLocationId": 4630,
+    "ProductId": 1488,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4631,
+    "ProductId": 182,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 4632,
+    "ProductId": 45,
+    "LocationId": 6,
+    "Count": 5,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4633,
+    "ProductId": 45,
+    "LocationId": 7,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4634,
+    "ProductId": 3762,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4635,
+    "ProductId": 3763,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4636,
+    "ProductId": 3764,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4637,
+    "ProductId": 3765,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": "Х1"
+  },
+  {
+    "ProductLocationId": 4638,
+    "ProductId": 418,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4639,
+    "ProductId": 411,
+    "LocationId": 1,
+    "Count": 9,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4640,
+    "ProductId": 3773,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "А крючки"
+  },
+  {
+    "ProductLocationId": 4641,
+    "ProductId": 3779,
+    "LocationId": 1,
+    "Count": 7,
+    "StorageCell": "Ц3"
+  },
+  {
+    "ProductLocationId": 4642,
+    "ProductId": 3777,
+    "LocationId": 1,
+    "Count": 48,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4643,
+    "ProductId": 3750,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4644,
+    "ProductId": 3751,
+    "LocationId": 1,
+    "Count": 10,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 4645,
+    "ProductId": 3752,
+    "LocationId": 1,
+    "Count": 27,
+    "StorageCell": "на полу под полкой Г4"
+  },
+  {
+    "ProductLocationId": 4646,
+    "ProductId": 3760,
+    "LocationId": 1,
+    "Count": 7,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4647,
+    "ProductId": 3767,
+    "LocationId": 1,
+    "Count": 19,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 4648,
+    "ProductId": 3768,
+    "LocationId": 1,
+    "Count": 10,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4649,
+    "ProductId": 3769,
+    "LocationId": 1,
+    "Count": 8,
+    "StorageCell": "на полу в картонной коробке у двери"
+  },
+  {
+    "ProductLocationId": 4650,
+    "ProductId": 3770,
+    "LocationId": 1,
+    "Count": 47,
+    "StorageCell": "Е5"
+  },
+  {
+    "ProductLocationId": 4651,
+    "ProductId": 3771,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4652,
+    "ProductId": 3772,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4653,
+    "ProductId": 368,
+    "LocationId": 1,
+    "Count": 6,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4654,
+    "ProductId": 3774,
+    "LocationId": 1,
+    "Count": 20,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4655,
+    "ProductId": 3775,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4656,
+    "ProductId": 3776,
+    "LocationId": 1,
+    "Count": 10,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4657,
+    "ProductId": 3778,
+    "LocationId": 1,
+    "Count": 25,
+    "StorageCell": "З(1-2)"
+  },
+  {
+    "ProductLocationId": 4658,
+    "ProductId": 3766,
+    "LocationId": 1,
+    "Count": 10,
+    "StorageCell": "А"
+  },
+  {
+    "ProductLocationId": 4659,
+    "ProductId": 3780,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И1"
+  },
+  {
+    "ProductLocationId": 4660,
+    "ProductId": 3781,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "И1"
+  },
+  {
+    "ProductLocationId": 4661,
+    "ProductId": 453,
+    "LocationId": 6,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4662,
+    "ProductId": 3782,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4663,
+    "ProductId": 3783,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И5"
+  },
+  {
+    "ProductLocationId": 4664,
+    "ProductId": 3784,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "У5"
+  },
+  {
+    "ProductLocationId": 4665,
+    "ProductId": 3785,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "И3"
+  },
+  {
+    "ProductLocationId": 4666,
+    "ProductId": 120,
+    "LocationId": 9,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4667,
+    "ProductId": 2538,
+    "LocationId": 9,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4668,
+    "ProductId": 3786,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Г1"
+  },
+  {
+    "ProductLocationId": 4669,
+    "ProductId": 3787,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4670,
+    "ProductId": 3788,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4671,
+    "ProductId": 3789,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4672,
+    "ProductId": 3790,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4673,
+    "ProductId": 3791,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4674,
+    "ProductId": 3792,
+    "LocationId": 1,
+    "Count": 6,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4675,
+    "ProductId": 3793,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "в коробке под стеллажем К"
+  },
+  {
+    "ProductLocationId": 4676,
+    "ProductId": 355,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "О2"
+  },
+  {
+    "ProductLocationId": 4677,
+    "ProductId": 3794,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ж3"
+  },
+  {
+    "ProductLocationId": 4678,
+    "ProductId": 3795,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ю1 крючки"
+  },
+  {
+    "ProductLocationId": 4679,
+    "ProductId": 3796,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4680,
+    "ProductId": 3797,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З5"
+  },
+  {
+    "ProductLocationId": 4681,
+    "ProductId": 3798,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Х1"
+  },
+  {
+    "ProductLocationId": 4682,
+    "ProductId": 3799,
+    "LocationId": 1,
+    "Count": 6,
+    "StorageCell": "Ю1 крючки"
+  },
+  {
+    "ProductLocationId": 4683,
+    "ProductId": 3800,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 4684,
+    "ProductId": 3801,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": "Б"
+  },
+  {
+    "ProductLocationId": 4685,
+    "ProductId": 3802,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "С3"
+  },
+  {
+    "ProductLocationId": 4686,
+    "ProductId": 3803,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4687,
+    "ProductId": 3804,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4688,
+    "ProductId": 3805,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4689,
+    "ProductId": 3806,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4690,
+    "ProductId": 3808,
+    "LocationId": 1,
+    "Count": 40,
+    "StorageCell": "Ц1"
+  },
+  {
+    "ProductLocationId": 4691,
+    "ProductId": 3807,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 4692,
+    "ProductId": 3809,
+    "LocationId": 1,
+    "Count": 6,
+    "StorageCell": "Ц3"
+  },
+  {
+    "ProductLocationId": 4693,
+    "ProductId": 3810,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ю1 крючки"
+  },
+  {
+    "ProductLocationId": 4694,
+    "ProductId": 3811,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "У3-4"
+  },
+  {
+    "ProductLocationId": 4695,
+    "ProductId": 3683,
+    "LocationId": 9,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4696,
+    "ProductId": 3618,
+    "LocationId": 9,
+    "Count": 4,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4697,
+    "ProductId": 3812,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4698,
+    "ProductId": 2610,
+    "LocationId": 6,
+    "Count": 5,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4699,
+    "ProductId": 3813,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Х3"
+  },
+  {
+    "ProductLocationId": 4700,
+    "ProductId": 2614,
+    "LocationId": 10,
+    "Count": 5,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4701,
+    "ProductId": 3815,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4702,
+    "ProductId": 3814,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4703,
+    "ProductId": 3817,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Ж4"
+  },
+  {
+    "ProductLocationId": 4704,
+    "ProductId": 3818,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ж4"
+  },
+  {
+    "ProductLocationId": 4705,
+    "ProductId": 3816,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "О1"
+  },
+  {
+    "ProductLocationId": 4706,
+    "ProductId": 3796,
+    "LocationId": 9,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4707,
+    "ProductId": 3819,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4708,
+    "ProductId": 1500,
+    "LocationId": 9,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4709,
+    "ProductId": 3820,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ж3"
+  },
+  {
+    "ProductLocationId": 4710,
+    "ProductId": 3687,
+    "LocationId": 10,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4711,
+    "ProductId": 3821,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 4712,
+    "ProductId": 51,
+    "LocationId": 6,
+    "Count": 12,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4713,
+    "ProductId": 3823,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4714,
+    "ProductId": 3822,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4715,
+    "ProductId": 3750,
+    "LocationId": 9,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4716,
+    "ProductId": 134,
+    "LocationId": 9,
+    "Count": 20,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4717,
+    "ProductId": 3824,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Е4"
+  },
+  {
+    "ProductLocationId": 4718,
+    "ProductId": 3825,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ю2"
+  },
+  {
+    "ProductLocationId": 4719,
+    "ProductId": 3826,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4720,
+    "ProductId": 3827,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4721,
+    "ProductId": 3829,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Ф1"
+  },
+  {
+    "ProductLocationId": 4722,
+    "ProductId": 3828,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4723,
+    "ProductId": 1464,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "У1"
+  },
+  {
+    "ProductLocationId": 4724,
+    "ProductId": 48,
+    "LocationId": 6,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4725,
+    "ProductId": 1470,
+    "LocationId": 9,
+    "Count": 3,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4726,
+    "ProductId": 3830,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "А"
+  },
+  {
+    "ProductLocationId": 4727,
+    "ProductId": 3831,
+    "LocationId": 1,
+    "Count": 9,
+    "StorageCell": "А"
+  },
+  {
+    "ProductLocationId": 4728,
+    "ProductId": 3832,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Г2"
+  },
+  {
+    "ProductLocationId": 4729,
+    "ProductId": 3833,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": "У5 3шт + 27 в коробках за стеллажем"
+  },
+  {
+    "ProductLocationId": 4730,
+    "ProductId": 3834,
+    "LocationId": 1,
+    "Count": 99,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4731,
+    "ProductId": 3835,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4732,
+    "ProductId": 3836,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "И4"
+  },
+  {
+    "ProductLocationId": 4733,
+    "ProductId": 3837,
+    "LocationId": 1,
+    "Count": 51,
+    "StorageCell": "Е4 коробка Ariston"
+  },
+  {
+    "ProductLocationId": 4734,
+    "ProductId": 278,
+    "LocationId": 6,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4735,
+    "ProductId": 2611,
+    "LocationId": 6,
+    "Count": 5,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4736,
+    "ProductId": 3681,
+    "LocationId": 9,
+    "Count": 5,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4737,
+    "ProductId": 3833,
+    "LocationId": 9,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4738,
+    "ProductId": 3617,
+    "LocationId": 9,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4739,
+    "ProductId": 244,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4740,
+    "ProductId": 3838,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4741,
+    "ProductId": 3839,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4742,
+    "ProductId": 447,
+    "LocationId": 9,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4743,
+    "ProductId": 3840,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": "Ж2"
+  },
+  {
+    "ProductLocationId": 4744,
+    "ProductId": 3841,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Е2"
+  },
+  {
+    "ProductLocationId": 4745,
+    "ProductId": 3842,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "А"
+  },
+  {
+    "ProductLocationId": 4746,
+    "ProductId": 3761,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Р3"
+  },
+  {
+    "ProductLocationId": 4747,
+    "ProductId": 3843,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Т5"
+  },
+  {
+    "ProductLocationId": 4748,
+    "ProductId": 3844,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4749,
+    "ProductId": 3845,
+    "LocationId": 1,
+    "Count": 6,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4750,
+    "ProductId": 3846,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4751,
+    "ProductId": 2617,
+    "LocationId": 6,
+    "Count": 10,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4752,
+    "ProductId": 3750,
+    "LocationId": 6,
+    "Count": 4,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4753,
+    "ProductId": 3847,
+    "LocationId": 1,
+    "Count": 6,
+    "StorageCell": "Е2"
+  },
+  {
+    "ProductLocationId": 4754,
+    "ProductId": 3848,
+    "LocationId": 1,
+    "Count": 20,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 4755,
+    "ProductId": 3849,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4756,
+    "ProductId": 1534,
+    "LocationId": 9,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4757,
+    "ProductId": 3847,
+    "LocationId": 9,
+    "Count": 4,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4758,
+    "ProductId": 3850,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ф3"
+  },
+  {
+    "ProductLocationId": 4759,
+    "ProductId": 3851,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "в коробке под стеллажем К"
+  },
+  {
+    "ProductLocationId": 4760,
+    "ProductId": 3852,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Е1"
+  },
+  {
+    "ProductLocationId": 4761,
+    "ProductId": 3618,
+    "LocationId": 6,
+    "Count": 11,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4762,
+    "ProductId": 3853,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4763,
+    "ProductId": 3854,
+    "LocationId": 1,
+    "Count": 10,
+    "StorageCell": "И2"
+  },
+  {
+    "ProductLocationId": 4764,
+    "ProductId": 3855,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Ж2"
+  },
+  {
+    "ProductLocationId": 4765,
+    "ProductId": 3856,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И1"
+  },
+  {
+    "ProductLocationId": 4766,
+    "ProductId": 3857,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": "Ц1"
+  },
+  {
+    "ProductLocationId": 4767,
+    "ProductId": 3858,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "О1"
+  },
+  {
+    "ProductLocationId": 4768,
+    "ProductId": 3859,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "НА ПОЛУ 5"
+  },
+  {
+    "ProductLocationId": 4769,
+    "ProductId": 3751,
+    "LocationId": 9,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4770,
+    "ProductId": 3860,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4771,
+    "ProductId": 126,
+    "LocationId": 9,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4772,
+    "ProductId": 3636,
+    "LocationId": 9,
+    "Count": 8,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4773,
+    "ProductId": 252,
+    "LocationId": 9,
+    "Count": 12,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4774,
+    "ProductId": 3862,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "И4"
+  },
+  {
+    "ProductLocationId": 4775,
+    "ProductId": 3862,
+    "LocationId": 6,
+    "Count": 15,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4776,
+    "ProductId": 17,
+    "LocationId": 6,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4777,
+    "ProductId": 1484,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4778,
+    "ProductId": 3863,
+    "LocationId": 1,
+    "Count": 9,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4779,
+    "ProductId": 3861,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4780,
+    "ProductId": 3864,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4781,
+    "ProductId": 3866,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Р1"
+  },
+  {
+    "ProductLocationId": 4782,
+    "ProductId": 3867,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Т5"
+  },
+  {
+    "ProductLocationId": 4783,
+    "ProductId": 3868,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Т6"
+  },
+  {
+    "ProductLocationId": 4784,
+    "ProductId": 3869,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "З2"
+  },
+  {
+    "ProductLocationId": 4785,
+    "ProductId": 3870,
+    "LocationId": 1,
+    "Count": 23,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4786,
+    "ProductId": 3871,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4787,
+    "ProductId": 3872,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4788,
+    "ProductId": 3873,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4789,
+    "ProductId": 242,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З1 - накладные"
+  },
+  {
+    "ProductLocationId": 4790,
+    "ProductId": 3874,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Ш крюки"
+  },
+  {
+    "ProductLocationId": 4791,
+    "ProductId": 3865,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Т6"
+  },
+  {
+    "ProductLocationId": 4792,
+    "ProductId": 7,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4793,
+    "ProductId": 160,
+    "LocationId": 9,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4794,
+    "ProductId": 2606,
+    "LocationId": 9,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4795,
+    "ProductId": 196,
+    "LocationId": 9,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 4796,
+    "ProductId": 3834,
+    "LocationId": 9,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 5790,
+    "ProductId": 1451,
+    "LocationId": 9,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 5791,
+    "ProductId": 2616,
+    "LocationId": 9,
+    "Count": 5,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 5792,
+    "ProductId": 4875,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 5793,
+    "ProductId": 4876,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 5794,
+    "ProductId": 4877,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "С1"
+  },
+  {
+    "ProductLocationId": 5795,
+    "ProductId": 4879,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "З2"
+  },
+  {
+    "ProductLocationId": 5796,
+    "ProductId": 4880,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 5797,
+    "ProductId": 4878,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 5798,
+    "ProductId": 149,
+    "LocationId": 9,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 5799,
+    "ProductId": 4881,
+    "LocationId": 1,
+    "Count": 10,
+    "StorageCell": "А крючки"
+  },
+  {
+    "ProductLocationId": 5800,
+    "ProductId": 4882,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 5801,
+    "ProductId": 4883,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 5802,
+    "ProductId": 4884,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 5803,
+    "ProductId": 4885,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Д1"
+  },
+  {
+    "ProductLocationId": 5804,
+    "ProductId": 4886,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 5805,
+    "ProductId": 4887,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И1"
+  },
+  {
+    "ProductLocationId": 5806,
+    "ProductId": 4889,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 5807,
+    "ProductId": 4890,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "Ф 1-2"
+  },
+  {
+    "ProductLocationId": 5808,
+    "ProductId": 4891,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 5809,
+    "ProductId": 4892,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Ч2"
+  },
+  {
+    "ProductLocationId": 5810,
+    "ProductId": 4893,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И6"
+  },
+  {
+    "ProductLocationId": 5811,
+    "ProductId": 4895,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Ю1 крючки"
+  },
+  {
+    "ProductLocationId": 5812,
+    "ProductId": 2612,
+    "LocationId": 9,
+    "Count": 10,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 5813,
+    "ProductId": 4894,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "за стелажем под потолком"
+  },
+  {
+    "ProductLocationId": 5814,
+    "ProductId": 2605,
+    "LocationId": 9,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6790,
+    "ProductId": 5874,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И1"
+  },
+  {
+    "ProductLocationId": 6791,
+    "ProductId": 5875,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "О3"
+  },
+  {
+    "ProductLocationId": 6792,
+    "ProductId": 45,
+    "LocationId": 9,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6793,
+    "ProductId": 1449,
+    "LocationId": 9,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6794,
+    "ProductId": 5877,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "на стулле"
+  },
+  {
+    "ProductLocationId": 6795,
+    "ProductId": 159,
+    "LocationId": 9,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6796,
+    "ProductId": 5876,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6797,
+    "ProductId": 5878,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6798,
+    "ProductId": 5879,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6799,
+    "ProductId": 326,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6800,
+    "ProductId": 5880,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "У2"
+  },
+  {
+    "ProductLocationId": 6801,
+    "ProductId": 5881,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6802,
+    "ProductId": 391,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6803,
+    "ProductId": 5882,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6804,
+    "ProductId": 408,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6805,
+    "ProductId": 5883,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6806,
+    "ProductId": 5884,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6807,
+    "ProductId": 5885,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6808,
+    "ProductId": 5886,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "У4"
+  },
+  {
+    "ProductLocationId": 6809,
+    "ProductId": 5887,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "К3"
+  },
+  {
+    "ProductLocationId": 6810,
+    "ProductId": 296,
+    "LocationId": 9,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6811,
+    "ProductId": 348,
+    "LocationId": 9,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6812,
+    "ProductId": 5888,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6813,
+    "ProductId": 3621,
+    "LocationId": 9,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6814,
+    "ProductId": 1439,
+    "LocationId": 9,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6815,
+    "ProductId": 3730,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6816,
+    "ProductId": 5889,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6817,
+    "ProductId": 5890,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Ш"
+  },
+  {
+    "ProductLocationId": 6818,
+    "ProductId": 4,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6819,
+    "ProductId": 5891,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6820,
+    "ProductId": 4874,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Г1"
+  },
+  {
+    "ProductLocationId": 6821,
+    "ProductId": 5892,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "А"
+  },
+  {
+    "ProductLocationId": 6822,
+    "ProductId": 5893,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 6823,
+    "ProductId": 5894,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7818,
+    "ProductId": 6892,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7819,
+    "ProductId": 6891,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "И6-7"
+  },
+  {
+    "ProductLocationId": 7820,
+    "ProductId": 249,
+    "LocationId": 9,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7821,
+    "ProductId": 383,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7822,
+    "ProductId": 6905,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "У7"
+  },
+  {
+    "ProductLocationId": 7823,
+    "ProductId": 359,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7824,
+    "ProductId": 6909,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "O5"
+  },
+  {
+    "ProductLocationId": 7825,
+    "ProductId": 6910,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7826,
+    "ProductId": 6911,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7827,
+    "ProductId": 2538,
+    "LocationId": 6,
+    "Count": 32,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7828,
+    "ProductId": 6912,
+    "LocationId": 1,
+    "Count": 11,
+    "StorageCell": "А"
+  },
+  {
+    "ProductLocationId": 7829,
+    "ProductId": 6913,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "А"
+  },
+  {
+    "ProductLocationId": 7830,
+    "ProductId": 6915,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7831,
+    "ProductId": 6903,
+    "LocationId": 1,
+    "Count": 10,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7832,
+    "ProductId": 6894,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7833,
+    "ProductId": 6896,
+    "LocationId": 1,
+    "Count": 30,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7834,
+    "ProductId": 6897,
+    "LocationId": 1,
+    "Count": 10,
+    "StorageCell": "Е2"
+  },
+  {
+    "ProductLocationId": 7835,
+    "ProductId": 6898,
+    "LocationId": 1,
+    "Count": 10,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7836,
+    "ProductId": 6899,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "И4"
+  },
+  {
+    "ProductLocationId": 7837,
+    "ProductId": 6900,
+    "LocationId": 1,
+    "Count": 30,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7838,
+    "ProductId": 6893,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7839,
+    "ProductId": 6902,
+    "LocationId": 1,
+    "Count": 25,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7840,
+    "ProductId": 6904,
+    "LocationId": 1,
+    "Count": 30,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7841,
+    "ProductId": 6895,
+    "LocationId": 1,
+    "Count": 30,
+    "StorageCell": "на полу картонная коробка №6"
+  },
+  {
+    "ProductLocationId": 7842,
+    "ProductId": 6906,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7843,
+    "ProductId": 6907,
+    "LocationId": 1,
+    "Count": 29,
+    "StorageCell": "З4"
+  },
+  {
+    "ProductLocationId": 7844,
+    "ProductId": 6908,
+    "LocationId": 1,
+    "Count": 13,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7845,
+    "ProductId": 6914,
+    "LocationId": 1,
+    "Count": 19,
+    "StorageCell": "З2"
+  },
+  {
+    "ProductLocationId": 7846,
+    "ProductId": 6916,
+    "LocationId": 1,
+    "Count": 24,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7847,
+    "ProductId": 6901,
+    "LocationId": 1,
+    "Count": 13,
+    "StorageCell": "З2"
+  },
+  {
+    "ProductLocationId": 7848,
+    "ProductId": 6917,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7849,
+    "ProductId": 6918,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7850,
+    "ProductId": 6919,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7851,
+    "ProductId": 3737,
+    "LocationId": 6,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7852,
+    "ProductId": 293,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "И"
+  },
+  {
+    "ProductLocationId": 7853,
+    "ProductId": 6921,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "А"
+  },
+  {
+    "ProductLocationId": 7854,
+    "ProductId": 6922,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Х3"
+  },
+  {
+    "ProductLocationId": 7855,
+    "ProductId": 6923,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7856,
+    "ProductId": 6924,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7857,
+    "ProductId": 6925,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З2 коробка погружных"
+  },
+  {
+    "ProductLocationId": 7858,
+    "ProductId": 6926,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7859,
+    "ProductId": 6927,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7860,
+    "ProductId": 6928,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7861,
+    "ProductId": 6929,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7862,
+    "ProductId": 6930,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "О3"
+  },
+  {
+    "ProductLocationId": 7863,
+    "ProductId": 6931,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "И3"
+  },
+  {
+    "ProductLocationId": 7864,
+    "ProductId": 6932,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7865,
+    "ProductId": 6934,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "O3"
+  },
+  {
+    "ProductLocationId": 7866,
+    "ProductId": 6935,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "К2"
+  },
+  {
+    "ProductLocationId": 7867,
+    "ProductId": 6936,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "C"
+  },
+  {
+    "ProductLocationId": 7868,
+    "ProductId": 6937,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З3"
+  },
+  {
+    "ProductLocationId": 7869,
+    "ProductId": 6938,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Б"
+  },
+  {
+    "ProductLocationId": 7870,
+    "ProductId": 6939,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7871,
+    "ProductId": 6944,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7872,
+    "ProductId": 6945,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7873,
+    "ProductId": 6946,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7874,
+    "ProductId": 6940,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Х2"
+  },
+  {
+    "ProductLocationId": 7875,
+    "ProductId": 6941,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7876,
+    "ProductId": 6942,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "И1-2"
+  },
+  {
+    "ProductLocationId": 7877,
+    "ProductId": 6943,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7878,
+    "ProductId": 6947,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 7879,
+    "ProductId": 6948,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "И1"
+  },
+  {
+    "ProductLocationId": 7880,
+    "ProductId": 23,
+    "LocationId": 6,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7881,
+    "ProductId": 25,
+    "LocationId": 6,
+    "Count": 2,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7882,
+    "ProductId": 121,
+    "LocationId": 6,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7883,
+    "ProductId": 6949,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 7884,
+    "ProductId": 6951,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7885,
+    "ProductId": 6950,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7886,
+    "ProductId": 6952,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "У4"
+  },
+  {
+    "ProductLocationId": 7887,
+    "ProductId": 6954,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "А крючки"
+  },
+  {
+    "ProductLocationId": 7888,
+    "ProductId": 6955,
+    "LocationId": 1,
+    "Count": 13,
+    "StorageCell": "Ф3"
+  },
+  {
+    "ProductLocationId": 7889,
+    "ProductId": 6956,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ш крючки"
+  },
+  {
+    "ProductLocationId": 7890,
+    "ProductId": 6957,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Ш крючки"
+  },
+  {
+    "ProductLocationId": 7891,
+    "ProductId": 6958,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Ш крючки"
+  },
+  {
+    "ProductLocationId": 7892,
+    "ProductId": 6959,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "А крючки"
+  },
+  {
+    "ProductLocationId": 7893,
+    "ProductId": 6960,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "А крючки"
+  },
+  {
+    "ProductLocationId": 7894,
+    "ProductId": 6961,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "А крючки"
+  },
+  {
+    "ProductLocationId": 7895,
+    "ProductId": 6953,
+    "LocationId": 1,
+    "Count": 25,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7896,
+    "ProductId": 6953,
+    "LocationId": 6,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7897,
+    "ProductId": 6962,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7898,
+    "ProductId": 6963,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7899,
+    "ProductId": 6964,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7900,
+    "ProductId": 6965,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "З1"
+  },
+  {
+    "ProductLocationId": 7901,
+    "ProductId": 6966,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Т5"
+  },
+  {
+    "ProductLocationId": 7902,
+    "ProductId": 6967,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": "Ф4"
+  },
+  {
+    "ProductLocationId": 7903,
+    "ProductId": 6968,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "О3"
+  },
+  {
+    "ProductLocationId": 7904,
+    "ProductId": 6969,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "О3"
+  },
+  {
+    "ProductLocationId": 7905,
+    "ProductId": 6970,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Ж3"
+  },
+  {
+    "ProductLocationId": 7906,
+    "ProductId": 6971,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7907,
+    "ProductId": 6972,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7908,
+    "ProductId": 6973,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7909,
+    "ProductId": 6974,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Х1"
+  },
+  {
+    "ProductLocationId": 7910,
+    "ProductId": 6975,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "Р"
+  },
+  {
+    "ProductLocationId": 7911,
+    "ProductId": 6976,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": "H"
+  },
+  {
+    "ProductLocationId": 7912,
+    "ProductId": 6977,
+    "LocationId": 1,
+    "Count": 100,
+    "StorageCell": "на полу картонная коробка №6"
+  },
+  {
+    "ProductLocationId": 7913,
+    "ProductId": 6978,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": "на полу картонная коробка №6"
+  },
+  {
+    "ProductLocationId": 7914,
+    "ProductId": 6979,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "на полу картонная коробка №6"
+  },
+  {
+    "ProductLocationId": 7915,
+    "ProductId": 6980,
+    "LocationId": 1,
+    "Count": 5,
+    "StorageCell": "на полу картонная коробка №6"
+  },
+  {
+    "ProductLocationId": 7916,
+    "ProductId": 6981,
+    "LocationId": 1,
+    "Count": 17,
+    "StorageCell": "А"
+  },
+  {
+    "ProductLocationId": 7917,
+    "ProductId": 264,
+    "LocationId": 1,
+    "Count": 2,
+    "StorageCell": "Н3"
+  },
+  {
+    "ProductLocationId": 7918,
+    "ProductId": 6982,
+    "LocationId": 1,
+    "Count": 3,
+    "StorageCell": "Н3"
+  },
+  {
+    "ProductLocationId": 7919,
+    "ProductId": 6983,
+    "LocationId": 1,
+    "Count": 4,
+    "StorageCell": "А"
+  },
+  {
+    "ProductLocationId": 7920,
+    "ProductId": 6984,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7921,
+    "ProductId": 279,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7922,
+    "ProductId": 6985,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 7923,
+    "ProductId": 6986,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 8919,
+    "ProductId": 7983,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 8920,
+    "ProductId": 7984,
+    "LocationId": 1,
+    "Count": 7,
+    "StorageCell": "З2"
+  },
+  {
+    "ProductLocationId": 8921,
+    "ProductId": 7985,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 8922,
+    "ProductId": 7986,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 8923,
+    "ProductId": 215,
+    "LocationId": 1,
+    "Count": 95,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 8924,
+    "ProductId": 7987,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 9924,
+    "ProductId": 2605,
+    "LocationId": 7,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 9925,
+    "ProductId": 8987,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 10925,
+    "ProductId": 9987,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 10926,
+    "ProductId": 9988,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 10927,
+    "ProductId": 9989,
+    "LocationId": 1,
+    "Count": 0,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 10928,
+    "ProductId": 9990,
+    "LocationId": 1,
+    "Count": 9,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 10929,
+    "ProductId": 9991,
+    "LocationId": 1,
+    "Count": 1,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 10930,
+    "ProductId": 9992,
+    "LocationId": 1,
+    "Count": 9,
+    "StorageCell": null
+  },
+  {
+    "ProductLocationId": 10931,
+    "ProductId": 9993,
+    "LocationId": 1,
+    "Count": 8,
+    "StorageCell": null
+  }
+]

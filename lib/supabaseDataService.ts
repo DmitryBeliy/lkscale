@@ -1,6 +1,7 @@
-import { supabase, getPublicUrl, uploadFile, uploadBase64File } from '@/lib/supabase';
+import { supabase } from '@/lib/supabase';
 import { getCurrentUserId } from '@/store/authStore';
-import { Product, Customer, Order, OrderItem, Activity, KPIData, SalesDataPoint, ProductCategory } from '@/types';
+import { Product, Customer, Order, OrderItem } from '@/types';
+import { logger } from '@/lib/logger';
 import { RealtimeChannel } from '@supabase/supabase-js';
 import * as Haptics from 'expo-haptics';
 
@@ -168,7 +169,7 @@ export const fetchProducts = async (): Promise<Product[]> => {
     .order('created_at', { ascending: false });
 
   if (error) {
-    console.error('Error fetching products:', error);
+    logger.error('Error fetching products:', error);
     return [];
   }
 
@@ -201,7 +202,7 @@ export const createProduct = async (product: Omit<Product, 'id' | 'createdAt' | 
     .single();
 
   if (error) {
-    console.error('Error creating product:', error);
+    logger.error('Error creating product:', error);
     return null;
   }
 
@@ -238,7 +239,7 @@ export const updateProductInDb = async (productId: string, updates: Partial<Prod
     .single();
 
   if (error) {
-    console.error('Error updating product:', error);
+    logger.error('Error updating product:', error);
     return null;
   }
 
@@ -257,7 +258,7 @@ export const deleteProductFromDb = async (productId: string): Promise<boolean> =
     .eq('user_id', userId);
 
   if (error) {
-    console.error('Error deleting product:', error);
+    logger.error('Error deleting product:', error);
     return false;
   }
 
@@ -278,7 +279,7 @@ export const fetchCustomers = async (): Promise<Customer[]> => {
     .order('created_at', { ascending: false });
 
   if (error) {
-    console.error('Error fetching customers:', error);
+    logger.error('Error fetching customers:', error);
     return [];
   }
 
@@ -310,7 +311,7 @@ export const createCustomer = async (customer: Omit<Customer, 'id' | 'createdAt'
     .single();
 
   if (error) {
-    console.error('Error creating customer:', error);
+    logger.error('Error creating customer:', error);
     return null;
   }
 
@@ -345,7 +346,7 @@ export const updateCustomerInDb = async (customerId: string, updates: Partial<Cu
     .single();
 
   if (error) {
-    console.error('Error updating customer:', error);
+    logger.error('Error updating customer:', error);
     return null;
   }
 
@@ -364,7 +365,7 @@ export const deleteCustomerFromDb = async (customerId: string): Promise<boolean>
     .eq('user_id', userId);
 
   if (error) {
-    console.error('Error deleting customer:', error);
+    logger.error('Error deleting customer:', error);
     return false;
   }
 
@@ -385,7 +386,7 @@ export const fetchOrders = async (): Promise<Order[]> => {
     .order('created_at', { ascending: false });
 
   if (error) {
-    console.error('Error fetching orders:', error);
+    logger.error('Error fetching orders:', error);
     return [];
   }
 
@@ -418,7 +419,7 @@ export const createOrderInDb = async (
     .single();
 
   if (error) {
-    console.error('Error creating order:', error);
+    logger.error('Error creating order:', error);
     return null;
   }
 
@@ -445,7 +446,7 @@ export const updateOrderInDb = async (orderId: string, updates: Partial<Order>):
     .single();
 
   if (error) {
-    console.error('Error updating order:', error);
+    logger.error('Error updating order:', error);
     return null;
   }
 
@@ -464,7 +465,7 @@ export const deleteOrderFromDb = async (orderId: string): Promise<boolean> => {
     .eq('user_id', userId);
 
   if (error) {
-    console.error('Error deleting order:', error);
+    logger.error('Error deleting order:', error);
     return false;
   }
 
@@ -485,7 +486,7 @@ export const uploadProductImage = async (
   const { url, error } = await uploadBase64File('products', fileName, base64Data, 'image/jpeg');
 
   if (error) {
-    console.error('Error uploading product image:', error);
+    logger.error('Error uploading product image:', error);
     return null;
   }
 
@@ -512,7 +513,7 @@ export const uploadCustomerAvatar = async (
   const { url, error } = await uploadBase64File('avatars', fileName, base64Data, 'image/jpeg');
 
   if (error) {
-    console.error('Error uploading customer avatar:', error);
+    logger.error('Error uploading customer avatar:', error);
     return null;
   }
 
@@ -539,7 +540,7 @@ export const uploadNewProductImage = async (
   const { url, error } = await uploadBase64File('products', fileName, base64Data, 'image/jpeg');
 
   if (error) {
-    console.error('Error uploading product image:', error);
+    logger.error('Error uploading product image:', error);
     return null;
   }
 
@@ -692,7 +693,7 @@ export const getOrdersForPeriod = async (startDate: Date, endDate: Date): Promis
     .order('created_at', { ascending: false });
 
   if (error) {
-    console.error('Error fetching orders for period:', error);
+    logger.error('Error fetching orders for period:', error);
     return [];
   }
 
@@ -757,18 +758,18 @@ export interface LiveAnalyticsData {
   ordersCount: number;
   completedOrders: number;
   averageOrderValue: number;
-  topSellingProducts: Array<{
+  topSellingProducts: {
     name: string;
     quantitySold: number;
     revenue: number;
     profit: number;
-  }>;
-  lowStockAlerts: Array<{
+  }[];
+  lowStockAlerts: {
     name: string;
     currentStock: number;
     minStock: number;
     daysUntilStockout: number | null;
-  }>;
+  }[];
 }
 
 // Get live analytics for a specific period

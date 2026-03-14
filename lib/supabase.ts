@@ -5,20 +5,14 @@ import { AppState, AppStateStatus } from 'react-native';
 import NetInfo, { NetInfoState } from '@react-native-community/netinfo';
 import { Database } from '@/types/database';
 import { logger } from '@/lib/logger';
-import Constants from 'expo-constants';
 
-// Fallback values for Vercel deployment
-const FALLBACK_SUPABASE_URL = 'https://onnncepenxxxfprqaodu.supabase.co';
-const FALLBACK_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ubm5jZXBlbnh4eGZwcnFhb2R1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI0ODE5ODcsImV4cCI6MjA4ODA1Nzk4N30.zB_-3Ta9pil-UcKB-OMTgLZWdCdciFlhOuk1x6Dy50g';
+// Hardcoded values for production - most reliable for web deployment
+const PROD_SUPABASE_URL = 'https://onnncepenxxxfprqaodu.supabase.co';
+const PROD_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ubm5jZXBlbnh4eGZwcnFhb2R1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI0ODE5ODcsImV4cCI6MjA4ODA1Nzk4N30.zB_-3Ta9pil-UcKB-OMTgLZWdCdciFlhOuk1x6Dy50g';
 
-// Try env vars first, then Expo Constants extra, then fallback
-const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL ||
-  Constants.expoConfig?.extra?.supabaseUrl ||
-  FALLBACK_SUPABASE_URL;
-
-const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY ||
-  Constants.expoConfig?.extra?.supabaseAnonKey ||
-  FALLBACK_SUPABASE_ANON_KEY;
+// Use hardcoded values directly (most reliable)
+const supabaseUrl = PROD_SUPABASE_URL;
+const supabaseAnonKey = PROD_SUPABASE_ANON_KEY;
 
 // Validate URL format
 const isValidUrl = (url: string): boolean => {
@@ -30,18 +24,10 @@ const isValidUrl = (url: string): boolean => {
   }
 };
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  logger.error('Missing Supabase environment variables');
-  throw new Error(
-    'Missing Supabase configuration. Please set EXPO_PUBLIC_SUPABASE_URL and EXPO_PUBLIC_SUPABASE_ANON_KEY environment variables.'
-  );
-}
-
 if (!isValidUrl(supabaseUrl)) {
   logger.error('Invalid Supabase URL:', supabaseUrl);
   throw new Error(
-    `Invalid Supabase URL: "${supabaseUrl}". Must be a valid HTTP or HTTPS URL. ` +
-    'Please check your EXPO_PUBLIC_SUPABASE_URL environment variable.'
+    `Invalid Supabase URL: "${supabaseUrl}". Must be a valid HTTP or HTTPS URL.`
   );
 }
 
@@ -74,7 +60,6 @@ export const getConnectionStatus = () => ({
 
 export const subscribeToConnectionStatus = (listener: ConnectionListener): (() => void) => {
   connectionListeners.add(listener);
-  // Immediately notify with current status
   listener(isConnectedToSupabase && isNetworkConnected);
   return () => {
     connectionListeners.delete(listener);
@@ -90,7 +75,6 @@ const notifyConnectionListeners = () => {
 const handleAppStateChange = (state: AppStateStatus) => {
   if (state === 'active') {
     supabase.auth.startAutoRefresh();
-    // Re-check connection when app becomes active
     checkSupabaseConnection();
   } else {
     supabase.auth.stopAutoRefresh();
@@ -101,8 +85,7 @@ const handleAppStateChange = (state: AppStateStatus) => {
 const checkSupabaseConnection = async (): Promise<boolean> => {
   try {
     const { error } = await supabase.from('users').select('id').limit(1).maybeSingle();
-    // RLS may block the query, but if we get a response (even empty), we're connected
-    isConnectedToSupabase = !error || error.code === 'PGRST116'; // PGRST116 = no rows returned
+    isConnectedToSupabase = !error || error.code === 'PGRST116';
     notifyConnectionListeners();
     return isConnectedToSupabase;
   } catch (err) {
@@ -118,7 +101,6 @@ const handleNetworkChange = (state: NetInfoState) => {
   isNetworkConnected = state.isConnected ?? false;
 
   if (isNetworkConnected && !wasConnected) {
-    // Network restored, check Supabase connection
     checkSupabaseConnection();
   } else if (!isNetworkConnected) {
     isConnectedToSupabase = false;
@@ -128,13 +110,9 @@ const handleNetworkChange = (state: NetInfoState) => {
 
 // Initialize connection monitoring
 export const initConnectionMonitor = () => {
-  // App state listener
   const appStateSubscription = AppState.addEventListener('change', handleAppStateChange);
-
-  // Network listener
   const netInfoUnsubscribe = NetInfo.addEventListener(handleNetworkChange);
 
-  // Initial connection check
   NetInfo.fetch().then(handleNetworkChange);
   checkSupabaseConnection();
 

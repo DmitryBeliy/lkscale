@@ -21,6 +21,7 @@
 import { supabase } from '@/lib/supabase';
 import { logger } from '@/lib/logger';
 import { getCurrentUserId } from '@/store/authStore';
+import { Platform } from 'react-native';
 
 // ID Mapping Store - tracks old INT IDs to new UUIDs
 type IdMap = Map<number, string>;
@@ -199,11 +200,22 @@ class DataMigrationService {
     };
   }
 
+  private isNodeEnvironment(): boolean {
+    // Check if we're in a Node.js environment (not browser/React Native)
+    return typeof process !== 'undefined' && process.versions?.node !== undefined;
+  }
+
   private async loadJsonFile<T>(filename: string): Promise<T[]> {
+    // Migration only works in Node.js environment, not in browser/React Native
+    if (!this.isNodeEnvironment()) {
+      logger.warn(`Cannot load JSON files in browser/React Native environment. File: ${filename}`);
+      return [];
+    }
+
     try {
-      // In React Native, we need to require the JSON file
-      // The files are in docs/base/extracted_data/
-      const data = require(`@/../docs/base/extracted_data/${filename}`);
+      // Dynamic require only works in Node.js environment
+      // Use eval to prevent bundlers from trying to parse this
+      const data = eval(`require('@/../docs/base/extracted_data/${filename}')`);
       return data as T[];
     } catch (error) {
       logger.error(`Failed to load ${filename}:`, error);
@@ -212,7 +224,16 @@ class DataMigrationService {
   }
 
   private generateUUID(): string {
-    return crypto.randomUUID();
+    // Use crypto.randomUUID if available (Node.js/secure contexts), fallback to manual generation
+    if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+      return crypto.randomUUID();
+    }
+    // Fallback for environments without crypto.randomUUID
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      const r = Math.random() * 16 | 0;
+      const v = c === 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
   }
 
   private parseDecimal(value: string | null | undefined): number {

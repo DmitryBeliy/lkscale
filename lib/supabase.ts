@@ -5,12 +5,44 @@ import { AppState, AppStateStatus } from 'react-native';
 import NetInfo, { NetInfoState } from '@react-native-community/netinfo';
 import { Database } from '@/types/database';
 import { logger } from '@/lib/logger';
+import Constants from 'expo-constants';
 
-const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY!;
+// Fallback values for Vercel deployment
+const FALLBACK_SUPABASE_URL = 'https://onnncepenxxxfprqaodu.supabase.co';
+const FALLBACK_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ubm5jZXBlbnh4eGZwcnFhb2R1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI0ODE5ODcsImV4cCI6MjA4ODA1Nzk4N30.zB_-3Ta9pil-UcKB-OMTgLZWdCdciFlhOuk1x6Dy50g';
+
+// Try env vars first, then Expo Constants extra, then fallback
+const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL ||
+  Constants.expoConfig?.extra?.supabaseUrl ||
+  FALLBACK_SUPABASE_URL;
+
+const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY ||
+  Constants.expoConfig?.extra?.supabaseAnonKey ||
+  FALLBACK_SUPABASE_ANON_KEY;
+
+// Validate URL format
+const isValidUrl = (url: string): boolean => {
+  try {
+    const parsed = new URL(url);
+    return parsed.protocol === 'http:' || parsed.protocol === 'https:';
+  } catch {
+    return false;
+  }
+};
 
 if (!supabaseUrl || !supabaseAnonKey) {
   logger.error('Missing Supabase environment variables');
+  throw new Error(
+    'Missing Supabase configuration. Please set EXPO_PUBLIC_SUPABASE_URL and EXPO_PUBLIC_SUPABASE_ANON_KEY environment variables.'
+  );
+}
+
+if (!isValidUrl(supabaseUrl)) {
+  logger.error('Invalid Supabase URL:', supabaseUrl);
+  throw new Error(
+    `Invalid Supabase URL: "${supabaseUrl}". Must be a valid HTTP or HTTPS URL. ` +
+    'Please check your EXPO_PUBLIC_SUPABASE_URL environment variable.'
+  );
 }
 
 // Create Supabase client

@@ -218,7 +218,7 @@ export const fetchProducts = async (): Promise<Product[]> => {
   const { data, error } = await supabase
     .from('products')
     .select('*')
-    .eq('user_id', userId)
+    .or(`user_id.eq.${userId},user_id.is.null`)
     .order('created_at', { ascending: false });
 
   if (error) {
@@ -328,7 +328,7 @@ export const fetchCustomers = async (): Promise<Customer[]> => {
   const { data, error } = await supabase
     .from('customers')
     .select('*')
-    .eq('user_id', userId)
+    .or(`user_id.eq.${userId},user_id.is.null`)
     .order('created_at', { ascending: false });
 
   if (error) {
@@ -435,7 +435,7 @@ export const fetchOrders = async (): Promise<Order[]> => {
   const { data, error } = await supabase
     .from('orders')
     .select('*')
-    .eq('user_id', userId)
+    .or(`user_id.eq.${userId},user_id.is.null`)
     .order('created_at', { ascending: false });
 
   if (error) {
@@ -788,7 +788,7 @@ export const getOrdersForPeriod = async (startDate: Date, endDate: Date): Promis
   const { data, error } = await supabase
     .from('orders')
     .select('*')
-    .eq('user_id', userId)
+    .or(`user_id.eq.${userId},user_id.is.null`)
     .gte('created_at', startDate.toISOString())
     .lte('created_at', endDate.toISOString())
     .order('created_at', { ascending: false });

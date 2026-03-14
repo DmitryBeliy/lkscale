@@ -64,60 +64,79 @@ type DbOrder = {
 };
 
 // Convert DB product to app product
-const dbProductToProduct = (db: DbProduct): Product => ({
-  id: db.id,
-  name: db.name,
-  sku: db.sku || '',
-  barcode: db.barcode || undefined,
-  price: db.price,
-  costPrice: db.cost_price || 0,
-  stock: db.stock || 0,
-  minStock: db.min_stock || 0,
-  category: db.category || 'Без категории',
-  categoryId: db.category_id || undefined,
-  description: db.description || undefined,
-  image: db.image_url || undefined,
-  images: db.images || undefined,
-  isActive: db.is_active ?? true,
-  createdAt: db.created_at || new Date().toISOString(),
-  updatedAt: db.updated_at || new Date().toISOString(),
-});
+const dbProductToProduct = (db: DbProduct): Product => {
+  const price = db.price ?? 0;
+  const costPrice = db.cost_price ?? 0;
+
+  return {
+    id: db.id,
+    name: db.name || '',
+    sku: db.sku || '',
+    barcode: db.barcode || undefined,
+    price,
+    costPrice,
+    stock: db.stock ?? 0,
+    minStock: db.min_stock ?? 0,
+    category: db.category || 'Без категории',
+    categoryId: db.category_id || undefined,
+    description: db.description || undefined,
+    image: db.image_url || undefined,
+    images: db.images || undefined,
+    isActive: db.is_active ?? true,
+    createdAt: db.created_at || new Date().toISOString(),
+    updatedAt: db.updated_at || new Date().toISOString(),
+    // Computed fields
+    margin: price > 0 ? Math.round(((price - costPrice) / price) * 100) : 0,
+    profit: price - costPrice,
+  };
+};
 
 // Convert app product to DB product
-const productToDbProduct = (product: Partial<Product>, userId: string): Partial<DbProduct> => ({
-  name: product.name,
-  sku: product.sku,
-  barcode: product.barcode || null,
-  price: product.price,
-  cost_price: product.costPrice,
-  stock: product.stock,
-  min_stock: product.minStock,
-  category: product.category,
-  category_id: product.categoryId || null,
-  description: product.description || null,
-  image_url: product.image || null,
-  images: product.images || null,
-  is_active: product.isActive,
-  user_id: userId,
-});
+const productToDbProduct = (product: Partial<Product>, userId: string): Partial<DbProduct> => {
+  // Ensure required fields have defaults
+  const price = product.price ?? 0;
+  const costPrice = product.costPrice ?? 0;
+
+  return {
+    name: product.name,
+    sku: product.sku || null,
+    barcode: product.barcode || null,
+    price,
+    cost_price: costPrice,
+    stock: product.stock ?? 0,
+    min_stock: product.minStock ?? 0,
+    category: product.category || 'Без категории',
+    category_id: product.categoryId || null,
+    description: product.description || null,
+    image_url: product.image || null,
+    images: product.images || null,
+    is_active: product.isActive ?? true,
+    user_id: userId,
+  };
+};
 
 // Convert DB customer to app customer
-const dbCustomerToCustomer = (db: DbCustomer): Customer => ({
-  id: db.id,
-  name: db.name,
-  phone: db.phone || undefined,
-  email: db.email || undefined,
-  address: db.address || undefined,
-  company: db.company || undefined,
-  notes: db.notes || undefined,
-  totalOrders: db.total_orders || 0,
-  totalSpent: db.total_spent || 0,
-  lastOrderDate: db.last_order_date || undefined,
-  averageCheck: db.average_check || undefined,
-  topCategories: db.top_categories || undefined,
-  createdAt: db.created_at || new Date().toISOString(),
-  updatedAt: db.updated_at || new Date().toISOString(),
-});
+const dbCustomerToCustomer = (db: DbCustomer): Customer => {
+  const totalOrders = db.total_orders ?? 0;
+  const totalSpent = db.total_spent ?? 0;
+
+  return {
+    id: db.id,
+    name: db.name || '',
+    phone: db.phone || undefined,
+    email: db.email || undefined,
+    address: db.address || undefined,
+    company: db.company || undefined,
+    notes: db.notes || undefined,
+    totalOrders,
+    totalSpent,
+    lastOrderDate: db.last_order_date || undefined,
+    averageCheck: db.average_check || (totalOrders > 0 ? Math.round(totalSpent / totalOrders) : undefined),
+    topCategories: db.top_categories || undefined,
+    createdAt: db.created_at || new Date().toISOString(),
+    updatedAt: db.updated_at || new Date().toISOString(),
+  };
+};
 
 // Convert app customer to DB customer
 const customerToDbCustomer = (customer: Partial<Customer>, userId: string): Partial<DbCustomer> => ({
@@ -127,9 +146,9 @@ const customerToDbCustomer = (customer: Partial<Customer>, userId: string): Part
   address: customer.address || null,
   company: customer.company || null,
   notes: customer.notes || null,
-  avatar_url: undefined,
-  total_orders: customer.totalOrders,
-  total_spent: customer.totalSpent,
+  avatar_url: null,
+  total_orders: customer.totalOrders ?? 0,
+  total_spent: customer.totalSpent ?? 0,
   last_order_date: customer.lastOrderDate || null,
   average_check: customer.averageCheck || null,
   top_categories: customer.topCategories || null,
@@ -137,24 +156,58 @@ const customerToDbCustomer = (customer: Partial<Customer>, userId: string): Part
 });
 
 // Convert DB order to app order
-const dbOrderToOrder = (db: DbOrder): Order => ({
-  id: db.id,
-  orderNumber: db.order_number || '',
-  status: (db.status || 'pending') as Order['status'],
-  totalAmount: db.total_amount || 0,
-  itemsCount: db.items_count || 0,
-  customerId: db.customer_id || undefined,
-  customer: db.customer_name ? {
-    name: db.customer_name,
-    phone: db.customer_phone || undefined,
-    address: db.customer_address || undefined,
-  } : undefined,
-  notes: db.notes || undefined,
-  paymentMethod: (db.payment_method || 'cash') as Order['paymentMethod'],
-  items: (db.items as OrderItem[]) || [],
-  createdAt: db.created_at || new Date().toISOString(),
-  updatedAt: db.updated_at || new Date().toISOString(),
-});
+const dbOrderToOrder = (db: DbOrder): Order => {
+  // Validate status against allowed values
+  const validStatuses: Order['status'][] = ['pending', 'processing', 'completed', 'cancelled'];
+  const status = db.status && validStatuses.includes(db.status as Order['status'])
+    ? (db.status as Order['status'])
+    : 'pending';
+
+  // Validate payment method
+  const validPaymentMethods: Order['paymentMethod'][] = ['cash', 'card', 'transfer', 'online'];
+  const paymentMethod = db.payment_method && validPaymentMethods.includes(db.payment_method as Order['paymentMethod'])
+    ? (db.payment_method as Order['paymentMethod'])
+    : 'cash';
+
+  // Safely parse items from JSON
+  let items: OrderItem[] = [];
+  if (db.items) {
+    try {
+      const parsed = typeof db.items === 'string' ? JSON.parse(db.items) : db.items;
+      if (Array.isArray(parsed)) {
+        items = parsed.map((item: unknown) => ({
+          id: (item as Record<string, unknown>).id as string || `item-${Date.now()}`,
+          productId: (item as Record<string, unknown>).productId as string || '',
+          productName: (item as Record<string, unknown>).productName as string || '',
+          quantity: Number((item as Record<string, unknown>).quantity) || 0,
+          price: Number((item as Record<string, unknown>).price) || 0,
+          sku: (item as Record<string, unknown>).sku as string || undefined,
+        }));
+      }
+    } catch {
+      items = [];
+    }
+  }
+
+  return {
+    id: db.id,
+    orderNumber: db.order_number || `ORD-${Date.now()}`,
+    status,
+    totalAmount: db.total_amount ?? 0,
+    itemsCount: db.items_count ?? items.reduce((sum, item) => sum + item.quantity, 0),
+    customerId: db.customer_id || undefined,
+    customer: db.customer_name ? {
+      name: db.customer_name,
+      phone: db.customer_phone || undefined,
+      address: db.customer_address || undefined,
+    } : undefined,
+    notes: db.notes || undefined,
+    paymentMethod,
+    items,
+    createdAt: db.created_at || new Date().toISOString(),
+    updatedAt: db.updated_at || new Date().toISOString(),
+  };
+};
 
 // ============== PRODUCTS ==============
 
@@ -474,6 +527,54 @@ export const deleteOrderFromDb = async (orderId: string): Promise<boolean> => {
 };
 
 // ============== IMAGE UPLOAD ==============
+
+// Helper function to upload base64 file to Supabase Storage
+const uploadBase64File = async (
+  bucket: string,
+  fileName: string,
+  base64Data: string,
+  contentType: string
+): Promise<{ url: string | null; error: Error | null }> => {
+  try {
+    // Remove base64 prefix if present
+    const base64String = base64Data.includes(',')
+      ? base64Data.split(',')[1]
+      : base64Data;
+
+    if (!base64String) {
+      return { url: null, error: new Error('Invalid base64 data') };
+    }
+
+    // Convert base64 to Uint8Array
+    const byteCharacters = atob(base64String);
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+
+    // Upload to Supabase Storage
+    const { data, error } = await supabase.storage
+      .from(bucket)
+      .upload(fileName, byteArray, {
+        contentType,
+        upsert: true,
+      });
+
+    if (error) {
+      return { url: null, error };
+    }
+
+    // Get public URL
+    const { data: { publicUrl } } = supabase.storage
+      .from(bucket)
+      .getPublicUrl(data.path);
+
+    return { url: publicUrl, error: null };
+  } catch (err) {
+    return { url: null, error: err instanceof Error ? err : new Error('Upload failed') };
+  }
+};
 
 export const uploadProductImage = async (
   productId: string,

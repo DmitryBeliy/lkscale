@@ -182,64 +182,111 @@ type DbLocation = {
 };
 
 // DB to App type converters
-const dbProductToProduct = (db: DbProduct): Product => ({
-  id: db.id,
-  name: db.name,
-  sku: db.sku || '',
-  barcode: db.barcode || undefined,
-  price: db.price,
-  costPrice: db.cost_price || 0,
-  stock: db.stock || 0,
-  minStock: db.min_stock || 0,
-  category: db.category || 'Без категории',
-  categoryId: db.category_id || undefined,
-  description: db.description || undefined,
-  image: db.image_url || undefined,
-  images: db.images || undefined,
-  isActive: db.is_active ?? true,
-  createdAt: db.created_at || new Date().toISOString(),
-  updatedAt: db.updated_at || new Date().toISOString(),
-});
+const dbProductToProduct = (db: DbProduct): Product => {
+  const price = db.price ?? 0;
+  const costPrice = db.cost_price ?? 0;
 
-const dbCustomerToCustomer = (db: DbCustomer): Customer => ({
-  id: db.id,
-  name: db.name,
-  phone: db.phone || undefined,
-  email: db.email || undefined,
-  address: db.address || undefined,
-  company: db.company || undefined,
-  notes: db.notes || undefined,
-  totalOrders: db.total_orders || 0,
-  totalSpent: db.total_spent || 0,
-  lastOrderDate: db.last_order_date || undefined,
-  averageCheck: db.average_check || undefined,
-  topCategories: db.top_categories || undefined,
-  createdAt: db.created_at || new Date().toISOString(),
-  updatedAt: db.updated_at || new Date().toISOString(),
-});
+  return {
+    id: db.id,
+    name: db.name || '',
+    sku: db.sku || '',
+    barcode: db.barcode || undefined,
+    price,
+    costPrice,
+    stock: db.stock ?? 0,
+    minStock: db.min_stock ?? 0,
+    category: db.category || 'Без категории',
+    categoryId: db.category_id || undefined,
+    description: db.description || undefined,
+    image: db.image_url || undefined,
+    images: db.images || undefined,
+    isActive: db.is_active ?? true,
+    createdAt: db.created_at || new Date().toISOString(),
+    updatedAt: db.updated_at || new Date().toISOString(),
+    // Computed fields
+    margin: price > 0 ? Math.round(((price - costPrice) / price) * 100) : 0,
+    profit: price - costPrice,
+  };
+};
 
-const dbOrderToOrder = (db: DbOrder): Order => ({
-  id: db.id,
-  orderNumber: db.order_number || '',
-  status: (db.status || 'pending') as Order['status'],
-  totalAmount: db.total_amount || 0,
-  itemsCount: db.items_count || 0,
-  customerId: db.customer_id || undefined,
-  customer: db.customer_name ? {
-    name: db.customer_name,
-    phone: db.customer_phone || undefined,
-    address: db.customer_address || undefined,
-  } : undefined,
-  notes: db.notes || undefined,
-  paymentMethod: (db.payment_method || 'cash') as Order['paymentMethod'],
-  items: (db.items as Order['items']) || [],
-  createdAt: db.created_at || new Date().toISOString(),
-  updatedAt: db.updated_at || new Date().toISOString(),
-});
+const dbCustomerToCustomer = (db: DbCustomer): Customer => {
+  const totalOrders = db.total_orders ?? 0;
+  const totalSpent = db.total_spent ?? 0;
+
+  return {
+    id: db.id,
+    name: db.name || '',
+    phone: db.phone || undefined,
+    email: db.email || undefined,
+    address: db.address || undefined,
+    company: db.company || undefined,
+    notes: db.notes || undefined,
+    totalOrders,
+    totalSpent,
+    lastOrderDate: db.last_order_date || undefined,
+    averageCheck: db.average_check || (totalOrders > 0 ? Math.round(totalSpent / totalOrders) : undefined),
+    topCategories: db.top_categories || undefined,
+    createdAt: db.created_at || new Date().toISOString(),
+    updatedAt: db.updated_at || new Date().toISOString(),
+  };
+};
+
+const dbOrderToOrder = (db: DbOrder): Order => {
+  // Validate status against allowed values
+  const validStatuses: Order['status'][] = ['pending', 'processing', 'completed', 'cancelled'];
+  const status = db.status && validStatuses.includes(db.status as Order['status'])
+    ? (db.status as Order['status'])
+    : 'pending';
+
+  // Validate payment method
+  const validPaymentMethods: Order['paymentMethod'][] = ['cash', 'card', 'transfer', 'online'];
+  const paymentMethod = db.payment_method && validPaymentMethods.includes(db.payment_method as Order['paymentMethod'])
+    ? (db.payment_method as Order['paymentMethod'])
+    : 'cash';
+
+  // Safely parse items from JSON
+  let items: Order['items'] = [];
+  if (db.items) {
+    try {
+      const parsed = typeof db.items === 'string' ? JSON.parse(db.items) : db.items;
+      if (Array.isArray(parsed)) {
+        items = parsed.map((item: unknown) => ({
+          id: (item as Record<string, unknown>).id as string || `item-${Date.now()}`,
+          productId: (item as Record<string, unknown>).productId as string || '',
+          productName: (item as Record<string, unknown>).productName as string || '',
+          quantity: Number((item as Record<string, unknown>).quantity) || 0,
+          price: Number((item as Record<string, unknown>).price) || 0,
+          sku: (item as Record<string, unknown>).sku as string || undefined,
+        }));
+      }
+    } catch {
+      items = [];
+    }
+  }
+
+  return {
+    id: db.id,
+    orderNumber: db.order_number || `ORD-${Date.now()}`,
+    status,
+    totalAmount: db.total_amount ?? 0,
+    itemsCount: db.items_count ?? items.reduce((sum, item) => sum + item.quantity, 0),
+    customerId: db.customer_id || undefined,
+    customer: db.customer_name ? {
+      name: db.customer_name,
+      phone: db.customer_phone || undefined,
+      address: db.customer_address || undefined,
+    } : undefined,
+    notes: db.notes || undefined,
+    paymentMethod,
+    items,
+    createdAt: db.created_at || new Date().toISOString(),
+    updatedAt: db.updated_at || new Date().toISOString(),
+  };
+};
 
 const dbSupplierToSupplier = (db: DbSupplier): Supplier => ({
   id: db.id,
-  name: db.name,
+  name: db.name || '',
   contactName: db.contact_name || undefined,
   email: db.email || undefined,
   phone: db.phone || undefined,
@@ -247,7 +294,7 @@ const dbSupplierToSupplier = (db: DbSupplier): Supplier => ({
   website: db.website || undefined,
   notes: db.notes || undefined,
   paymentTerms: db.payment_terms || undefined,
-  leadTimeDays: db.lead_time_days || 0,
+  leadTimeDays: db.lead_time_days ?? 0,
   rating: db.rating || undefined,
   isActive: db.is_active ?? true,
   createdAt: db.created_at || new Date().toISOString(),
@@ -256,7 +303,7 @@ const dbSupplierToSupplier = (db: DbSupplier): Supplier => ({
 
 const dbManufacturerToManufacturer = (db: DbManufacturer): Manufacturer => ({
   id: db.id,
-  name: db.name,
+  name: db.name || '',
   description: db.description || undefined,
   website: db.website || undefined,
   logoUrl: db.logo_url || undefined,
@@ -268,7 +315,7 @@ const dbManufacturerToManufacturer = (db: DbManufacturer): Manufacturer => ({
 const dbLocationToLocation = (db: DbLocation): Location => ({
   id: db.id,
   userId: db.user_id || undefined,
-  name: db.name,
+  name: db.name || '',
   type: (db.type as Location['type']) || 'warehouse',
   address: db.address || undefined,
   phone: db.phone || undefined,

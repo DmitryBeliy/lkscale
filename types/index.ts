@@ -25,12 +25,20 @@ export interface Customer {
   topCategories?: string[];
   createdAt: string;
   updatedAt?: string;
+  avatarUrl?: string;
+  userId?: string;
 }
+
+// Order status values must match database constraints
+export type OrderStatus = 'pending' | 'processing' | 'completed' | 'cancelled';
+
+// Payment method values must match database constraints
+export type PaymentMethod = 'cash' | 'card' | 'transfer' | 'online';
 
 export interface Order {
   id: string;
   orderNumber: string;
-  status: 'pending' | 'processing' | 'completed' | 'cancelled';
+  status: OrderStatus;
   totalAmount: number;
   itemsCount: number;
   createdAt: string;
@@ -43,7 +51,8 @@ export interface Order {
   };
   items: OrderItem[];
   notes?: string;
-  paymentMethod?: 'cash' | 'card' | 'transfer' | 'online';
+  paymentMethod?: PaymentMethod;
+  userId?: string;
 }
 
 export interface OrderItem {
@@ -81,7 +90,7 @@ export interface Product {
   sku: string;
   barcode?: string;
   price: number;
-  costPrice: number; // Себестоимость
+  costPrice: number;
   stock: number;
   category: string;
   categoryId?: string;
@@ -94,9 +103,11 @@ export interface Product {
   stockHistory?: StockHistoryEntry[];
   createdAt?: string;
   updatedAt?: string;
-  // Computed fields (can be calculated)
-  margin?: number; // (price - costPrice) / price * 100
-  profit?: number; // price - costPrice
+  manufacturerId?: string;
+  supplierId?: string;
+  // Computed fields
+  margin?: number;
+  profit?: number;
 }
 
 export interface KPIData {
@@ -367,6 +378,7 @@ export interface Supplier {
   isActive: boolean;
   createdAt: string;
   updatedAt?: string;
+  userId?: string;
   // Computed fields
   totalOrders?: number;
   totalSpent?: number;
